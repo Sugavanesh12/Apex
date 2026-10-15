@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal, computed } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IconComponent } from '../../shared/ui/icon/icon.component';
 import { CoachService } from '../../core/services/coach.service';
@@ -23,9 +23,14 @@ import { CoachService } from '../../core/services/coach.service';
             </div>
           </div>
         </div>
-        <button class="close-btn" (click)="coachService.closeCopilot()" aria-label="Close Copilot">
-          <app-icon name="close" [size]="18" />
-        </button>
+        <div class="header-actions">
+          <button class="action-icon-btn" (click)="coachService.clearHistory()" title="Clear Chat History">
+            <app-icon name="trash" [size]="15" />
+          </button>
+          <button class="close-btn" (click)="coachService.closeCopilot()" aria-label="Close Copilot">
+            <app-icon name="close" [size]="18" />
+          </button>
+        </div>
       </div>
 
       <!-- Messages & Prompts Content -->
@@ -63,11 +68,17 @@ import { CoachService } from '../../core/services/coach.service';
           </div>
         }
 
-        <!-- Quick Prompts Section (as shown in reference screenshot) -->
+        <!-- Quick Prompts Section with Dynamic Shuffle -->
         <div class="prompt-section">
-          <div class="prompt-heading">Try asking:</div>
+          <div class="prompt-header-row">
+            <span class="prompt-heading">Try asking:</span>
+            <button class="shuffle-sm-btn" (click)="shufflePrompts()" title="Shuffle questions">
+              <app-icon name="refresh" [size]="12" />
+              <span>Shuffle</span>
+            </button>
+          </div>
           <div class="prompt-chips">
-            @for (prompt of suggestedPrompts; track prompt) {
+            @for (prompt of visiblePrompts(); track prompt) {
               <button class="prompt-chip" (click)="coachService.askPrompt(prompt)">
                 {{ prompt }}
               </button>
@@ -87,7 +98,7 @@ import { CoachService } from '../../core/services/coach.service';
             type="text"
             [(ngModel)]="inputText"
             (keyup.enter)="sendMessage()"
-            placeholder="Ask your coach anything..."
+            placeholder="Ask about workouts, food, recovery..."
           />
           <button class="send-btn" (click)="sendMessage()" [disabled]="!inputText.trim()">
             <app-icon name="chevron-right" [size]="16" />
@@ -105,7 +116,7 @@ import { CoachService } from '../../core/services/coach.service';
       top: 0;
       right: 0;
       bottom: 0;
-      width: clamp(320px, 28vw, 380px);
+      width: clamp(320px, 28vw, 400px);
       background: var(--surface);
       border-left: 1px solid var(--border);
       box-shadow: var(--shadow-2);
@@ -130,6 +141,28 @@ import { CoachService } from '../../core/services/coach.service';
       display: flex;
       align-items: center;
       gap: var(--s-3);
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .action-icon-btn {
+      width: 30px;
+      height: 30px;
+      border-radius: var(--r-pill);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all var(--t-fast);
+    }
+    .action-icon-btn:hover {
+      color: var(--accent-alert);
+      border-color: var(--accent-alert);
     }
     .avatar-ring {
       width: 36px;
@@ -159,60 +192,70 @@ import { CoachService } from '../../core/services/coach.service';
       width: 6px;
       height: 6px;
       border-radius: 50%;
-      background: var(--primary);
-      box-shadow: 0 0 6px var(--primary);
+      background: var(--accent-1);
     }
     .close-btn {
       width: 32px;
       height: 32px;
       border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       color: var(--text-muted);
+      background: none;
+      border: none;
       cursor: pointer;
     }
     .close-btn:hover {
-      color: var(--text);
       background: var(--surface-2);
+      color: var(--text);
     }
 
     .panel-body {
       flex: 1;
-      padding: var(--s-4);
       overflow-y: auto;
+      padding: var(--s-4);
       display: flex;
       flex-direction: column;
       gap: var(--s-3);
     }
 
     .msg-bubble {
-      padding: var(--s-3) var(--s-4);
+      padding: 10px 14px;
       border-radius: var(--r-card);
-      font-size: var(--fs-sm);
-      line-height: 1.45;
+      font-size: var(--fs-xs);
+      line-height: 1.5;
+      max-width: 88%;
+      white-space: pre-line;
     }
-    .msg-ai {
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      color: var(--text);
+    .msg-bubble p {
+      margin: 0;
     }
     .msg-user {
+      align-self: flex-end;
       background: var(--primary-soft);
       border: 1px solid var(--primary-line);
       color: var(--text);
-      align-self: flex-end;
+    }
+    .msg-ai {
+      align-self: flex-start;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--text);
     }
 
     .thinking-bubble {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
     }
     .typing-dots {
       display: flex;
-      gap: 4px;
+      gap: 3px;
     }
     .typing-dots span {
-      width: 6px;
-      height: 6px;
+      width: 5px;
+      height: 5px;
       border-radius: 50%;
       background: var(--primary);
       animation: dotPulse 1.2s infinite ease-in-out;
@@ -224,7 +267,7 @@ import { CoachService } from '../../core/services/coach.service';
       40% { transform: scale(1.1); opacity: 1; }
     }
     .thinking-text {
-      font-size: var(--fs-xs);
+      font-size: 0.7rem;
       color: var(--text-muted);
       font-style: italic;
     }
@@ -251,9 +294,9 @@ import { CoachService } from '../../core/services/coach.service';
       margin-top: 4px;
     }
     .proposal-actions button {
-      min-height: 34px;
-      font-size: 0.75rem;
-      padding: 6px 14px;
+      min-height: 32px;
+      font-size: 0.72rem;
+      padding: 4px 12px;
     }
     .applied-chip {
       display: inline-flex;
@@ -265,17 +308,40 @@ import { CoachService } from '../../core/services/coach.service';
     }
 
     .prompt-section {
-      margin-top: var(--s-4);
+      margin-top: var(--s-3);
       display: flex;
       flex-direction: column;
       gap: var(--s-2);
     }
+    .prompt-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
     .prompt-heading {
-      font-size: var(--fs-xs);
-      font-weight: 600;
+      font-size: 0.72rem;
+      font-weight: 700;
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.05em;
+    }
+    .shuffle-sm-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.68rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: var(--r-pill);
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all var(--t-fast);
+    }
+    .shuffle-sm-btn:hover {
+      color: var(--primary);
+      border-color: var(--primary);
     }
     .prompt-chips {
       display: flex;
@@ -289,34 +355,36 @@ import { CoachService } from '../../core/services/coach.service';
       background: var(--surface-2);
       border: 1px solid var(--border);
       color: var(--text-muted);
-      font-size: var(--fs-xs);
+      font-size: 0.75rem;
       cursor: pointer;
       transition: all var(--t-fast) var(--ease);
+      line-height: 1.35;
     }
     .prompt-chip:hover {
       color: var(--text);
       border-color: var(--primary);
       background: var(--surface-3);
+      transform: translateX(2px);
     }
 
     .panel-footer {
-      padding: var(--s-3) var(--s-4) var(--s-4);
+      padding: var(--s-3) var(--s-4);
       border-top: 1px solid var(--border);
       display: flex;
       flex-direction: column;
       gap: var(--s-2);
+      background: var(--surface);
     }
     .disclaimer {
-      font-size: 0.65rem;
-      color: var(--text-faint);
       display: flex;
       align-items: center;
       gap: 6px;
+      font-size: 0.65rem;
+      color: var(--text-faint);
     }
     .input-box {
       display: flex;
       align-items: center;
-      gap: 6px;
       background: var(--surface-2);
       border: 1px solid var(--border);
       border-radius: var(--r-pill);
@@ -340,6 +408,8 @@ import { CoachService } from '../../core/services/coach.service';
       align-items: center;
       justify-content: center;
       cursor: pointer;
+      border: none;
+      transition: all var(--t-fast);
     }
     .send-btn:disabled {
       opacity: 0.4;
@@ -351,14 +421,40 @@ export class CopilotPanelComponent {
   coachService = inject(CoachService);
   inputText = '';
 
-  suggestedPrompts = [
+  private shuffleIndex = signal<number>(0);
+
+  readonly promptPool = [
     'How do I fix knee pinching in deep squats?',
     'How much protein do I need per kg for muscle growth?',
     'Should I take creatine before or after workouts?',
     'Why is my scale weight fluctuating today?',
     'How many sets per week for chest hypertrophy?',
-    'How does sleep affect my recovery and readiness?'
+    'How does sleep affect my recovery and readiness?',
+    'How do I fix my bench press arch to protect my shoulders?',
+    'How do I target the long head of my triceps?',
+    'Can I eat a banana pre-workout for glycogen replenishment?',
+    'What should I eat 60 minutes before a high-intensity workout?',
+    'Does severe muscle soreness (DOMS) mean more muscle growth?',
+    'My readiness is low today, how should I adjust my workout volume?',
+    'What is the optimal rest time between heavy compound sets?',
+    'How do I build a wider V-taper lat spread with pull-ups?',
+    'How do dietary fats support testosterone production?'
   ];
+
+  visiblePrompts = computed(() => {
+    const idx = this.shuffleIndex();
+    const count = 4;
+    const start = (idx * count) % this.promptPool.length;
+    const selected: string[] = [];
+    for (let i = 0; i < count; i++) {
+      selected.push(this.promptPool[(start + i) % this.promptPool.length]);
+    }
+    return selected;
+  });
+
+  shufflePrompts() {
+    this.shuffleIndex.update(v => v + 1);
+  }
 
   sendMessage() {
     if (!this.inputText.trim()) return;

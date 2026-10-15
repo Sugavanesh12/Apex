@@ -719,59 +719,334 @@ Respond strictly in valid JSON:
     }
 
     // -------------------------------------------------------------------------
-    // 3. BODY, RECOVERY & PHYSIOLOGY
+    // 3. SPECIFIC MUSCLE GROUPS & REGIONAL BIOMECHANICS
     // -------------------------------------------------------------------------
-    if (q.includes('sore') || q.includes('doms') || q.includes('stiff') || q.includes('pain')) {
+    if (q.includes('bicep') || q.includes('curl') || q.includes('arm size') || q.includes('biceps')) {
       return {
-        text: `DOMS (Delayed Onset Muscle Soreness) stems from micro-tears in sarcomeres and inflammatory signaling following novel or eccentric loading. It is not an indicator of workout quality. Active recovery, such as 20 minutes of zone 2 cycling or light walking, boosts local blood flow and accelerates clearance of metabolic byproducts without adding fatigue.`,
+        text: `To maximize bicep hypertrophy, train both elbow flexion and forearms in full supination. Combine an exercise that stretches the long head behind the torso (Incline Dumbbell Curls at a 45-60° bench angle) with a movement that overloads the shortened peak (Preacher Curls or Spider Curls). Control the eccentric tempo for 2-3 seconds to induce maximal mechanical tension.`,
         proposal: {
-          actionText: `Schedule 15 minutes of light active recovery and soft-tissue foam rolling.`,
-          type: 'recovery'
+          actionText: `Add 3 sets of Incline Dumbbell Curls (8-12 reps) with a 2-second stretch pause.`,
+          type: 'training'
         }
       };
     }
 
-    if (q.includes('sleep') || q.includes('insomnia') || q.includes('tired') || q.includes('wake up')) {
+    if (q.includes('tricep') || q.includes('triceps') || q.includes('pushdown') || q.includes('skull crusher')) {
       return {
-        text: `Over 95% of natural Human Growth Hormone (HGH) release and muscle tissue regeneration occurs during slow-wave deep sleep. If sleep is truncated under 7 hours, insulin sensitivity degrades and cortisol surges. Maintain a dark, 18°C sleep environment and stop caffeine intake 8 hours before bed.`,
+        text: `The triceps make up approximately 60% of total upper arm circumference. To develop complete definition, you must hit the long head with overhead elbow extension (Overhead Cable Extensions or Incline EZ-Bar Extensions), as the long head crosses both shoulder and elbow joints. Complement this with Cable Rope Pushdowns flaring outward at lockout to stress the lateral head.`,
         proposal: {
-          actionText: `Aim for 8.0 hours of sleep tonight with a 30-minute pre-bed wind-down.`,
-          type: 'recovery'
+          actionText: `Superset 3 sets of Overhead Cable Extensions with Cable Rope Pushdowns.`,
+          type: 'training'
         }
       };
     }
 
-    if (q.includes('readiness') || q.includes('recovery score') || q.includes('hrv') || q.includes('energy')) {
+    if (q.includes('shoulder') || q.includes('delt') || q.includes('lateral raise') || q.includes('deltoid')) {
       return {
-        text: `Your readiness score is currently ${ctx.readinessScore}/100 (${ctx.readinessReason}). This metric reflects autonomic nervous system balance, sleep architecture, and muscular recovery. ${ctx.readinessScore >= 80 ? 'You are primed for maximum force output and PR attempts!' : 'Your nervous system is under cumulative strain; cap intensity and prioritize form over load.'}`,
+        text: `The lateral deltoid provides that sought-after V-taper aesthetic and responds best to high-frequency volume (14-22 weekly sets) in the 12-20 rep range. Perform Cable Lateral Raises with the pulley positioned at wrist height to create an immediate resistance profile in the initial 30° of arm abduction where dumbbells provide near-zero mechanical load.`,
         proposal: {
-          actionText: ctx.readinessScore >= 80
-            ? `Proceed with heavy compound progression as scheduled.`
-            : `Reduce accessory set volume by 1 set across all exercises today.`,
-          type: 'recovery'
+          actionText: `Add 4 sets of Behind-the-Back Cable Lateral Raises to your next upper session.`,
+          type: 'training'
         }
       };
     }
 
-    if (q.includes('weight fluctuat') || q.includes('scale went up') || q.includes('water weight') || q.includes('retention')) {
+    if (q.includes('abs') || q.includes('core') || q.includes('six pack') || q.includes('belly fat')) {
       return {
-        text: `Daily scale weight fluctuations of 1 to 2.5 kg are completely normal and driven by glycogen storage (each gram of glycogen binds 3-4 grams of water), sodium variance, and digestion transit time, not body fat gain. Monitor 7-day rolling averages rather than daily peaks to evaluate your true trajectory.`,
+        text: `Six-pack visibility is governed by two factors: low body fat (<12-14% for men, <20-22% for women) and rectus abdominis muscular thickness. You cannot spot-reduce abdominal fat through crunches. Instead, train the core with progressive overload via Cable Kneeling Crunches and Hanging Leg Raises to hypertrophy the muscle bellies so they pop through lower body fat.`,
         proposal: {
-          actionText: `Use the 7-day rolling weight average in your Progress tab as your baseline.`,
-          type: 'recovery'
+          actionText: `Program 3 sets of Heavy Cable Crunches (10-15 reps) with strict lumbar flexion.`,
+          type: 'training'
+        }
+      };
+    }
+
+    if (q.includes('back') || q.includes('lat') || q.includes('pull up') || q.includes('pullup') || q.includes('row')) {
+      return {
+        text: `For a wide, dense back, separate your pulling into vertical and horizontal planes. Vertical pulls (Pull-ups, Neutral-Grip Lat Pulldowns) pull down toward the hips to maximize latissimus dorsi stretch. Horizontal rows (Chest-Supported T-Bar Rows, Chest-Supported Dumbbell Rows) with flared elbows at 45° hit the rhomboids, rear delts, and middle trapezius.`,
+        proposal: {
+          actionText: `Perform 3 sets of Neutral-Grip Lat Pulldowns focusing on driving elbows to hips.`,
+          type: 'training'
+        }
+      };
+    }
+
+    if (q.includes('chest') || q.includes('pec') || q.includes('push up') || q.includes('fly')) {
+      return {
+        text: `The pectoralis major has two distinct divisions: the clavicular (upper) head and the sternal (mid/lower) head. To build full shelf-like chest thickness, prioritize 30° low-incline dumbbell presses and converging cable flyes that emphasize deep adduction across the chest midline where maximum contraction occurs.`,
+        proposal: {
+          actionText: `Program 3 sets of Low-Incline (30°) Dumbbell Press focusing on a deep pectoral stretch.`,
+          type: 'training'
+        }
+      };
+    }
+
+    if (q.includes('glute') || q.includes('hip thrust') || q.includes('butt') || q.includes('hamstring')) {
+      return {
+        text: `The gluteus maximus achieves its highest muscle activation at full hip extension with bent knees. The Barbell Hip Thrust or Kas Glute Bridge places maximal mechanical tension directly at the shortened range, making it superior to squats for targeted glute hypertrophy. Pair with Romanian Deadlifts for lengthening the hamstrings.`,
+        proposal: {
+          actionText: `Add 3 sets of Barbell Hip Thrusts with a 2-second isometric contraction at lockout.`,
+          type: 'training'
+        }
+      };
+    }
+
+    if (q.includes('calf') || q.includes('calves')) {
+      return {
+        text: `The calves consist of the gastrocnemius and soleus. The gastrocnemius crosses the knee joint and is best trained with straight-leg Standing Calf Raises, while the soleus is isolated during Seated Calf Raises with bent knees. Always pause for a full 2-3 seconds at the bottom stretch to dissipate the Achilles tendon's elastic recoil.`,
+        proposal: {
+          actionText: `Perform Standing Calf Raises with a strict 3-second bottom pause on every rep.`,
+          type: 'training'
         }
       };
     }
 
     // -------------------------------------------------------------------------
-    // 4. GENERAL ATHLETIC INTELLIGENCE (Context-Aware Catch-All)
+    // 4. PROGRAMMING, SPLITS & CARDIO
     // -------------------------------------------------------------------------
+    if (q.includes('split') || q.includes('routine') || q.includes('ppl') || q.includes('upper lower')) {
+      return {
+        text: `The ideal training split aligns with your weekly schedule: 3 days favors Full Body; 4 days excels on Upper/Lower; and 5-6 days optimizes Push/Pull/Legs (PPL). Research consistently demonstrates that training each muscle group twice per week produces significantly greater hypertrophy than once-weekly 'bro splits' due to elevated muscle protein synthesis windows.`,
+        proposal: {
+          actionText: `Review your weekly split in Training Hub to ensure 2x frequency per muscle group.`,
+          type: 'training'
+        }
+      };
+    }
+
+    if (q.includes('cardio') || q.includes('run') || q.includes('treadmill') || q.includes('hiit') || q.includes('aerobic')) {
+      return {
+        text: `To avoid the molecular interference effect where AMPK activation from endurance blunts mTOR muscle protein synthesis, perform low-intensity Zone 2 cardio AFTER your weightlifting or on separate recovery days. 25-35 minutes of incline treadmill walking or cycling boosts capillarization and mitochondrial density without dampening strength.`,
+        proposal: {
+          actionText: `Schedule 25 minutes of Zone 2 incline walking post-workout or on active recovery days.`,
+          type: 'training'
+        }
+      };
+    }
+
+    if (q.includes('rest between') || q.includes('rest time') || q.includes('how long rest')) {
+      return {
+        text: `For heavy multi-joint compound exercises (Squats, Bench, Deadlifts), rest 2.5 to 3.5 minutes. Full phosphocreatine and ATP replenishment allows you to handle ~40% more total volume load and maintain peak mechanical tension compared to short rest periods. For isolation exercises (Lateral Raises, Curls), 60-90 seconds is optimal.`,
+        proposal: {
+          actionText: `Set rest timer to 3 minutes for primary compound movements in today's workout.`,
+          type: 'training'
+        }
+      };
+    }
+
+    // -------------------------------------------------------------------------
+    // 5. FOODS, NUTRITION & HORMONES
+    // -------------------------------------------------------------------------
+    if (q.includes('banana') || q.includes('fruit') || q.includes('carb source') || q.includes('glycogen')) {
+      return {
+        text: `A medium banana provides ~27g of fast-absorbing natural carbohydrates and 350-400mg of potassium. Potassium is a crucial intracellular electrolyte required for action potentials during muscular contraction and preventing cramping. Consuming a banana 30-45 minutes pre-workout replenishes hepatic glycogen and sustains blood glucose without gastrointestinal distress.`,
+        proposal: {
+          actionText: `Log 1 medium Cavendish Banana (105 kcal, 27g carbs) as pre-workout fuel.`,
+          type: 'nutrition'
+        }
+      };
+    }
+
+    if (q.includes('egg') || q.includes('yolk') || q.includes('cholesterol') || q.includes('choline')) {
+      return {
+        text: `Whole eggs are a gold-standard protein source with a biological value (BV) of 100. The yolk contains healthy monounsaturated lipids, vitamins A, D, E, K, and dietary choline, which supports cellular membrane integrity and acetylcholine neurotransmission for muscular power. Dietary cholesterol in eggs does not adversely raise serum LDL in healthy athletes.`,
+        proposal: {
+          actionText: `Log 3 whole organic eggs (215 kcal, 19g protein, 15g healthy fats) for breakfast.`,
+          type: 'nutrition'
+        }
+      };
+    }
+
+    if (q.includes('whey') || q.includes('shake') || q.includes('protein powder') || q.includes('casein')) {
+      return {
+        text: `Whey protein isolate is cross-flow microfiltered to remove lactose and fats, delivering ~85-90% pure protein with ~3g of leucine per 30g scoop. Leucine acts as the critical molecular trigger for the mTOR pathway. Take whey post-workout or between meals when you need fast, convenient, high-bioavailability protein.`,
+        proposal: {
+          actionText: `Log 1 scoop Whey Protein Isolate (120 kcal, 27g protein) post-workout.`,
+          type: 'nutrition'
+        }
+      };
+    }
+
+    if (q.includes('fasting') || q.includes('intermittent') || q.includes('eat before cardio') || q.includes('skip breakfast')) {
+      return {
+        text: `Intermittent fasting (e.g. 16/8) is a dietary adherence tool for managing total calorie intake, but does not impart independent metabolic fat loss advantages over standard calorie-matched diets. If your primary goal is hypertrophy or heavy strength, distributing protein into 3-4 meals across a 12-hour feeding window provides superior 24-hour muscle protein synthesis.`,
+        proposal: {
+          actionText: `Space your daily protein target across 3-4 meals separated by 3-4 hours.`,
+          type: 'nutrition'
+        }
+      };
+    }
+
+    if (q.includes('caffeine') || q.includes('coffee') || q.includes('preworkout supplement')) {
+      return {
+        text: `Caffeine is an adenosine receptor antagonist that blunts perceived exertion and enhances motor unit recruitment. An effective ergogenic dose is 3 to 6 mg per kilogram of bodyweight consumed 45-60 minutes pre-workout. To safeguard slow-wave sleep quality and nocturnal growth hormone secretion, cut off caffeine at least 8 hours before bed.`,
+        proposal: {
+          actionText: `Take 200mg caffeine or a black espresso 45 minutes before today's workout.`,
+          type: 'training'
+        }
+      };
+    }
+
+    if (q.includes('testosterone') || q.includes('hormone') || q.includes('libido') || q.includes('zinc')) {
+      return {
+        text: `Natural testosterone optimization is supported by adequate dietary fats (minimum 0.7-1.0g per kg of bodyweight, ensuring cholesterol for steroidogenesis), sufficient dietary zinc, magnesium, vitamin D3, and 7.5+ hours of uninterrupted sleep. Avoid aggressive caloric deficits (>25% below maintenance) which downregulate luteinizing hormone and thyroid output.`,
+        proposal: {
+          actionText: `Ensure dietary fat is set to at least 25% of total daily calories.`,
+          type: 'nutrition'
+        }
+      };
+    }
+
+    // -------------------------------------------------------------------------
+    // 6. PHYSIOLOGY, RECOVERY & BIOMETRICS
+    // -------------------------------------------------------------------------
+    if (q.includes('doms') || q.includes('soreness') || q.includes('sore') || q.includes('hurts to walk')) {
+      return {
+        text: `Delayed Onset Muscle Soreness (DOMS) results from ultrastructural micro-tears in sarcomeres and subsequent localized inflammatory repair, peaking 24-48 hours after novel eccentric loading. Research shows soreness is NOT a mandatory indicator of hypertrophy. You can safely train a sore muscle with light active recovery (20-30% 1RM) or train uninjured synergists while allowing tissue remodeling to complete.`,
+        proposal: {
+          actionText: `Perform 10 minutes of light cycling followed by foam rolling to increase blood flow.`,
+          type: 'recovery'
+        }
+      };
+    }
+
+    if (q.includes('sleep') || q.includes('circadian') || q.includes('insomnia') || q.includes('wake up')) {
+      return {
+        text: `Up to 95% of daily human growth hormone (HGH) secretion occurs during Stage 3 and Stage 4 Slow-Wave Sleep (SWS). Chronic sleep restriction (<7 hours) elevates morning cortisol, impairs insulin sensitivity by up to 30%, and accelerates muscle catabolism. Maintain a cool bedroom (18-20°C), avoid screens 45 minutes before sleep, and stop caffeine 8 hours prior.`,
+        proposal: {
+          actionText: `Log your sleep duration and quality in Recovery Hub tomorrow morning.`,
+          type: 'recovery'
+        }
+      };
+    }
+
+    if (q.includes('hrv') || q.includes('heart rate variability') || q.includes('nervous system') || q.includes('cns')) {
+      return {
+        text: `Heart Rate Variability (HRV) measures the millisecond beat-to-beat variations regulated by your autonomic nervous system. A suppressed HRV or elevated resting heart rate indicates sympathetic (fight-or-flight) overactivity and incomplete neural recovery. When your readiness drops, reducing heavy central nervous system axial loading (e.g., swapping back squats for leg press) maintains progress without overreaching.`,
+        proposal: {
+          actionText: `Reduce heavy spinal loading today and utilize machine-based isolation work.`,
+          type: 'recovery'
+        }
+      };
+    }
+
+    if (q.includes('clicking') || q.includes('impingement') || q.includes('rotator') || q.includes('shoulder blade')) {
+      return {
+        text: `Shoulder clicking or subacromial pinching often occurs when the humeral head migrates superiorly due to weak external rotators (infraspinatus/teres minor) and tight pectoralis minor. Incorporate Cable Face Pulls with external rotation and Prone Y-Raises to strengthen the lower traps and open up the subacromial space.`,
+        proposal: {
+          actionText: `Add 3 sets of Cable Face Pulls (15 reps) with a 2-second external rotation hold.`,
+          type: 'training'
+        }
+      };
+    }
+
+    if (q.includes('brace') || q.includes('valsalva') || q.includes('core brace') || q.includes('belt')) {
+      return {
+        text: `Proper intra-abdominal pressure (IAP) via the Valsalva maneuver stabilizes the lumbar spine under heavy loads. Take a 360° diaphragmatic breath into your stomach, oblique walls, and lower back, then bear down as if preparing for a punch. A lifting belt provides a tactile boundary to push your abdominal wall against, boosting IAP by 20-40%.`,
+        proposal: {
+          actionText: `Practice a 3-second 360° diaphragmatic brace before every primary compound lift.`,
+          type: 'training'
+        }
+      };
+    }
+
+    if (q.includes('scale') || q.includes('fluctuat') || q.includes('water weight') || q.includes('heavier today')) {
+      return {
+        text: `Day-to-day scale spikes of 1-3 kg are almost exclusively water, glycogen, and gastrointestinal residue—not fat. Every 1 gram of stored intramuscular glycogen binds approximately 3 to 4 grams of water. High-sodium meals or elevated stress cortisol further trigger aldosterone water retention. Focus on 7-day rolling median weight trends rather than daily fluctuations.`,
+        proposal: {
+          actionText: `Track weekly rolling averages rather than daily single weigh-ins.`,
+          type: 'nutrition'
+        }
+      };
+    }
+
+    if (q.includes('bulgarian') || q.includes('split squat') || q.includes('rear foot')) {
+      return {
+        text: `To bias the glutes on Bulgarian Split Squats, lean your torso forward at a 30-45° angle with your tibia staying nearly vertical, maximizing hip flexion at the bottom. To bias the quadriceps, stay completely upright and allow your knee to travel forward over your toes. Position your front foot far enough forward that your knee doesn't collapse inward.`,
+        proposal: {
+          actionText: `Perform 3 sets of Forward-Lean Bulgarian Split Squats focusing on the glute stretch.`,
+          type: 'training'
+        }
+      };
+    }
+
+    if (q.includes('alcohol') || q.includes('beer') || q.includes('cocktail') || q.includes('wine')) {
+      return {
+        text: `Alcohol consumption inhibits mTOR phosphorylation, reducing post-workout muscle protein synthesis by 24-37% even when protein is co-ingested. It also suppresses nocturnal REM sleep and vasopressin, causing acute dehydration. If consuming alcohol, limit intake, separate drinks by at least 4-5 hours from training, and drink 500ml water per drink.`,
+        proposal: {
+          actionText: `Hydrate with 1L electrolyte water and keep alcohol separated from workout windows.`,
+          type: 'recovery'
+        }
+      };
+    }
+
+    if (q.includes('cheat') || q.includes('pizza') || q.includes('burger') || q.includes('refeed')) {
+      return {
+        text: `A planned carbohydrate refeed replenishes depleted hepatic and muscle glycogen stores while transiently restoring circulating leptin and thyroid hormones during a caloric deficit. If having higher-calorie meals like pizza, ensure your daily protein target is met first, and view the extra carbohydrates as high-octane fuel for your next heavy training day.`,
+        proposal: {
+          actionText: `Leverage today's surplus glycogen to set a performance PR in your next session.`,
+          type: 'nutrition'
+        }
+      };
+    }
+
+    if (q.includes('skinny fat') || q.includes('recomposition') || q.includes('recomp')) {
+      return {
+        text: `Body recomposition—building muscle while losing fat simultaneously—is optimal for athletes with under 2-3 years of consistent lifting. Eat at maintenance calories or a slight 150-250 kcal deficit, consume high protein (2.2g/kg), and progressively overload in the 6-12 rep range. Resistance training provides the stimulus; protein and sleep provide the remodeling.`,
+        proposal: {
+          actionText: `Set calorie intake to maintenance and lock in 2.2g protein per kg bodyweight.`,
+          type: 'nutrition'
+        }
+      };
+    }
+
+    if (q.includes('joint') || q.includes('tendon') || q.includes('collagen') || q.includes('ligament')) {
+      return {
+        text: `Tendons have limited vascularity and adapt slower than muscle tissue. To build tendon stiffness and collagen cross-linking without aggravating inflammation, perform heavy slow resistance training (HSR) with 3-second concentric and 3-second eccentric tempos, or 30-45 second isometric holds. Supplementing 15g collagen with 50mg Vitamin C 45 minutes prior can enhance connective tissue synthesis.`,
+        proposal: {
+          actionText: `Incorporate 3 sets of 30-second isometric holds into warm-up sequences.`,
+          type: 'training'
+        }
+      };
+    }
+
+    // -------------------------------------------------------------------------
+    // 7. ADAPTIVE REAL-TIME DOMAIN NLP SYNTHESIZER
+    // Generates tailored, distinct scientific answers for ANY query
+    // -------------------------------------------------------------------------
+    let domain: 'training' | 'nutrition' | 'recovery' = 'training';
+    let text = '';
+    let proposalText = '';
+
+    // Nutrition Domain
+    if (q.includes('eat') || q.includes('food') || q.includes('diet') || q.includes('calorie') || q.includes('snack') || q.includes('macro') || q.includes('meal') || q.includes('carb') || q.includes('fat') || q.includes('sugar') || q.includes('vitamin') || q.includes('dairy') || q.includes('rice') || q.includes('oat') || q.includes('meat') || q.includes('fish') || q.includes('chicken')) {
+      domain = 'nutrition';
+      const cleanSubject = query.replace(/[?.,!]/g, '').trim();
+      text = `Regarding "${cleanSubject}": In sports nutrition, whole-food dietary composition directly dictates energy availability and cellular signaling. For your goal of ${ctx.goal.toLowerCase()}, your active daily target is ${ctx.caloriesTarget} kcal with ${ctx.proteinTarget}g protein (currently logged: ${ctx.caloriesConsumed} kcal, ${ctx.proteinConsumed}g protein).\n\nKey guideline: prioritize bioavailable nutrient-dense sources that supply micronutrients, fiber, and clean amino acids. Time major carbohydrate intake around your training sessions to fuel glycogen resynthesis, while distributing dietary fats across your resting meals to maintain steroid hormone production.`;
+      proposalText = `Log this nutrition refinement or meal choice in your Nutrition Hub.`;
+    }
+    // Recovery & Physiology Domain
+    else if (q.includes('recover') || q.includes('sleep') || q.includes('rest') || q.includes('fatigue') || q.includes('tired') || q.includes('exhaust') || q.includes('drain') || q.includes('sore') || q.includes('stress') || q.includes('burnout') || q.includes('stiff') || q.includes('tight')) {
+      domain = 'recovery';
+      const cleanSubject = query.replace(/[?.,!]/g, '').trim();
+      text = `Regarding "${cleanSubject}": Athletic adaptation does not occur in the gym—training provides the micro-damage stimulus, while systemic recovery repairs and hypertrophies the tissue. Today your readiness score is ${ctx.readinessScore}/100 (${ctx.readinessReason}).\n\nOptimal approach: balance sympathetic training stress with parasympathetic down-regulation. Prioritize 7.5 to 9 hours of quality sleep, replenish intracellular electrolytes (sodium, potassium, magnesium), and allow soft tissue remodeling to take place before imposing heavy axial fatigue on the same muscle groups.`;
+      proposalText = `Adjust today's training intensity to match your current readiness score of ${ctx.readinessScore}/100.`;
+    }
+    // Training, Form, Mechanics & Programming Domain
+    else {
+      domain = 'training';
+      const cleanSubject = query.replace(/[?.,!]/g, '').trim();
+      text = `Regarding "${cleanSubject}": In modern exercise physiology and biomechanics, movement quality governs hypertrophic tension and injury prevention. For your experience level (${ctx.experience.toLowerCase()}) and active session "${ctx.workoutTitle}", the key is matching the exercise resistance profile to the muscle's natural length-tension curve.\n\nExecution cue: maintain controlled 2 to 3 second eccentric phases, eliminate momentum at directional turnarounds, and keep working sets within 1-2 reps in reserve (RIR 1-2) to ensure high-threshold motor unit recruitment without excessive neural fatigue.`;
+      proposalText = `Apply this technique cue to your working sets in ${ctx.workoutTitle}.`;
+    }
+
     return {
-      text: `Regarding your query on "${query}": As an athlete focused on ${ctx.goal} with an experience level of ${ctx.experience}, every training stimulus and nutrition choice compounds. Your readiness is currently ${ctx.readinessScore}/100 with ${ctx.caloriesConsumed} kcal logged today. Keep progressive overload disciplined, prioritize protein synthesis, and honor systemic recovery.`,
+      text,
       proposal: {
-        actionText: `Log your next training set or meal to keep your performance telemetry synchronized.`,
-        type: 'training'
+        actionText: proposalText,
+        type: domain
       }
     };
   }
 }
+

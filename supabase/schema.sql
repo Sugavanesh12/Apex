@@ -56,11 +56,15 @@ create table if not exists public.exercises (
   id text primary key,
   name text not null,
   muscle text not null,
+  secondary_muscles text[],
   category text not null,
   image text not null,
+  video_url text,
   equipment text not null,
+  difficulty text default 'Intermediate',
   description text,
   target_sets_reps text,
+  form_cues text[],
   is_custom boolean default false,
   owner_id uuid references auth.users on delete cascade
 );
@@ -212,11 +216,24 @@ create policy "Users manage own recovery checkins"
 
 create index if not exists idx_checkins_user_date on public.recovery_checkins(user_id, date);
 
--- 9. Seed Core Exercise Library
-insert into public.exercises (id, name, muscle, category, image, equipment, description, target_sets_reps)
+-- 9. Seed Core Exercise & Mobility Library
+insert into public.exercises (id, name, muscle, secondary_muscles, category, image, video_url, equipment, difficulty, description, target_sets_reps, form_cues)
 values
-  ('back-squat', 'Back Squat', 'Strength', 'Strength', '/img/ex-back-squat.jpg', 'Barbell', 'Primary compound movement for lower-body power and quad development.', '4 × 5'),
-  ('rdl', 'Bent Over Row / RDL', 'Strength', 'Strength', '/img/ex-rdl.jpg', 'Barbell', 'Posterior chain hinge targeting hamstrings, glutes, and lower back.', '3 × 8'),
-  ('goblet-squat', 'Goblet Squat', 'Strength', 'Strength', '/img/ex-goblet-squat.jpg', 'Dumbbell', 'Anterior-loaded squat focusing on torso uprightness and quad depth.', '3 × 10'),
-  ('kettlebell-swing', 'Kettlebell Swing', 'Power', 'HIIT', '/img/ex-kb-swing.jpg', 'Kettlebell', 'Explosive hip hinge developing posterior chain power and cardio capacity.', '3 × 12')
+  ('deficit-sumo-squat', 'Deficit Dumbbell Sumo Deadlift', 'Glutes', array['Adductors', 'Hamstrings', 'Quads'], 'Strength', '/img/ex-sumo-squat-3d.png', '/img/ex-sumo-squat-3d.png', 'Dumbbell & Plates', 'Intermediate', 'Elevated stance on bumper plates maximizing depth and adductor/glute elongation at the bottom of the hinge.', '4 × 10', array['Elevate feet on 20kg bumper plates for extended range of motion', 'Wide stance with toes pointed outwards at 45 degrees', 'Maintain upright torso, hinge hips back and drive through heels', 'Squeeze glutes hard at full lockout without hyperextending']),
+  ('back-squat', 'Barbell Back Squat', 'Quads', array['Glutes', 'Hamstrings', 'Core'], 'Strength', '/img/ex-back-squat.jpg', '/img/ex-back-squat.jpg', 'Barbell', 'Intermediate', 'Primary compound movement for lower-body power and quad development.', '4 × 5', array['Set bar on mid-traps, pull elbows down to create upper back shelf', 'Brace core 360 degrees before descent', 'Break at hips and knees simultaneously', 'Drive through mid-foot']),
+  ('front-squat', 'Barbell Front Squat', 'Quads', array['Core', 'Upper Back'], 'Strength', '/img/ex-back-squat.jpg', '/img/ex-back-squat.jpg', 'Barbell', 'Advanced', 'Anterior-loaded squat demanding immense thoracic extension and direct quadriceps recruitment.', '3 × 6', array['Fingertip grip with high elbows parallel to the floor', 'Stay completely upright throughout']),
+  ('rdl', 'Romanian Deadlift (RDL)', 'Hamstrings', array['Glutes', 'Erectors'], 'Strength', '/img/ex-rdl.jpg', '/img/ex-rdl.jpg', 'Barbell', 'Intermediate', 'Posterior chain hinge targeting hamstrings, glutes, and lower back.', '3 × 8', array['Slight soft bend in the knees kept constant', 'Push hips back as far as possible', 'Keep bar skimming down thighs and shins']),
+  ('bulgarian-split-squat', 'Bulgarian Split Squat', 'Quads', array['Glutes', 'Adductors'], 'Hypertrophy', '/img/ex-goblet-squat.jpg', '/img/ex-goblet-squat.jpg', 'Dumbbells & Bench', 'Intermediate', 'Unilateral gold standard for eliminating left-right imbalances.', '3 × 10', array['Rear foot flat on bench behind you', 'Drop rear knee straight down toward ground', 'Maintain slight forward torso lean for glute bias']),
+  ('goblet-squat', 'Goblet Squat', 'Quads', array['Glutes', 'Core'], 'Strength', '/img/ex-goblet-squat.jpg', '/img/ex-goblet-squat.jpg', 'Dumbbell', 'Beginner', 'Anterior-loaded squat focusing on torso uprightness and quad depth.', '3 × 10', array['Hold dumbbell vertically against upper chest', 'Push elbows inside knees at the bottom to open hips']),
+  ('bench-press', 'Barbell Flat Bench Press', 'Chest', array['Triceps', 'Front Delts'], 'Strength', '/img/ex-back-squat.jpg', '/img/ex-back-squat.jpg', 'Barbell & Bench', 'Intermediate', 'Primary upper-body pushing compound for maximum pec, tricep, and anterior deltoid power.', '4 × 5', array['Plant feet flat with aggressive leg drive', 'Retract and depress shoulder blades into bench', 'Touch bar to lower sternum; flare elbows at 45-75 degrees']),
+  ('incline-db-press', 'Incline Dumbbell Press', 'Chest', array['Front Delts', 'Triceps'], 'Hypertrophy', '/img/ex-goblet-squat.jpg', '/img/ex-goblet-squat.jpg', 'Dumbbells & Incline Bench', 'Intermediate', 'Targets clavicular head with natural scapular movement.', '3 × 8', array['Set bench to 30 degrees incline', 'Lower dumbbells slowly until thumbs align with upper chest']),
+  ('deadlift', 'Conventional Barbell Deadlift', 'Back', array['Glutes', 'Hamstrings', 'Traps'], 'Strength', '/img/ex-rdl.jpg', '/img/ex-rdl.jpg', 'Barbell', 'Advanced', 'Maximum full-body load pulling from dead stop.', '3 × 5', array['Barbell over mid-foot; shins touching bar', 'Pull slack out of bar before breaking off floor', 'Drive hips through at lockout']),
+  ('overhead-press', 'Standing Overhead Press', 'Shoulders', array['Triceps', 'Core'], 'Strength', '/img/ex-back-squat.jpg', '/img/ex-back-squat.jpg', 'Barbell', 'Intermediate', 'True test of overhead vertical push power.', '4 × 5', array['Grip just outside shoulder width with vertical forearms', 'Squeeze glutes and quads to create a rigid pillar', 'Lock out overhead with head through the window']),
+  ('90-90-hip-mobility', '90/90 Hip Flow & Rotation', 'Hips', array['Glutes', 'Lower Back'], 'Mobility', '/img/ex-goblet-squat.jpg', '/img/ex-goblet-squat.jpg', 'Bodyweight / Mat', 'Beginner', 'Gold standard hip mobility protocol targeting internal and external hip rotation.', '3 × 8', array['Front leg bent at 90 degrees, back leg bent at 90 degrees', 'Keep chest tall and rotate pelvis forward over front shin']),
+  ('worlds-greatest-stretch', 'World''s Greatest Stretch', 'Full Body', array['Hip Flexors', 'Thoracic Spine'], 'Mobility', '/img/ex-back-squat.jpg', '/img/ex-back-squat.jpg', 'Bodyweight / Mat', 'Beginner', 'Multi-joint dynamic opener combining lunge depth, hamstring stretch, and thoracic rotation.', '2 × 6', array['Step forward into deep lunge with back leg extended', 'Drop inside elbow to instep of front foot', 'Rotate arm up to ceiling following fingertips with gaze']),
+  ('thoracic-cat-cow', 'Cat-Cow Segmental Spine Flow', 'Spine', array['Core', 'Neck'], 'Mobility', '/img/ex-rdl.jpg', '/img/ex-rdl.jpg', 'Mat', 'Beginner', 'Segmental spinal articulation and decompression.', '2 × 10', array['Hands below shoulders, knees below hips', 'Inhale: drop belly, expand chest (Cow)', 'Exhale: tuck tailbone, round spine (Cat)']),
+  ('deep-squat-prying', 'Deep Squat Prying & Ankle Mobilization', 'Ankles', array['Hips', 'Groin'], 'Mobility', '/img/ex-sumo-squat-3d.png', '/img/ex-sumo-squat-3d.png', 'Bodyweight / Mat', 'Intermediate', 'Restores ancestral resting squat posture, expands ankle dorsiflexion.', '2 × 60s', array['Sink into deepest comfortable squat with flat heels', 'Use elbows to gently press knees outward', 'Shift weight gently from side to side']),
+  ('hanging-leg-raise', 'Hanging Leg Raise (Toes to Bar)', 'Core', array['Hip Flexors', 'Grip'], 'Core', '/img/ex-back-squat.jpg', '/img/ex-back-squat.jpg', 'Pull-up Bar', 'Advanced', 'Maximum lower abdominal recruitment preventing anterior pelvic tilt.', '3 × 12', array['Dead hang from bar with active shoulders', 'Posteriorly tilt pelvis before lifting legs', 'Raise straight legs to parallel or toes to bar without swinging']),
+  ('kettlebell-swing', 'Explosive Kettlebell Swing', 'Power', array['Glutes', 'Hamstrings'], 'HIIT', '/img/ex-kb-swing.jpg', '/img/ex-kb-swing.jpg', 'Kettlebell', 'Intermediate', 'Explosive hip hinge developing posterior chain power and cardio capacity.', '4 × 15', array['Hike kettlebell high between legs', 'Snap hips forward into vertical plank', 'Bell floats weightlessly to chest height'])
 on conflict (id) do nothing;
+

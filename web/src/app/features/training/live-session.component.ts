@@ -1,13 +1,14 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { IconComponent } from '../../shared/ui/icon/icon.component';
 import { ProgressRingComponent } from '../../shared/ui/progress-ring/progress-ring.component';
 import { WorkoutService } from '../../core/services/workout.service';
+import { ExerciseModalComponent } from '../../shared/ui/exercise-modal/exercise-modal.component';
 
 @Component({
   selector: 'app-live-session',
   standalone: true,
-  imports: [RouterLink, IconComponent, ProgressRingComponent],
+  imports: [RouterLink, IconComponent, ProgressRingComponent, ExerciseModalComponent],
   template: `
     <div class="live-session-page">
       <!-- Session Top Bar -->
@@ -39,6 +40,10 @@ import { WorkoutService } from '../../core/services/workout.service';
                   <h2 class="exercise-name">{{ workout.currentExercise().exercise.name }}</h2>
                   <p class="set-counter">Set 3 of {{ workout.currentExercise().targetSets }}</p>
                 </div>
+                <button class="view-form-btn" (click)="showFormModal.set(true)" title="View 3D form demonstration">
+                  <app-icon name="play" [size]="14" />
+                  <span>3D Form & Video</span>
+                </button>
               </div>
 
               <!-- Big Reps Ring Dial from Reference -->
@@ -168,6 +173,13 @@ import { WorkoutService } from '../../core/services/workout.service';
         </div>
       </div>
     </div>
+
+    @if (showFormModal()) {
+      <app-exercise-modal
+        [exercise]="workout.currentExercise().exercise"
+        (closed)="showFormModal.set(false)"
+      />
+    }
   `,
   styles: [`
     .live-session-page {
@@ -258,6 +270,32 @@ import { WorkoutService } from '../../core/services/workout.service';
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+    }
+    .stage-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--s-3);
+    }
+    .view-form-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: rgba(11, 16, 21, 0.8);
+      backdrop-filter: blur(6px);
+      border: 1px solid var(--primary-line);
+      color: var(--primary);
+      border-radius: var(--r-pill);
+      font-size: var(--fs-xs);
+      font-weight: 700;
+      cursor: pointer;
+      transition: all var(--t-fast) var(--ease);
+    }
+    .view-form-btn:hover {
+      background: var(--primary);
+      color: var(--on-primary);
+      box-shadow: 0 0 10px var(--primary-soft);
     }
     .exercise-name {
       font-size: 1.5rem;
@@ -486,6 +524,7 @@ import { WorkoutService } from '../../core/services/workout.service';
 })
 export class LiveSessionComponent {
   workout = inject(WorkoutService);
+  showFormModal = signal<boolean>(false);
 
   formattedTime = computed(() => {
     const s = this.workout.liveSession().elapsedSeconds;

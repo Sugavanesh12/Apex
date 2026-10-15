@@ -59,7 +59,13 @@ interface FoodPreset {
             <!-- Analyzing Status Overlay Bar -->
             <div class="analyzing-bar" [class.active-bar]="isAnalyzing()">
               <div class="spinner-group">
-                <div class="ring-spinner" [class.spin-active]="isAnalyzing()"></div>
+                @if (isAnalyzing()) {
+                  <div class="ring-spinner spin-active"></div>
+                } @else {
+                  <div class="scan-verified-badge">
+                    <app-icon name="check" [size]="14" color="var(--accent-1)" />
+                  </div>
+                }
                 <div class="status-col">
                   <span class="analyzing-text">
                     {{ isAnalyzing() ? 'Google Gemini Vision analyzing...' : 'Food identified successfully' }}
@@ -244,10 +250,76 @@ interface FoodPreset {
                         </span>
                       </div>
 
-                      <div class="ing-stepper">
-                        <button class="step-btn" (click)="nutrition.updateIngredientGrams(item.id, -10)">-</button>
-                        <span class="grams-val num">{{ item.grams }}g</span>
-                        <button class="step-btn" (click)="nutrition.updateIngredientGrams(item.id, 10)">+</button>
+                      <div class="ing-controls">
+                        <div class="ing-stepper">
+                          <button class="step-btn" (click)="nutrition.updateIngredientGrams(item.id, -10)" title="Decrease portion">-</button>
+                          <span class="grams-val num">{{ item.grams }}g</span>
+                          <button class="step-btn" (click)="nutrition.updateIngredientGrams(item.id, 10)" title="Increase portion">+</button>
+                        </div>
+                        <button class="remove-btn" (click)="nutrition.removeIngredient(item.id)" title="Remove this ingredient">
+                          <app-icon name="trash" [size]="14" />
+                        </button>
+                      </div>
+                    </div>
+                  } @empty {
+                    <div class="empty-ingredients">
+                      <p>All items removed. Add an ingredient below or re-scan your plate.</p>
+                    </div>
+                  }
+                </div>
+
+                <!-- Add Ingredient Section (Manual addition with AI nutrient calculation) -->
+                <div class="add-ingredient-section">
+                  @if (!showAddIngredient()) {
+                    <button class="btn btn-ghost btn-sm add-toggle-btn" (click)="showAddIngredient.set(true)">
+                      <app-icon name="plus" [size]="14" />
+                      <span>Add Extra / Missing Ingredient (AI Calculated)</span>
+                    </button>
+                  } @else {
+                    <div class="add-ingredient-box">
+                      <div class="add-box-header">
+                        <span class="add-box-title">➕ Add Ingredient to Meal</span>
+                        <button class="close-add-btn" (click)="showAddIngredient.set(false)">✕</button>
+                      </div>
+
+                      <div class="add-inputs-row">
+                        <input
+                          type="text"
+                          [(ngModel)]="customFoodName"
+                          (keyup.enter)="addCustomItem()"
+                          placeholder="e.g. Peanut Butter, Blueberries, Chia Seeds, Honey..."
+                          class="custom-food-input"
+                        />
+                        <div class="grams-input-wrap">
+                          <input
+                            type="number"
+                            [(ngModel)]="customFoodGrams"
+                            min="5"
+                            max="1000"
+                            step="5"
+                            class="custom-grams-input"
+                          />
+                          <span class="g-suffix">g</span>
+                        </div>
+                        <button
+                          class="btn btn-primary btn-sm calc-add-btn"
+                          (click)="addCustomItem()"
+                          [disabled]="!customFoodName.trim()"
+                        >
+                          <app-icon name="zap" [size]="14" />
+                          <span>Calculate & Add</span>
+                        </button>
+                      </div>
+
+                      <!-- Quick Add Suggestions -->
+                      <div class="quick-food-pills">
+                        <span class="quick-pills-label">Quick Suggestions:</span>
+                        <button class="q-pill" (click)="quickAdd('Peanut Butter', 32)">+ Peanut Butter (32g)</button>
+                        <button class="q-pill" (click)="quickAdd('Honey', 20)">+ Honey (20g)</button>
+                        <button class="q-pill" (click)="quickAdd('Blueberries', 50)">+ Blueberries (50g)</button>
+                        <button class="q-pill" (click)="quickAdd('Chia Seeds', 15)">+ Chia Seeds (15g)</button>
+                        <button class="q-pill" (click)="quickAdd('Greek Yogurt', 100)">+ Greek Yogurt (100g)</button>
+                        <button class="q-pill" (click)="quickAdd('Olive Oil', 14)">+ Olive Oil (14g)</button>
                       </div>
                     </div>
                   }
@@ -746,17 +818,170 @@ interface FoodPreset {
       font-size: 0.65rem;
       color: var(--primary);
     }
-    .ing-conf.med {
-      color: var(--accent-2);
+    .ing-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .remove-btn {
+      width: 30px;
+      height: 30px;
+      border-radius: var(--r-pill);
+      background: var(--surface-3);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all var(--t-fast);
+    }
+    .remove-btn:hover {
+      background: rgba(239, 68, 68, 0.15);
+      border-color: var(--accent-alert);
+      color: var(--accent-alert);
+      transform: scale(1.05);
+    }
+    .empty-ingredients {
+      padding: var(--s-3);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: var(--fs-xs);
+      background: var(--surface-2);
+      border-radius: var(--r-input);
     }
 
-    .ing-stepper {
+    .add-ingredient-section {
+      margin-top: 4px;
+    }
+    .add-toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--primary);
+      font-size: var(--fs-xs);
+      font-weight: 600;
+      padding: 6px 12px;
+    }
+    .add-toggle-btn:hover {
+      background: var(--primary-soft);
+    }
+    .add-ingredient-box {
+      background: var(--surface-2);
+      border: 1px solid var(--primary-line);
+      border-radius: var(--r-input);
+      padding: var(--s-3);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      animation: fadeIn 0.2s ease-out;
+    }
+    .add-box-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .add-box-title {
+      font-size: var(--fs-xs);
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .close-add-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .add-inputs-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .custom-food-input {
+      flex: 1;
+      min-width: 180px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-pill);
+      padding: 8px 14px;
+      font-size: var(--fs-xs);
+      color: var(--text);
+      outline: none;
+    }
+    .custom-food-input:focus {
+      border-color: var(--primary);
+    }
+    .grams-input-wrap {
       display: flex;
       align-items: center;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--r-pill);
-      padding: 3px 6px;
+      padding: 4px 10px;
+    }
+    .custom-grams-input {
+      width: 44px;
+      background: none;
+      border: none;
+      outline: none;
+      color: var(--text);
+      font-size: var(--fs-xs);
+      font-weight: 700;
+      text-align: right;
+    }
+    .g-suffix {
+      font-size: var(--fs-xs);
+      color: var(--text-muted);
+      margin-left: 2px;
+    }
+    .calc-add-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+    .quick-food-pills {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .quick-pills-label {
+      font-size: 0.65rem;
+      color: var(--text-faint);
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .q-pill {
+      font-size: 0.68rem;
+      background: var(--surface-3);
+      border: 1px solid var(--border);
+      border-radius: var(--r-pill);
+      padding: 2px 8px;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all var(--t-fast);
+    }
+    .q-pill:hover {
+      border-color: var(--primary);
+      color: var(--text);
+      background: var(--primary-soft);
+    }
+
+    .scan-verified-badge {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(34, 197, 94, 0.15);
+      border: 1.5px solid var(--accent-1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
     }
     .step-btn {
       width: 26px;
@@ -1082,6 +1307,22 @@ export class NutritionScanComponent {
 
   showApiKeyModal = signal<boolean>(false);
   tempApiKey = '';
+
+  showAddIngredient = signal<boolean>(false);
+  customFoodName = '';
+  customFoodGrams = 30;
+
+  addCustomItem() {
+    if (!this.customFoodName.trim()) return;
+    this.nutrition.addCustomIngredient(this.customFoodName, this.customFoodGrams);
+    this.customFoodName = '';
+    this.customFoodGrams = 30;
+    this.showAddIngredient.set(false);
+  }
+
+  quickAdd(name: string, grams: number) {
+    this.nutrition.addCustomIngredient(name, grams);
+  }
 
   readonly presets: FoodPreset[] = [
     { id: 'banana', name: 'Fresh Banana', emoji: '🍌', image: '/img/food-banana.jpg' },

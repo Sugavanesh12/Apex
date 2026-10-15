@@ -283,10 +283,11 @@ export class CoachPageComponent {
 
   chatText = '';
   quickSuggestions = [
-    'How should I structure tomorrow’s leg session?',
-    'I feel tight in my hamstrings today',
-    'What should I eat to hit my protein goal?',
-    'Explain my readiness trend'
+    'How do I fix my bench press arch to protect my shoulders?',
+    'What is the optimal protein intake per kg for hypertrophy?',
+    'Why does scale weight fluctuate when starting a calorie deficit?',
+    'How should I structure dynamic warm-ups for squats?',
+    'Explain progressive overload double progression method'
   ];
 
   sendChat() {

@@ -352,11 +352,12 @@ export class CopilotPanelComponent {
   inputText = '';
 
   suggestedPrompts = [
-    'Plan my week around a 10K race',
-    'What should I eat today?',
-    'How’s my recovery looking?',
-    'Adjust today’s workout (I’m tired)',
-    'Explain my readiness score'
+    'How do I fix knee pinching in deep squats?',
+    'How much protein do I need per kg for muscle growth?',
+    'Should I take creatine before or after workouts?',
+    'Why is my scale weight fluctuating today?',
+    'How many sets per week for chest hypertrophy?',
+    'How does sleep affect my recovery and readiness?'
   ];
 
   sendMessage() {

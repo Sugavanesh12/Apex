@@ -26,8 +26,20 @@ export interface MealLogItem {
   image: string;
 }
 
+export interface DraftMeal {
+  name: string;
+  image: string;
+  presetId?: string;
+  summary?: string;
+  confidence?: string;
+  ingredients: FoodItemIngredient[];
+  analyzing: boolean;
+  analysisProgress: number;
+}
+
 const STORAGE_MEALS_KEY = 'apex_user_logged_meals_v1';
 const STORAGE_WATER_KEY = 'apex_user_water_glasses_v1';
+const STORAGE_ACTIVE_SCAN_KEY = 'apex_active_scanned_meal_v2';
 
 @Injectable({
   providedIn: 'root'
@@ -64,30 +76,70 @@ export class NutritionService {
   readonly stepsCount = signal(7842);
   readonly stepsTarget = signal(10000);
 
-  readonly activeDraftMeal = signal<{
-    name: string;
-    image: string;
-    ingredients: FoodItemIngredient[];
-    analyzing: boolean;
-    analysisProgress: number;
-  }>({
-    name: 'Fresh Cavendish Banana (Ripe)',
-    image: '/img/food-banana.jpg',
-    analyzing: false,
-    analysisProgress: 100,
-    ingredients: [
-      {
-        id: 'banana-1',
-        name: 'Fresh Cavendish Banana',
-        grams: 118,
-        per100: { kcal: 89, protein: 1.1, carbs: 22.8, fat: 0.3 },
-        confidence: 'High'
-      }
-    ]
-  });
+  readonly activeDraftMeal = signal<DraftMeal>(this.loadStoredDraftMeal());
 
   constructor() {
     this.hydrateFromSupabase();
+  }
+
+  loadStoredDraftMeal(): DraftMeal {
+    try {
+      const saved = localStorage.getItem(STORAGE_ACTIVE_SCAN_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (parsed && parsed.name && Array.isArray(parsed.ingredients) && parsed.ingredients.length > 0) {
+          return {
+            ...parsed,
+            analyzing: false,
+            analysisProgress: 100
+          };
+        }
+      }
+    } catch (e) {
+      console.warn('Error reading stored draft meal:', e);
+    }
+
+    // Dynamic initial meal: Golden Herb-Roasted Farm Chicken (instead of static banana)
+    return {
+      name: 'Golden Herb-Roasted Farm Chicken',
+      image: '/img/food-chicken.jpg',
+      presetId: 'chicken',
+      summary: 'High-density complete animal protein rich in bioavailable essential amino acids, zinc, and B-complex vitamins for muscular hypertrophy and rapid cellular recovery.',
+      confidence: 'High (98%)',
+      analyzing: false,
+      analysisProgress: 100,
+      ingredients: [
+        {
+          id: 'chick-1',
+          name: 'Herb-Roasted Chicken Breast & Leg Meat',
+          grams: 240,
+          per100: { kcal: 180, protein: 27.5, carbs: 0.0, fat: 7.2 },
+          confidence: 'High'
+        },
+        {
+          id: 'chick-2',
+          name: 'Crispy Rosemary & Thyme Herb Skin',
+          grams: 20,
+          per100: { kcal: 450, protein: 12.0, carbs: 2.0, fat: 42.0 },
+          confidence: 'High'
+        },
+        {
+          id: 'chick-3',
+          name: 'Cold-Pressed Olive Oil & Lemon Basting',
+          grams: 15,
+          per100: { kcal: 884, protein: 0.0, carbs: 0.0, fat: 100.0 },
+          confidence: 'High'
+        }
+      ]
+    };
+  }
+
+  persistActiveDraft(draft: DraftMeal) {
+    try {
+      localStorage.setItem(STORAGE_ACTIVE_SCAN_KEY, JSON.stringify(draft));
+    } catch (e) {
+      console.warn('Error saving active draft to storage:', e);
+    }
   }
 
   private loadStoredMeals(): MealLogItem[] {
@@ -178,15 +230,21 @@ export class NutritionService {
         }
         return ing;
       });
-      return { ...draft, ingredients: updated };
+      const newDraft = { ...draft, ingredients: updated };
+      this.persistActiveDraft(newDraft);
+      return newDraft;
     });
   }
 
   removeIngredient(ingredientId: string) {
-    this.activeDraftMeal.update(draft => ({
-      ...draft,
-      ingredients: draft.ingredients.filter(i => i.id !== ingredientId)
-    }));
+    this.activeDraftMeal.update(draft => {
+      const newDraft = {
+        ...draft,
+        ingredients: draft.ingredients.filter(i => i.id !== ingredientId)
+      };
+      this.persistActiveDraft(newDraft);
+      return newDraft;
+    });
   }
 
   addCustomIngredient(name: string, grams: number, customPer100?: { kcal: number; protein: number; carbs: number; fat: number }) {
@@ -200,10 +258,14 @@ export class NutritionService {
       per100
     };
 
-    this.activeDraftMeal.update(draft => ({
-      ...draft,
-      ingredients: [...draft.ingredients, newIng]
-    }));
+    this.activeDraftMeal.update(draft => {
+      const newDraft = {
+        ...draft,
+        ingredients: [...draft.ingredients, newIng]
+      };
+      this.persistActiveDraft(newDraft);
+      return newDraft;
+    });
   }
 
   estimateFoodNutrients(foodName: string): { kcal: number; protein: number; carbs: number; fat: number } {

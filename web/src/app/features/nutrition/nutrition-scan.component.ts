@@ -1294,16 +1294,17 @@ export class NutritionScanComponent {
   gemini = inject(GeminiService);
   router = inject(Router);
 
-  previewImage = signal<string>('/img/food-banana.jpg');
+  // Initialize signals from existing persistent draft state
+  previewImage = signal<string>(this.nutrition.activeDraftMeal().image || '/img/food-chicken.jpg');
   isAnalyzing = signal<boolean>(false);
-  hasCompletedScan = signal<boolean>(false);
-  analysisStep = signal<number>(0);
-  scanProgressPercent = signal<number>(0);
+  hasCompletedScan = signal<boolean>(true);
+  analysisStep = signal<number>(3);
+  scanProgressPercent = signal<number>(100);
 
-  activeDishName = signal<string>('Fresh Cavendish Banana (Ripe)');
-  activeSummary = signal<string>('Fast-acting natural carbohydrate fuel packed with potassium (358mg), vitamin B6, and dietary fiber.');
-  activeConfidence = signal<string>('High (98%)');
-  activePresetId = signal<string>('banana');
+  activeDishName = signal<string>(this.nutrition.activeDraftMeal().name || 'Golden Herb-Roasted Farm Chicken');
+  activeSummary = signal<string>(this.nutrition.activeDraftMeal().summary || 'High-density complete protein rich in bioavailable essential amino acids, zinc, and B-complex vitamins.');
+  activeConfidence = signal<string>(this.nutrition.activeDraftMeal().confidence || 'High (98%)');
+  activePresetId = signal<string>(this.nutrition.activeDraftMeal().presetId || 'chicken');
 
   showApiKeyModal = signal<boolean>(false);
   tempApiKey = '';
@@ -1325,19 +1326,36 @@ export class NutritionScanComponent {
   }
 
   readonly presets: FoodPreset[] = [
-    { id: 'banana', name: 'Fresh Banana', emoji: '🍌', image: '/img/food-banana.jpg' },
-    { id: 'bowl', name: 'Quinoa Chicken Bowl', emoji: '🥗', image: '/img/meal-bowl.jpg' },
-    { id: 'eggs', name: 'Eggs & Sourdough', emoji: '🍳', image: '/img/food-eggs.jpg' },
+    { id: 'chicken', name: 'Roast Chicken', emoji: '🍗', image: '/img/food-chicken.jpg' },
     { id: 'steak', name: 'Sirloin Steak', emoji: '🥩', image: '/img/food-steak.jpg' },
-    { id: 'shake', name: 'Whey Protein Shake', emoji: '🥤', image: '/img/food-shake.jpg' }
+    { id: 'eggs', name: 'Eggs & Sourdough', emoji: '🍳', image: '/img/food-eggs.jpg' },
+    { id: 'bowl', name: 'Quinoa Chicken Bowl', emoji: '🥗', image: '/img/meal-bowl.jpg' },
+    { id: 'shake', name: 'Whey Protein Shake', emoji: '🥤', image: '/img/food-shake.jpg' },
+    { id: 'banana', name: 'Fresh Banana', emoji: '🍌', image: '/img/food-banana.jpg' }
   ];
 
   draftTotals = computed(() => this.nutrition.computedDraftTotals());
 
   constructor() {
     this.tempApiKey = this.gemini.apiKey();
-    // Run initial scan on the featured banana photo
-    this.processImage('/img/food-banana.jpg', 'image/jpeg', 'food-banana.jpg');
+    
+    // Check if the user already has a saved/drafted meal in the service or storage
+    const currentDraft = this.nutrition.activeDraftMeal();
+    if (currentDraft && currentDraft.image && currentDraft.ingredients?.length) {
+      // Restore the user's active meal state immediately (preserves uploaded photos & selected meals)
+      this.previewImage.set(currentDraft.image);
+      this.activeDishName.set(currentDraft.name);
+      this.activeSummary.set(currentDraft.summary || 'High-density complete protein rich in bioavailable essential amino acids, zinc, and B-complex vitamins.');
+      this.activeConfidence.set(currentDraft.confidence || 'High (98%)');
+      this.activePresetId.set(currentDraft.presetId || 'custom');
+      this.analysisStep.set(3);
+      this.scanProgressPercent.set(100);
+      this.hasCompletedScan.set(true);
+      this.isAnalyzing.set(false);
+    } else {
+      // Fallback: pick the first preset (Roast Chicken) dynamically
+      this.selectPreset(this.presets[0]);
+    }
   }
 
   currentStepLabel = computed(() => {
@@ -1408,13 +1426,19 @@ export class NutritionScanComponent {
         confidence: item.confidence || 'High'
       }));
 
-      this.nutrition.activeDraftMeal.set({
+      const newDraft = {
         name: result.dishName || 'Golden Herb-Roasted Farm Chicken',
         image: this.previewImage(),
+        presetId: this.activePresetId(),
+        summary: result.summary || 'High-density complete protein rich in bioavailable essential amino acids, zinc, and B-complex vitamins.',
+        confidence: result.confidence ? `${result.confidence} (98%)` : 'High (98%)',
         ingredients,
         analyzing: false,
         analysisProgress: 100
-      });
+      };
+
+      this.nutrition.activeDraftMeal.set(newDraft);
+      this.nutrition.persistActiveDraft(newDraft);
 
       this.analysisStep.set(3);
       this.scanProgressPercent.set(100);

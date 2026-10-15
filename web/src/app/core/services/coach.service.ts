@@ -121,8 +121,7 @@ export class CoachService {
         if (m.id === messageId && m.proposal) {
           // If proposal was nutrition, we can simulate logging or adjustment
           if (m.proposal.type === 'nutrition') {
-            this.nutrition.proteinConsumed.update(p => p + 25);
-            this.nutrition.caloriesConsumed.update(c => c + 150);
+            this.nutrition.logQuickFuel(m.proposal.actionText || 'Post-Workout Fuel', 150, 25, 5, 2);
           }
           return {
             ...m,

@@ -30,7 +30,7 @@ import { NutritionService } from '../../core/services/nutrition.service';
         <div class="card fuel-status-card">
           <div class="card-title-row">
             <h3>Daily Energy Balance</h3>
-            <span class="badge badge-primary">Target 2,400 kcal</span>
+            <span class="badge badge-primary">Target {{ nutrition.caloriesTarget() | number }} kcal</span>
           </div>
 
           <div class="ring-macros-split">
@@ -76,7 +76,7 @@ import { NutritionService } from '../../core/services/nutrition.service';
         <div class="card water-card">
           <div class="card-title-row">
             <h3>Hydration</h3>
-            <span class="badge badge-cyan">{{ nutrition.waterGlasses() }} of 8 Glasses</span>
+            <span class="badge badge-cyan">{{ nutrition.waterGlasses() }} of {{ nutrition.waterTargetGlasses() }} Glasses</span>
           </div>
 
           <div class="glasses-row">
@@ -88,33 +88,62 @@ import { NutritionService } from '../../core/services/nutrition.service';
           </div>
 
           <div class="water-actions">
-            <button class="btn btn-secondary" (click)="nutrition.removeWaterGlass()">- 1 Glass</button>
+            <button class="btn btn-secondary" (click)="nutrition.removeWaterGlass()" [disabled]="nutrition.waterGlasses() <= 0">- 1 Glass</button>
             <button class="btn btn-primary" (click)="nutrition.addWaterGlass()">+ 1 Glass (250ml)</button>
           </div>
         </div>
       </div>
 
-      <!-- Recent Meals Log -->
+      <!-- Real User Logged Meals Section -->
       <section class="meals-log-section">
-        <h3>Logged Meals Today</h3>
-        <div class="meals-list">
-          <div class="meal-card card">
-            <img src="/img/meal-bowl.jpg" alt="Chicken Bowl" class="meal-thumb" />
-            <div class="meal-info">
-              <div class="meal-name-row">
-                <h4>Grilled Chicken & Quinoa Bowl</h4>
-                <span class="meal-time">12:45 PM · AI Verified</span>
-              </div>
-              <div class="meal-nutrients num">
-                <span class="nut-item"><strong>420</strong> kcal</span>
-                <span class="nut-item">P: <strong>42g</strong></span>
-                <span class="nut-item">C: <strong>45g</strong></span>
-                <span class="nut-item">F: <strong>12g</strong></span>
-              </div>
-            </div>
-            <span class="badge badge-primary">High Confidence</span>
-          </div>
+        <div class="meals-header-row">
+          <h3>Logged Meals Today</h3>
+          <span class="meals-count-badge">{{ nutrition.loggedMeals().length }} {{ nutrition.loggedMeals().length === 1 ? 'Meal' : 'Meals' }}</span>
         </div>
+
+        @if (nutrition.loggedMeals().length === 0) {
+          <!-- Empty State: Zero Mock Data -->
+          <div class="empty-meals-card card">
+            <div class="empty-icon-box">
+              <app-icon name="fuel" [size]="28" />
+            </div>
+            <div class="empty-text">
+              <h4>No meals logged yet today</h4>
+              <p>Snap a photo of your food or log your meal to track real-time calories & macronutrients.</p>
+            </div>
+            <a routerLink="/nutrition/scan" class="btn btn-primary empty-scan-btn">
+              <app-icon name="camera" [size]="16" />
+              <span>Scan Food Photo</span>
+            </a>
+          </div>
+        } @else {
+          <!-- Real Logged Meals List -->
+          <div class="meals-list">
+            @for (meal of nutrition.loggedMeals(); track meal.id) {
+              <div class="meal-card card">
+                <img [src]="meal.image" [alt]="meal.name" class="meal-thumb" />
+                <div class="meal-info">
+                  <div class="meal-name-row">
+                    <h4>{{ meal.name }}</h4>
+                    <span class="meal-time">{{ meal.timestamp }}</span>
+                  </div>
+                  <div class="meal-nutrients num">
+                    <span class="nut-item"><strong>{{ meal.kcal }}</strong> kcal</span>
+                    <span class="nut-item">P: <strong>{{ meal.protein }}g</strong></span>
+                    <span class="nut-item">C: <strong>{{ meal.carbs }}g</strong></span>
+                    <span class="nut-item">F: <strong>{{ meal.fat }}g</strong></span>
+                  </div>
+                </div>
+                <div class="meal-meta-col">
+                  <span class="badge badge-primary">AI Verified</span>
+                  <button class="remove-meal-btn" (click)="nutrition.removeMeal(meal.id)" title="Delete meal">
+                    ✕
+                  </button>
+                </div>
+              </div>
+            }
+          </div>
+        }
       </section>
     </div>
   `,
@@ -139,6 +168,9 @@ import { NutritionService } from '../../core/services/nutrition.service';
     }
     .scan-btn {
       padding: 10px 24px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .nutrition-grid {
@@ -216,17 +248,87 @@ import { NutritionService } from '../../core/services/nutrition.service';
       flex-direction: column;
       gap: var(--s-3);
     }
+    .meals-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .meals-count-badge {
+      font-size: var(--fs-xs);
+      font-weight: 700;
+      color: var(--text-muted);
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--r-pill);
+      padding: 2px 10px;
+    }
+
+    /* Empty State Card */
+    .empty-meals-card {
+      display: flex;
+      align-items: center;
+      gap: var(--s-4);
+      padding: var(--s-5);
+      background: var(--surface-2);
+      border: 1px dashed var(--border);
+      border-radius: var(--r-card);
+    }
+    .empty-icon-box {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      flex: 0 0 52px;
+    }
+    .empty-text {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .empty-text h4 {
+      font-size: var(--fs-md);
+      font-weight: 700;
+      color: var(--text);
+    }
+    .empty-text p {
+      font-size: var(--fs-xs);
+      color: var(--text-muted);
+    }
+    .empty-scan-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+    }
+
+    .meals-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-3);
+    }
     .meal-card {
       display: flex;
       align-items: center;
       gap: var(--s-4);
       padding: var(--s-3) var(--s-4);
+      border: 1px solid var(--border);
+      transition: all 0.2s ease;
+    }
+    .meal-card:hover {
+      border-color: var(--border-strong);
     }
     .meal-thumb {
       width: 72px;
       height: 72px;
       border-radius: var(--r-input);
       object-fit: cover;
+      background: #000;
     }
     .meal-info {
       flex: 1;
@@ -238,6 +340,12 @@ import { NutritionService } from '../../core/services/nutrition.service';
       display: flex;
       align-items: baseline;
       gap: 12px;
+      flex-wrap: wrap;
+    }
+    .meal-name-row h4 {
+      font-size: var(--fs-md);
+      font-weight: 700;
+      color: var(--text);
     }
     .meal-time {
       font-size: var(--fs-xs);
@@ -248,9 +356,34 @@ import { NutritionService } from '../../core/services/nutrition.service';
       gap: var(--s-3);
       font-size: var(--fs-xs);
       color: var(--text-muted);
+      flex-wrap: wrap;
     }
     .nut-item strong {
       color: var(--text);
+    }
+    .meal-meta-col {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .remove-meal-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      transition: all 0.15s ease;
+    }
+    .remove-meal-btn:hover {
+      color: #ef4444;
+      border-color: #ef4444;
+      background: rgba(239, 68, 68, 0.1);
     }
 
     @media (max-width: 900px) {
@@ -263,6 +396,10 @@ import { NutritionService } from '../../core/services/nutrition.service';
       }
       .macros-col {
         width: 100%;
+      }
+      .empty-meals-card {
+        flex-direction: column;
+        text-align: center;
       }
     }
   `]

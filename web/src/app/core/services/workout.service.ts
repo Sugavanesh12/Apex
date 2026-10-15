@@ -46,16 +46,29 @@ export interface LiveWorkoutState {
   restSecondsLeft: number;
 }
 
+export interface CompletedSessionItem {
+  id: string;
+  title: string;
+  completedAt: string;
+  durationMinutes: number;
+  totalVolumeKg: number;
+  totalSets: number;
+  exercisesCount: number;
+}
+
+const STORAGE_SESSIONS_KEY = 'apex_user_workout_history_v1';
+
 @Injectable({
   providedIn: 'root'
 })
 export class WorkoutService {
   readonly exerciseLibrary = signal<ExerciseItem[]>(COMPREHENSIVE_EXERCISE_LIBRARY);
+  readonly completedSessions = signal<CompletedSessionItem[]>(this.loadStoredSessions());
 
   readonly liveSession = signal<LiveWorkoutState>({
     isActive: false,
     sessionTitle: 'Lower Body Strength',
-    elapsedSeconds: 24 * 60 + 17, // 24:17 as in the reference mockup
+    elapsedSeconds: 0,
     currentExerciseIndex: 0,
     exercises: [
       {
@@ -250,13 +263,33 @@ export class WorkoutService {
     }, 1000);
   }
 
+  private loadStoredSessions(): CompletedSessionItem[] {
+    try {
+      const saved = localStorage.getItem(STORAGE_SESSIONS_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed)) return parsed;
+      }
+    } catch (e) {
+      console.warn('Error reading stored workout sessions:', e);
+    }
+    return [];
+  }
+
+  private persistSessions() {
+    try {
+      localStorage.setItem(STORAGE_SESSIONS_KEY, JSON.stringify(this.completedSessions()));
+    } catch (e) {
+      console.warn('Error saving workout sessions to storage:', e);
+    }
+  }
+
   finishSession() {
     if (this.timerInterval) clearInterval(this.timerInterval);
     if (this.restInterval) clearInterval(this.restInterval);
     const session = this.liveSession();
     this.liveSession.update(s => ({ ...s, isActive: false }));
 
-    // Sync to Supabase in background
     const allSets: Array<{ exerciseId: string; setNumber: number; weightKg: number; reps: number; rpe?: number; isPr?: boolean }> = [];
     session.exercises.forEach(e => {
       e.sets.filter(s => s.completed).forEach(s => {
@@ -271,6 +304,26 @@ export class WorkoutService {
       });
     });
 
+    // Record session locally in history
+    const completedSets = allSets.length;
+    const volume = allSets.reduce((sum, s) => sum + (s.weightKg * s.reps), 0);
+    const durationMins = Math.max(1, Math.round(session.elapsedSeconds / 60));
+    const now = new Date();
+
+    const record: CompletedSessionItem = {
+      id: `sess-${Date.now()}`,
+      title: session.sessionTitle,
+      completedAt: now.toLocaleDateString([], { month: 'short', day: 'numeric' }) + ' · ' + now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      durationMinutes: durationMins,
+      totalVolumeKg: volume,
+      totalSets: completedSets,
+      exercisesCount: session.exercises.length
+    };
+
+    this.completedSessions.update(list => [record, ...list]);
+    this.persistSessions();
+
+    // Sync to Supabase in background
     if (allSets.length > 0) {
       this.supabase.saveWorkoutSession({
         title: session.sessionTitle,

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { IconComponent } from '../../shared/ui/icon/icon.component';
@@ -23,10 +23,10 @@ import { RecoveryService } from '../../core/services/recovery.service';
         </div>
         <div class="greeting-meta">
           <div class="date-chip">
-            <span>Tue, Apr 14, 2026</span>
+            <span>{{ todayFormatted }}</span>
             <span class="meta-dot">·</span>
             <app-icon name="sun" [size]="14" color="var(--warning)" />
-            <span>16°C</span>
+            <span>Optimal</span>
           </div>
           <div class="motto">"Progress lives in the choices you make today."</div>
         </div>
@@ -41,7 +41,7 @@ import { RecoveryService } from '../../core/services/recovery.service';
           </div>
           <h2>You’re on track.</h2>
           <p class="hero-body">
-            Your readiness is high, sleep looks solid, and you’re building great momentum. Today’s session supports your strength focus while keeping recovery on track.
+            {{ recovery.readinessResult().reason || 'Your readiness is balanced, sleep is restorative, and momentum is building. Today’s session supports your focus.' }}
           </p>
         </div>
 
@@ -52,14 +52,14 @@ import { RecoveryService } from '../../core/services/recovery.service';
 
           <div class="readiness-block">
             <app-progress-ring
-              [value]="user.profile().readiness"
+              [value]="readinessScore()"
               [size]="104"
               [strokeWidth]="8"
               strokeColor="var(--primary)"
               trackColor="var(--surface-3)"
               label="Readiness Score"
             >
-              <span class="ring-score num">{{ user.profile().readiness }}</span>
+              <span class="ring-score num">{{ readinessScore() }}</span>
               <span class="ring-label">Readiness</span>
             </app-progress-ring>
 
@@ -67,22 +67,22 @@ import { RecoveryService } from '../../core/services/recovery.service';
               <div class="factor-row">
                 <span class="f-dot" style="background: var(--accent-1)"></span>
                 <span class="f-name">Sleep</span>
-                <span class="f-val num">{{ user.profile().readinessFactors.sleep }}</span>
+                <span class="f-val num">{{ recovery.checkin().sleepHours }}h</span>
               </div>
               <div class="factor-row">
                 <span class="f-dot" style="background: var(--accent-1)"></span>
                 <span class="f-name">HRV</span>
-                <span class="f-val num">{{ user.profile().readinessFactors.hrv }}</span>
+                <span class="f-val num">{{ recovery.hrv() }}</span>
               </div>
               <div class="factor-row">
                 <span class="f-dot" style="background: var(--primary)"></span>
-                <span class="f-name">Load</span>
-                <span class="f-val num">{{ user.profile().readinessFactors.load }}</span>
+                <span class="f-name">Energy</span>
+                <span class="f-val num">{{ recovery.checkin().energyLevel }}/10</span>
               </div>
               <div class="factor-row">
                 <span class="f-dot" style="background: var(--accent-3)"></span>
                 <span class="f-name">Mood</span>
-                <span class="f-val num">{{ user.profile().readinessFactors.mood }}</span>
+                <span class="f-val num">{{ recovery.checkin().mood }}</span>
               </div>
               <a routerLink="/recovery" class="view-details-link">
                 View details →
@@ -205,14 +205,14 @@ import { RecoveryService } from '../../core/services/recovery.service';
 
           <div class="ring-center-block">
             <app-progress-ring
-              [value]="88"
+              [value]="sleepPercentage()"
               [size]="120"
               [strokeWidth]="8"
               strokeColor="var(--accent-1)"
               label="Sleep Recovery"
             >
               <span class="fuel-ring-val">{{ recovery.sleepTime() }}</span>
-              <span class="fuel-ring-sub">Sleep</span>
+              <span class="fuel-ring-sub">Sleep ({{ sleepPercentage() }}%)</span>
             </app-progress-ring>
           </div>
 
@@ -672,4 +672,14 @@ export class OverviewComponent {
   workout = inject(WorkoutService);
   nutrition = inject(NutritionService);
   recovery = inject(RecoveryService);
+
+  todayFormatted = new Date().toLocaleDateString('en-US', {
+    weekday: 'short',
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric'
+  });
+
+  readinessScore = computed(() => this.recovery.readinessResult().score ?? 85);
+  sleepPercentage = computed(() => Math.round(Math.min(100, (this.recovery.checkin().sleepHours / 8) * 100)));
 }

@@ -1,4 +1,4 @@
-import { Injectable, inject, signal } from '@angular/core';
+import { Injectable, computed, inject, signal } from '@angular/core';
 import { nutrientsForGrams, sumNutrients } from '../../domain/macros';
 import { SupabaseService } from './supabase.service';
 
@@ -26,24 +26,40 @@ export interface MealLogItem {
   image: string;
 }
 
+const STORAGE_MEALS_KEY = 'apex_user_logged_meals_v1';
+const STORAGE_WATER_KEY = 'apex_user_water_glasses_v1';
+
 @Injectable({
   providedIn: 'root'
 })
 export class NutritionService {
-  readonly caloriesConsumed = signal(1820);
-  readonly caloriesTarget = signal(2400);
+  private supabase = inject(SupabaseService);
 
-  readonly proteinConsumed = signal(132);
-  readonly proteinTarget = signal(180);
+  readonly loggedMeals = signal<MealLogItem[]>(this.loadStoredMeals());
+  readonly waterGlasses = signal<number>(this.loadStoredWater());
+  readonly waterTargetGlasses = signal<number>(8);
 
-  readonly carbsConsumed = signal(180);
-  readonly carbsTarget = signal(300);
+  readonly caloriesTarget = signal<number>(2400);
+  readonly proteinTarget = signal<number>(180);
+  readonly carbsTarget = signal<number>(300);
+  readonly fatTarget = signal<number>(90);
 
-  readonly fatConsumed = signal(62);
-  readonly fatTarget = signal(90);
+  // Real-time computed totals directly derived from user entered meals
+  readonly caloriesConsumed = computed(() => {
+    return this.loggedMeals().reduce((acc, m) => acc + (m.kcal || 0), 0);
+  });
 
-  readonly waterGlasses = signal(5);
-  readonly waterTargetGlasses = signal(8);
+  readonly proteinConsumed = computed(() => {
+    return Math.round(this.loggedMeals().reduce((acc, m) => acc + (m.protein || 0), 0));
+  });
+
+  readonly carbsConsumed = computed(() => {
+    return Math.round(this.loggedMeals().reduce((acc, m) => acc + (m.carbs || 0), 0));
+  });
+
+  readonly fatConsumed = computed(() => {
+    return Math.round(this.loggedMeals().reduce((acc, m) => acc + (m.fat || 0), 0));
+  });
 
   readonly stepsCount = signal(7842);
   readonly stepsTarget = signal(10000);
@@ -55,46 +71,65 @@ export class NutritionService {
     analyzing: boolean;
     analysisProgress: number;
   }>({
-    name: 'Grilled Chicken Bowl',
-    image: '/img/meal-bowl.jpg',
+    name: 'Fresh Cavendish Banana (Ripe)',
+    image: '/img/food-banana.jpg',
     analyzing: false,
     analysisProgress: 100,
     ingredients: [
       {
-        id: 'chicken',
-        name: 'Grilled Chicken Breast',
-        grams: 150,
-        per100: { kcal: 165, protein: 31, carbs: 0, fat: 3.6 },
-        confidence: 'High'
-      },
-      {
-        id: 'quinoa',
-        name: 'Cooked Quinoa',
-        grams: 120,
-        per100: { kcal: 120, protein: 4.4, carbs: 21.3, fat: 1.9 },
-        confidence: 'High'
-      },
-      {
-        id: 'avocado',
-        name: 'Sliced Avocado',
-        grams: 50,
-        per100: { kcal: 160, protein: 2, carbs: 8.5, fat: 14.7 },
-        confidence: 'Medium'
-      },
-      {
-        id: 'spinach-tomato',
-        name: 'Spinach & Cherry Tomatoes',
-        grams: 70,
-        per100: { kcal: 23, protein: 1.8, carbs: 3.9, fat: 0.3 },
+        id: 'banana-1',
+        name: 'Fresh Cavendish Banana',
+        grams: 118,
+        per100: { kcal: 89, protein: 1.1, carbs: 22.8, fat: 0.3 },
         confidence: 'High'
       }
     ]
   });
 
-  private supabase = inject(SupabaseService);
-
   constructor() {
     this.hydrateFromSupabase();
+  }
+
+  private loadStoredMeals(): MealLogItem[] {
+    try {
+      const saved = localStorage.getItem(STORAGE_MEALS_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed)) return parsed;
+      }
+    } catch (e) {
+      console.warn('Error reading stored meals:', e);
+    }
+    return [];
+  }
+
+  private persistMeals() {
+    try {
+      localStorage.setItem(STORAGE_MEALS_KEY, JSON.stringify(this.loggedMeals()));
+    } catch (e) {
+      console.warn('Error saving meals to storage:', e);
+    }
+  }
+
+  private loadStoredWater(): number {
+    try {
+      const saved = localStorage.getItem(STORAGE_WATER_KEY);
+      if (saved !== null) {
+        const n = parseInt(saved, 10);
+        if (!isNaN(n)) return Math.max(0, n);
+      }
+    } catch (e) {
+      console.warn('Error reading stored water:', e);
+    }
+    return 0;
+  }
+
+  private persistWater() {
+    try {
+      localStorage.setItem(STORAGE_WATER_KEY, this.waterGlasses().toString());
+    } catch (e) {
+      console.warn('Error saving water to storage:', e);
+    }
   }
 
   async hydrateFromSupabase() {
@@ -105,24 +140,26 @@ export class NutritionService {
       ]);
 
       if (meals && meals.length > 0) {
-        let totalK = 0, totalP = 0, totalC = 0, totalF = 0;
-        meals.forEach((m: any) => {
-          totalK += m.total_kcal || 0;
-          totalP += m.total_protein || 0;
-          totalC += m.total_carbs || 0;
-          totalF += m.total_fat || 0;
-        });
-        this.caloriesConsumed.set(totalK);
-        this.proteinConsumed.set(Math.round(totalP));
-        this.carbsConsumed.set(Math.round(totalC));
-        this.fatConsumed.set(Math.round(totalF));
+        const mapped: MealLogItem[] = meals.map((m: any) => ({
+          id: m.id || `meal-${Date.now()}`,
+          name: m.name,
+          timestamp: m.created_at ? new Date(m.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) + ' · AI Verified' : 'Today · AI Verified',
+          kcal: m.total_kcal || 0,
+          protein: Math.round(m.total_protein || 0),
+          carbs: Math.round(m.total_carbs || 0),
+          fat: Math.round(m.total_fat || 0),
+          image: m.image_url || '/img/food-banana.jpg'
+        }));
+        this.loggedMeals.set(mapped);
+        this.persistMeals();
       }
 
       if (waterGlasses > 0) {
         this.waterGlasses.set(waterGlasses);
+        this.persistWater();
       }
     } catch {
-      // Graceful fallback
+      // Graceful offline fallback to localStorage
     }
   }
 
@@ -148,10 +185,24 @@ export class NutritionService {
   saveDraftMeal() {
     const draft = this.activeDraftMeal();
     const totals = this.computedDraftTotals();
-    this.caloriesConsumed.update(c => c + totals.kcal);
-    this.proteinConsumed.update(p => Math.round(p + totals.protein));
-    this.carbsConsumed.update(c => Math.round(c + totals.carbs));
-    this.fatConsumed.update(f => Math.round(f + totals.fat));
+
+    const now = new Date();
+    const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+    const newMeal: MealLogItem = {
+      id: `meal-${Date.now()}`,
+      name: draft.name,
+      timestamp: `${timeStr} · AI Verified`,
+      kcal: totals.kcal,
+      protein: Math.round(totals.protein * 10) / 10,
+      carbs: Math.round(totals.carbs * 10) / 10,
+      fat: Math.round(totals.fat * 10) / 10,
+      image: draft.image
+    };
+
+    // Prepend to logged meals list and persist
+    this.loggedMeals.update(list => [newMeal, ...list]);
+    this.persistMeals();
 
     // Sync to Supabase in background
     const items = draft.ingredients.map(i => {
@@ -176,13 +227,36 @@ export class NutritionService {
     }).catch(err => console.warn('Supabase meal sync notice:', err));
   }
 
+  logQuickFuel(name: string, kcal: number, protein: number, carbs: number = 0, fat: number = 0) {
+    const now = new Date();
+    const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const quickMeal: MealLogItem = {
+      id: `quick-${Date.now()}`,
+      name,
+      timestamp: `${timeStr} · AI Verified`,
+      kcal,
+      protein,
+      carbs,
+      fat,
+      image: '/img/food-shake.jpg'
+    };
+    this.loggedMeals.update(list => [quickMeal, ...list]);
+    this.persistMeals();
+  }
+
+  removeMeal(id: string) {
+    this.loggedMeals.update(list => list.filter(m => m.id !== id));
+    this.persistMeals();
+  }
+
   addWaterGlass() {
     this.waterGlasses.update(w => Math.min(this.waterTargetGlasses(), w + 1));
+    this.persistWater();
     this.supabase.logWater(1, 250).catch(err => console.warn('Supabase water sync notice:', err));
   }
 
   removeWaterGlass() {
     this.waterGlasses.update(w => Math.max(0, w - 1));
+    this.persistWater();
   }
 }
-

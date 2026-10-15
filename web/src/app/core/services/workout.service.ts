@@ -18,6 +18,7 @@ export interface ExerciseItem {
   difficulty?: 'Beginner' | 'Intermediate' | 'Advanced';
   description: string;
   formCues?: string[];
+  kinematicType?: 'squat' | 'hinge' | 'bench' | 'overhead' | 'pullup' | 'row' | 'curl' | 'triceps' | 'lunge' | 'core' | 'mobility';
 }
 
 export interface SetEntry {
@@ -60,15 +61,25 @@ export class WorkoutService {
       {
         exercise: {
           id: 'back-squat',
-          name: 'Back Squat',
-          muscle: 'Strength',
+          name: 'Barbell Back Squat',
+          muscle: 'Quads',
+          secondaryMuscles: ['Glutes', 'Hamstrings', 'Core'],
           category: 'Strength',
           image: '/img/ex-back-squat.jpg',
+          videoUrl: '/video/demo-workout.webm',
           lastPerformance: '120kg × 5',
           targetSetsReps: '4 × 5',
-          prKg: 130,
-          equipment: 'Barbell',
-          description: 'Primary compound movement.'
+          prKg: 135,
+          equipment: 'Barbell & Rack',
+          difficulty: 'Intermediate',
+          kinematicType: 'squat',
+          description: 'Primary compound movement for total leg mass and spinal bracing.',
+          formCues: [
+            'Set bar on mid-traps, pull elbows down to create upper back shelf',
+            'Brace core 360 degrees before descent',
+            'Break at hips and knees simultaneously to parallel',
+            'Drive powerfully through mid-foot'
+          ]
         },
         targetSets: 4,
         targetReps: 8,
@@ -82,15 +93,24 @@ export class WorkoutService {
       {
         exercise: {
           id: 'rdl',
-          name: 'Romanian Deadlift',
-          muscle: 'Strength',
+          name: 'Romanian Deadlift (RDL)',
+          muscle: 'Hamstrings',
+          secondaryMuscles: ['Glutes', 'Erectors', 'Lats'],
           category: 'Strength',
           image: '/img/ex-rdl.jpg',
-          lastPerformance: '80kg × 8',
+          videoUrl: '/video/demo-workout.webm',
+          lastPerformance: '95kg × 8',
           targetSetsReps: '3 × 8',
-          prKg: 105,
+          prKg: 115,
           equipment: 'Barbell',
-          description: 'Posterior chain hinge.'
+          difficulty: 'Intermediate',
+          kinematicType: 'hinge',
+          description: 'Posterior chain hinge stretching hamstrings under control.',
+          formCues: [
+            'Push hips straight backward toward the wall behind you',
+            'Keep barbell skimming down thighs and shins',
+            'Drive hips forward to stand tall and squeeze glutes'
+          ]
         },
         targetSets: 3,
         targetReps: 8,

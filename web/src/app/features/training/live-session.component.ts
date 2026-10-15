@@ -33,7 +33,19 @@ import { ExerciseModalComponent } from '../../shared/ui/exercise-modal/exercise-
         <!-- Visual & Rep Counter (From Reference Mockup) -->
         <div class="hero-stage card">
           <div class="stage-media">
-            <img [src]="workout.currentExercise().exercise.image" alt="Exercise Form" class="stage-img" />
+            @if (workout.currentExercise().exercise.videoUrl) {
+              <video
+                [src]="workout.currentExercise().exercise.videoUrl"
+                [poster]="workout.currentExercise().exercise.image"
+                autoplay
+                loop
+                muted
+                playsinline
+                class="stage-img stage-video"
+              ></video>
+            } @else {
+              <img [src]="workout.currentExercise().exercise.image" alt="Exercise Form" class="stage-img" />
+            }
             <div class="stage-overlay">
               <div class="stage-header">
                 <div>

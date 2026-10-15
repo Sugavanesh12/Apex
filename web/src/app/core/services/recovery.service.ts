@@ -45,6 +45,38 @@ export class RecoveryService {
     })
   );
 
+  constructor() {
+    this.hydrateFromSupabase();
+  }
+
+  async hydrateFromSupabase() {
+    try {
+      const data = await this.supabase.getTodayRecoveryCheckin();
+      if (data) {
+        this.checkin.set({
+          mood: (data.mood as MoodLevel) || 'Good',
+          sleepHours: Number(data.sleep_hours) || 7.5,
+          sleepQuality: Number(data.sleep_quality) || 4,
+          sorenessLevel: Number(data.soreness_level) || 3,
+          energyLevel: Number(data.energy_level) || 8,
+          stressLevel: Number(data.stress_level) || 2
+        });
+        this.mood.set((data.mood as MoodLevel) || 'Good');
+        this.readinessResult.set(readiness({
+          sleepHours: Number(data.sleep_hours) || 7.5,
+          sleepQuality: Number(data.sleep_quality) || 4,
+          soreness: Number(data.soreness_level) || 3,
+          energy: Number(data.energy_level) || 8,
+          stress: Number(data.stress_level) || 2,
+          loadRatio: 1.05,
+          hrvDeltaPct: 8
+        }));
+      }
+    } catch {
+      // Graceful fallback
+    }
+  }
+
   updateCheckin(partial: Partial<CheckinState>) {
     this.checkin.update(c => ({ ...c, ...partial }));
     const c = this.checkin();

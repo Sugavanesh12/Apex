@@ -205,4 +205,82 @@ export class SupabaseService {
     if (error) throw error;
     return data;
   }
+
+  // --- Read Operations ---
+  async getExercises() {
+    const { data, error } = await this.supabase
+      .from('exercises')
+      .select('*')
+      .order('name');
+    if (error) throw error;
+    return data;
+  }
+
+  async getWorkoutSessions(limit = 10) {
+    const user = this.currentUser();
+    if (!user) return [];
+
+    const { data, error } = await this.supabase
+      .from('workout_sessions')
+      .select('*, set_logs(*)')
+      .eq('user_id', user.id)
+      .order('started_at', { ascending: false })
+      .limit(limit);
+
+    if (error) throw error;
+    return data || [];
+  }
+
+  async getTodayMeals() {
+    const user = this.currentUser();
+    if (!user) return [];
+
+    const todayStart = new Date();
+    todayStart.setHours(0, 0, 0, 0);
+
+    const { data, error } = await this.supabase
+      .from('meals')
+      .select('*, meal_items(*)')
+      .eq('user_id', user.id)
+      .gte('eaten_at', todayStart.toISOString())
+      .order('eaten_at', { ascending: false });
+
+    if (error) throw error;
+    return data || [];
+  }
+
+  async getTodayWaterTotal(): Promise<number> {
+    const user = this.currentUser();
+    if (!user) return 0;
+
+    const todayStart = new Date();
+    todayStart.setHours(0, 0, 0, 0);
+
+    const { data, error } = await this.supabase
+      .from('water_logs')
+      .select('glasses')
+      .eq('user_id', user.id)
+      .gte('logged_at', todayStart.toISOString());
+
+    if (error) throw error;
+    return (data || []).reduce((acc: number, row: { glasses: number }) => acc + (row.glasses || 0), 0);
+  }
+
+  async getTodayRecoveryCheckin() {
+    const user = this.currentUser();
+    if (!user) return null;
+
+    const todayStr = new Date().toISOString().split('T')[0];
+
+    const { data, error } = await this.supabase
+      .from('recovery_checkins')
+      .select('*')
+      .eq('user_id', user.id)
+      .eq('date', todayStr)
+      .maybeSingle();
+
+    if (error) throw error;
+    return data;
+  }
 }
+

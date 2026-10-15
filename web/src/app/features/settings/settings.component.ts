@@ -1,10 +1,12 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { UserService } from '../../core/services/user.service';
+import { SupabaseService } from '../../core/services/supabase.service';
+import { AuthModalComponent } from '../../shared/ui/auth-modal/auth-modal.component';
 
 @Component({
   selector: 'app-settings',
   standalone: true,
-  imports: [],
+  imports: [AuthModalComponent],
   template: `
     <div class="settings-page">
       <header class="settings-header">
@@ -13,6 +15,52 @@ import { UserService } from '../../core/services/user.service';
       </header>
 
       <div class="settings-sections">
+        <!-- Supabase Cloud & Account (Milestone 2) -->
+        <section class="card settings-card">
+          <div class="card-head">
+            <h3>Cloud Database & Account</h3>
+            @if (supabase.currentUser(); as user) {
+              <span class="badge badge-primary">🟢 Cloud Synced</span>
+            } @else {
+              <span class="badge" style="background: rgba(234, 179, 8, 0.15); color: #eab308; border: 1px solid rgba(234, 179, 8, 0.3);">
+                🟡 Local Mode
+              </span>
+            }
+          </div>
+
+          <p class="section-desc">
+            Connect to your Supabase PostgreSQL cloud backend (<code>https://drhlcligqarhbvkgnpbb.supabase.co</code>) with Row-Level Security for multi-device synchronization and automatic backup.
+          </p>
+
+          @if (supabase.currentUser(); as authUser) {
+            <div class="memory-grid">
+              <div class="memory-item">
+                <span class="m-key">Cloud Account</span>
+                <span class="m-val">{{ authUser.email }}</span>
+              </div>
+              <div class="memory-item">
+                <span class="m-key">User ID</span>
+                <span class="m-val" style="font-family: monospace; font-size: 0.65rem;">{{ authUser.id }}</span>
+              </div>
+            </div>
+            <div class="memory-actions" style="margin-top: var(--s-2); display: flex; gap: var(--s-3);">
+              <button class="btn btn-secondary" (click)="signOut()">
+                Sign Out
+              </button>
+            </div>
+          } @else {
+            <div style="background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--r-input); padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; gap: var(--s-3); flex-wrap: wrap;">
+              <div>
+                <strong style="font-size: var(--fs-xs); display: block; color: var(--text);">Not Signed In to Supabase</strong>
+                <span style="font-size: 0.7rem; color: var(--text-faint);">Your workouts and meals are saved locally. Connect to sync across devices.</span>
+              </div>
+              <button class="btn btn-primary" (click)="showAuthModal.set(true)">
+                Sign In / Create Account
+              </button>
+            </div>
+          }
+        </section>
+
         <!-- Appearance & Theme (Part E) -->
         <section class="card settings-card">
           <div class="card-head">
@@ -97,6 +145,10 @@ import { UserService } from '../../core/services/user.service';
         </section>
       </div>
     </div>
+
+    @if (showAuthModal()) {
+      <app-auth-modal (closed)="showAuthModal.set(false)" />
+    }
   `,
   styles: [`
     .settings-page {
@@ -247,6 +299,12 @@ import { UserService } from '../../core/services/user.service';
 })
 export class SettingsComponent {
   user = inject(UserService);
+  supabase = inject(SupabaseService);
+  showAuthModal = signal<boolean>(false);
+
+  async signOut() {
+    await this.supabase.signOut();
+  }
 
   resetCoachMemory() {
     alert('Coach memory cleared. Personalized context will re-aggregate from your next 7 days of logs.');

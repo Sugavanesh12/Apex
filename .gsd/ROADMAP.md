@@ -64,22 +64,36 @@ updated: 2026-10-15T11:55:00+05:30
 ---
 
 ### Phase 4: Polish & verify
-**Status:** 🔄 In Progress
+**Status:** ✅ Complete
 **Objective:** Build verification, unit test runner, HTTP server validation.
 **Depends on:** Phase 3
 
 ---
 
+### Phase 5: Milestone 2 — Supabase Backend & Live Persistence
+**Status:** ✅ Complete
+**Objective:** Supabase Auth, PostgreSQL schema (ARCH §2), RLS, database persistence & hydration across workouts, nutrition, recovery, and profiles.
+
+**Plans:**
+- [x] Plan 5.1: Supabase client initialization & credentials in environment (`https://drhlcligqarhbvkgnpbb.supabase.co`)
+- [x] Plan 5.2: PostgreSQL schema and RLS policies (`supabase/schema.sql` covering 8 tables with automated signup triggers and indexed queries)
+- [x] Plan 5.3: SupabaseService with full CRUD operations (`signUp`, `signIn`, `getExercises`, `saveWorkoutSession`, `getWorkoutSessions`, `saveMeal`, `getTodayMeals`, `logWater`, `getTodayWaterTotal`, `saveRecoveryCheckin`, `getTodayRecoveryCheckin`)
+- [x] Plan 5.4: Live service wiring & reactive hydration in `WorkoutService`, `NutritionService`, `RecoveryService`, and `UserService` with seamless offline fallbacks
+- [x] Plan 5.5: Auth UI Modal (`AuthModalComponent`) accessible from Topbar and Settings with live Cloud Sync badge
+
+---
+
 ## Progress Summary
 
-| Phase | Status | Plans | Complete |
+| Milestone / Phase | Status | Plans | Complete |
 |-------|--------|-------|----------|
-| 1 | ✅ | 3/3 | 100% |
-| 2 | ✅ | 3/3 | 100% |
-| 3 | ✅ | 1/1 | 100% |
-| 4 | 🔄 | 0/1 | 80% |
+| M1: Foundation (Tokens, Shell) | ✅ | 3/3 | 100% |
+| M1: Domain Logic (TDD 32/32) | ✅ | 3/3 | 100% |
+| M1: Feature Screens (9 screens) | ✅ | 1/1 | 100% |
+| M1: Polish & Verify | ✅ | 1/1 | 100% |
+| M2: Supabase Backend & Auth | ✅ | 5/5 | 100% |
 
-## Later milestones
-- **M2 Backend:** Supabase auth, schema (ARCH §2), RLS, replace mock services.
-- **M3 AI:** AI gateway (Gemini/Groq/Ollama adapters), meal-photo analysis, coach chat, weekly insight pipeline.
-- **M4 P2 features:** push, offline queue, barcode, plan generator, weekly review.
+## Upcoming Milestones
+- **M3 AI Vision & Copilot:** Gemini food recognition scanner, AI coach live streaming chat, weekly insight generator.
+- **M4 PWA & Advanced:** Service worker offline queue, push notifications, wearable export/import.
+

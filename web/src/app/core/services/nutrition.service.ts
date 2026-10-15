@@ -93,6 +93,39 @@ export class NutritionService {
 
   private supabase = inject(SupabaseService);
 
+  constructor() {
+    this.hydrateFromSupabase();
+  }
+
+  async hydrateFromSupabase() {
+    try {
+      const [meals, waterGlasses] = await Promise.all([
+        this.supabase.getTodayMeals(),
+        this.supabase.getTodayWaterTotal()
+      ]);
+
+      if (meals && meals.length > 0) {
+        let totalK = 0, totalP = 0, totalC = 0, totalF = 0;
+        meals.forEach((m: any) => {
+          totalK += m.total_kcal || 0;
+          totalP += m.total_protein || 0;
+          totalC += m.total_carbs || 0;
+          totalF += m.total_fat || 0;
+        });
+        this.caloriesConsumed.set(totalK);
+        this.proteinConsumed.set(Math.round(totalP));
+        this.carbsConsumed.set(Math.round(totalC));
+        this.fatConsumed.set(Math.round(totalF));
+      }
+
+      if (waterGlasses > 0) {
+        this.waterGlasses.set(waterGlasses);
+      }
+    } catch {
+      // Graceful fallback
+    }
+  }
+
   computedDraftTotals() {
     const draft = this.activeDraftMeal();
     const items = draft.ingredients.map(i => nutrientsForGrams(i.per100, i.grams));

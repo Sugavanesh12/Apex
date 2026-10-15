@@ -1,13 +1,15 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { IconComponent } from '../../shared/ui/icon/icon.component';
 import { UserService } from '../../core/services/user.service';
 import { CoachService } from '../../core/services/coach.service';
+import { SupabaseService } from '../../core/services/supabase.service';
+import { AuthModalComponent } from '../../shared/ui/auth-modal/auth-modal.component';
 
 @Component({
   selector: 'app-topbar',
   standalone: true,
-  imports: [RouterLink, IconComponent],
+  imports: [RouterLink, IconComponent, AuthModalComponent],
   template: `
     <header class="topbar">
       <!-- Search Bar -->
@@ -23,6 +25,19 @@ import { CoachService } from '../../core/services/coach.service';
 
       <!-- Right Actions -->
       <div class="actions">
+        <!-- Supabase Cloud Connection Status / Action -->
+        @if (supabase.currentUser(); as user) {
+          <div class="cloud-pill live" title="Connected as {{ user.email }}">
+            <span class="live-dot"></span>
+            <span class="pill-label">Cloud Synced</span>
+          </div>
+        } @else {
+          <button class="cloud-pill connect-btn" (click)="showAuthModal.set(true)" title="Sign in or sync to Supabase">
+            <span class="offline-dot"></span>
+            <span class="pill-label">Connect Cloud</span>
+          </button>
+        }
+
         <!-- AI Copilot Trigger Button -->
         <button
           class="copilot-btn"
@@ -42,7 +57,7 @@ import { CoachService } from '../../core/services/coach.service';
 
         <!-- User Profile Chip -->
         <a routerLink="/settings" class="user-chip" title="Profile and settings">
-          <div class="avatar">A</div>
+          <div class="avatar">{{ userService.profile().name.charAt(0) }}</div>
           <div class="user-info">
             <span class="user-name">{{ userService.profile().name }}</span>
             <span class="user-role">{{ userService.profile().title }}</span>
@@ -51,6 +66,10 @@ import { CoachService } from '../../core/services/coach.service';
         </a>
       </div>
     </header>
+
+    @if (showAuthModal()) {
+      <app-auth-modal (closed)="showAuthModal.set(false)" />
+    }
   `,
   styles: [`
     :host {
@@ -197,9 +216,43 @@ import { CoachService } from '../../core/services/coach.service';
       font-weight: 600;
       color: var(--text);
     }
-    .user-role {
-      font-size: 0.65rem;
+    .cloud-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: var(--r-pill);
+      font-size: var(--fs-xs);
+      font-weight: 600;
+      transition: all var(--t-fast) var(--ease);
+    }
+    .cloud-pill.live {
+      background: rgba(34, 197, 94, 0.12);
+      border: 1px solid rgba(34, 197, 94, 0.35);
+      color: #22c55e;
+    }
+    .cloud-pill.connect-btn {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
       color: var(--text-muted);
+      cursor: pointer;
+    }
+    .cloud-pill.connect-btn:hover {
+      border-color: var(--primary);
+      color: var(--text);
+    }
+    .live-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 6px #22c55e;
+    }
+    .offline-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--text-muted);
     }
 
     @media (max-width: 600px) {
@@ -212,10 +265,16 @@ import { CoachService } from '../../core/services/coach.service';
       .copilot-label {
         display: none;
       }
+      .cloud-pill .pill-label {
+        display: none;
+      }
     }
   `]
 })
 export class TopbarComponent {
   userService = inject(UserService);
   coachService = inject(CoachService);
+  supabase = inject(SupabaseService);
+  showAuthModal = signal<boolean>(false);
 }
+

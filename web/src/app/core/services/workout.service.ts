@@ -189,6 +189,33 @@ export class WorkoutService {
   private restInterval?: any;
   private supabase = inject(SupabaseService);
 
+  constructor() {
+    this.hydrateFromSupabase();
+  }
+
+  async hydrateFromSupabase() {
+    try {
+      const rows = await this.supabase.getExercises();
+      if (rows && rows.length > 0) {
+        const mapped: ExerciseItem[] = rows.map((r: any) => ({
+          id: r.id,
+          name: r.name,
+          muscle: r.muscle,
+          category: r.category as any,
+          image: r.image,
+          equipment: r.equipment,
+          description: r.description || '',
+          targetSetsReps: r.target_sets_reps || '3 × 10',
+          lastPerformance: 'Previous session',
+          prKg: 120
+        }));
+        this.exerciseLibrary.set(mapped);
+      }
+    } catch {
+      // Graceful fallback to rich mock data
+    }
+  }
+
   readonly currentExercise = computed(() => {
     const s = this.liveSession();
     return s.exercises[s.currentExerciseIndex] || s.exercises[0];

@@ -1,4 +1,9 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, inject, signal } from '@angular/core';
+import { GeminiService, AthleticContext } from './gemini.service';
+import { UserService } from './user.service';
+import { NutritionService } from './nutrition.service';
+import { RecoveryService } from './recovery.service';
+import { WorkoutService } from './workout.service';
 
 export interface ChatMessage {
   id: string;
@@ -8,6 +13,7 @@ export interface ChatMessage {
   proposal?: {
     actionText: string;
     applied: boolean;
+    type?: 'training' | 'nutrition' | 'recovery';
   };
 }
 
@@ -15,7 +21,14 @@ export interface ChatMessage {
   providedIn: 'root'
 })
 export class CoachService {
+  private gemini = inject(GeminiService);
+  private user = inject(UserService);
+  private nutrition = inject(NutritionService);
+  private recovery = inject(RecoveryService);
+  private workout = inject(WorkoutService);
+
   readonly isCopilotOpen = signal(false);
+  readonly isThinking = signal(false);
 
   readonly messages = signal<ChatMessage[]>([
     {
@@ -31,7 +44,8 @@ export class CoachService {
       timestamp: '09:02 AM',
       proposal: {
         actionText: 'Apply a small adjustment to today’s session based on your lower recovery: Replace the accessory work with a shorter core block.',
-        applied: false
+        applied: false,
+        type: 'training'
       }
     }
   ]);
@@ -48,7 +62,9 @@ export class CoachService {
     this.isCopilotOpen.set(false);
   }
 
-  askPrompt(promptText: string) {
+  async askPrompt(promptText: string) {
+    if (!promptText.trim()) return;
+
     this.messages.update(msgs => [
       ...msgs,
       {
@@ -59,39 +75,55 @@ export class CoachService {
       }
     ]);
 
-    // Deterministic rule-grounded response
-    setTimeout(() => {
-      let reply = "I've reviewed your current stats.";
-      let proposalText: string | undefined;
+    this.isThinking.set(true);
 
-      if (promptText.includes('tired') || promptText.includes('adjust')) {
-        reply = "Understood. Your recovery score is 86, but if your systemic fatigue feels elevated, it's smarter to prevent overreach.";
-        proposalText = "Reduce working sets from 4 to 3 on Back Squat and skip the final accessory exercise.";
-      } else if (promptText.includes('readiness')) {
-        reply = "Your readiness of 86 is driven by 7h 32m of sleep (score 88) and HRV at 82 ms. Your fatigue load is balanced at 78.";
-      } else if (promptText.includes('eat')) {
-        reply = "You currently have 580 kcal and 48g of protein remaining today. A grilled chicken bowl or Greek yogurt bowl with seeds will hit your targets cleanly.";
-      } else {
-        reply = `Analyzing ${promptText} against your last 14 days of logs. Your progressive overload trajectory is right on schedule.`;
-      }
+    const profile = this.user.profile();
+    const readiness = this.recovery.readinessResult();
+
+    const context: AthleticContext = {
+      userName: profile.name,
+      goal: profile.goal,
+      experience: profile.experience,
+      readinessScore: readiness.score ?? 85,
+      readinessReason: readiness.reason,
+      caloriesConsumed: this.nutrition.caloriesConsumed(),
+      caloriesTarget: this.nutrition.caloriesTarget(),
+      proteinConsumed: this.nutrition.proteinConsumed(),
+      proteinTarget: this.nutrition.proteinTarget(),
+      workoutTitle: this.workout.liveSession().sessionTitle
+    };
+
+    try {
+      const response = await this.gemini.chatWithCoach(promptText, context);
 
       this.messages.update(msgs => [
         ...msgs,
         {
           id: `ai-${Date.now()}`,
           sender: 'ai',
-          text: reply,
+          text: response.text,
           timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-          proposal: proposalText ? { actionText: proposalText, applied: false } : undefined
+          proposal: response.proposal ? {
+            actionText: response.proposal.actionText,
+            applied: false,
+            type: response.proposal.type
+          } : undefined
         }
       ]);
-    }, 400);
+    } finally {
+      this.isThinking.set(false);
+    }
   }
 
   confirmProposal(messageId: string) {
     this.messages.update(msgs =>
       msgs.map(m => {
         if (m.id === messageId && m.proposal) {
+          // If proposal was nutrition, we can simulate logging or adjustment
+          if (m.proposal.type === 'nutrition') {
+            this.nutrition.proteinConsumed.update(p => p + 25);
+            this.nutrition.caloriesConsumed.update(c => c + 150);
+          }
           return {
             ...m,
             proposal: { ...m.proposal, applied: true }
@@ -102,3 +134,4 @@ export class CoachService {
     );
   }
 }
+

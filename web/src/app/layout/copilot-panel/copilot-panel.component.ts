@@ -54,6 +54,15 @@ import { CoachService } from '../../core/services/coach.service';
           </div>
         }
 
+        @if (coachService.isThinking()) {
+          <div class="msg-bubble msg-ai thinking-bubble">
+            <div class="typing-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <span class="thinking-text">Coach is analyzing your recovery and load...</span>
+          </div>
+        }
+
         <!-- Quick Prompts Section (as shown in reference screenshot) -->
         <div class="prompt-section">
           <div class="prompt-heading">Try asking:</div>
@@ -190,6 +199,34 @@ import { CoachService } from '../../core/services/coach.service';
       border: 1px solid var(--primary-line);
       color: var(--text);
       align-self: flex-end;
+    }
+
+    .thinking-bubble {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .typing-dots {
+      display: flex;
+      gap: 4px;
+    }
+    .typing-dots span {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--primary);
+      animation: dotPulse 1.2s infinite ease-in-out;
+    }
+    .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes dotPulse {
+      0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+      40% { transform: scale(1.1); opacity: 1; }
+    }
+    .thinking-text {
+      font-size: var(--fs-xs);
+      color: var(--text-muted);
+      font-style: italic;
     }
 
     .proposal-card {

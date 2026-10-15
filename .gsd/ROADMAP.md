@@ -83,6 +83,19 @@ updated: 2026-10-15T11:55:00+05:30
 
 ---
 
+### Phase 6: Milestone 3 — Gemini AI Gateway, Multimodal Vision, and Athletic Copilot
+**Status:** ✅ Complete
+**Objective:** Integrate Google GenAI SDK (`@google/genai` with `gemini-3.8-flash`), real-time camera food recognition, and context-aware athletic coach chat with structured action proposals.
+
+**Plans:**
+- [x] Plan 6.1: Install `@google/genai` and build `GeminiService` with vision and chat pipelines
+- [x] Plan 6.2: Multimodal Food Scanner with laser beam scanning animation, image upload/camera snap, portion estimation, and automatic macro calculation
+- [x] Plan 6.3: Contextual AI Athletic Coach chat with live user profile, recovery score, remaining calories/protein, active workout, and 1-tap actionable proposals
+- [x] Plan 6.4: AI Thinking indicator (`typing-dots`) in both Copilot side panel and full-page chat
+- [x] Plan 6.5: Gemini Gateway configuration card in Settings with local key storage and smart simulation fallback
+
+---
+
 ## Progress Summary
 
 | Milestone / Phase | Status | Plans | Complete |
@@ -92,8 +105,9 @@ updated: 2026-10-15T11:55:00+05:30
 | M1: Feature Screens (9 screens) | ✅ | 1/1 | 100% |
 | M1: Polish & Verify | ✅ | 1/1 | 100% |
 | M2: Supabase Backend & Auth | ✅ | 5/5 | 100% |
+| M3: Gemini AI Vision & Copilot | ✅ | 5/5 | 100% |
 
 ## Upcoming Milestones
-- **M3 AI Vision & Copilot:** Gemini food recognition scanner, AI coach live streaming chat, weekly insight generator.
-- **M4 PWA & Advanced:** Service worker offline queue, push notifications, wearable export/import.
+- **M4 PWA & Advanced:** Service worker offline queue, push notifications, barcode lookup, weekly insight generator.
+
 

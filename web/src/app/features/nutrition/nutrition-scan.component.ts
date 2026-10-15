@@ -1,7 +1,8 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { IconComponent } from '../../shared/ui/icon/icon.component';
 import { NutritionService } from '../../core/services/nutrition.service';
+import { GeminiService } from '../../core/services/gemini.service';
 
 @Component({
   selector: 'app-nutrition-scan',
@@ -22,7 +23,12 @@ import { NutritionService } from '../../core/services/nutrition.service';
         <!-- Viewfinder Card (From Reference Mockup) -->
         <div class="viewfinder-card card">
           <div class="camera-frame">
-            <img [src]="nutrition.activeDraftMeal().image" alt="Meal scan preview" class="camera-img" />
+            <img [src]="previewImage()" alt="Meal scan preview" class="camera-img" />
+
+            <!-- Laser Scanning Beam when analyzing -->
+            @if (isAnalyzing()) {
+              <div class="scan-laser"></div>
+            }
 
             <!-- Viewfinder Corner Brackets Overlay -->
             <div class="viewfinder-bracket top-left"></div>
@@ -31,26 +37,38 @@ import { NutritionService } from '../../core/services/nutrition.service';
             <div class="viewfinder-bracket bottom-right"></div>
 
             <!-- Analyzing Status Overlay Bar (From Reference Mockup) -->
-            <div class="analyzing-bar">
+            <div class="analyzing-bar" [class.active-bar]="isAnalyzing()">
               <div class="spinner-group">
-                <div class="ring-spinner"></div>
-                <span class="analyzing-text">Analyzing your meal...</span>
+                <div class="ring-spinner" [class.spin-active]="isAnalyzing()"></div>
+                <span class="analyzing-text">{{ isAnalyzing() ? 'Gemini 3.8 Flash analyzing meal...' : 'Meal analyzed successfully' }}</span>
               </div>
               <div class="steps-checklist">
-                <div class="step-line">
+                <div class="step-line" [class.done]="!isAnalyzing()">
                   <span class="check-icon">✓</span>
                   <span>Identifying food items</span>
                 </div>
-                <div class="step-line">
+                <div class="step-line" [class.done]="!isAnalyzing()">
                   <span class="check-icon">✓</span>
                   <span>Estimating portion sizes</span>
                 </div>
-                <div class="step-line">
+                <div class="step-line" [class.done]="!isAnalyzing()">
                   <span class="check-icon">✓</span>
                   <span>Calculating nutrition</span>
                 </div>
               </div>
             </div>
+          </div>
+
+          <!-- Upload / Camera Actions -->
+          <div class="viewfinder-footer">
+            <input type="file" accept="image/*" #fileInput (change)="onFileSelected($event)" style="display:none" />
+            <button class="btn btn-primary snap-btn" (click)="fileInput.click()" [disabled]="isAnalyzing()">
+              <app-icon name="camera" [size]="16" />
+              <span>Snap / Upload Food Photo</span>
+            </button>
+            <button class="btn btn-secondary demo-btn" (click)="runDemoScan()" [disabled]="isAnalyzing()">
+              Re-Scan Demo Bowl
+            </button>
           </div>
         </div>
 
@@ -427,6 +445,51 @@ import { NutritionService } from '../../core/services/nutrition.service';
       flex: 1;
     }
 
+    .scan-laser {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--primary);
+      box-shadow: 0 0 15px var(--primary), 0 0 30px var(--primary);
+      z-index: 10;
+      animation: laserSweep 2s ease-in-out infinite alternate;
+    }
+    @keyframes laserSweep {
+      0% { top: 5%; opacity: 0.8; }
+      100% { top: 92%; opacity: 1; }
+    }
+
+    .viewfinder-footer {
+      display: flex;
+      gap: var(--s-3);
+      padding: var(--s-3) var(--s-4);
+      background: var(--surface-2);
+      border-top: 1px solid var(--border);
+    }
+    .snap-btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .demo-btn {
+      flex: 0 0 auto;
+    }
+
+    .active-bar {
+      border-color: var(--primary-line);
+      box-shadow: 0 0 16px -2px var(--primary-soft);
+    }
+    .spin-active {
+      border-top-color: var(--primary) !important;
+      animation: spin 0.8s linear infinite !important;
+    }
+    .step-line.done .check-icon {
+      color: #22c55e;
+    }
+
     @media (max-width: 860px) {
       .scan-layout {
         grid-template-columns: 1fr;
@@ -434,14 +497,68 @@ import { NutritionService } from '../../core/services/nutrition.service';
       .camera-frame {
         height: 340px;
       }
+      .viewfinder-footer {
+        flex-direction: column;
+      }
     }
   `]
 })
 export class NutritionScanComponent {
   nutrition = inject(NutritionService);
+  gemini = inject(GeminiService);
   router = inject(Router);
 
+  previewImage = signal<string>('/img/meal-bowl.jpg');
+  isAnalyzing = signal<boolean>(false);
+
   draftTotals = computed(() => this.nutrition.computedDraftTotals());
+
+  async onFileSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (!input.files || input.files.length === 0) return;
+
+    const file = input.files[0];
+    const reader = new FileReader();
+
+    reader.onload = async () => {
+      const base64Data = reader.result as string;
+      this.previewImage.set(base64Data);
+      await this.processImage(base64Data, file.type || 'image/jpeg');
+    };
+
+    reader.readAsDataURL(file);
+  }
+
+  async runDemoScan() {
+    this.previewImage.set('/img/meal-bowl.jpg');
+    await this.processImage('/img/meal-bowl.jpg', 'image/jpeg');
+  }
+
+  private async processImage(base64OrPath: string, mimeType: string) {
+    this.isAnalyzing.set(true);
+
+    try {
+      const result = await this.gemini.analyzeMealPhoto(base64OrPath, mimeType);
+
+      const ingredients = result.ingredients.map((item, idx) => ({
+        id: `ing-${idx}-${Date.now()}`,
+        name: item.name,
+        grams: item.grams,
+        per100: item.per100,
+        confidence: item.confidence
+      }));
+
+      this.nutrition.activeDraftMeal.set({
+        name: result.dishName,
+        image: this.previewImage(),
+        ingredients,
+        analyzing: false,
+        analysisProgress: 100
+      });
+    } finally {
+      this.isAnalyzing.set(false);
+    }
+  }
 
   addToLog() {
     this.nutrition.saveDraftMeal();
@@ -450,6 +567,7 @@ export class NutritionScanComponent {
   }
 
   retakePhoto() {
-    alert('Camera viewfinder refreshed. Point at your meal.');
+    this.runDemoScan();
   }
 }
+

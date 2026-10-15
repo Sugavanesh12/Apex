@@ -1,12 +1,14 @@
 import { Component, inject, signal } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { UserService } from '../../core/services/user.service';
 import { SupabaseService } from '../../core/services/supabase.service';
+import { GeminiService } from '../../core/services/gemini.service';
 import { AuthModalComponent } from '../../shared/ui/auth-modal/auth-modal.component';
 
 @Component({
   selector: 'app-settings',
   standalone: true,
-  imports: [AuthModalComponent],
+  imports: [FormsModule, AuthModalComponent],
   template: `
     <div class="settings-page">
       <header class="settings-header">
@@ -59,6 +61,47 @@ import { AuthModalComponent } from '../../shared/ui/auth-modal/auth-modal.compon
               </button>
             </div>
           }
+        </section>
+
+        <!-- Gemini AI Gateway (Milestone 3) -->
+        <section class="card settings-card">
+          <div class="card-head">
+            <h3>Gemini AI Gateway (Vision & Copilot)</h3>
+            @if (gemini.isConfigured()) {
+              <span class="badge badge-primary">🟢 Active (gemini-3.8-flash)</span>
+            } @else {
+              <span class="badge badge-cyan">Simulation Engine Ready</span>
+            }
+          </div>
+
+          <p class="section-desc">
+            Powers the camera meal scanner (portion & macro detection) and the real-time AI athletic coach chat with Google Gemini. Enter your personal Gemini API key or use the built-in smart simulation engine.
+          </p>
+
+          <div class="form-group" style="display: flex; flex-direction: column; gap: 8px;">
+            <label style="font-size: var(--fs-xs); color: var(--text-muted); font-weight: 600;">
+              Google Gemini API Key
+            </label>
+            <div style="display: flex; gap: var(--s-3); flex-wrap: wrap;">
+              <input
+                type="password"
+                [(ngModel)]="geminiKeyInput"
+                placeholder="AIzaSy..."
+                style="flex: 1; min-width: 260px; background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--r-input); padding: 10px 14px; color: var(--text); font-family: monospace; font-size: var(--fs-sm); outline: none;"
+              />
+              <button class="btn btn-primary" (click)="saveGeminiKey()">
+                Save AI Key
+              </button>
+              @if (gemini.apiKey()) {
+                <button class="btn btn-secondary" (click)="clearGeminiKey()">
+                  Remove
+                </button>
+              }
+            </div>
+            <span style="font-size: 0.7rem; color: var(--text-faint);">
+              Keys are stored securely in your browser's local sandbox storage and never shared with external third-party servers.
+            </span>
+          </div>
         </section>
 
         <!-- Appearance & Theme (Part E) -->
@@ -300,7 +343,21 @@ import { AuthModalComponent } from '../../shared/ui/auth-modal/auth-modal.compon
 export class SettingsComponent {
   user = inject(UserService);
   supabase = inject(SupabaseService);
+  gemini = inject(GeminiService);
   showAuthModal = signal<boolean>(false);
+
+  geminiKeyInput = this.gemini.apiKey();
+
+  saveGeminiKey() {
+    this.gemini.setApiKey(this.geminiKeyInput);
+    alert('Gemini API key saved! Live Gemini 3.8 Flash multimodal vision and coach chat activated.');
+  }
+
+  clearGeminiKey() {
+    this.geminiKeyInput = '';
+    this.gemini.setApiKey('');
+    alert('Gemini API key removed. Using built-in smart simulation engine.');
+  }
 
   async signOut() {
     await this.supabase.signOut();

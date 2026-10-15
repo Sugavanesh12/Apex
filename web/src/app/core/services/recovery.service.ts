@@ -1,5 +1,6 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, inject, signal } from '@angular/core';
 import { readiness } from '../../domain/readiness';
+import { SupabaseService } from './supabase.service';
 
 export type MoodLevel = 'Terrible' | 'Tired' | 'Okay' | 'Good' | 'Great';
 
@@ -16,6 +17,8 @@ export interface CheckinState {
   providedIn: 'root'
 })
 export class RecoveryService {
+  private supabase = inject(SupabaseService);
+
   readonly sleepTime = signal('7h 32m');
   readonly hrv = signal('82 ms');
   readonly restingHr = signal('52 bpm');
@@ -55,5 +58,18 @@ export class RecoveryService {
       hrvDeltaPct: 8
     });
     this.readinessResult.set(updated);
+
+    // Sync to Supabase in background
+    this.supabase.saveRecoveryCheckin({
+      mood: c.mood,
+      sleepHours: c.sleepHours,
+      sleepQuality: c.sleepQuality,
+      sorenessLevel: c.sorenessLevel,
+      energyLevel: c.energyLevel,
+      stressLevel: c.stressLevel,
+      readinessScore: updated.score,
+      readinessReason: updated.reason
+    }).catch(err => console.warn('Supabase recovery checkin notice:', err));
   }
 }
+

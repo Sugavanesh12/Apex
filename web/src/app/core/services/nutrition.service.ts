@@ -1,5 +1,6 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, inject, signal } from '@angular/core';
 import { nutrientsForGrams, sumNutrients } from '../../domain/macros';
+import { SupabaseService } from './supabase.service';
 
 export interface FoodItemIngredient {
   id: string;
@@ -90,6 +91,8 @@ export class NutritionService {
     ]
   });
 
+  private supabase = inject(SupabaseService);
+
   computedDraftTotals() {
     const draft = this.activeDraftMeal();
     const items = draft.ingredients.map(i => nutrientsForGrams(i.per100, i.grams));
@@ -110,18 +113,43 @@ export class NutritionService {
   }
 
   saveDraftMeal() {
+    const draft = this.activeDraftMeal();
     const totals = this.computedDraftTotals();
     this.caloriesConsumed.update(c => c + totals.kcal);
     this.proteinConsumed.update(p => Math.round(p + totals.protein));
     this.carbsConsumed.update(c => Math.round(c + totals.carbs));
     this.fatConsumed.update(f => Math.round(f + totals.fat));
+
+    // Sync to Supabase in background
+    const items = draft.ingredients.map(i => {
+      const n = nutrientsForGrams(i.per100, i.grams);
+      return {
+        name: i.name,
+        grams: i.grams,
+        kcal: n.kcal,
+        protein: n.protein,
+        carbs: n.carbs,
+        fat: n.fat
+      };
+    });
+
+    this.supabase.saveMeal({
+      name: draft.name,
+      totalKcal: totals.kcal,
+      totalProtein: totals.protein,
+      totalCarbs: totals.carbs,
+      totalFat: totals.fat,
+      items
+    }).catch(err => console.warn('Supabase meal sync notice:', err));
   }
 
   addWaterGlass() {
     this.waterGlasses.update(w => Math.min(this.waterTargetGlasses(), w + 1));
+    this.supabase.logWater(1, 250).catch(err => console.warn('Supabase water sync notice:', err));
   }
 
   removeWaterGlass() {
     this.waterGlasses.update(w => Math.max(0, w - 1));
   }
 }
+

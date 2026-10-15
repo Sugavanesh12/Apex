@@ -1,5 +1,6 @@
-import { Injectable, computed, signal } from '@angular/core';
+import { Injectable, computed, inject, signal } from '@angular/core';
 import { detectPr } from '../../domain/training';
+import { SupabaseService } from './supabase.service';
 
 export interface ExerciseItem {
   id: string;
@@ -186,6 +187,7 @@ export class WorkoutService {
 
   private timerInterval?: any;
   private restInterval?: any;
+  private supabase = inject(SupabaseService);
 
   readonly currentExercise = computed(() => {
     const s = this.liveSession();
@@ -284,6 +286,30 @@ export class WorkoutService {
   finishSession() {
     if (this.timerInterval) clearInterval(this.timerInterval);
     if (this.restInterval) clearInterval(this.restInterval);
+    const session = this.liveSession();
     this.liveSession.update(s => ({ ...s, isActive: false }));
+
+    // Sync to Supabase in background
+    const allSets: Array<{ exerciseId: string; setNumber: number; weightKg: number; reps: number; rpe?: number; isPr?: boolean }> = [];
+    session.exercises.forEach(e => {
+      e.sets.filter(s => s.completed).forEach(s => {
+        allSets.push({
+          exerciseId: e.exercise.id,
+          setNumber: s.setNumber,
+          weightKg: s.weightKg,
+          reps: s.reps,
+          rpe: s.rpe,
+          isPr: s.isPr
+        });
+      });
+    });
+
+    if (allSets.length > 0) {
+      this.supabase.saveWorkoutSession({
+        title: session.sessionTitle,
+        durationSeconds: session.elapsedSeconds,
+        sets: allSets
+      }).catch(err => console.warn('Supabase session sync notice:', err));
+    }
   }
 }

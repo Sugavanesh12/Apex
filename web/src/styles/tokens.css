@@ -1,0 +1,141 @@
+/* APEX design tokens — UI_DESIGN_AND_AI_STRATEGY Part E.
+   Dark "Performance" is default; light "Nourish" via [data-theme="light"]. */
+:root {
+  color-scheme: dark;
+
+  /* Surfaces */
+  --bg: #0b1015;
+  --bg-elev: #0f151b;
+  --surface: #131b22;
+  --surface-2: #1a242d;
+  --surface-3: #22303b;
+  --border: #243240;
+  --border-strong: #33475a;
+
+  /* Text */
+  --text: #e8edf2;
+  --text-muted: #93a1ae;
+  --text-faint: #66778a;
+
+  /* Brand */
+  --primary: #b8f23c;
+  --primary-hover: #c9f866;
+  --primary-press: #a2dc28;
+  --on-primary: #0b1015;
+  --primary-soft: rgb(184 242 60 / 0.12);
+  --primary-line: rgb(184 242 60 / 0.35);
+
+  --accent-1: #2cd4e8;      /* cyan: info / speed / carbs */
+  --accent-1-soft: rgb(44 212 232 / 0.12);
+  --accent-2: #ff9f43;      /* orange: PR / protein */
+  --accent-2-soft: rgb(255 159 67 / 0.12);
+  --accent-3: #8b7cff;      /* violet: mood / mind */
+  --accent-3-soft: rgb(139 124 255 / 0.14);
+
+  /* Macro colours — never change (Part E) */
+  --macro-protein: var(--accent-2);
+  --macro-carbs: var(--accent-1);
+  --macro-fat: var(--primary);
+
+  /* Semantic */
+  --success: #4ade80;
+  --warning: #fbbf24;
+  --danger: #f87171;
+  --info: #60a5fa;
+
+  /* Radius */
+  --r-input: 10px;
+  --r-card: 16px;
+  --r-lg: 20px;
+  --r-sheet: 24px;
+  --r-pill: 999px;
+
+  /* Spacing (4-pt) */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+
+  /* Type */
+  --font-display: 'Archivo Variable', 'Archivo', 'Segoe UI', system-ui, sans-serif;
+  --font-ui: 'Inter Variable', 'Inter', 'Segoe UI', system-ui, sans-serif;
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.8125rem;
+  --fs-md: 0.9375rem;
+  --fs-lg: 1.125rem;
+  --fs-xl: 1.5rem;
+  --fs-2xl: 2rem;
+  --fs-3xl: 2.75rem;
+
+  /* Elevation — used sparingly */
+  --shadow-1: 0 1px 0 rgb(255 255 255 / 0.03) inset, 0 1px 2px rgb(0 0 0 / 0.35);
+  --shadow-2: 0 12px 32px -12px rgb(0 0 0 / 0.6);
+  --focus-ring: 0 0 0 2px var(--bg), 0 0 0 4px var(--primary);
+
+  /* Motion */
+  --t-fast: 120ms;
+  --t-med: 220ms;
+  --t-slow: 320ms;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  /* Layout */
+  --sidebar-w: 232px;
+  --rail-w: 76px;
+  --topbar-h: 64px;
+  --tabbar-h: 68px;
+  --copilot-w: 340px;
+}
+
+[data-theme='light'] {
+  color-scheme: light;
+  --bg: #faf6f1;
+  --bg-elev: #f6f0e8;
+  --surface: #ffffff;
+  --surface-2: #f3ece4;
+  --surface-3: #ebe1d6;
+  --border: #e6ddd2;
+  --border-strong: #d4c6b6;
+
+  --text: #2a1f2d;
+  --text-muted: #6b5f6e;
+  --text-faint: #908392;
+
+  --primary: #5b2a4e;
+  --primary-hover: #6e3560;
+  --primary-press: #4a2140;
+  --on-primary: #ffffff;
+  --primary-soft: rgb(91 42 78 / 0.08);
+  --primary-line: rgb(91 42 78 / 0.3);
+
+  --accent-1: #0e8fa0;
+  --accent-1-soft: rgb(14 143 160 / 0.1);
+  --accent-2: #d9653f;
+  --accent-2-soft: rgb(217 101 63 / 0.1);
+  --accent-3: #6a5ad6;
+  --accent-3-soft: rgb(106 90 214 / 0.1);
+  --macro-fat: #4f9d6f;
+
+  --success: #2f8f57;
+  --warning: #b7791f;
+  --danger: #c2413b;
+  --info: #2f6fb7;
+
+  --shadow-1: 0 1px 2px rgb(42 31 45 / 0.06);
+  --shadow-2: 0 12px 32px -16px rgb(42 31 45 / 0.25);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --t-fast: 0ms;
+    --t-med: 0ms;
+    --t-slow: 0ms;
+  }
+}
+[data-motion='reduced'] {
+  --t-fast: 0ms;
+  --t-med: 0ms;
+  --t-slow: 0ms;
+}

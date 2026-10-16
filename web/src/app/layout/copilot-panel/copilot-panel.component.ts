@@ -362,6 +362,23 @@ import { CoachService } from '../../core/services/coach.service';
       opacity: 0.4;
       cursor: default;
     }
+
+    @media (max-width: 600px) {
+      .copilot-panel {
+        width: 100vw;
+        max-width: 100vw;
+        border-left: none;
+      }
+      .panel-header {
+        padding: 12px 14px;
+      }
+      .panel-body {
+        padding: 12px 14px;
+      }
+      .panel-footer {
+        padding: 10px 14px calc(var(--tabbar-h) + 10px);
+      }
+    }
   `]
 })
 export class CopilotPanelComponent {

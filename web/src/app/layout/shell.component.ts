@@ -70,13 +70,13 @@ import { BottomNavComponent } from './bottom-nav/bottom-nav.component';
         display: none;
       }
       .page-content {
-        padding: 12px 12px calc(var(--tabbar-h) + 48px);
+        padding: 12px 12px calc(var(--tabbar-h) + 16px);
         -webkit-overflow-scrolling: touch;
       }
     }
     @media (max-width: 480px) {
       .page-content {
-        padding: 10px 8px calc(var(--tabbar-h) + 52px);
+        padding: 10px 8px calc(var(--tabbar-h) + 16px);
       }
     }
   `]

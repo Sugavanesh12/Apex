@@ -2343,6 +2343,8 @@ interface CalendarDay {
       display: flex;
       align-items: center;
       gap: 8px;
+      flex-wrap: wrap;
+      min-width: 0;
     }
     .ex-bullet {
       color: var(--primary);
@@ -2352,6 +2354,8 @@ interface CalendarDay {
       font-size: 0.95rem;
       font-weight: 700;
       color: var(--text);
+      overflow-wrap: break-word;
+      word-break: normal;
     }
     .ex-muscle-tag {
       font-size: 0.68rem;
@@ -3077,6 +3081,22 @@ interface CalendarDay {
       }
     }
     @media (max-width: 768px) {
+      .qg-steps-grid {
+        grid-template-columns: 1fr;
+      }
+      .qg-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      .qg-title-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+      }
+      .qg-subtitle {
+        font-size: 0.72rem;
+      }
       .banner-exercises-grid {
         grid-template-columns: 1fr;
       }
@@ -3091,6 +3111,42 @@ interface CalendarDay {
       .start-btn {
         width: 100%;
         justify-content: center;
+      }
+      .inspector-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      .inspector-actions-top {
+        width: 100%;
+      }
+      .add-day-btn {
+        width: 100%;
+        justify-content: center;
+      }
+      .ex-detail-title-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+      }
+      .form-preview-btn {
+        width: 100%;
+        justify-content: center;
+      }
+      .sets-chips-wrap {
+        flex-wrap: wrap;
+      }
+      .set-chip {
+        font-size: 0.72rem;
+        padding: 3px 8px;
+      }
+      .cal-legend {
+        flex-wrap: wrap;
+        gap: 8px;
+        font-size: 0.68rem;
+      }
+      .calendar-card, .inspector-card {
+        padding: 12px;
       }
       .exercise-grid {
         grid-template-columns: 1fr;
@@ -3109,11 +3165,20 @@ interface CalendarDay {
     }
 
     @media (max-width: 600px) {
+      .calendar-card {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+      }
       .days-grid {
-        gap: 3px;
+        gap: 2px;
+      }
+      .weekdays-grid {
+        font-size: 0.65rem;
+        padding: 4px 0;
       }
       .day-cell {
-        min-height: 40px;
+        min-height: 42px;
         padding: 3px 1px;
         aspect-ratio: auto;
       }
@@ -3121,8 +3186,23 @@ interface CalendarDay {
         font-size: 0.72rem;
       }
       .day-workout-pill {
-        font-size: 0.55rem;
-        padding: 0 2px;
+        font-size: 0.5rem;
+        padding: 1px 2px;
+        gap: 2px;
+      }
+      .workout-dot {
+        width: 4px;
+        height: 4px;
+      }
+      .sess-metrics-row {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+      .metric-pill {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 6px 10px;
       }
       .water-glasses-deck {
         grid-template-columns: repeat(4, 1fr);

@@ -727,35 +727,85 @@ interface QuestionItem {
     }
     @media (max-width: 768px) {
       .coach-full-page {
-        height: calc(100dvh - var(--topbar-h) - var(--tabbar-h) - 16px);
-        max-height: calc(100dvh - var(--topbar-h) - var(--tabbar-h) - 16px);
+        height: auto;
+        min-height: calc(100vh - var(--topbar-h) - var(--tabbar-h) - 30px);
+        max-height: none;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
       }
       .coach-header {
         flex-direction: column;
         align-items: flex-start;
-        gap: var(--s-2);
+        gap: 4px;
+      }
+      .title-row {
+        gap: 8px;
+      }
+      .title-row h2 {
+        font-size: 1.25rem;
+      }
+      .engine-chip {
+        font-size: 0.68rem;
+        padding: 3px 8px;
+      }
+      .sub {
+        font-size: 0.72rem;
+        margin-top: 0;
       }
       .header-actions {
         width: 100%;
-        justify-content: space-between;
+        justify-content: flex-end;
       }
       .safety-chip {
         display: none;
       }
+      .telemetry-hud-strip {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px;
+        padding: 8px 10px;
+      }
+      .hud-item {
+        padding: 6px 8px;
+        gap: 6px;
+      }
+      .hud-icon {
+        font-size: 1rem;
+      }
+      .hud-meta {
+        gap: 1px;
+      }
+      .hud-label {
+        font-size: 0.55rem;
+        letter-spacing: 0.04em;
+      }
+      .hud-val {
+        font-size: 0.76rem;
+      }
+      .hud-sub {
+        display: none;
+      }
       .chat-container {
         flex: 1;
-        min-height: 0;
+        min-height: 420px;
+        display: flex;
+        flex-direction: column;
       }
       .messages-area {
-        padding: 12px;
-        gap: 12px;
+        flex: 1;
+        min-height: 220px;
+        max-height: 52vh;
+        overflow-y: auto;
+        padding: 10px 12px;
+        gap: 10px;
       }
       .chat-bubble {
-        max-width: 94%;
+        max-width: 92%;
         padding: 10px 12px;
       }
       .question-explorer {
-        padding: 6px 10px;
+        padding: 6px 8px;
       }
       .category-tabs {
         overflow-x: auto;
@@ -772,9 +822,12 @@ interface QuestionItem {
       .chat-composer input {
         font-size: 14px;
         padding: 8px 14px;
+        min-width: 0;
       }
       .send-action-btn {
-        padding: 0 12px;
+        padding: 0 14px;
+        white-space: nowrap;
+        font-size: 0.78rem;
       }
     }
   `]

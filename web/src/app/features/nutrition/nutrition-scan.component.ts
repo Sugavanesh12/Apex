@@ -441,6 +441,9 @@ interface FoodPreset {
       display: flex;
       flex-direction: column;
       gap: var(--s-4);
+      width: 100%;
+      box-sizing: border-box;
+      overflow-x: hidden;
     }
     .scan-header {
       display: flex;
@@ -1546,11 +1549,17 @@ interface FoodPreset {
         gap: 6px;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
       }
       .presets-chips {
         display: flex;
         gap: 6px;
         flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        min-width: 0;
       }
       .preset-chip {
         padding: 4px 8px;

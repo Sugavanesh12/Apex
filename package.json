@@ -1,0 +1,13 @@
+{
+  "name": "apex-athlete-os",
+  "version": "1.0.0",
+  "description": "Apex Athlete OS - High-Performance Training, Nutrition, & Recovery Engine",
+  "main": "server.js",
+  "scripts": {
+    "build": "cd web && npm install && npm run build",
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

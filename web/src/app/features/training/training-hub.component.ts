@@ -80,6 +80,104 @@ interface CalendarDay {
             </div>
           }
 
+          <!-- Athlete Level & Achievements Showcase Ribbon -->
+          <section class="athlete-level-ribbon card">
+            <div class="ribbon-main">
+              <!-- Left: Rank & XP -->
+              <div class="athlete-rank-col">
+                <div class="rank-shield">
+                  <span class="shield-lvl">LVL</span>
+                  <span class="shield-num">{{ athleteLevel() }}</span>
+                </div>
+                <div class="rank-details">
+                  <div class="rank-title-row">
+                    <h3 class="rank-title">TITAN ATHLETE · DIV I</h3>
+                    <span class="streak-badge">🔥 {{ activeStreakDays() }}-Day Streak (1.5× XP)</span>
+                  </div>
+                  <div class="xp-bar-wrap">
+                    <div class="xp-bar-track">
+                      <div class="xp-bar-fill" [style.width.%]="(athleteXp() / nextLevelXp()) * 100"></div>
+                    </div>
+                    <div class="xp-text-row">
+                      <span>{{ athleteXp() | number }} / {{ nextLevelXp() | number }} XP</span>
+                      <span class="xp-left">{{ nextLevelXp() - athleteXp() }} XP to Level {{ athleteLevel() + 1 }} Master Titan</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right: 4 Unlocked Achievement Medals -->
+              <div class="achievements-col">
+                <div class="achieve-col-head">
+                  <span class="achieve-lbl">ACCOLADES & BADGES ({{ achievements().length - 1 }} UNLOCKED)</span>
+                  <span class="achieve-hint">Click badge to view milestone</span>
+                </div>
+                <div class="badges-row">
+                  @for (badge of achievements(); track badge.id) {
+                    <button
+                      type="button"
+                      class="medal-badge-btn"
+                      [class.unlocked]="badge.unlocked"
+                      [class.locked]="!badge.unlocked"
+                      [class.is-active]="selectedAchievement()?.id === badge.id"
+                      (click)="selectedAchievement.set(selectedAchievement()?.id === badge.id ? null : badge)"
+                      [title]="badge.title + ': ' + badge.desc"
+                    >
+                      <span class="badge-icon">{{ badge.icon }}</span>
+                      <div class="badge-info">
+                        <span class="badge-name">{{ badge.title }}</span>
+                        <span class="badge-stat">{{ badge.stat }}</span>
+                      </div>
+                      <span class="badge-xp-tag">{{ badge.xp }}</span>
+                    </button>
+                  }
+                </div>
+              </div>
+            </div>
+
+            <!-- Achievement Detail Popover Drawer -->
+            @if (selectedAchievement()) {
+              <div class="achievement-inspect-drawer animated-fade-in">
+                <div class="aid-left">
+                  <span class="aid-icon">{{ selectedAchievement().icon }}</span>
+                  <div>
+                    <div class="aid-title-row">
+                      <h4>{{ selectedAchievement().title }}</h4>
+                      <span class="badge-xp-tag">{{ selectedAchievement().xp }}</span>
+                      <span class="aid-status" [class.unlocked]="selectedAchievement().unlocked">
+                        {{ selectedAchievement().unlocked ? '✓ Unlocked' : '⏳ In Progress' }}
+                      </span>
+                    </div>
+                    <p class="aid-desc">{{ selectedAchievement().desc }}</p>
+                    <span class="aid-date">{{ selectedAchievement().date }} · Benchmark: {{ selectedAchievement().stat }}</span>
+                  </div>
+                </div>
+                <button type="button" class="close-drawer-btn" (click)="selectedAchievement.set(null)">✕</button>
+              </div>
+            }
+
+            <!-- Active Program Switcher Selector Strip -->
+            <div class="program-switcher-strip">
+              <div class="prog-label-row">
+                <span class="prog-tag">ACTIVE MACROCYCLE:</span>
+                <span class="prog-active-name">{{ activeProgram() }}</span>
+              </div>
+              <div class="prog-pills-row">
+                @for (p of trainingPrograms; track p.id) {
+                  <button
+                    type="button"
+                    class="prog-pill-btn"
+                    [class.active]="activeProgram() === p.name"
+                    (click)="switchProgram(p.name)"
+                  >
+                    <span class="p-days">{{ p.daysPerWeek }}D</span>
+                    <span class="p-name">{{ p.name }}</span>
+                  </button>
+                }
+              </div>
+            </div>
+          </section>
+
           <!-- Interactive Quick-Start Guide Bar (User Friendly) -->
           <section class="quick-guide-strip card">
             <div class="qg-top">
@@ -851,6 +949,326 @@ interface CalendarDay {
       display: flex;
       flex-direction: column;
       gap: var(--s-4);
+    }
+
+    /* Athlete Level & Achievements Ribbon */
+    .athlete-level-ribbon {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.08) 0%, rgba(11, 16, 21, 0.95) 50%, rgba(34, 197, 94, 0.08) 100%);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-radius: var(--r-card);
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.28);
+    }
+    .ribbon-main {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .athlete-rank-col {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      min-width: 280px;
+      flex: 1;
+    }
+    .rank-shield {
+      width: 58px;
+      height: 64px;
+      background: linear-gradient(180deg, #f59e0b 0%, #b45309 100%);
+      border-radius: 8px 8px 24px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #0b1015;
+      font-weight: 900;
+      box-shadow: 0 4px 16px rgba(245, 158, 11, 0.4);
+      border: 2px solid #fef3c7;
+      flex-shrink: 0;
+    }
+    .shield-lvl {
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      line-height: 1;
+    }
+    .shield-num {
+      font-size: 1.55rem;
+      line-height: 1;
+      font-family: var(--font-display);
+    }
+    .rank-details {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex: 1;
+    }
+    .rank-title-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .rank-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: 0.04em;
+      margin: 0;
+    }
+    .streak-badge {
+      font-size: 0.68rem;
+      font-weight: 800;
+      background: rgba(239, 68, 68, 0.18);
+      color: #f87171;
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      padding: 2px 8px;
+      border-radius: var(--r-pill);
+    }
+    .xp-bar-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .xp-bar-track {
+      width: 100%;
+      height: 7px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: var(--r-pill);
+      overflow: hidden;
+    }
+    .xp-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #f59e0b 0%, #22c55e 100%);
+      border-radius: var(--r-pill);
+      transition: width 0.4s ease;
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
+    }
+    .xp-text-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+    .xp-left {
+      color: var(--primary);
+    }
+
+    /* Achievements Badges */
+    .achievements-col {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1.5;
+    }
+    .achieve-col-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .achieve-lbl {
+      font-size: 0.65rem;
+      font-weight: 800;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+    }
+    .achieve-hint {
+      font-size: 0.62rem;
+      color: var(--text-faint);
+    }
+    .badges-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .medal-badge-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(11, 16, 21, 0.7);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      padding: 6px 10px;
+      color: var(--text);
+      cursor: pointer;
+      transition: all var(--t-fast);
+      text-align: left;
+    }
+    .medal-badge-btn:hover {
+      border-color: rgba(245, 158, 11, 0.5);
+      background: rgba(245, 158, 11, 0.1);
+      transform: translateY(-2px);
+    }
+    .medal-badge-btn.unlocked {
+      border-color: rgba(245, 158, 11, 0.35);
+    }
+    .medal-badge-btn.locked {
+      opacity: 0.55;
+      filter: grayscale(0.5);
+    }
+    .medal-badge-btn.is-active {
+      border-color: var(--primary);
+      background: rgba(34, 197, 94, 0.15);
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.3);
+    }
+    .badge-icon {
+      font-size: 1.15rem;
+    }
+    .badge-info {
+      display: flex;
+      flex-direction: column;
+    }
+    .badge-name {
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: #fff;
+    }
+    .badge-stat {
+      font-size: 0.62rem;
+      color: var(--text-muted);
+    }
+    .badge-xp-tag {
+      font-size: 0.58rem;
+      font-weight: 800;
+      padding: 1px 5px;
+      border-radius: var(--r-pill);
+      background: rgba(245, 158, 11, 0.2);
+      color: #fbbf24;
+      border: 1px solid rgba(245, 158, 11, 0.4);
+    }
+
+    /* Achievement Drawer */
+    .achievement-inspect-drawer {
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      border-radius: var(--r-md);
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .aid-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .aid-icon {
+      font-size: 1.8rem;
+    }
+    .aid-title-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .aid-title-row h4 {
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: #fff;
+      margin: 0;
+    }
+    .aid-status {
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 1px 6px;
+      border-radius: var(--r-pill);
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-muted);
+    }
+    .aid-status.unlocked {
+      background: rgba(34, 197, 94, 0.2);
+      color: var(--primary);
+    }
+    .aid-desc {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin: 2px 0;
+    }
+    .aid-date {
+      font-size: 0.65rem;
+      color: var(--text-faint);
+    }
+    .close-drawer-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 1rem;
+      padding: 4px;
+    }
+
+    /* Program Switcher Strip */
+    .program-switcher-strip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      flex-wrap: wrap;
+    }
+    .prog-label-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .prog-tag {
+      font-size: 0.62rem;
+      font-weight: 800;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+    }
+    .prog-active-name {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+    .prog-pills-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .prog-pill-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: var(--r-pill);
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.72rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all var(--t-fast);
+    }
+    .prog-pill-btn:hover {
+      border-color: rgba(34, 197, 94, 0.4);
+      color: #fff;
+    }
+    .prog-pill-btn.active {
+      background: rgba(34, 197, 94, 0.18);
+      border-color: var(--primary);
+      color: var(--primary);
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.25);
+    }
+    .p-days {
+      font-size: 0.6rem;
+      padding: 1px 4px;
+      border-radius: 3px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
     }
 
     /* Quick Guide Strip (User Friendly Onboarding) */
@@ -2705,6 +3123,132 @@ export class TrainingHubComponent implements OnInit {
         this.showJustFinishedBanner.set(true);
       }
     });
+  }
+
+  // Athlete Progression & Achievements State
+  athleteLevel = signal<number>(14);
+  athleteXp = signal<number>(3150);
+  nextLevelXp = signal<number>(4000);
+  activeStreakDays = signal<number>(5);
+  selectedAchievement = signal<any | null>(null);
+
+  achievements = signal([
+    {
+      id: 'tonnage-100k',
+      icon: '🏆',
+      title: '100k Club',
+      desc: 'Lifted 100,000+ kg lifetime volume across barbell & compound lifts.',
+      stat: '142,500 kg',
+      unlocked: true,
+      xp: '+500 XP',
+      date: 'Unlocked Oct 14'
+    },
+    {
+      id: 'streak-5',
+      icon: '🔥',
+      title: 'Iron Consistency',
+      desc: 'Logged 5 consecutive scheduled training sessions without missing.',
+      stat: '5-Day Streak',
+      unlocked: true,
+      xp: '+300 XP',
+      date: 'Active Streak'
+    },
+    {
+      id: 'pr-smasher',
+      icon: '⚡',
+      title: 'PR Smasher',
+      desc: 'Smashed personal record on Back Squat with 140 kg 1RM estimation.',
+      stat: 'Squat 140 kg',
+      unlocked: true,
+      xp: '+450 XP',
+      date: 'New PR Set'
+    },
+    {
+      id: 'iron-recovery',
+      icon: '🛡️',
+      title: 'Iron Recovery',
+      desc: 'Maintained 85%+ readiness score for 3 consecutive training cycles.',
+      stat: '88% Avg Readiness',
+      unlocked: true,
+      xp: '+250 XP',
+      date: 'Unlocked Oct 12'
+    },
+    {
+      id: 'centurion',
+      icon: '🔒',
+      title: 'Centurion Volume',
+      desc: 'Complete 100 working sets in a single calendar month.',
+      stat: '78 / 100 Sets',
+      unlocked: false,
+      xp: '+600 XP',
+      date: '78% Complete'
+    }
+  ]);
+
+  trainingPrograms = [
+    {
+      id: 'olympic',
+      name: 'Olympic Strength & Hypertrophy',
+      daysPerWeek: 4,
+      split: 'Upper / Lower Conjugate',
+      focus: 'Periodized Compound Strength & Kinetic Power'
+    },
+    {
+      id: 'powerbuilding',
+      name: 'Powerbuilding Progression',
+      daysPerWeek: 5,
+      split: 'Push / Pull / Legs + Weakpoint',
+      focus: 'Mechanical Tension & Structural Density'
+    },
+    {
+      id: 'athletic-engine',
+      name: 'Athletic Engine & Hybrid',
+      daysPerWeek: 4,
+      split: 'Full Body Compound + Lactate Threshold',
+      focus: 'VO2 Max, Power-to-Weight & Functional Capacity'
+    },
+    {
+      id: 'mobility-reset',
+      name: 'Mobility & Deload Active',
+      daysPerWeek: 3,
+      split: 'Full Body Mobility & Core Stability',
+      focus: 'Tendon Remodeling & Central Nervous System Recovery'
+    }
+  ];
+
+  activeProgram = signal<string>('Olympic Strength & Hypertrophy');
+
+  switchProgram(programName: string) {
+    this.activeProgram.set(programName);
+    if (programName.includes('Powerbuilding')) {
+      this.prescribedExercises = [
+        { name: 'Barbell Bench Press', targetSets: 4, targetReps: 6, targetWeight: '95 kg', muscle: 'Chest' },
+        { name: 'Incline Dumbbell Press', targetSets: 3, targetReps: 10, targetWeight: '32 kg DBs', muscle: 'Upper Chest' },
+        { name: 'Overhead Barbell Press', targetSets: 3, targetReps: 8, targetWeight: '55 kg', muscle: 'Shoulders' },
+        { name: 'Cable Tricep Pushdown', targetSets: 4, targetReps: 12, targetWeight: '35 kg', muscle: 'Triceps' }
+      ];
+    } else if (programName.includes('Athletic Engine')) {
+      this.prescribedExercises = [
+        { name: 'Conventional Barbell Deadlift', targetSets: 4, targetReps: 5, targetWeight: '145 kg', muscle: 'Posterior Chain' },
+        { name: 'Kettlebell Russian Swings', targetSets: 4, targetReps: 15, targetWeight: '28 kg KB', muscle: 'Hips & Core' },
+        { name: 'Pull-Ups (Weighted)', targetSets: 4, targetReps: 8, targetWeight: '+10 kg', muscle: 'Lats & Biceps' },
+        { name: 'Walking Dumbbell Lunges', targetSets: 3, targetReps: 12, targetWeight: '20 kg DBs', muscle: 'Quads & Balance' }
+      ];
+    } else if (programName.includes('Mobility')) {
+      this.prescribedExercises = [
+        { name: 'Goblet Squat (Pause)', targetSets: 3, targetReps: 10, targetWeight: '24 kg KB', muscle: 'Hip Mobility & Quads' },
+        { name: 'Hanging Leg Raises', targetSets: 3, targetReps: 12, targetWeight: 'Bodyweight', muscle: 'Anterior Core' },
+        { name: 'Face Pulls with External Rotation', targetSets: 4, targetReps: 15, targetWeight: '20 kg Cable', muscle: 'Rear Delts & Rotators' },
+        { name: 'Single-Leg RDL', targetSets: 3, targetReps: 10, targetWeight: '16 kg DB', muscle: 'Hamstrings & Stability' }
+      ];
+    } else {
+      this.prescribedExercises = [
+        { name: 'Barbell Back Squat', targetSets: 4, targetReps: 8, targetWeight: '120 kg', muscle: 'Quads' },
+        { name: 'Romanian Deadlift (RDL)', targetSets: 3, targetReps: 8, targetWeight: '85 kg', muscle: 'Hamstrings' },
+        { name: 'Bulgarian Split Squat', targetSets: 3, targetReps: 10, targetWeight: '22 kg DBs', muscle: 'Quads & Glutes' },
+        { name: 'Standing Calf Raise', targetSets: 3, targetReps: 15, targetWeight: '80 kg', muscle: 'Calves' }
+      ];
+    }
   }
 
   prescribedExercises = [

@@ -1,5 +1,6 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal, OnInit, OnDestroy } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
+import { DecimalPipe } from '@angular/common';
 import { IconComponent } from '../../shared/ui/icon/icon.component';
 import { WorkoutService, CompletedSessionItem } from '../../core/services/workout.service';
 import { ExerciseModalComponent } from '../../shared/ui/exercise-modal/exercise-modal.component';
@@ -7,27 +8,72 @@ import { ExerciseModalComponent } from '../../shared/ui/exercise-modal/exercise-
 @Component({
   selector: 'app-live-session',
   standalone: true,
-  imports: [RouterLink, IconComponent, ExerciseModalComponent],
+  imports: [RouterLink, DecimalPipe, IconComponent, ExerciseModalComponent],
   template: `
     <div class="live-session-page">
-      <!-- Session Top Bar (Zero Timers) -->
+      <!-- Session Top Bar with Live Telemetry -->
       <header class="session-topbar">
         <a routerLink="/training" class="back-link">
           <app-icon name="chevron-left" [size]="20" />
           <span class="topbar-title">Live Session</span>
         </a>
 
+        <!-- Live Telemetry HUD Strip -->
         <div class="topbar-session-info">
-          <span class="live-dot"></span>
-          <span class="active-badge">{{ workout.liveSession().sessionTitle }}</span>
-          <span class="moves-badge">{{ workout.liveSession().exercises.length }} Exercises</span>
+          <div class="hud-chip timer-chip">
+            <span class="pulse-dot"></span>
+            <span class="hud-val num">{{ sessionTimeFormatted() }}</span>
+          </div>
+          <div class="hud-chip volume-chip" [class.pulse-bump]="tonnagePulsing()">
+            <app-icon name="barbell" [size]="14" />
+            <span class="hud-val num">{{ liveTonnage() | number }} kg</span>
+            <span class="hud-lbl">VOL</span>
+          </div>
+          <div class="hud-chip progress-chip">
+            <span class="hud-val num">{{ completedSetsCount() }}/{{ totalSetsCount() }}</span>
+            <span class="hud-lbl">SETS</span>
+          </div>
         </div>
 
         <button class="btn btn-primary finish-btn" (click)="finishWorkout()">
-          <app-icon name="check" [size]="16" />
+          <app-icon name="trophy" [size]="16" />
           <span>Finish Workout</span>
         </button>
       </header>
+
+      <!-- Floating / Embedded Interactive Rest Timer HUD -->
+      @if (restTimerActive()) {
+        <div class="rest-timer-strip card animated-slide-down">
+          <div class="rest-left">
+            <div class="rest-pulsing-icon">
+              <app-icon name="zap" [size]="20" />
+            </div>
+            <div class="rest-info">
+              <div class="rest-title-row">
+                <span class="rest-title">Rest & Metabolic Recovery</span>
+                <span class="rest-tag">ATP-CP Replenishing</span>
+              </div>
+              <div class="rest-countdown num">{{ restTimeFormatted() }}</div>
+            </div>
+          </div>
+
+          <div class="rest-controls">
+            <button class="btn btn-ghost btn-sm" (click)="adjustRest(-15)">-15s</button>
+            <button class="btn btn-ghost btn-sm" (click)="adjustRest(15)">+15s</button>
+            <button class="btn btn-primary btn-sm skip-rest-btn" (click)="skipRest()">
+              Skip Rest ⏭
+            </button>
+          </div>
+        </div>
+      }
+
+      <!-- Set Completion Toast Notification -->
+      @if (showSetCelebration()) {
+        <div class="set-celebration-toast animated-bounce">
+          <span class="celeb-icon">⚡</span>
+          <span>SET COMPLETED: +{{ lastLoggedSetWeight() | number }} kg Volume Added!</span>
+        </div>
+      }
 
       <!-- 4-Exercise Stepper Tabs Bar -->
       <div class="exercise-stepper-bar">
@@ -175,7 +221,7 @@ import { ExerciseModalComponent } from '../../shared/ui/exercise-modal/exercise-
                   } @else {
                     <button
                       class="check-btn"
-                      (click)="workout.completeCurrentSet(idx)"
+                      (click)="logSetWithCelebration(idx, set)"
                       title="Tap to complete set"
                     >
                       ✓
@@ -223,6 +269,81 @@ import { ExerciseModalComponent } from '../../shared/ui/exercise-modal/exercise-
         (closed)="showFormModal.set(false)"
       />
     }
+
+    <!-- WORKOUT CONQUERED ACHIEVEMENT CELEBRATION MODAL -->
+    @if (showConqueredModal()) {
+      <div class="modal-backdrop celebration-backdrop" (click)="showConqueredModal.set(false)">
+        <div class="modal-card conquered-card card animated-scale-up" (click)="$event.stopPropagation()">
+          <div class="conquered-confetti-fx"></div>
+          
+          <div class="conquered-head">
+            <div class="trophy-badge-ring">
+              <span class="trophy-emoji">🏆</span>
+            </div>
+            <span class="conquered-badge">OLYMPIC DISCIPLINE</span>
+            <h2 class="conquered-title">WORKOUT CONQUERED!</h2>
+            <p class="conquered-sub">{{ workout.liveSession().sessionTitle }} completed with 100% volume adherence.</p>
+          </div>
+
+          <!-- 4 Summary Telemetry Tiles -->
+          <div class="conquered-metrics-grid">
+            <div class="c-metric-tile">
+              <span class="cm-lbl">TOTAL TONNAGE</span>
+              <span class="cm-val num stat-cyan">{{ liveTonnage() | number }} kg</span>
+              <span class="cm-sub">Direct mechanical load</span>
+            </div>
+            <div class="c-metric-tile">
+              <span class="cm-lbl">SETS RECORDED</span>
+              <span class="cm-val num stat-green">{{ completedSetsCount() }} Sets</span>
+              <span class="cm-sub">{{ workout.liveSession().exercises.length }} Exercises</span>
+            </div>
+            <div class="c-metric-tile">
+              <span class="cm-lbl">TOTAL DURATION</span>
+              <span class="cm-val num text-primary">{{ sessionTimeFormatted() }}</span>
+              <span class="cm-sub">Active training time</span>
+            </div>
+            <div class="c-metric-tile">
+              <span class="cm-lbl">KINEMATIC FORM</span>
+              <span class="cm-val num stat-orange">98%</span>
+              <span class="cm-sub">Bar path & stability</span>
+            </div>
+          </div>
+
+          <!-- Achievement Unlocks Box -->
+          <div class="conquered-achievements-box">
+            <div class="ca-header">
+              <span class="ca-icon">⭐</span>
+              <span class="ca-title">Milestones & XP Unlocked</span>
+            </div>
+            <div class="ca-items">
+              <div class="ca-item">
+                <span class="ca-badge">🏅 NEW PR</span>
+                <span class="ca-text">Peak Working Set: {{ workout.currentExercise().exercise.name }}</span>
+              </div>
+              <div class="ca-item">
+                <span class="ca-badge">🔥 5-DAY STREAK</span>
+                <span class="ca-text">Consistency bonus activated (+150 XP)</span>
+              </div>
+              <div class="ca-item">
+                <span class="ca-badge">⚡ LEVEL 14</span>
+                <span class="ca-text">+450 XP Added to Athlete Profile</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Actions -->
+          <div class="conquered-actions">
+            <button class="btn btn-secondary" (click)="showConqueredModal.set(false)">
+              Review Sets
+            </button>
+            <button class="btn btn-primary claim-btn" (click)="confirmFinishWorkout()">
+              <app-icon name="check" [size]="16" />
+              <span>Claim XP & Save to Calendar →</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    }
   `,
   styles: [`
     .live-session-page {
@@ -256,28 +377,59 @@ import { ExerciseModalComponent } from '../../shared/ui/exercise-modal/exercise-
     .topbar-session-info {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
+      flex-wrap: wrap;
     }
-    .live-dot {
+    .hud-chip {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      padding: 5px 12px;
+      border-radius: var(--r-pill);
+      font-size: var(--fs-xs);
+      font-weight: 700;
+      color: var(--text);
+      transition: all 0.2s ease;
+    }
+    .timer-chip {
+      border-color: rgba(204, 255, 0, 0.3);
+      color: var(--primary);
+    }
+    .volume-chip {
+      border-color: rgba(56, 189, 248, 0.3);
+      color: #38bdf8;
+    }
+    .volume-chip.pulse-bump {
+      transform: scale(1.1);
+      border-color: var(--primary);
+      box-shadow: 0 0 14px var(--primary);
+      color: var(--primary);
+    }
+    .progress-chip {
+      color: var(--text-muted);
+    }
+    .hud-val {
+      font-weight: 800;
+      font-size: 0.85rem;
+    }
+    .hud-lbl {
+      font-size: 0.65rem;
+      letter-spacing: 0.05em;
+      opacity: 0.7;
+    }
+    .pulse-dot {
       width: 8px;
       height: 8px;
       border-radius: 50%;
       background: var(--primary);
       box-shadow: 0 0 10px var(--primary);
+      animation: pulse 1.5s infinite;
     }
-    .active-badge {
-      font-weight: 700;
-      font-size: var(--fs-sm);
-      color: var(--text);
-    }
-    .moves-badge {
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      padding: 3px 10px;
-      border-radius: var(--r-pill);
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      font-weight: 600;
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
     }
     .finish-btn {
       padding: 8px 18px;
@@ -285,6 +437,234 @@ import { ExerciseModalComponent } from '../../shared/ui/exercise-modal/exercise-
       display: flex;
       align-items: center;
       gap: 8px;
+    }
+
+    /* Rest Timer Strip */
+    .rest-timer-strip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 18px;
+      background: rgba(14, 21, 30, 0.95);
+      border: 1px solid rgba(204, 255, 0, 0.35);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      gap: 12px;
+      margin-bottom: 4px;
+      border-radius: var(--r-card);
+    }
+    .rest-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .rest-pulsing-icon {
+      color: var(--primary);
+      animation: pulse 1s infinite alternate;
+    }
+    .rest-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .rest-title-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .rest-title {
+      font-size: var(--fs-xs);
+      font-weight: 700;
+      color: var(--text);
+    }
+    .rest-tag {
+      font-size: 0.65rem;
+      color: var(--primary);
+      background: rgba(204, 255, 0, 0.1);
+      padding: 1px 6px;
+      border-radius: 4px;
+      letter-spacing: 0.03em;
+    }
+    .rest-countdown {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--primary);
+      letter-spacing: 0.04em;
+    }
+    .rest-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .skip-rest-btn {
+      font-size: 0.78rem;
+      padding: 6px 14px;
+    }
+
+    /* Set Celebration Toast */
+    .set-celebration-toast {
+      position: fixed;
+      top: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--primary);
+      color: #000;
+      font-weight: 800;
+      font-size: 0.85rem;
+      padding: 10px 22px;
+      border-radius: var(--r-pill);
+      box-shadow: 0 6px 25px rgba(204, 255, 0, 0.4);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 1000;
+    }
+    .celeb-icon {
+      font-size: 1rem;
+    }
+
+    /* Conquered Celebration Modal */
+    .celebration-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(8px);
+      z-index: 1050;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--s-4);
+    }
+    .conquered-card {
+      max-width: 580px;
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid rgba(204, 255, 0, 0.4);
+      box-shadow: 0 0 50px rgba(204, 255, 0, 0.15), 0 20px 40px rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-4);
+      position: relative;
+      overflow: hidden;
+      padding: var(--s-5);
+    }
+    .conquered-head {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .trophy-badge-ring {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(204, 255, 0, 0.25) 0%, rgba(204, 255, 0, 0.05) 70%);
+      border: 2px solid var(--primary);
+      box-shadow: 0 0 25px rgba(204, 255, 0, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 6px;
+    }
+    .trophy-emoji {
+      font-size: 2rem;
+    }
+    .conquered-badge {
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .conquered-title {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      letter-spacing: 0.04em;
+      color: var(--text);
+    }
+    .conquered-sub {
+      font-size: var(--fs-xs);
+      color: var(--text-muted);
+      max-width: 440px;
+    }
+    .conquered-metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+    .c-metric-tile {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--r-card);
+      padding: 10px 8px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .cm-lbl {
+      font-size: 0.62rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+    .cm-val {
+      font-size: 1.15rem;
+      font-weight: 900;
+    }
+    .cm-sub {
+      font-size: 0.58rem;
+      color: var(--text-faint);
+    }
+    .conquered-achievements-box {
+      background: rgba(204, 255, 0, 0.04);
+      border: 1px solid rgba(204, 255, 0, 0.2);
+      border-radius: var(--r-card);
+      padding: 12px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .ca-header {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .ca-items {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .ca-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+    }
+    .ca-badge {
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: var(--surface-3);
+      color: var(--text);
+    }
+    .ca-text {
+      color: var(--text);
+    }
+    .conquered-actions {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: var(--s-3);
+      margin-top: 4px;
+    }
+    .claim-btn {
+      padding: 10px 22px;
+      font-weight: 800;
     }
 
     /* 4-Exercise Stepper Tabs Bar */
@@ -723,11 +1103,104 @@ import { ExerciseModalComponent } from '../../shared/ui/exercise-modal/exercise-
     }
   `]
 })
-export class LiveSessionComponent {
+export class LiveSessionComponent implements OnInit, OnDestroy {
   workout = inject(WorkoutService);
   private router = inject(Router);
 
   showFormModal = signal<boolean>(false);
+  showConqueredModal = signal<boolean>(false);
+
+  // Live Timer
+  elapsedSeconds = signal<number>(0);
+  private timerInterval: any = null;
+
+  sessionTimeFormatted = computed(() => {
+    const totalSecs = this.elapsedSeconds();
+    const m = Math.floor(totalSecs / 60);
+    const s = totalSecs % 60;
+    return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+  });
+
+  // Real-time live tonnage computed from completed sets
+  liveTonnage = computed(() => {
+    return this.workout.liveSession().exercises.reduce((acc, ex) => {
+      return acc + (ex.sets || []).filter(s => s.completed).reduce((sAcc, s) => sAcc + ((s.weightKg || 0) * (s.reps || 0)), 0);
+    }, 0);
+  });
+
+  completedSetsCount = computed(() => {
+    return this.workout.liveSession().exercises.reduce((acc, ex) => acc + (ex.sets || []).filter(s => s.completed).length, 0);
+  });
+
+  totalSetsCount = computed(() => {
+    return this.workout.liveSession().exercises.reduce((acc, ex) => acc + (ex.sets || []).length, 0);
+  });
+
+  // Rest Timer
+  restTimerActive = signal<boolean>(false);
+  restSecondsLeft = signal<number>(90);
+  private restInterval: any = null;
+
+  restTimeFormatted = computed(() => {
+    const s = this.restSecondsLeft();
+    const m = Math.floor(s / 60);
+    const rem = s % 60;
+    return `${m.toString().padStart(2, '0')}:${rem.toString().padStart(2, '0')}`;
+  });
+
+  // Set Celebration Flash
+  showSetCelebration = signal<boolean>(false);
+  lastLoggedSetWeight = signal<number>(0);
+  tonnagePulsing = signal<boolean>(false);
+
+  ngOnInit() {
+    this.timerInterval = setInterval(() => {
+      this.elapsedSeconds.update(s => s + 1);
+    }, 1000);
+  }
+
+  ngOnDestroy() {
+    if (this.timerInterval) clearInterval(this.timerInterval);
+    if (this.restInterval) clearInterval(this.restInterval);
+  }
+
+  startRestTimer(seconds: number = 90) {
+    if (this.restInterval) clearInterval(this.restInterval);
+    this.restSecondsLeft.set(seconds);
+    this.restTimerActive.set(true);
+
+    this.restInterval = setInterval(() => {
+      const left = this.restSecondsLeft() - 1;
+      if (left <= 0) {
+        clearInterval(this.restInterval);
+        this.restTimerActive.set(false);
+      } else {
+        this.restSecondsLeft.set(left);
+      }
+    }, 1000);
+  }
+
+  adjustRest(delta: number) {
+    this.restSecondsLeft.update(s => Math.max(0, s + delta));
+  }
+
+  skipRest() {
+    if (this.restInterval) clearInterval(this.restInterval);
+    this.restTimerActive.set(false);
+  }
+
+  logSetWithCelebration(idx: number, set: any) {
+    this.workout.completeCurrentSet(idx);
+    const vol = (set.weightKg || 0) * (set.reps || 0);
+    this.lastLoggedSetWeight.set(vol);
+    this.showSetCelebration.set(true);
+    this.tonnagePulsing.set(true);
+    setTimeout(() => this.tonnagePulsing.set(false), 500);
+    setTimeout(() => this.showSetCelebration.set(false), 2200);
+
+    // Auto trigger rest timer
+    this.startRestTimer(90);
+  }
 
   isExerciseAllCompleted(item: any): boolean {
     return item.sets && item.sets.length > 0 && item.sets.every((s: any) => s.completed);
@@ -768,8 +1241,12 @@ export class LiveSessionComponent {
   }
 
   finishWorkout() {
+    this.showConqueredModal.set(true);
+  }
+
+  confirmFinishWorkout() {
+    this.showConqueredModal.set(false);
     const record = this.workout.finishSession();
-    // Navigate immediately to Workout Calendar & History view!
     this.router.navigate(['/training'], { queryParams: { tab: 'calendar', recorded: record.id, justFinished: 'true' } });
   }
 }

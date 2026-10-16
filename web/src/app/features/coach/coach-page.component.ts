@@ -1,9 +1,13 @@
 import { Component, inject, signal, computed } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { DecimalPipe } from '@angular/common';
 import { IconComponent } from '../../shared/ui/icon/icon.component';
 import { CoachService } from '../../core/services/coach.service';
 import { UserService } from '../../core/services/user.service';
 import { GeminiService } from '../../core/services/gemini.service';
+import { RecoveryService } from '../../core/services/recovery.service';
+import { NutritionService } from '../../core/services/nutrition.service';
+import { WorkoutService } from '../../core/services/workout.service';
 
 interface QuestionItem {
   category: 'workouts' | 'nutrition' | 'physiology' | 'adjustments';
@@ -13,7 +17,7 @@ interface QuestionItem {
 @Component({
   selector: 'app-coach-page',
   standalone: true,
-  imports: [FormsModule, IconComponent],
+  imports: [FormsModule, IconComponent, DecimalPipe],
   template: `
     <div class="coach-full-page">
       <!-- Header with Engine Status & Clear Chat -->
@@ -47,6 +51,41 @@ interface QuestionItem {
         </div>
       </header>
 
+      <!-- Live Athlete Telemetry HUD Strip -->
+      <section class="telemetry-hud-strip card">
+        <div class="hud-item hud-readiness">
+          <span class="hud-dot" [class.optimal]="liveReadiness() >= 80" [class.moderate]="liveReadiness() < 80 && liveReadiness() >= 60" [class.low]="liveReadiness() < 60"></span>
+          <div class="hud-meta">
+            <span class="hud-label">READINESS SCORE</span>
+            <span class="hud-val">{{ liveReadiness() }}% <span class="hud-sub">{{ liveReadiness() >= 80 ? 'Optimal Prime' : 'Moderate Fatigue' }}</span></span>
+          </div>
+        </div>
+
+        <div class="hud-item hud-fuel">
+          <span class="hud-icon">🥑</span>
+          <div class="hud-meta">
+            <span class="hud-label">DAILY FUEL PROGRESS</span>
+            <span class="hud-val">{{ liveCalories() | number }} <span class="hud-sub">/ {{ targetCalories() | number }} kcal · {{ liveProtein() }}g P</span></span>
+          </div>
+        </div>
+
+        <div class="hud-item hud-plan">
+          <span class="hud-icon">🏋️</span>
+          <div class="hud-meta">
+            <span class="hud-label">TODAY'S WORKOUT FOCUS</span>
+            <span class="hud-val">{{ activeWorkoutPlan() }} <span class="hud-sub">· Prescribed</span></span>
+          </div>
+        </div>
+
+        <div class="hud-item hud-vitals">
+          <span class="hud-icon">💤</span>
+          <div class="hud-meta">
+            <span class="hud-label">SLEEP & HRV RECOVERY</span>
+            <span class="hud-val">{{ sleepVitals().sleep }} <span class="hud-sub">· HRV {{ sleepVitals().hrv }}</span></span>
+          </div>
+        </div>
+      </section>
+
       <!-- Main Chat Area -->
       <div class="chat-container card">
         <div class="messages-area">
@@ -55,11 +94,13 @@ interface QuestionItem {
               <div class="bubble-sender">
                 <div class="sender-info">
                   @if (msg.sender === 'ai') {
-                    <div class="ai-avatar">
-                      <app-icon name="robot" [size]="14" />
+                    <div class="ai-avatar-core" title="APEX Sports Science Cognitive Core">
+                      <div class="core-ring-outer"></div>
+                      <div class="core-ring-inner"></div>
+                      <div class="core-orb"></div>
                     </div>
                   }
-                  <span class="sender-name">{{ msg.sender === 'ai' ? 'APEX Coach' : user.profile().name }}</span>
+                  <span class="sender-name">{{ msg.sender === 'ai' ? 'APEX Copilot · Cognitive Engine' : user.profile().name }}</span>
                 </div>
                 <span class="sender-time">{{ msg.timestamp }}</span>
               </div>
@@ -275,6 +316,131 @@ interface QuestionItem {
       color: var(--text-faint);
     }
 
+    /* Live Telemetry HUD Strip */
+    .telemetry-hud-strip {
+      background: linear-gradient(135deg, rgba(34, 197, 94, 0.08) 0%, rgba(11, 16, 21, 0.95) 50%, rgba(56, 189, 248, 0.06) 100%);
+      border: 1px solid rgba(34, 197, 94, 0.25);
+      border-radius: var(--r-card);
+      padding: 10px 16px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    }
+    .hud-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(11, 16, 21, 0.6);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      padding: 8px 12px;
+      transition: all var(--t-fast);
+    }
+    .hud-item:hover {
+      border-color: rgba(34, 197, 94, 0.4);
+      background: rgba(11, 16, 21, 0.9);
+      transform: translateY(-1px);
+    }
+    .hud-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .hud-dot.optimal {
+      background: #22c55e;
+      box-shadow: 0 0 10px #22c55e;
+      animation: hudPulse 2s infinite ease-in-out;
+    }
+    .hud-dot.moderate {
+      background: #f59e0b;
+      box-shadow: 0 0 10px #f59e0b;
+    }
+    .hud-dot.low {
+      background: #ef4444;
+      box-shadow: 0 0 10px #ef4444;
+    }
+    .hud-icon {
+      font-size: 1.15rem;
+      line-height: 1;
+    }
+    .hud-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+    .hud-label {
+      font-size: 0.62rem;
+      font-weight: 800;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .hud-val {
+      font-size: 0.84rem;
+      font-weight: 800;
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .hud-sub {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+    @keyframes hudPulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.25); opacity: 0.75; }
+    }
+
+    /* Holographic AI Core Avatar */
+    .ai-avatar-core {
+      position: relative;
+      width: 26px;
+      height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .core-ring-outer {
+      position: absolute;
+      inset: 0;
+      border: 1.5px dashed rgba(34, 197, 94, 0.7);
+      border-radius: 50%;
+      animation: spinCore 8s linear infinite;
+    }
+    .core-ring-inner {
+      position: absolute;
+      inset: 3px;
+      border: 1.5px solid rgba(56, 189, 248, 0.6);
+      border-radius: 50%;
+      animation: spinCoreReverse 5s linear infinite;
+    }
+    .core-orb {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #38bdf8 0%, #22c55e 70%, #0b1015 100%);
+      box-shadow: 0 0 10px #22c55e, 0 0 16px #38bdf8;
+      animation: pulseOrb 2.5s ease-in-out infinite alternate;
+    }
+    @keyframes spinCore {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes spinCoreReverse {
+      from { transform: rotate(360deg); }
+      to { transform: rotate(0deg); }
+    }
+    @keyframes pulseOrb {
+      from { transform: scale(0.85); box-shadow: 0 0 8px #22c55e; }
+      to { transform: scale(1.15); box-shadow: 0 0 16px #38bdf8, 0 0 24px rgba(34, 197, 94, 0.6); }
+    }
+
     .chat-container {
       flex: 1;
       display: flex;
@@ -322,17 +488,6 @@ interface QuestionItem {
       display: flex;
       align-items: center;
       gap: 6px;
-    }
-    .ai-avatar {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: var(--primary-soft);
-      color: var(--primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid var(--primary-line);
     }
     .sender-name {
       font-size: var(--fs-xs);
@@ -628,6 +783,21 @@ export class CoachPageComponent {
   coach = inject(CoachService);
   user = inject(UserService);
   gemini = inject(GeminiService);
+  recovery = inject(RecoveryService);
+  nutrition = inject(NutritionService);
+  workout = inject(WorkoutService);
+
+  liveReadiness = computed(() => this.recovery.readinessScore());
+  liveCalories = computed(() => this.nutrition.caloriesConsumed());
+  targetCalories = computed(() => this.nutrition.caloriesTarget());
+  liveProtein = computed(() => this.nutrition.proteinConsumed());
+  targetProtein = computed(() => this.nutrition.proteinTarget());
+  activeWorkoutPlan = computed(() => this.workout.liveSession().isActive ? 'Live Session in Progress' : 'Lower Body Strength');
+  sleepVitals = computed(() => ({
+    sleep: this.recovery.sleepTime(),
+    hrv: this.recovery.hrv(),
+    rhr: this.recovery.restingHr()
+  }));
 
   chatText = '';
   showApiKeyModal = signal(false);

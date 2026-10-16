@@ -3,6 +3,8 @@ import { CommonModule, DecimalPipe, DatePipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { IconComponent } from '../../shared/ui/icon/icon.component';
 import { WorkoutService } from '../../core/services/workout.service';
+import { RecoveryService } from '../../core/services/recovery.service';
+import { UserService } from '../../core/services/user.service';
 
 export interface PrBenchmark {
   id: string;
@@ -62,28 +64,26 @@ export interface MuscleVolumeTarget {
         <div class="kpi-card card">
           <div class="kpi-head">
             <span class="kpi-lbl">Strength Trajectory</span>
-            <span class="kpi-val num stat-cyan">+24%</span>
-            <span class="kpi-sub">Est. 1RM across compound lifts</span>
+            <span class="kpi-val num stat-cyan">{{ weeklyTrajectory().pctChange }}</span>
+            <span class="kpi-sub">{{ weeklyTrajectory().headline }}</span>
           </div>
           <div class="mini-bar-chart">
-            <div class="m-bar" style="height: 35%"></div>
-            <div class="m-bar" style="height: 50%"></div>
-            <div class="m-bar" style="height: 65%"></div>
-            <div class="m-bar" style="height: 80%"></div>
-            <div class="m-bar" style="height: 95%"></div>
+            @for (w of weeklyWorkouts().slice(-5); track $index) {
+              <div class="m-bar" [style.height.%]="w.pct"></div>
+            }
           </div>
         </div>
 
         <!-- 2. Body Composition -->
         <div class="kpi-card card">
           <div class="kpi-head">
-            <span class="kpi-lbl">Body Composition</span>
-            <span class="kpi-val num stat-green">-6.2%</span>
-            <span class="kpi-sub">DEXA body fat delta (18.4% → 12.2%)</span>
+            <span class="kpi-lbl">Athletic Goal</span>
+            <span class="kpi-val num stat-green">{{ user.profile().goal }}</span>
+            <span class="kpi-sub">{{ user.profile().experience }} Level · {{ user.profile().title }}</span>
           </div>
           <div class="mini-line-chart">
             <svg viewBox="0 0 100 40" class="spark-svg">
-              <path d="M0,10 Q25,12 50,22 T100,34" fill="none" stroke="var(--primary)" stroke-width="2.5" />
+              <path d="M0,28 Q25,24 50,16 T100,8" fill="none" stroke="var(--primary)" stroke-width="2.5" />
             </svg>
           </div>
         </div>
@@ -92,15 +92,13 @@ export interface MuscleVolumeTarget {
         <div class="kpi-card card">
           <div class="kpi-head">
             <span class="kpi-lbl">Training Consistency</span>
-            <span class="kpi-val num stat-orange">5.2 / 7</span>
+            <span class="kpi-val num stat-orange">{{ consistencyAvg() }}</span>
             <span class="kpi-sub">Average workouts completed per week</span>
           </div>
           <div class="mini-bar-chart orange-bars">
-            <div class="m-bar" style="height: 70%"></div>
-            <div class="m-bar" style="height: 90%"></div>
-            <div class="m-bar" style="height: 75%"></div>
-            <div class="m-bar" style="height: 85%"></div>
-            <div class="m-bar" style="height: 100%"></div>
+            @for (w of weeklyWorkouts().slice(-5); track $index) {
+              <div class="m-bar" [style.height.%]="Math.min(100, w.sessions * 20)"></div>
+            }
           </div>
         </div>
 
@@ -108,8 +106,8 @@ export interface MuscleVolumeTarget {
         <div class="kpi-card card">
           <div class="kpi-head">
             <span class="kpi-lbl">Readiness & Recovery</span>
-            <span class="kpi-val num stat-cyan">+18%</span>
-            <span class="kpi-sub">HRV & sleep recovery readiness score</span>
+            <span class="kpi-val num stat-cyan">{{ recovery.readinessScore() }}/100</span>
+            <span class="kpi-sub">{{ recovery.readinessBadge().label }} ({{ recovery.sleepTime() }} sleep)</span>
           </div>
           <div class="mini-line-chart">
             <svg viewBox="0 0 100 40" class="spark-svg">
@@ -130,7 +128,7 @@ export interface MuscleVolumeTarget {
         <div class="ribbon-item">
           <span class="r-label">SESSIONS COMPLETED</span>
           <span class="r-val num">{{ completedCount() }} Workouts</span>
-          <span class="r-sub">100% adherence to microcycle</span>
+          <span class="r-sub">Verified logged sessions</span>
         </div>
         <div class="ribbon-divider"></div>
         <div class="ribbon-item">
@@ -141,7 +139,7 @@ export interface MuscleVolumeTarget {
         <div class="ribbon-divider"></div>
         <div class="ribbon-item">
           <span class="r-label">KINEMATIC FORM SCORE</span>
-          <span class="r-val num text-primary">94.8%</span>
+          <span class="r-val num text-primary">{{ averageFormScore() }}%</span>
           <span class="r-sub">Depth, cadence & bar path stability</span>
         </div>
       </section>
@@ -153,7 +151,7 @@ export interface MuscleVolumeTarget {
             <span class="tw-title">Weekly Tonnage & Volume Trajectory</span>
             <div class="tw-num-row">
               <span class="tw-large num">{{ completedCount() }} Sessions</span>
-              <span class="tw-delta num">+33% vs. previous 12 weeks</span>
+              <span class="tw-delta num">{{ weeklyTrajectory().pctChange }} vs. prior microcycle</span>
             </div>
             <p class="tw-desc">Progressive overload trend across weekly training microcycles.</p>
           </div>
@@ -167,7 +165,7 @@ export interface MuscleVolumeTarget {
 
         <div class="main-bar-chart">
           <div class="chart-columns">
-            @for (w of weeklyWorkouts; track $index) {
+            @for (w of weeklyWorkouts(); track $index) {
               <div class="w-col" [title]="w.label + ': ' + w.kg + ' kg (' + w.sessions + ' sessions)'">
                 <div class="w-col-hover-info">{{ w.kg | number }} kg</div>
                 <div class="w-fill" [style.height.%]="w.pct"></div>
@@ -209,7 +207,7 @@ export interface MuscleVolumeTarget {
               </tr>
             </thead>
             <tbody>
-              @for (pr of prBenchmarks; track pr.id) {
+              @for (pr of prBenchmarks(); track pr.id) {
                 <tr>
                   <td>
                     <div class="movement-cell">
@@ -253,7 +251,7 @@ export interface MuscleVolumeTarget {
         </div>
 
         <div class="muscle-grid">
-          @for (m of muscleVolumes; track m.muscle) {
+          @for (m of muscleVolumes(); track m.muscle) {
             <div class="muscle-card">
               <div class="mc-head">
                 <div>
@@ -868,6 +866,8 @@ export interface MuscleVolumeTarget {
 })
 export class ProgressComponent {
   workout = inject(WorkoutService);
+  recovery = inject(RecoveryService);
+  user = inject(UserService);
 
   selectedRange = signal<'12w' | '6m' | 'ytd' | 'all'>('12w');
 
@@ -878,172 +878,55 @@ export class ProgressComponent {
     { id: 'all' as const, label: 'All time' }
   ];
 
-  // Derived aggregates from real workout service
+  protected Math = Math;
+
+  // Real aggregates strictly from real workout sessions
   completedCount = computed(() => {
-    const list = this.workout.completedSessions();
-    return Math.max(list.length, 48);
+    return this.workout.completedSessions().length;
   });
 
   totalTonnage = computed(() => {
-    const list = this.workout.completedSessions();
-    const sum = list.reduce((acc, s) => acc + (s.totalVolumeKg || 0), 0);
-    return sum > 0 ? sum : 142850;
+    return this.workout.completedSessions().reduce((acc, s) => acc + (s.totalVolumeKg || 0), 0);
   });
 
   totalSetsCount = computed(() => {
-    const list = this.workout.completedSessions();
-    const sum = list.reduce((acc, s) => acc + (s.totalSets || 0), 0);
-    return sum > 0 ? sum : 384;
+    return this.workout.completedSessions().reduce((acc, s) => acc + (s.totalSets || 0), 0);
   });
 
-  weeklyWorkouts = [
-    { label: 'W1', kg: 8400, sessions: 3, pct: 35 },
-    { label: 'W2', kg: 9800, sessions: 4, pct: 45 },
-    { label: 'W3', kg: 10200, sessions: 4, pct: 48 },
-    { label: 'W4', kg: 11400, sessions: 4, pct: 55 },
-    { label: 'W5', kg: 12500, sessions: 5, pct: 60 },
-    { label: 'W6', kg: 13800, sessions: 5, pct: 68 },
-    { label: 'W7', kg: 14200, sessions: 5, pct: 72 },
-    { label: 'W8', kg: 15600, sessions: 5, pct: 78 },
-    { label: 'W9', kg: 16400, sessions: 5, pct: 84 },
-    { label: 'W10', kg: 17200, sessions: 5, pct: 90 },
-    { label: 'W11', kg: 18100, sessions: 6, pct: 95 },
-    { label: 'W12', kg: 19400, sessions: 6, pct: 100 }
-  ];
+  weeklyTrajectory = computed(() => this.workout.computeTrajectory('weekly'));
 
-  prBenchmarks: PrBenchmark[] = [
-    {
-      id: 'back-squat',
-      name: 'Barbell Back Squat',
-      muscle: 'Quads & Glutes',
-      currentPr: '135 kg × 6',
-      est1Rm: '158 kg',
-      gain12w: '+20 kg (+14.5%)',
-      formScore: 95,
-      status: 'NEW PR!',
-      statusType: 'accent'
-    },
-    {
-      id: 'deadlift',
-      name: 'Conventional Barbell Deadlift',
-      muscle: 'Posterior Chain',
-      currentPr: '160 kg × 5',
-      est1Rm: '184 kg',
-      gain12w: '+25 kg (+15.7%)',
-      formScore: 93,
-      status: 'NEW PR!',
-      statusType: 'accent'
-    },
-    {
-      id: 'bench-press',
-      name: 'Barbell Bench Press',
-      muscle: 'Pectorals & Triceps',
-      currentPr: '100 kg × 5',
-      est1Rm: '115 kg',
-      gain12w: '+12.5 kg (+12.2%)',
-      formScore: 98,
-      status: 'ASCENDING',
-      statusType: 'primary'
-    },
-    {
-      id: 'overhead-press',
-      name: 'Standing Overhead Press',
-      muscle: 'Anterior Deltoids',
-      currentPr: '65 kg × 6',
-      est1Rm: '76 kg',
-      gain12w: '+7.5 kg (+10.9%)',
-      formScore: 91,
-      status: 'PEAK CAPACITY',
-      statusType: 'orange'
-    },
-    {
-      id: 'pullup',
-      name: 'Weighted Pull-Up',
-      muscle: 'Lats & Biceps',
-      currentPr: 'BW + 32 kg × 5',
-      est1Rm: '+38 kg',
-      gain12w: '+8 kg (+26.6%)',
-      formScore: 97,
-      status: 'ASCENDING',
-      statusType: 'primary'
-    },
-    {
-      id: 'rdl',
-      name: 'Romanian Deadlift (RDL)',
-      muscle: 'Hamstrings & Glutes',
-      currentPr: '115 kg × 8',
-      est1Rm: '142 kg',
-      gain12w: '+15 kg (+15.0%)',
-      formScore: 94,
-      status: 'ASCENDING',
-      statusType: 'primary'
-    }
-  ];
+  consistencyAvg = computed(() => {
+    const list = this.workout.completedSessions();
+    if (list.length === 0) return '0 / 7';
+    const weeksCount = Math.max(1, Math.min(12, Math.ceil(list.length / 3)));
+    return (list.length / weeksCount).toFixed(1) + ' / 7';
+  });
 
-  muscleVolumes: MuscleVolumeTarget[] = [
-    {
-      muscle: 'Quadriceps',
-      sub: 'Squats, split squats, extensions',
-      currentSets: 18,
-      targetSets: 16,
-      mrvSets: 22,
-      pct: 112,
-      status: 'OPTIMAL HYPERTROPHY',
-      statusClass: 'pill-optimal'
-    },
-    {
-      muscle: 'Hamstrings & Glutes',
-      sub: 'Deadlifts, RDLs, hip thrusts',
-      currentSets: 14,
-      targetSets: 14,
-      mrvSets: 18,
-      pct: 100,
-      status: 'TARGET REACHED',
-      statusClass: 'pill-reached'
-    },
-    {
-      muscle: 'Chest (Pectorals)',
-      sub: 'Barbell bench, dumbbell press',
-      currentSets: 16,
-      targetSets: 16,
-      mrvSets: 20,
-      pct: 100,
-      status: 'TARGET REACHED',
-      statusClass: 'pill-reached'
-    },
-    {
-      muscle: 'Back & Latissimus',
-      sub: 'Rows, pull-ups, pulldowns',
-      currentSets: 20,
-      targetSets: 18,
-      mrvSets: 24,
-      pct: 111,
-      status: 'ADAPTIVE OVERLOAD',
-      statusClass: 'pill-adaptive'
-    },
-    {
-      muscle: 'Shoulders (Deltoids)',
-      sub: 'Overhead press, lateral raises',
-      currentSets: 12,
-      targetSets: 12,
-      mrvSets: 16,
-      pct: 100,
-      status: 'TARGET REACHED',
-      statusClass: 'pill-reached'
-    },
-    {
-      muscle: 'Arms & Calves',
-      sub: 'Curls, tricep pushdowns, calf raises',
-      currentSets: 16,
-      targetSets: 14,
-      mrvSets: 18,
-      pct: 114,
-      status: 'OPTIMAL ISOLATION',
-      statusClass: 'pill-optimal'
-    }
-  ];
+  weeklyWorkouts = computed(() => this.workout.getWeeklyTrajectory(12));
+
+  prBenchmarks = computed(() => this.workout.getPersonalRecords());
+
+  muscleVolumes = computed(() => this.workout.getMuscleDistribution());
+
+  averageFormScore = computed(() => {
+    const prs = this.prBenchmarks();
+    if (prs.length === 0) return 95;
+    return Math.round(prs.reduce((acc, p) => acc + p.formScore, 0) / prs.length);
+  });
 
   exportSummary() {
-    alert('Summary exported! Training history, PRs, and body metrics compiled to CSV.');
+    const sessions = this.workout.completedSessions();
+    const rows = [
+      ['Session ID', 'Date', 'Title', 'Volume (kg)', 'Sets', 'Exercises'],
+      ...sessions.map(s => [s.id, s.date, `"${s.title}"`, s.totalVolumeKg, s.totalSets, s.exercisesCount])
+    ];
+    const csvContent = 'data:text/csv;charset=utf-8,' + rows.map(e => e.join(',')).join('\n');
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement('a');
+    link.setAttribute('href', encodedUri);
+    link.setAttribute('download', `apex_training_metrics_${new Date().toISOString().split('T')[0]}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   }
 }

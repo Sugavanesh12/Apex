@@ -294,15 +294,15 @@ import { RecoveryService } from '../../core/services/recovery.service';
           <div class="stats-list">
             <div class="stat-line">
               <span class="stat-lbl"><app-icon name="flame" [size]="14" /> Training Load</span>
-              <span class="stat-num stat-up num">↑ 12%</span>
+              <span class="stat-num num" [class.stat-up]="weeklyTrajectory().deltaKg >= 0">{{ weeklyTrajectory().pctChange }}</span>
             </div>
             <div class="stat-line">
               <span class="stat-lbl"><app-icon name="barbell" [size]="14" /> Strength</span>
-              <span class="stat-num stat-up num">↑ 8%</span>
+              <span class="stat-num num" [class.stat-up]="weeklyTrajectory().status === 'Improving'">{{ weeklyTrajectory().status }}</span>
             </div>
             <div class="stat-line">
               <span class="stat-lbl"><app-icon name="check" [size]="14" /> Consistency</span>
-              <span class="stat-num num">5 / 7</span>
+              <span class="stat-num num">{{ weeklyWorkoutsCompleted() }} / 7</span>
             </div>
           </div>
 
@@ -839,7 +839,7 @@ export class OverviewComponent {
     year: 'numeric'
   });
 
-  readinessScore = computed(() => this.recovery.readinessResult().score ?? 85);
+  readinessScore = computed(() => this.recovery.readinessScore());
   sleepPercentage = computed(() => Math.round(Math.min(100, (this.recovery.checkin().sleepHours / 8) * 100)));
 
   protected Math = Math;
@@ -847,5 +847,11 @@ export class OverviewComponent {
   maxDailyVolume = computed(() => {
     const list = this.dailyHistory();
     return Math.max(1, ...list.map(d => d.volumeKg));
+  });
+
+  weeklyTrajectory = computed(() => this.workout.computeTrajectory('weekly'));
+  weeklyWorkoutsCompleted = computed(() => {
+    const history = this.dailyHistory();
+    return history.filter(d => d.volumeKg > 0).length;
   });
 }

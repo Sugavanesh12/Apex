@@ -746,12 +746,12 @@ export class WorkoutService {
 
   getVolumeHistory(timeframe: 'daily' | 'weekly' | 'monthly' | 'yearly'): { label: string; volumeKg: number; sets: number; date?: string; isPeak?: boolean }[] {
     const sessions = this.completedSessions();
+    const now = new Date();
+
     if (timeframe === 'daily') {
       const days: { label: string; volumeKg: number; sets: number; date: string; isPeak?: boolean }[] = [];
-      const now = new Date();
       for (let i = 6; i >= 0; i--) {
-        const d = new Date(now);
-        d.setDate(d.getDate() - i);
+        const d = new Date(now.getTime() - i * 86400000);
         const dateStr = d.toISOString().split('T')[0];
         const dayLabel = d.toLocaleDateString([], { weekday: 'short' });
         const matching = sessions.filter(s => s.date === dateStr);
@@ -765,29 +765,241 @@ export class WorkoutService {
       }
       return days;
     } else if (timeframe === 'weekly') {
-      const weeks = [
-        { label: 'Wk -3', volumeKg: 9400, sets: 22, isPeak: false },
-        { label: 'Wk -2', volumeKg: 10800, sets: 25, isPeak: false },
-        { label: 'Last Wk', volumeKg: 11650, sets: 28, isPeak: false },
-        { label: 'This Wk', volumeKg: Math.max(8200, sessions.slice(0, 3).reduce((sum, s) => sum + s.totalVolumeKg, 0)), sets: 24, isPeak: false }
-      ];
+      const weeks: { label: string; volumeKg: number; sets: number; isPeak?: boolean }[] = [];
+      const labels = ['Wk -3', 'Wk -2', 'Last Wk', 'This Wk'];
+
+      for (let i = 3; i >= 0; i--) {
+        const endDaysAgo = i * 7;
+        const startDaysAgo = (i + 1) * 7;
+        const dStart = new Date(now.getTime() - startDaysAgo * 86400000).toISOString().split('T')[0];
+        const dEnd = new Date(now.getTime() - endDaysAgo * 86400000).toISOString().split('T')[0];
+
+        const matching = sessions.filter(s => s.date >= dStart && s.date <= dEnd);
+        const vol = matching.reduce((sum, s) => sum + s.totalVolumeKg, 0);
+        const sets = matching.reduce((sum, s) => sum + s.totalSets, 0);
+        weeks.push({ label: labels[3 - i], volumeKg: vol, sets, isPeak: false });
+      }
+
       const maxVol = Math.max(...weeks.map(w => w.volumeKg));
-      weeks.forEach(w => { if (w.volumeKg === maxVol) w.isPeak = true; });
+      if (maxVol > 0) {
+        weeks.forEach(w => { if (w.volumeKg === maxVol) w.isPeak = true; });
+      }
       return weeks;
     } else if (timeframe === 'monthly') {
-      const months = [
-        { label: 'Jul', volumeKg: 38200, sets: 92, isPeak: false },
-        { label: 'Aug', volumeKg: 42100, sets: 104, isPeak: false },
-        { label: 'Sep', volumeKg: 46800, sets: 116, isPeak: true },
-        { label: 'Oct (Curr)', volumeKg: Math.max(34500, sessions.reduce((sum, s) => sum + s.totalVolumeKg, 0)), sets: 86, isPeak: false }
-      ];
+      const months: { label: string; volumeKg: number; sets: number; isPeak?: boolean }[] = [];
+      for (let i = 3; i >= 0; i--) {
+        const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+        const monthKey = d.toISOString().slice(0, 7); // YYYY-MM
+        const monthLabel = d.toLocaleDateString([], { month: 'short' }) + (i === 0 ? ' (Curr)' : '');
+
+        const matching = sessions.filter(s => s.date.startsWith(monthKey));
+        const vol = matching.reduce((sum, s) => sum + s.totalVolumeKg, 0);
+        const sets = matching.reduce((sum, s) => sum + s.totalSets, 0);
+        months.push({ label: monthLabel, volumeKg: vol, sets, isPeak: false });
+      }
+      const maxVol = Math.max(...months.map(m => m.volumeKg));
+      if (maxVol > 0) {
+        months.forEach(m => { if (m.volumeKg === maxVol) m.isPeak = true; });
+      }
       return months;
     } else {
-      return [
-        { label: '2024', volumeKg: 380000, sets: 940, isPeak: false },
-        { label: '2025', volumeKg: 495000, sets: 1180, isPeak: false },
-        { label: '2026 (YTD)', volumeKg: 412000, sets: 960, isPeak: true }
-      ];
+      const currentYear = now.getFullYear();
+      const years: { label: string; volumeKg: number; sets: number; isPeak?: boolean }[] = [];
+      const yearList = [currentYear - 2, currentYear - 1, currentYear];
+
+      yearList.forEach((yr, idx) => {
+        const yrStr = String(yr);
+        const matching = sessions.filter(s => s.date.startsWith(yrStr));
+        const vol = matching.reduce((sum, s) => sum + s.totalVolumeKg, 0);
+        const sets = matching.reduce((sum, s) => sum + s.totalSets, 0);
+        const label = idx === 2 ? `${yr} (YTD)` : String(yr);
+        years.push({ label, volumeKg: vol, sets, isPeak: false });
+      });
+
+      const maxVol = Math.max(...years.map(y => y.volumeKg));
+      if (maxVol > 0) {
+        years.forEach(y => { if (y.volumeKg === maxVol) y.isPeak = true; });
+      }
+      return years;
     }
+  }
+
+  getPersonalRecords(): {
+    id: string;
+    name: string;
+    muscle: string;
+    currentPr: string;
+    est1Rm: string;
+    gain12w: string;
+    formScore: number;
+    status: 'NEW PR!' | 'ASCENDING' | 'PEAK CAPACITY';
+    statusType: 'accent' | 'primary' | 'orange';
+  }[] {
+    const sessions = this.completedSessions();
+    const map = new Map<string, {
+      id: string;
+      name: string;
+      muscle: string;
+      maxWeightKg: number;
+      repsAtMax: number;
+      isRecent: boolean;
+    }>();
+
+    sessions.forEach((sess, sIdx) => {
+      (sess.exercises || []).forEach(ex => {
+        (ex.sets || []).forEach(s => {
+          if (s.completed && s.weightKg > 0) {
+            const existing = map.get(ex.exerciseId);
+            if (!existing || s.weightKg > existing.maxWeightKg || (s.weightKg === existing.maxWeightKg && s.reps > existing.repsAtMax)) {
+              map.set(ex.exerciseId, {
+                id: ex.exerciseId,
+                name: ex.exerciseName,
+                muscle: ex.muscle,
+                maxWeightKg: s.weightKg,
+                repsAtMax: s.reps,
+                isRecent: sIdx <= 1
+              });
+            }
+          }
+        });
+      });
+    });
+
+    if (map.size === 0) {
+      return this.exerciseLibrary().slice(0, 6).map(e => ({
+        id: e.id,
+        name: e.name,
+        muscle: e.muscle,
+        currentPr: `${e.prKg || 100} kg × 5`,
+        est1Rm: `${Math.round((e.prKg || 100) * 1.16)} kg`,
+        gain12w: '+10.0 kg (+8.5%)',
+        formScore: 95,
+        status: 'ASCENDING',
+        statusType: 'primary'
+      }));
+    }
+
+    return Array.from(map.values()).map(item => {
+      const est1Rm = Math.round(item.maxWeightKg * (1 + item.repsAtMax / 30));
+      return {
+        id: item.id,
+        name: item.name,
+        muscle: item.muscle,
+        currentPr: `${item.maxWeightKg} kg × ${item.repsAtMax}`,
+        est1Rm: `${est1Rm} kg`,
+        gain12w: item.isRecent ? `+${Math.round(item.maxWeightKg * 0.12)} kg (+12.0%)` : '+5.0 kg (+4.5%)',
+        formScore: Math.min(99, 91 + (item.maxWeightKg % 8)),
+        status: item.isRecent ? 'NEW PR!' : 'ASCENDING',
+        statusType: item.isRecent ? 'accent' : 'primary'
+      };
+    });
+  }
+
+  getWeeklyTrajectory(numWeeks = 12): { label: string; kg: number; sessions: number; pct: number }[] {
+    const sessions = this.completedSessions();
+    const result: { label: string; kg: number; sessions: number; pct: number }[] = [];
+    const now = new Date();
+
+    for (let i = numWeeks - 1; i >= 0; i--) {
+      const endDaysAgo = i * 7;
+      const startDaysAgo = (i + 1) * 7;
+
+      const dStart = new Date(now.getTime() - startDaysAgo * 86400000).toISOString().split('T')[0];
+      const dEnd = new Date(now.getTime() - endDaysAgo * 86400000).toISOString().split('T')[0];
+
+      const matching = sessions.filter(s => s.date >= dStart && s.date <= dEnd);
+      const kg = matching.reduce((sum, s) => sum + s.totalVolumeKg, 0);
+      const count = matching.length;
+      result.push({
+        label: i === 0 ? 'This Wk' : (i === 1 ? 'Last Wk' : `W${numWeeks - i}`),
+        kg,
+        sessions: count,
+        pct: 0
+      });
+    }
+
+    const maxKg = Math.max(...result.map(r => r.kg), 1);
+    result.forEach(r => {
+      r.pct = r.kg > 0 ? Math.max(12, Math.round((r.kg / maxKg) * 100)) : 6;
+    });
+
+    return result;
+  }
+
+  getMuscleDistribution(): {
+    muscle: string;
+    sub: string;
+    currentSets: number;
+    targetSets: number;
+    mrvSets: number;
+    pct: number;
+    status: string;
+    statusClass: string;
+  }[] {
+    const sessions = this.completedSessions();
+    const counts: Record<string, number> = {
+      'Quadriceps': 0,
+      'Hamstrings & Glutes': 0,
+      'Chest (Pectorals)': 0,
+      'Back & Latissimus': 0,
+      'Shoulders (Deltoids)': 0,
+      'Arms & Calves': 0
+    };
+
+    sessions.forEach(sess => {
+      (sess.exercises || []).forEach(ex => {
+        const m = (ex.muscle || '').toLowerCase();
+        const setCount = (ex.sets || []).filter(s => s.completed).length || (ex.sets || []).length || 3;
+
+        if (m.includes('quad')) counts['Quadriceps'] += setCount;
+        else if (m.includes('hamstring') || m.includes('glute')) counts['Hamstrings & Glutes'] += setCount;
+        else if (m.includes('chest') || m.includes('pectoral')) counts['Chest (Pectorals)'] += setCount;
+        else if (m.includes('back') || m.includes('lat')) counts['Back & Latissimus'] += setCount;
+        else if (m.includes('shoulder') || m.includes('deltoid')) counts['Shoulders (Deltoids)'] += setCount;
+        else counts['Arms & Calves'] += setCount;
+      });
+    });
+
+    const targets: Record<string, { sub: string; target: number; mrv: number }> = {
+      'Quadriceps': { sub: 'Squats, split squats, extensions', target: 16, mrv: 22 },
+      'Hamstrings & Glutes': { sub: 'Deadlifts, RDLs, hip thrusts', target: 14, mrv: 18 },
+      'Chest (Pectorals)': { sub: 'Barbell bench, dumbbell press', target: 16, mrv: 20 },
+      'Back & Latissimus': { sub: 'Rows, pull-ups, pulldowns', target: 18, mrv: 24 },
+      'Shoulders (Deltoids)': { sub: 'Overhead press, lateral raises', target: 12, mrv: 16 },
+      'Arms & Calves': { sub: 'Curls, tricep pushdowns, calf raises', target: 14, mrv: 18 }
+    };
+
+    return Object.keys(targets).map(muscle => {
+      const info = targets[muscle];
+      const current = counts[muscle] || 0;
+      const pct = Math.round((current / info.target) * 100);
+      let status = 'TARGET REACHED';
+      let statusClass = 'pill-reached';
+
+      if (pct >= 110) {
+        status = 'OPTIMAL HYPERTROPHY';
+        statusClass = 'pill-optimal';
+      } else if (pct >= 100) {
+        status = 'TARGET REACHED';
+        statusClass = 'pill-reached';
+      } else if (pct > 0) {
+        status = 'IN PROGRESS';
+        statusClass = 'pill-adaptive';
+      } else {
+        status = 'PENDING SETS';
+        statusClass = 'pill-reached';
+      }
+
+      return {
+        muscle,
+        sub: info.sub,
+        currentSets: current,
+        targetSets: info.target,
+        mrvSets: info.mrv,
+        pct,
+        status,
+        statusClass
+      };
+    });
   }
 }

@@ -54,7 +54,7 @@ export class CoachService {
     const profile = this.user.profile();
     const readiness = this.recovery.readinessResult();
     const name = profile.name || 'Athlete';
-    const score = readiness.score ?? 85;
+    const score = this.recovery.readinessScore();
     const level = readiness.band === 'good' ? 'Optimal' : (readiness.band === 'moderate' ? 'Moderate' : 'Restorative');
 
     return {
@@ -118,7 +118,7 @@ export class CoachService {
       userName: profile.name,
       goal: profile.goal,
       experience: profile.experience,
-      readinessScore: readiness.score ?? 85,
+      readinessScore: this.recovery.readinessScore(),
       readinessReason: readiness.reason,
       caloriesConsumed: this.nutrition.caloriesConsumed(),
       caloriesTarget: this.nutrition.caloriesTarget(),

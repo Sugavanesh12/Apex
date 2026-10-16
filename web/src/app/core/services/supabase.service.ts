@@ -225,12 +225,18 @@ export class SupabaseService {
 
   // --- Read Operations ---
   async getExercises() {
-    const { data, error } = await this.supabase
-      .from('exercises')
-      .select('*')
-      .order('name');
-    if (error) throw error;
-    return data;
+    try {
+      const { data, error } = await this.supabase
+        .from('exercises')
+        .select('*')
+        .order('name');
+      if (error) {
+        return null;
+      }
+      return data;
+    } catch {
+      return null;
+    }
   }
 
   async getWorkoutSessions(limit = 10) {

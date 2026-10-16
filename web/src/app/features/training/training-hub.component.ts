@@ -217,59 +217,86 @@ interface CalendarDay {
             }
           </section>
 
-          <!-- Today's Plan & Quick Action Banner -->
+          <!-- Dynamic Session Banner & Movements Deck for Selected Date -->
           <section class="session-banner card">
             <div class="banner-top-row">
               <div class="banner-left">
-                @if (isTodayCompleted()) {
-                  <span class="badge badge-accent">TODAY'S WORKOUT COMPLETED ✓</span>
-                  <h2>Lower Body Strength Logged</h2>
-                  <p>All 4 exercises recorded into daily history · Total Volume: {{ todaySessionVolume() | number }} kg ({{ todaySessionSets() }} sets)</p>
-                } @else {
-                  <span class="badge badge-primary">TODAY'S PLAN</span>
-                  <h2>Lower Body Strength</h2>
-                  <p>4 exercises prescribed · ~45 min target duration · Barbell & Dumbbells</p>
-                }
+                <div class="banner-badge-row">
+                  <span
+                    class="badge"
+                    [class.badge-accent]="isSelectedDayCompleted()"
+                    [class.badge-primary]="isSelectedDateToday() && !isSelectedDayCompleted()"
+                    [class.badge-scheduled]="isSelectedDateFuture() && !isSelectedDayCompleted()"
+                    [class.badge-muted]="isSelectedDatePast() && !isSelectedDayCompleted()"
+                  >
+                    {{ bannerBadge() }}
+                  </span>
+                  @if (!isSelectedDateToday()) {
+                    <button class="jump-today-btn" (click)="jumpToToday()" title="Return to today's active schedule">
+                      Jump to Today ↩
+                    </button>
+                  }
+                </div>
+                <h2>{{ bannerTitle() }}</h2>
+                <p>{{ bannerSubtitle() }}</p>
               </div>
               <div class="banner-right">
-                @if (isTodayCompleted()) {
-                  <button class="btn btn-outline" (click)="selectDate(todayStr)">
-                    View Today's Log Below ↓
-                  </button>
-                  <button class="btn btn-secondary" (click)="openAddModal(todayStr)">
-                    + Log Another Session
-                  </button>
-                  <a routerLink="/training/session/live" class="ghost-restart-link" title="Restart if you want to perform another live workout">
-                    <span>Restart Live ↺</span>
-                  </a>
+                @if (isSelectedDateToday()) {
+                  @if (isTodayCompleted()) {
+                    <button class="btn btn-outline" (click)="selectDate(todayStr)">
+                      View Today's Log Below ↓
+                    </button>
+                    <button class="btn btn-secondary" (click)="openAddModal(todayStr)">
+                      + Log Another Session
+                    </button>
+                    <a routerLink="/training/session/live" class="ghost-restart-link" title="Restart if you want to perform another live workout">
+                      <span>Restart Live ↺</span>
+                    </a>
+                  } @else {
+                    <button class="btn btn-secondary" (click)="openAddModal(todayStr)">
+                      + Quick Log Session
+                    </button>
+                    <a routerLink="/training/session/live" class="btn btn-primary start-btn">
+                      <app-icon name="play" [size]="16" />
+                      <span>Start Live Workout →</span>
+                    </a>
+                  }
                 } @else {
-                  <button class="btn btn-secondary" (click)="openAddModal(todayStr)">
-                    + Quick Log Session
+                  <button class="btn btn-outline" (click)="jumpToToday()">
+                    Jump to Today ↩
                   </button>
-                  <a routerLink="/training/session/live" class="btn btn-primary start-btn">
-                    <app-icon name="play" [size]="16" />
-                    <span>Start Live Workout →</span>
-                  </a>
+                  <button class="btn btn-secondary" (click)="openAddModal(selectedDateStr())">
+                    + Log Workout for {{ isTomorrow() ? 'Tomorrow' : (isSelectedDateFuture() ? 'Upcoming Day' : 'This Day') }}
+                  </button>
+                  @if (isSelectedDayCompleted()) {
+                    <button class="btn btn-primary" (click)="inspectorTab.set('workouts')">
+                      View Selected Log ↓
+                    </button>
+                  }
                 }
               </div>
             </div>
 
-            <!-- 4 Prescribed Movements Deck -->
+            <!-- Dynamic Movements Deck for Selected Date -->
             <div class="banner-exercises-grid">
-              @for (ex of prescribedExercises; track ex.name) {
-                <div class="banner-ex-item" [class.is-completed]="isTodayCompleted()">
+              @for (ex of activeExercisesDeck(); track ex.num + ex.name) {
+                <div class="banner-ex-item" [class.is-completed]="ex.isCompleted">
                   <div class="b-ex-top-meta">
-                    <span class="b-ex-num">MOVE 0{{ $index + 1 }}</span>
+                    <span class="b-ex-num">{{ ex.num }}</span>
                     <span class="b-ex-muscle">{{ ex.muscle }}</span>
                   </div>
                   <div class="b-ex-name">{{ ex.name }}</div>
-                  <div class="b-ex-meta">{{ ex.targetSets }} sets × {{ ex.targetReps }} reps · {{ ex.targetWeight }}</div>
+                  <div class="b-ex-meta">{{ ex.meta }}</div>
                   <div class="b-ex-status">
-                    @if (isTodayCompleted()) {
-                      <span class="status-pill status-done">✓ Completed</span>
-                    } @else {
-                      <span class="status-pill status-ready">Prescribed</span>
-                    }
+                    <span
+                      class="status-pill"
+                      [class.status-done]="ex.isCompleted"
+                      [class.status-ready]="!ex.isCompleted && isSelectedDateToday()"
+                      [class.status-scheduled]="!ex.isCompleted && isSelectedDateFuture()"
+                      [class.status-rest]="!ex.isCompleted && isSelectedDatePast()"
+                    >
+                      {{ ex.statusText }}
+                    </span>
                   </div>
                 </div>
               }
@@ -366,8 +393,12 @@ interface CalendarDay {
                 <div>
                   <div class="inspector-tags-row">
                     <span class="inspector-badge">DAILY INTELLIGENCE</span>
-                    <span class="status-day-pill" [class.live-pill]="isSelectedDateToday()">
-                      {{ isSelectedDateToday() ? '🟢 LIVE TODAY' : '🕒 HISTORICAL RECORD' }}
+                    <span
+                      class="status-day-pill"
+                      [class.live-pill]="isSelectedDateToday()"
+                      [class.future-pill]="isSelectedDateFuture()"
+                    >
+                      {{ selectedDayStatusLabel() }}
                     </span>
                   </div>
                   <h3 class="inspector-date-title">{{ formattedSelectedDate() }}</h3>
@@ -1585,6 +1616,52 @@ interface CalendarDay {
       color: var(--primary);
       border: 1px solid rgba(34, 197, 94, 0.4);
     }
+    .status-scheduled {
+      background: rgba(168, 85, 247, 0.15);
+      color: #c084fc;
+      border: 1px solid rgba(168, 85, 247, 0.35);
+    }
+    .status-rest {
+      background: rgba(148, 163, 184, 0.15);
+      color: #94a3b8;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+    }
+    .banner-badge-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 6px;
+    }
+    .badge-scheduled {
+      background: rgba(168, 85, 247, 0.15);
+      color: #c084fc;
+      border: 1px solid rgba(168, 85, 247, 0.35);
+    }
+    .badge-muted {
+      background: var(--surface-3);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+    .jump-today-btn {
+      background: rgba(34, 197, 94, 0.12);
+      border: 1px solid rgba(34, 197, 94, 0.35);
+      color: var(--primary);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 2px 10px;
+      border-radius: var(--r-pill);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all var(--t-fast);
+    }
+    .jump-today-btn:hover {
+      background: var(--primary);
+      color: var(--on-primary, #000);
+      transform: translateY(-1px);
+    }
     .chip-sm.chip-active {
       background: var(--primary);
       color: var(--on-primary);
@@ -1806,6 +1883,11 @@ interface CalendarDay {
       background: rgba(34, 197, 94, 0.15);
       color: var(--primary);
       border-color: rgba(34, 197, 94, 0.4);
+    }
+    .status-day-pill.future-pill {
+      background: rgba(168, 85, 247, 0.15);
+      color: #c084fc;
+      border-color: rgba(168, 85, 247, 0.4);
     }
     .inspector-badge {
       font-size: 0.65rem;
@@ -3334,6 +3416,152 @@ export class TrainingHubComponent implements OnInit {
 
   isSelectedDateToday = computed(() => {
     return this.selectedDateStr() === this.todayStr;
+  });
+
+  isTomorrow = computed(() => {
+    const today = new Date();
+    today.setDate(today.getDate() + 1);
+    const y = today.getFullYear();
+    const m = String(today.getMonth() + 1).padStart(2, '0');
+    const d = String(today.getDate()).padStart(2, '0');
+    return this.selectedDateStr() === `${y}-${m}-${d}`;
+  });
+
+  isYesterday = computed(() => {
+    const today = new Date();
+    today.setDate(today.getDate() - 1);
+    const y = today.getFullYear();
+    const m = String(today.getMonth() + 1).padStart(2, '0');
+    const d = String(today.getDate()).padStart(2, '0');
+    return this.selectedDateStr() === `${y}-${m}-${d}`;
+  });
+
+  isSelectedDateFuture = computed(() => {
+    return this.selectedDateStr() > this.todayStr;
+  });
+
+  isSelectedDatePast = computed(() => {
+    return this.selectedDateStr() < this.todayStr;
+  });
+
+  isSelectedDayCompleted = computed(() => {
+    return this.selectedDaySessions().length > 0;
+  });
+
+  selectedDayStatusLabel = computed(() => {
+    if (this.isSelectedDateToday()) return '🟢 LIVE TODAY';
+    if (this.isTomorrow()) return "🔮 TOMORROW'S PLAN";
+    if (this.isSelectedDateFuture()) return '📅 UPCOMING SCHEDULE';
+    return '🕒 HISTORICAL RECORD';
+  });
+
+  bannerBadge = computed(() => {
+    if (this.isSelectedDateToday()) {
+      return this.isTodayCompleted() ? "TODAY'S WORKOUT COMPLETED ✓" : "TODAY'S PLAN";
+    }
+    if (this.isTomorrow()) {
+      return this.isSelectedDayCompleted() ? "TOMORROW'S WORKOUT LOGGED ✓" : "TOMORROW'S UPCOMING PLAN";
+    }
+    if (this.isSelectedDateFuture()) {
+      return this.isSelectedDayCompleted() ? "FUTURE WORKOUT LOGGED ✓" : "UPCOMING SCHEDULE";
+    }
+    // Past date
+    return this.isSelectedDayCompleted() ? "WORKOUT COMPLETED ✓" : "REST & RECOVERY DAY";
+  });
+
+  bannerTitle = computed(() => {
+    const sessions = this.selectedDaySessions();
+    if (sessions.length > 0) {
+      return sessions[0].title + ' Logged';
+    }
+    if (this.isSelectedDateToday()) {
+      return 'Lower Body Strength';
+    }
+    if (this.isTomorrow()) {
+      return 'Upper Body Push & Power';
+    }
+    if (this.isSelectedDateFuture()) {
+      return 'Scheduled Athletic Session';
+    }
+    return 'Rest & Active Recovery';
+  });
+
+  bannerSubtitle = computed(() => {
+    const sessions = this.selectedDaySessions();
+    if (sessions.length > 0) {
+      const vol = this.selectedDayVolume();
+      const sets = this.selectedDaySets();
+      const count = sessions[0].exercisesCount || sessions[0].exercises?.length || 4;
+      return `${count} exercises recorded into daily history · Total Volume: ${vol.toLocaleString()} kg (${sets} sets)`;
+    }
+    if (this.isSelectedDateToday()) {
+      return '4 exercises prescribed · ~45 min target duration · Barbell & Dumbbells';
+    }
+    if (this.isTomorrow()) {
+      return 'Upcoming planned session for tomorrow · Prescribed from ' + this.activeProgram();
+    }
+    if (this.isSelectedDateFuture()) {
+      return 'Upcoming scheduled session · Prescribed from ' + this.activeProgram();
+    }
+    return `No training recorded for ${this.formattedSelectedDate()} · Neuromuscular recovery active`;
+  });
+
+  activeExercisesDeck = computed(() => {
+    const sessions = this.selectedDaySessions();
+    if (sessions.length > 0) {
+      if (sessions[0].exercises && sessions[0].exercises.length > 0) {
+        return sessions[0].exercises.map((e, idx) => ({
+          num: `MOVE 0${idx + 1}`,
+          name: e.exerciseName,
+          muscle: e.muscle || 'Compound',
+          meta: `${e.sets?.length || 3} sets recorded · ${e.sets?.[0]?.weightKg || 80} kg`,
+          isCompleted: true,
+          statusText: '✓ Completed'
+        }));
+      }
+      return [
+        {
+          num: 'MOVE 01',
+          name: sessions[0].title,
+          muscle: 'Compound',
+          meta: `${sessions[0].totalSets} sets · ${sessions[0].totalVolumeKg.toLocaleString()} kg`,
+          isCompleted: true,
+          statusText: '✓ Completed'
+        }
+      ];
+    }
+
+    if (this.isSelectedDateToday()) {
+      const completed = this.isTodayCompleted();
+      return this.prescribedExercises.map((e, idx) => ({
+        num: `MOVE 0${idx + 1}`,
+        name: e.name,
+        muscle: e.muscle,
+        meta: `${e.targetSets} sets × ${e.targetReps} reps · ${e.targetWeight}`,
+        isCompleted: completed,
+        statusText: completed ? '✓ Completed' : 'Prescribed'
+      }));
+    }
+
+    if (this.isSelectedDateFuture()) {
+      const hasSession = this.isSelectedDayCompleted();
+      return this.prescribedExercises.map((e, idx) => ({
+        num: `MOVE 0${idx + 1}`,
+        name: e.name,
+        muscle: e.muscle,
+        meta: `${e.targetSets} sets × ${e.targetReps} reps · ${e.targetWeight}`,
+        isCompleted: hasSession,
+        statusText: hasSession ? '✓ Completed' : (this.isTomorrow() ? 'Upcoming' : 'Scheduled')
+      }));
+    }
+
+    // Past date with no workouts (Rest Day)
+    return [
+      { num: 'RECOVERY 01', name: 'Neuromuscular Restoration', muscle: 'Systemic CNS', meta: 'Parasympathetic tone active', isCompleted: false, statusText: 'Rest Day' },
+      { num: 'RECOVERY 02', name: 'Sarcomere Tissue Repair', muscle: 'All Muscles', meta: 'Myofibrillar protein remodeling', isCompleted: false, statusText: 'Rest Day' },
+      { num: 'RECOVERY 03', name: 'Glycogen Replenishment', muscle: 'Metabolic', meta: 'Intracellular glycogen restored', isCompleted: false, statusText: 'Rest Day' },
+      { num: 'RECOVERY 04', name: 'Deep Sleep & Endocrine Reset', muscle: 'Hormonal', meta: 'Slow-wave growth hormone pulse', isCompleted: false, statusText: 'Rest Day' }
+    ];
   });
 
   adjustSelectedDayWater(delta: number) {

@@ -6,6 +6,7 @@ import { IconComponent } from '../../shared/ui/icon/icon.component';
 import { WorkoutService, ExerciseItem, CompletedSessionItem, LoggedExerciseItem } from '../../core/services/workout.service';
 import { NutritionService } from '../../core/services/nutrition.service';
 import { ExerciseModalComponent } from '../../shared/ui/exercise-modal/exercise-modal.component';
+import { MuscleAnatomyComponent } from '../../shared/ui/muscle-anatomy/muscle-anatomy.component';
 
 interface CalendarDay {
   date: Date;
@@ -22,10 +23,30 @@ interface CalendarDay {
   waterGlasses: number;
 }
 
+export interface RoutineItem {
+  id: string;
+  name: string;
+  muscle: string;
+  secondaryMuscles?: string[];
+  targetSets: number;
+  targetReps: number;
+  targetWeightKg?: number;
+  image?: string;
+  isSuperset?: boolean;
+  isBodyweight?: boolean;
+  repsPerSide?: boolean;
+  addedWeightKg?: number;
+  topOfRange?: number;
+  intensifier?: string;
+  progressionRule?: string;
+  stepKg?: number;
+  notes?: string;
+}
+
 @Component({
   selector: 'app-training-hub',
   standalone: true,
-  imports: [RouterLink, FormsModule, DecimalPipe, UpperCasePipe, IconComponent, ExerciseModalComponent],
+  imports: [RouterLink, FormsModule, DecimalPipe, UpperCasePipe, IconComponent, ExerciseModalComponent, MuscleAnatomyComponent],
   template: `
     <div class="training-hub">
       <!-- Just Finished Celebration Banner -->
@@ -53,6 +74,15 @@ interface CalendarDay {
         >
           <app-icon name="calendar" [size]="18" />
           <span>Workout Calendar & History</span>
+        </button>
+        <button
+          class="hub-tab-btn highlight-tab"
+          [class.active]="activeTab() === 'routine'"
+          (click)="activeTab.set('routine')"
+        >
+          <app-icon name="zap" [size]="18" />
+          <span>Routine & Muscle Heatmap</span>
+          <span class="routine-tab-badge">ANATOMY</span>
         </button>
         <button
           class="hub-tab-btn"
@@ -300,6 +330,21 @@ interface CalendarDay {
                   </div>
                 </div>
               }
+            </div>
+
+            <!-- Session Biomechanical Muscle Anatomy Heatmap -->
+            <div class="sess-anatomy-strip">
+              <div class="sess-anatomy-head">
+                <div class="sess-anatomy-title-block">
+                  <span class="sess-anatomy-tag">✨ WHAT THIS SESSION HITS</span>
+                  <span class="sess-anatomy-sub">Active muscle recruitment for {{ bannerTitle() }}</span>
+                </div>
+                <button type="button" class="btn btn-outline btn-sm configure-routine-btn" (click)="activeTab.set('routine')">
+                  <app-icon name="sliders" [size]="14" />
+                  <span>Customize Routine & Supersets ↗</span>
+                </button>
+              </div>
+              <app-muscle-anatomy [muscles]="sessionTargetMuscles()" [compact]="true" />
             </div>
           </section>
 
@@ -784,7 +829,244 @@ interface CalendarDay {
         </div>
       }
 
-      <!-- TAB 2: EXERCISE LIBRARY -->
+      <!-- TAB 2: ROUTINE & MUSCLE ANATOMY HEATMAP DESIGNER (from reference screenshots) -->
+      @if (activeTab() === 'routine') {
+        <div class="routine-view animated-fade-in">
+          <!-- Top Routine Header with Presets & Back Button -->
+          <div class="routine-top-bar card">
+            <div class="routine-top-main">
+              <button class="back-circle-btn" (click)="activeTab.set('calendar')" title="Back to Calendar">
+                <app-icon name="chevron-left" [size]="18" />
+              </button>
+              <div class="routine-title-block">
+                <input
+                  type="text"
+                  [ngModel]="routineName()"
+                  (ngModelChange)="routineName.set($event)"
+                  class="routine-title-input"
+                  aria-label="Routine Name"
+                  placeholder="Routine Name (e.g. Chest Day)"
+                />
+                <span class="routine-subtitle">Active routine & biomechanical loading plan</span>
+              </div>
+            </div>
+
+            <!-- Routine Presets Pills -->
+            <div class="routine-presets-deck">
+              <span class="presets-lbl">PRESETS:</span>
+              <div class="presets-scroll">
+                @for (preset of routinePresets; track preset) {
+                  <button
+                    type="button"
+                    class="preset-pill-btn"
+                    [class.active]="routineName() === preset"
+                    (click)="selectPresetRoutine(preset)"
+                  >
+                    {{ preset }}
+                  </button>
+                }
+              </div>
+            </div>
+          </div>
+
+          <!-- Progression Banner Card (from Screenshots 3 & 4) -->
+          <section class="progression-banner-card card">
+            <div class="progression-row">
+              <div class="prog-left">
+                <div class="prog-icon-badge">
+                  <app-icon name="progress" [size]="18" color="#22c55e" />
+                </div>
+                <div class="prog-meta">
+                  <span class="prog-label">Progression</span>
+                  <div class="prog-selector-wrap">
+                    <select
+                      [ngModel]="routineProgression()"
+                      (ngModelChange)="routineProgression.set($event)"
+                      class="prog-select"
+                    >
+                      <option value="Linear progression">Linear progression</option>
+                      <option value="Double progression">Double progression</option>
+                      <option value="RPE Autoregulation">RPE Autoregulation</option>
+                      <option value="Wave Periodization">Wave Periodization</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="prog-chevron">
+                <app-icon name="chevron-right" [size]="16" color="var(--text-muted)" />
+              </div>
+            </div>
+
+            <div class="prog-toggle-row">
+              <div class="prog-toggle-left">
+                <div class="prog-pause-badge">⏸</div>
+                <div class="prog-toggle-text">
+                  <span class="prog-toggle-title">Exclude from automatic progression</span>
+                  <span class="prog-toggle-sub">Use for planned deloads. Workouts stay in history and statistics.</span>
+                </div>
+              </div>
+              <label class="apex-switch">
+                <input
+                  type="checkbox"
+                  [checked]="excludeFromProgression()"
+                  (change)="excludeFromProgression.set(!excludeFromProgression())"
+                />
+                <span class="switch-slider"></span>
+              </label>
+            </div>
+            <div class="prog-footer-note">
+              The next regular target continues from the last included workout.
+            </div>
+          </section>
+
+          <!-- Exercises Deck with Reordering & Superset Linking (from Screenshots 3 & 4) -->
+          <section class="routine-exercises-section">
+            <div class="routine-sec-header">
+              <h3>Exercises ({{ routineExercises().length }})</h3>
+              <span class="sec-hint">Tap chain link icon to pair back-to-back supersets</span>
+            </div>
+
+            <div class="routine-exercises-list">
+              @for (ex of routineExercises(); track ex.id; let idx = $index) {
+                <!-- Superset Connector Line -->
+                @if (ex.isSuperset) {
+                  <div class="superset-connector-badge">
+                    <span class="conn-icon">🔗</span>
+                    <span class="conn-text">SUPERSET PAIR — PERFORM BACK-TO-BACK WITH ABOVE</span>
+                  </div>
+                }
+
+                <div class="routine-ex-card card" [class.is-superset-child]="ex.isSuperset">
+                  <!-- Left Thumbnail / Media -->
+                  <div class="ex-thumb-box">
+                    @if (ex.image) {
+                      <img [src]="ex.image" [alt]="ex.name" class="ex-card-thumb" />
+                    } @else {
+                      <div class="ex-thumb-placeholder">
+                        <app-icon name="barbell" [size]="20" color="#22c55e" />
+                      </div>
+                    }
+                  </div>
+
+                  <!-- Center Content -->
+                  <div class="ex-info-col">
+                    <div class="ex-name-row">
+                      <h4 class="routine-ex-name">{{ ex.name }}</h4>
+                      <span class="ex-target-muscle">{{ ex.muscle }}</span>
+                    </div>
+                    <div class="ex-reps-target-row">
+                      <span class="target-reps-pill">{{ ex.targetSets }} × {{ ex.targetReps }}</span>
+                      @if (ex.targetWeightKg && ex.targetWeightKg > 0) {
+                        <span class="target-weight-pill">&#64; {{ ex.targetWeightKg }} kg</span>
+                      }
+                      @if (ex.isBodyweight) {
+                        <span class="bw-pill">Bodyweight</span>
+                      }
+                      @if (ex.intensifier && ex.intensifier !== 'None') {
+                        <span class="intensifier-pill">{{ ex.intensifier }}</span>
+                      }
+                    </div>
+                  </div>
+
+                  <!-- Right Actions: Superset link, reorder, config, delete -->
+                  <div class="ex-actions-col">
+                    <!-- Superset Toggle Link (only for index > 0) -->
+                    @if (idx > 0) {
+                      <button
+                        type="button"
+                        class="ex-action-btn link-btn"
+                        [class.active]="ex.isSuperset"
+                        (click)="toggleRoutineSuperset(idx)"
+                        [title]="ex.isSuperset ? 'Unlink Superset' : 'Link as Superset with previous exercise'"
+                      >
+                        <app-icon name="link" [size]="16" />
+                      </button>
+                    }
+
+                    <!-- Reorder Up/Down -->
+                    <div class="reorder-col">
+                      <button
+                        type="button"
+                        class="reorder-btn"
+                        [disabled]="idx === 0"
+                        (click)="moveRoutineExerciseUp(idx)"
+                        title="Move Up"
+                      >
+                        ▲
+                      </button>
+                      <button
+                        type="button"
+                        class="reorder-btn"
+                        [disabled]="idx === routineExercises().length - 1"
+                        (click)="moveRoutineExerciseDown(idx)"
+                        title="Move Down"
+                      >
+                        ▼
+                      </button>
+                    </div>
+
+                    <!-- Config / Settings Drawer Button -->
+                    <button
+                      type="button"
+                      class="ex-action-btn config-btn"
+                      (click)="openExerciseCustomizer(idx)"
+                      title="Configure Exercise Settings"
+                    >
+                      <app-icon name="sliders" [size]="16" />
+                    </button>
+
+                    <!-- Remove -->
+                    <button
+                      type="button"
+                      class="ex-action-btn delete-btn"
+                      (click)="removeRoutineExercise(idx)"
+                      title="Remove from Routine"
+                    >
+                      <app-icon name="trash" [size]="15" />
+                    </button>
+                  </div>
+                </div>
+              }
+            </div>
+          </section>
+
+          <!-- "What this session hits" - Muscle Heatmap Anatomy (from Screenshots 2, 4, 5) -->
+          <section class="what-session-hits-card card">
+            <div class="hits-title-block">
+              <h3>What this session hits</h3>
+              <p>Dynamic muscular biomechanics calculated from your active exercise roster.</p>
+            </div>
+
+            <!-- The Anatomical Human Heatmap Component -->
+            <app-muscle-anatomy [muscles]="routineActiveMuscles()" />
+
+            <!-- Superset instruction tip from screenshot 2 -->
+            <div class="superset-hint-box">
+              <span class="hint-chain">🔗</span>
+              <span>Tap the link button on an exercise to superset it with the one above — you'll do them back-to-back.</span>
+            </div>
+
+            <!-- Bottom Routine Actions (Screenshot 2 & 5) -->
+            <div class="routine-cta-buttons">
+              <button type="button" class="btn btn-add-exercise" (click)="openAddExerciseToRoutineModal()">
+                <app-icon name="plus" [size]="18" />
+                <span>+ Add exercise</span>
+              </button>
+
+              <button type="button" class="btn btn-outline copy-routine-btn" (click)="copyCurrentRoutine()">
+                <span>Copy routine</span>
+              </button>
+
+              <button type="button" class="btn btn-primary start-routine-btn" (click)="startLiveWorkoutFromRoutine()">
+                <app-icon name="play" [size]="18" />
+                <span>Start Live Session Now →</span>
+              </button>
+            </div>
+          </section>
+        </div>
+      }
+
+      <!-- TAB 3: EXERCISE LIBRARY -->
       @if (activeTab() === 'library') {
         <section class="library-section">
           <div class="library-header">
@@ -970,6 +1252,237 @@ interface CalendarDay {
           (closed)="selectedExercise.set(null)"
           (selected)="onAddExerciseToToday($event)"
         />
+      }
+
+      <!-- Exercise Customizer Drawer (Screenshot 1) -->
+      @if (selectedCustomizerExercise(); as custEx) {
+        <div class="customizer-overlay animated-fade-in" (click)="closeExerciseCustomizer()">
+          <div class="customizer-drawer" (click)="$event.stopPropagation()">
+            <div class="drawer-header">
+              <div>
+                <span class="drawer-sub">EXERCISE CONFIGURATION</span>
+                <h3 class="drawer-title">{{ custEx.name }}</h3>
+                <p class="drawer-desc">Rest after each set of this exercise. Leave at 0 to use your default rest timer.</p>
+              </div>
+              <button type="button" class="drawer-close-btn" (click)="closeExerciseCustomizer()">
+                <app-icon name="close" [size]="18" />
+              </button>
+            </div>
+
+            <div class="drawer-body">
+              <!-- Bodyweight Toggle -->
+              <div class="drawer-card">
+                <div class="drawer-row">
+                  <div class="row-left">
+                    <div class="row-icon-box green">
+                      <app-icon name="today" [size]="18" color="#22c55e" />
+                    </div>
+                    <div class="row-text">
+                      <span class="row-title">Bodyweight</span>
+                      <span class="row-sub">No weight to enter — just log the reps.</span>
+                    </div>
+                  </div>
+                  <label class="apex-switch">
+                    <input
+                      type="checkbox"
+                      [checked]="custEx.isBodyweight"
+                      (change)="updateCustomizerField('isBodyweight', !custEx.isBodyweight)"
+                    />
+                    <span class="switch-slider"></span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Reps per side Toggle -->
+              <div class="drawer-card">
+                <div class="drawer-row">
+                  <div class="row-left">
+                    <div class="row-icon-box blue">
+                      <app-icon name="refresh" [size]="18" color="#38bdf8" />
+                    </div>
+                    <div class="row-text">
+                      <span class="row-title">Reps per side</span>
+                      <span class="row-sub">For lunges, single-arm rows and the like.</span>
+                    </div>
+                  </div>
+                  <label class="apex-switch">
+                    <input
+                      type="checkbox"
+                      [checked]="custEx.repsPerSide"
+                      (change)="updateCustomizerField('repsPerSide', !custEx.repsPerSide)"
+                    />
+                    <span class="switch-slider"></span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Added (kg) Stepper -->
+              <div class="drawer-card">
+                <div class="stepper-header">
+                  <span class="stepper-title">Added (kg)</span>
+                </div>
+                <div class="stepper-controls">
+                  <button type="button" class="stepper-btn" (click)="adjustCustomizerNumber('addedWeightKg', -2.5, 0)">−</button>
+                  <span class="stepper-val">{{ custEx.addedWeightKg || 0 }}</span>
+                  <button type="button" class="stepper-btn" (click)="adjustCustomizerNumber('addedWeightKg', 2.5)">+</button>
+                </div>
+                <div class="stepper-hint">
+                  For dips or pull-ups with a belt. Progression then follows the weight.
+                </div>
+              </div>
+
+              <!-- Top of the range Stepper -->
+              <div class="drawer-card">
+                <div class="stepper-header">
+                  <span class="stepper-title">Top of the range</span>
+                </div>
+                <div class="stepper-controls">
+                  <button type="button" class="stepper-btn" (click)="adjustCustomizerNumber('topOfRange', -1, 0)">−</button>
+                  <span class="stepper-val">{{ custEx.topOfRange || 0 }}</span>
+                  <button type="button" class="stepper-btn" (click)="adjustCustomizerNumber('topOfRange', 1)">+</button>
+                </div>
+                <div class="stepper-hint">
+                  Reps climb by one whenever every set was clean. Set a ceiling to add sets instead of reps forever.
+                </div>
+              </div>
+
+              <!-- Drop-set / rest-pause Intensifier Selector -->
+              <div class="drawer-card">
+                <div class="stepper-header">
+                  <span class="stepper-sub-lbl">Drop-set / rest-pause</span>
+                </div>
+                <div class="selector-row">
+                  <span class="selector-key">Intensifier</span>
+                  <select
+                    [ngModel]="custEx.intensifier || 'None'"
+                    (ngModelChange)="updateCustomizerField('intensifier', $event)"
+                    class="drawer-select"
+                  >
+                    <option value="None">None</option>
+                    <option value="Drop-set">Drop-set</option>
+                    <option value="Rest-pause">Rest-pause</option>
+                    <option value="Myo-reps">Myo-reps</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Progression Rule Selector -->
+              <div class="drawer-card">
+                <div class="stepper-header">
+                  <span class="stepper-sub-lbl">Progression</span>
+                </div>
+                <div class="selector-row">
+                  <span class="selector-key">Rule</span>
+                  <select
+                    [ngModel]="custEx.progressionRule || 'Follow the routine (Linear progression)'"
+                    (ngModelChange)="updateCustomizerField('progressionRule', $event)"
+                    class="drawer-select"
+                  >
+                    <option value="Follow the routine (Linear progression)">Follow the routine (Linear)</option>
+                    <option value="Double progression">Double progression</option>
+                    <option value="Wave loading">Wave loading</option>
+                    <option value="Stepped Progression">Stepped Progression</option>
+                  </select>
+                </div>
+                <div class="stepper-hint">
+                  Hit every rep in every set and the weight goes up. Repeated misses trigger a deload.
+                </div>
+              </div>
+
+              <!-- Step (kg) Stepper -->
+              <div class="drawer-card">
+                <div class="stepper-header">
+                  <span class="stepper-title">Step (kg)</span>
+                </div>
+                <div class="stepper-controls">
+                  <button type="button" class="stepper-btn" (click)="adjustCustomizerNumber('stepKg', -0.5, 0.5)">−</button>
+                  <span class="stepper-val">{{ custEx.stepKg || 2.5 }}</span>
+                  <button type="button" class="stepper-btn" (click)="adjustCustomizerNumber('stepKg', 0.5)">+</button>
+                </div>
+              </div>
+
+              <!-- Note (optional) -->
+              <div class="drawer-card">
+                <div class="stepper-header">
+                  <span class="stepper-sub-lbl">Note (optional) — loading cues, reminders</span>
+                </div>
+                <textarea
+                  [ngModel]="custEx.notes"
+                  (ngModelChange)="updateCustomizerField('notes', $event)"
+                  placeholder="e.g. bar only then +1 plate/side each set, pause 1s at bottom..."
+                  class="drawer-textarea"
+                  rows="3"
+                ></textarea>
+              </div>
+            </div>
+
+            <div class="drawer-footer">
+              <button type="button" class="btn btn-primary btn-block" (click)="closeExerciseCustomizer()">
+                Done & Save Parameters
+              </button>
+            </div>
+          </div>
+        </div>
+      }
+
+      <!-- Add Exercise to Routine Modal -->
+      @if (showRoutineAddModal()) {
+        <div class="customizer-overlay animated-fade-in" (click)="showRoutineAddModal.set(false)">
+          <div class="routine-add-modal" (click)="$event.stopPropagation()">
+            <div class="modal-header">
+              <div>
+                <h3>Add Exercise to Routine</h3>
+                <p class="modal-sub">Choose from verified kinematic movements or search by muscle group</p>
+              </div>
+              <button type="button" class="close-modal-btn" (click)="showRoutineAddModal.set(false)">
+                <app-icon name="close" [size]="18" />
+              </button>
+            </div>
+
+            <!-- Search & Filter Controls -->
+            <div class="modal-search-row">
+              <app-icon name="search" [size]="16" color="var(--text-muted)" />
+              <input
+                type="text"
+                [ngModel]="routineAddSearch()"
+                (ngModelChange)="routineAddSearch.set($event)"
+                placeholder="Search exercise by name or muscle (e.g. Bench, Squat, Delts)..."
+                class="modal-search-input"
+              />
+            </div>
+
+            <div class="modal-cat-pills">
+              @for (cat of ['All', 'Strength', 'Hypertrophy', 'Mobility', 'Core']; track cat) {
+                <button
+                  type="button"
+                  class="cat-chip"
+                  [class.active]="routineAddCategory() === cat"
+                  (click)="routineAddCategory.set(cat)"
+                >
+                  {{ cat }}
+                </button>
+              }
+            </div>
+
+            <!-- Exercises List -->
+            <div class="modal-exercises-list">
+              @for (ex of filteredRoutineAddExercises(); track ex.id) {
+                <div class="modal-ex-item" (click)="addLibraryExerciseToRoutine(ex)">
+                  <div class="item-left">
+                    <span class="item-name">{{ ex.name }}</span>
+                    <div class="item-meta">
+                      <span class="item-muscle">{{ ex.muscle }}</span>
+                      <span class="item-equip">{{ ex.equipment }}</span>
+                    </div>
+                  </div>
+                  <button type="button" class="btn btn-secondary btn-sm">
+                    + Add
+                  </button>
+                </div>
+              }
+            </div>
+          </div>
+        </div>
       }
     </div>
   `,
@@ -3232,6 +3745,872 @@ interface CalendarDay {
         font-size: 0.58rem;
       }
     }
+
+    /* Session Anatomy Strip in Calendar View */
+    .sess-anatomy-strip {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .sess-anatomy-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .sess-anatomy-tag {
+      font-size: 0.65rem;
+      font-weight: 800;
+      color: #22c55e;
+      letter-spacing: 0.08em;
+    }
+    .sess-anatomy-sub {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* Routine View Styles (Matching reference screenshots) */
+    .routine-tab-badge {
+      background: rgba(34, 197, 94, 0.2);
+      color: #22c55e;
+      font-size: 0.58rem;
+      font-weight: 800;
+      padding: 1px 6px;
+      border-radius: 9999px;
+      letter-spacing: 0.06em;
+      margin-left: 4px;
+    }
+    .routine-view {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 800px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .routine-top-bar {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      background: #0f141c;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--r-xl, 16px);
+      padding: 16px;
+    }
+    .routine-top-main {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .back-circle-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      flex-shrink: 0;
+    }
+    .back-circle-btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+    .routine-title-block {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .routine-title-input {
+      background: transparent;
+      border: none;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+      color: var(--text);
+      font-size: 1.25rem;
+      font-weight: 800;
+      padding: 2px 0;
+      outline: none;
+      width: 100%;
+      transition: border-color 0.2s;
+    }
+    .routine-title-input:focus {
+      border-bottom-color: #22c55e;
+    }
+    .routine-subtitle {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+    .routine-presets-deck {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      overflow-x: auto;
+      padding-top: 4px;
+    }
+    .presets-lbl {
+      font-size: 0.65rem;
+      font-weight: 800;
+      color: #64748b;
+      letter-spacing: 0.06em;
+      flex-shrink: 0;
+    }
+    .presets-scroll {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+    }
+    .preset-pill-btn {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .preset-pill-btn.active, .preset-pill-btn:hover {
+      background: rgba(34, 197, 94, 0.15);
+      border-color: #22c55e;
+      color: #86efac;
+    }
+
+    /* Progression Banner Card (Screenshot 3 & 4) */
+    .progression-banner-card {
+      background: #111722;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--r-xl, 16px);
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .progression-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .prog-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex: 1;
+    }
+    .prog-icon-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: rgba(34, 197, 94, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .prog-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      gap: 8px;
+    }
+    .prog-label {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .prog-select {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      font-size: 0.85rem;
+      font-weight: 500;
+      outline: none;
+      cursor: pointer;
+    }
+    .prog-toggle-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .prog-toggle-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex: 1;
+    }
+    .prog-pause-badge {
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      background: rgba(245, 158, 11, 0.2);
+      color: #f59e0b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+    }
+    .prog-toggle-text {
+      display: flex;
+      flex-direction: column;
+    }
+    .prog-toggle-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .prog-toggle-sub {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+    .prog-footer-note {
+      font-size: 0.72rem;
+      color: #64748b;
+      font-style: italic;
+    }
+
+    /* Switch */
+    .apex-switch {
+      position: relative;
+      display: inline-block;
+      width: 44px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+    .apex-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .switch-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: #27303f;
+      transition: .3s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: 24px;
+    }
+    .switch-slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: .3s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: 50%;
+    }
+    .apex-switch input:checked + .switch-slider {
+      background-color: #22c55e;
+    }
+    .apex-switch input:checked + .switch-slider:before {
+      transform: translateX(20px);
+    }
+
+    /* Exercises Section (Screenshots 3 & 4) */
+    .routine-exercises-section {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .routine-sec-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+    .routine-sec-header h3 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--text);
+      margin: 0;
+    }
+    .sec-hint {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+    .routine-exercises-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    /* Superset Connector */
+    .superset-connector-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 10px;
+      background: rgba(34, 197, 94, 0.12);
+      border-left: 3px solid #22c55e;
+      border-radius: 0 8px 8px 0;
+      margin-left: 20px;
+      width: fit-content;
+    }
+    .conn-icon {
+      font-size: 0.75rem;
+    }
+    .conn-text {
+      font-size: 0.62rem;
+      font-weight: 800;
+      color: #86efac;
+      letter-spacing: 0.05em;
+    }
+
+    .routine-ex-card {
+      background: #111620;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: var(--r-xl, 14px);
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+    .routine-ex-card.is-superset-child {
+      border-left: 3px solid #22c55e;
+      background: #0d151e;
+    }
+    .ex-thumb-box {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      background: #192230;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .ex-card-thumb {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .ex-thumb-placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .ex-info-col {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .ex-name-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .routine-ex-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .ex-target-muscle {
+      font-size: 0.65rem;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.05);
+      color: #94a3b8;
+      padding: 1px 6px;
+      border-radius: 6px;
+    }
+    .ex-reps-target-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .target-reps-pill {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #86efac;
+      background: rgba(34, 197, 94, 0.12);
+      padding: 2px 7px;
+      border-radius: 6px;
+    }
+    .target-weight-pill, .bw-pill {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.04);
+      padding: 2px 6px;
+      border-radius: 6px;
+    }
+    .intensifier-pill {
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: #f59e0b;
+      background: rgba(245, 158, 11, 0.15);
+      padding: 1px 6px;
+      border-radius: 6px;
+    }
+    .ex-actions-col {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+    .ex-action-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .ex-action-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text);
+    }
+    .ex-action-btn.link-btn.active {
+      background: #22c55e;
+      color: #052e16;
+      border-color: #4ade80;
+    }
+    .reorder-col {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .reorder-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.65rem;
+      cursor: pointer;
+      padding: 1px 4px;
+      line-height: 1;
+      border-radius: 4px;
+    }
+    .reorder-btn:hover:not(:disabled) {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .reorder-btn:disabled {
+      opacity: 0.25;
+      cursor: not-allowed;
+    }
+
+    /* What this session hits card */
+    .what-session-hits-card {
+      background: #0f141d;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--r-xl, 16px);
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .hits-title-block h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text);
+      margin: 0;
+    }
+    .hits-title-block p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+    .superset-hint-box {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      color: #94a3b8;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 10px 14px;
+      border-radius: 10px;
+    }
+    .hint-chain {
+      font-size: 0.9rem;
+    }
+    .routine-cta-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+      margin-top: 6px;
+    }
+    .btn-add-exercise {
+      background: #22c55e !important;
+      color: #052e16 !important;
+      font-weight: 800 !important;
+      font-size: 0.95rem;
+      border: none;
+      padding: 14px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(34, 197, 94, 0.35);
+      transition: all 0.2s ease;
+    }
+    .btn-add-exercise:hover {
+      background: #16a34a !important;
+      transform: translateY(-1px);
+    }
+    .copy-routine-btn {
+      color: #86efac !important;
+      border-color: rgba(34, 197, 94, 0.3) !important;
+      padding: 10px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .start-routine-btn {
+      font-size: 0.95rem;
+      padding: 14px;
+      border-radius: 12px;
+      font-weight: 700;
+    }
+
+    /* Customizer Drawer (Screenshot 1) */
+    .customizer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+      display: flex;
+      justify-content: flex-end;
+    }
+    .customizer-drawer {
+      width: 100%;
+      max-width: 440px;
+      background: #111722;
+      height: 100vh;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      box-shadow: -8px 0 32px rgba(0, 0, 0, 0.6);
+      animation: slide-drawer 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes slide-drawer {
+      from { transform: translateX(100%); }
+      to { transform: translateX(0); }
+    }
+    .drawer-header {
+      padding: 18px 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      position: sticky;
+      top: 0;
+      background: #111722;
+      z-index: 10;
+    }
+    .drawer-sub {
+      font-size: 0.65rem;
+      font-weight: 800;
+      color: #22c55e;
+      letter-spacing: 0.08em;
+    }
+    .drawer-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text);
+      margin: 4px 0 2px;
+    }
+    .drawer-desc {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+    .drawer-close-btn {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .drawer-body {
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+    }
+    .drawer-card {
+      background: #161e2c;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .drawer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .row-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .row-icon-box {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .row-icon-box.green {
+      background: rgba(34, 197, 94, 0.15);
+    }
+    .row-icon-box.blue {
+      background: rgba(56, 189, 248, 0.15);
+    }
+    .row-text {
+      display: flex;
+      flex-direction: column;
+    }
+    .row-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .row-sub {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+    .stepper-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .stepper-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #94a3b8;
+    }
+    .stepper-sub-lbl {
+      font-size: 0.72rem;
+      color: #64748b;
+      font-weight: 600;
+    }
+    .stepper-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #0f141e;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 6px 10px;
+    }
+    .stepper-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      border: none;
+      color: var(--text);
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .stepper-btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+    .stepper-val {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+    .stepper-hint {
+      font-size: 0.7rem;
+      color: #64748b;
+      line-height: 1.35;
+    }
+    .selector-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .selector-key {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .drawer-select {
+      background: transparent;
+      border: none;
+      color: #22c55e;
+      font-size: 0.85rem;
+      font-weight: 600;
+      outline: none;
+      text-align: right;
+    }
+    .drawer-textarea {
+      background: #0f141e;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 8px 10px;
+      color: var(--text);
+      font-size: 0.8rem;
+      resize: vertical;
+      outline: none;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .drawer-footer {
+      padding: 16px 20px calc(16px + env(safe-area-inset-bottom, 0));
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      position: sticky;
+      bottom: 0;
+      background: #111722;
+    }
+
+    /* Routine Add Modal */
+    .routine-add-modal {
+      width: 92%;
+      max-width: 520px;
+      max-height: 85vh;
+      background: #111722;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      margin: auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.7);
+    }
+    .modal-search-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #0b1016;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 10px 14px;
+    }
+    .modal-search-input {
+      background: transparent;
+      border: none;
+      color: var(--text);
+      font-size: 0.85rem;
+      width: 100%;
+      outline: none;
+    }
+    .modal-cat-pills {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+    }
+    .cat-chip {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .cat-chip.active {
+      background: #22c55e;
+      color: #052e16;
+      border-color: #4ade80;
+    }
+    .modal-exercises-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-height: 380px;
+      overflow-y: auto;
+    }
+    .modal-ex-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: #161e2c;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      padding: 10px 12px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    .modal-ex-item:hover {
+      background: #1d2738;
+      border-color: rgba(34, 197, 94, 0.3);
+    }
+    .item-left {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .item-name {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .item-meta {
+      display: flex;
+      gap: 6px;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+    .item-muscle {
+      color: #86efac;
+    }
+    @media (max-width: 600px) {
+      .routine-top-main {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .customizer-drawer {
+        max-width: 100vw;
+      }
+    }
   `]
 })
 export class TrainingHubComponent implements OnInit {
@@ -3242,11 +4621,531 @@ export class TrainingHubComponent implements OnInit {
 
   protected Math = Math;
 
-  activeTab = signal<'calendar' | 'library'>('calendar');
+  activeTab = signal<'calendar' | 'library' | 'routine'>('calendar');
   inspectorTab = signal<'all' | 'workouts' | 'meals' | 'water'>('all');
   showJustFinishedBanner = signal<boolean>(false);
   showAddedToast = signal<string | null>(null);
   showGuide = signal<boolean>(true);
+
+  // Computed Biomechanical Target Muscles for Calendar View Banner
+  sessionTargetMuscles = computed(() => {
+    const deck = this.activeExercisesDeck();
+    if (!deck || deck.length === 0) return ['quads', 'hamstrings', 'glutes'];
+    return deck.map(d => d.muscle);
+  });
+
+  // Routine & Muscle Heatmap Designer State (Matching reference screenshots)
+  routineName = signal<string>('Chest Day');
+  routineProgression = signal<string>('Linear progression');
+  excludeFromProgression = signal<boolean>(false);
+  routinePresets = [
+    'Chest Day',
+    'Lower Body Quad & Glute Power',
+    'Pull & Upper Back Hypertrophy',
+    'All Fours & Core Mobility',
+    'Total Body Athletic Engine'
+  ];
+
+  routineExercises = signal<RoutineItem[]>([
+    {
+      id: 'band-bench-press',
+      name: 'Band Bench Press',
+      muscle: 'Chest',
+      secondaryMuscles: ['Shoulders', 'Triceps'],
+      targetSets: 3,
+      targetReps: 10,
+      targetWeightKg: 0,
+      image: '/img/ex-bench-press.jpg',
+      isSuperset: false,
+      isBodyweight: false,
+      repsPerSide: false,
+      addedWeightKg: 0,
+      topOfRange: 12,
+      intensifier: 'None',
+      progressionRule: 'Follow the routine (Linear progression)',
+      stepKg: 2.5,
+      notes: 'Loop resistance band across upper back.'
+    },
+    {
+      id: 'archer-push-up',
+      name: 'Archer Push Up',
+      muscle: 'Chest',
+      secondaryMuscles: ['Shoulders', 'Core'],
+      targetSets: 3,
+      targetReps: 10,
+      targetWeightKg: 0,
+      image: '/img/ex-overhead-press.jpg',
+      isSuperset: true, // superset with Band Bench Press (screenshot 3)
+      isBodyweight: true,
+      repsPerSide: true,
+      addedWeightKg: 0,
+      topOfRange: 12,
+      intensifier: 'None',
+      progressionRule: 'Follow the routine (Linear progression)',
+      stepKg: 0,
+      notes: 'Slide non-working hand outwards smoothly.'
+    },
+    {
+      id: 'barbell-bench-press',
+      name: 'Barbell Bench Press',
+      muscle: 'Chest',
+      secondaryMuscles: ['Shoulders', 'Triceps'],
+      targetSets: 3,
+      targetReps: 10,
+      targetWeightKg: 95,
+      image: '/img/ex-bench-press.jpg',
+      isSuperset: false,
+      isBodyweight: false,
+      repsPerSide: false,
+      addedWeightKg: 0,
+      topOfRange: 10,
+      intensifier: 'None',
+      progressionRule: 'Follow the routine (Linear progression)',
+      stepKg: 2.5,
+      notes: 'Pinch shoulder blades, drive feet into floor.'
+    },
+    {
+      id: 'db-incline-press',
+      name: 'Dumbbell Incline Alternate Press',
+      muscle: 'Chest',
+      secondaryMuscles: ['Shoulders', 'Triceps'],
+      targetSets: 3,
+      targetReps: 10,
+      targetWeightKg: 32,
+      image: '/img/ex-incline-press.jpg',
+      isSuperset: true, // superset with Barbell Bench Press (screenshot 3)
+      isBodyweight: false,
+      repsPerSide: true,
+      addedWeightKg: 0,
+      topOfRange: 12,
+      intensifier: 'Drop-set',
+      progressionRule: 'Follow the routine (Linear progression)',
+      stepKg: 2,
+      notes: '30 degree incline, alternate left and right press.'
+    },
+    {
+      id: 'overhead-press',
+      name: 'Overhead Barbell Press',
+      muscle: 'Shoulders',
+      secondaryMuscles: ['Triceps', 'Upper Back'],
+      targetSets: 3,
+      targetReps: 8,
+      targetWeightKg: 55,
+      image: '/img/ex-overhead-press.jpg',
+      isSuperset: false,
+      isBodyweight: false,
+      repsPerSide: false,
+      addedWeightKg: 0,
+      topOfRange: 10,
+      intensifier: 'None',
+      progressionRule: 'Follow the routine (Linear progression)',
+      stepKg: 2.5,
+      notes: 'Tight glutes and abdominal brace.'
+    },
+    {
+      id: 'cable-pushdown',
+      name: 'Cable Tricep Pushdown',
+      muscle: 'Triceps',
+      secondaryMuscles: ['Forearms'],
+      targetSets: 3,
+      targetReps: 12,
+      targetWeightKg: 35,
+      image: '/img/ex-tricep-pushdown.jpg',
+      isSuperset: true,
+      isBodyweight: false,
+      repsPerSide: false,
+      addedWeightKg: 0,
+      topOfRange: 15,
+      intensifier: 'Rest-pause',
+      progressionRule: 'Follow the routine (Linear progression)',
+      stepKg: 2.5,
+      notes: 'Lock out elbows with a 1-second contraction.'
+    }
+  ]);
+
+  routineActiveMuscles = computed(() => {
+    const list = this.routineExercises();
+    const muscles: string[] = [];
+    list.forEach(item => {
+      muscles.push(item.muscle);
+      if (item.secondaryMuscles) {
+        muscles.push(...item.secondaryMuscles);
+      }
+    });
+    return muscles;
+  });
+
+  // Customizer Drawer State
+  selectedCustomizerIndex = signal<number | null>(null);
+  selectedCustomizerExercise = computed(() => {
+    const idx = this.selectedCustomizerIndex();
+    if (idx === null || idx < 0) return null;
+    return this.routineExercises()[idx] || null;
+  });
+
+  // Add Exercise to Routine Modal State
+  showRoutineAddModal = signal<boolean>(false);
+  routineAddSearch = signal<string>('');
+  routineAddCategory = signal<string>('All');
+
+  filteredRoutineAddExercises = computed(() => {
+    const list = this.workout.exerciseLibrary();
+    const query = this.routineAddSearch().trim().toLowerCase();
+    const cat = this.routineAddCategory();
+
+    return list.filter(e => {
+      const matchCat = cat === 'All' || e.category === cat;
+      if (!matchCat) return false;
+      if (!query) return true;
+      return (
+        e.name.toLowerCase().includes(query) ||
+        e.muscle.toLowerCase().includes(query) ||
+        (e.secondaryMuscles && e.secondaryMuscles.some(m => m.toLowerCase().includes(query)))
+      );
+    });
+  });
+
+  moveRoutineExerciseUp(index: number) {
+    if (index <= 0) return;
+    const arr = [...this.routineExercises()];
+    const temp = arr[index];
+    arr[index] = arr[index - 1];
+    arr[index - 1] = temp;
+    this.routineExercises.set(arr);
+  }
+
+  moveRoutineExerciseDown(index: number) {
+    const arr = [...this.routineExercises()];
+    if (index >= arr.length - 1) return;
+    const temp = arr[index];
+    arr[index] = arr[index + 1];
+    arr[index + 1] = temp;
+    this.routineExercises.set(arr);
+  }
+
+  toggleRoutineSuperset(index: number) {
+    if (index <= 0) return;
+    const arr = [...this.routineExercises()];
+    arr[index] = {
+      ...arr[index],
+      isSuperset: !arr[index].isSuperset
+    };
+    this.routineExercises.set(arr);
+  }
+
+  removeRoutineExercise(index: number) {
+    const arr = [...this.routineExercises()];
+    arr.splice(index, 1);
+    this.routineExercises.set(arr);
+  }
+
+  openExerciseCustomizer(index: number) {
+    this.selectedCustomizerIndex.set(index);
+  }
+
+  closeExerciseCustomizer() {
+    this.selectedCustomizerIndex.set(null);
+  }
+
+  updateCustomizerField<K extends keyof RoutineItem>(field: K, value: RoutineItem[K]) {
+    const idx = this.selectedCustomizerIndex();
+    if (idx === null || idx < 0) return;
+    const arr = [...this.routineExercises()];
+    arr[idx] = { ...arr[idx], [field]: value };
+    this.routineExercises.set(arr);
+  }
+
+  adjustCustomizerNumber<K extends keyof RoutineItem>(field: K, delta: number, min: number = 0) {
+    const idx = this.selectedCustomizerIndex();
+    if (idx === null || idx < 0) return;
+    const arr = [...this.routineExercises()];
+    const currentVal = (arr[idx][field] as number) || 0;
+    const newVal = Math.max(min, Math.round((currentVal + delta) * 10) / 10);
+    arr[idx] = { ...arr[idx], [field]: newVal };
+    this.routineExercises.set(arr);
+  }
+
+  openAddExerciseToRoutineModal() {
+    this.showRoutineAddModal.set(true);
+    this.routineAddSearch.set('');
+    this.routineAddCategory.set('All');
+  }
+
+  addLibraryExerciseToRoutine(ex: ExerciseItem) {
+    const newItem: RoutineItem = {
+      id: ex.id + '-' + Date.now(),
+      name: ex.name,
+      muscle: ex.muscle,
+      secondaryMuscles: ex.secondaryMuscles || [],
+      targetSets: 3,
+      targetReps: 10,
+      targetWeightKg: ex.prKg || 50,
+      image: ex.image,
+      isSuperset: false,
+      isBodyweight: ex.category?.toLowerCase() === 'mobility' || ex.category?.toLowerCase() === 'core',
+      repsPerSide: false,
+      addedWeightKg: 0,
+      topOfRange: 12,
+      intensifier: 'None',
+      progressionRule: 'Follow the routine (Linear progression)',
+      stepKg: 2.5,
+      notes: ex.description || ''
+    };
+    this.routineExercises.set([...this.routineExercises(), newItem]);
+    this.showRoutineAddModal.set(false);
+    this.showAddedToast.set(`"${ex.name}" added to routine!`);
+    setTimeout(() => this.showAddedToast.set(null), 4000);
+  }
+
+  selectPresetRoutine(name: string) {
+    this.routineName.set(name);
+    if (name.includes('Chest')) {
+      this.routineExercises.set([
+        {
+          id: 'band-bench-press',
+          name: 'Band Bench Press',
+          muscle: 'Chest',
+          secondaryMuscles: ['Shoulders', 'Triceps'],
+          targetSets: 3,
+          targetReps: 10,
+          targetWeightKg: 0,
+          image: '/img/ex-bench-press.jpg',
+          isSuperset: false,
+          isBodyweight: false,
+          repsPerSide: false,
+          addedWeightKg: 0,
+          topOfRange: 12,
+          intensifier: 'None',
+          progressionRule: 'Follow the routine (Linear progression)',
+          stepKg: 2.5,
+          notes: 'Loop resistance band across upper back.'
+        },
+        {
+          id: 'archer-push-up',
+          name: 'Archer Push Up',
+          muscle: 'Chest',
+          secondaryMuscles: ['Shoulders', 'Core'],
+          targetSets: 3,
+          targetReps: 10,
+          targetWeightKg: 0,
+          image: '/img/ex-overhead-press.jpg',
+          isSuperset: true,
+          isBodyweight: true,
+          repsPerSide: true,
+          addedWeightKg: 0,
+          topOfRange: 12,
+          intensifier: 'None',
+          progressionRule: 'Follow the routine (Linear progression)',
+          stepKg: 0,
+          notes: 'Slide non-working hand outwards smoothly.'
+        },
+        {
+          id: 'barbell-bench-press',
+          name: 'Barbell Bench Press',
+          muscle: 'Chest',
+          secondaryMuscles: ['Shoulders', 'Triceps'],
+          targetSets: 3,
+          targetReps: 10,
+          targetWeightKg: 95,
+          image: '/img/ex-bench-press.jpg',
+          isSuperset: false,
+          isBodyweight: false,
+          repsPerSide: false,
+          addedWeightKg: 0,
+          topOfRange: 10,
+          intensifier: 'None',
+          progressionRule: 'Follow the routine (Linear progression)',
+          stepKg: 2.5,
+          notes: 'Pinch shoulder blades, drive feet into floor.'
+        },
+        {
+          id: 'db-incline-press',
+          name: 'Dumbbell Incline Alternate Press',
+          muscle: 'Chest',
+          secondaryMuscles: ['Shoulders', 'Triceps'],
+          targetSets: 3,
+          targetReps: 10,
+          targetWeightKg: 32,
+          image: '/img/ex-incline-press.jpg',
+          isSuperset: true,
+          isBodyweight: false,
+          repsPerSide: true,
+          addedWeightKg: 0,
+          topOfRange: 12,
+          intensifier: 'Drop-set',
+          progressionRule: 'Follow the routine (Linear progression)',
+          stepKg: 2,
+          notes: '30 degree incline, alternate left and right press.'
+        }
+      ]);
+    } else if (name.includes('Lower') || name.includes('Quad')) {
+      this.routineExercises.set([
+        {
+          id: 'squat',
+          name: 'Barbell Back Squat',
+          muscle: 'Quads',
+          secondaryMuscles: ['Glutes', 'Hamstrings'],
+          targetSets: 4,
+          targetReps: 8,
+          targetWeightKg: 120,
+          image: '/img/ex-back-squat.jpg',
+          isSuperset: false,
+          isBodyweight: false,
+          repsPerSide: false,
+          addedWeightKg: 0,
+          topOfRange: 8,
+          intensifier: 'None',
+          progressionRule: 'Follow the routine (Linear progression)',
+          stepKg: 5,
+          notes: 'Drive through heels, knees track over toes.'
+        },
+        {
+          id: 'rdl',
+          name: 'Romanian Deadlift (RDL)',
+          muscle: 'Hamstrings',
+          secondaryMuscles: ['Glutes', 'Lower Back'],
+          targetSets: 3,
+          targetReps: 8,
+          targetWeightKg: 95,
+          image: '/img/ex-rdl.jpg',
+          isSuperset: false,
+          isBodyweight: false,
+          repsPerSide: false,
+          addedWeightKg: 0,
+          topOfRange: 10,
+          intensifier: 'None',
+          progressionRule: 'Follow the routine (Linear progression)',
+          stepKg: 2.5,
+          notes: 'Hinge hips backwards with flat spine.'
+        },
+        {
+          id: 'bulgarian',
+          name: 'Bulgarian Split Squat',
+          muscle: 'Quads & Glutes',
+          secondaryMuscles: ['Hamstrings', 'Calves'],
+          targetSets: 3,
+          targetReps: 10,
+          targetWeightKg: 22,
+          image: '/img/ex-back-squat.jpg',
+          isSuperset: true,
+          isBodyweight: false,
+          repsPerSide: true,
+          addedWeightKg: 0,
+          topOfRange: 12,
+          intensifier: 'Drop-set',
+          progressionRule: 'Follow the routine (Linear progression)',
+          stepKg: 2,
+          notes: 'Elevate rear foot on bench.'
+        },
+        {
+          id: 'calves',
+          name: 'Standing Calf Raise',
+          muscle: 'Calves',
+          secondaryMuscles: [],
+          targetSets: 3,
+          targetReps: 15,
+          targetWeightKg: 80,
+          image: '/img/ex-rdl.jpg',
+          isSuperset: false,
+          isBodyweight: false,
+          repsPerSide: false,
+          addedWeightKg: 0,
+          topOfRange: 20,
+          intensifier: 'Rest-pause',
+          progressionRule: 'Follow the routine (Linear progression)',
+          stepKg: 5,
+          notes: '2-second pause at full peak stretch.'
+        }
+      ]);
+    } else if (name.includes('All Fours') || name.includes('Mobility')) {
+      this.routineExercises.set([
+        {
+          id: 'squad-stretch',
+          name: 'All Fours Squad Stretch',
+          muscle: 'Quads',
+          secondaryMuscles: ['Glutes', 'Hamstrings'],
+          targetSets: 3,
+          targetReps: 10,
+          targetWeightKg: 0,
+          image: '/img/ex-back-squat.jpg',
+          isSuperset: false,
+          isBodyweight: true,
+          repsPerSide: true,
+          addedWeightKg: 0,
+          topOfRange: 12,
+          intensifier: 'None',
+          progressionRule: 'Follow the routine (Linear progression)',
+          stepKg: 0,
+          notes: 'Active hip flexor & quad lengthening.'
+        },
+        {
+          id: 'situp',
+          name: '3/4 Sit-Up',
+          muscle: 'Abs & Core',
+          secondaryMuscles: ['Hip Flexors'],
+          targetSets: 3,
+          targetReps: 12,
+          targetWeightKg: 0,
+          image: '/img/ex-overhead-press.jpg',
+          isSuperset: true,
+          isBodyweight: true,
+          repsPerSide: false,
+          addedWeightKg: 0,
+          topOfRange: 15,
+          intensifier: 'None',
+          progressionRule: 'Follow the routine (Linear progression)',
+          stepKg: 0,
+          notes: 'Engage rectus abdominis without pulling neck.'
+        }
+      ]);
+    }
+  }
+
+  copyCurrentRoutine() {
+    this.showAddedToast.set(`Routine "${this.routineName()}" copied to clipboard!`);
+    setTimeout(() => this.showAddedToast.set(null), 3000);
+  }
+
+  startLiveWorkoutFromRoutine() {
+    const exercises = this.routineExercises();
+    if (exercises.length > 0) {
+      this.workout.liveSession.update(curr => ({
+        ...curr,
+        isActive: true,
+        sessionTitle: this.routineName(),
+        exercises: exercises.map(item => {
+          const libMatch = this.workout.exerciseLibrary().find(l => l.name.toLowerCase() === item.name.toLowerCase());
+          const exercise: ExerciseItem = libMatch ? { ...libMatch } : {
+            id: item.id,
+            name: item.name,
+            muscle: item.muscle,
+            secondaryMuscles: item.secondaryMuscles || [],
+            category: 'Strength',
+            image: item.image || '/img/ex-bench-press.jpg',
+            lastPerformance: `${item.targetWeightKg || 50}kg × ${item.targetReps}`,
+            targetSetsReps: `${item.targetSets} × ${item.targetReps}`,
+            prKg: item.targetWeightKg || 60,
+            equipment: 'Free Weight / Bodyweight',
+            description: item.notes || 'Custom configured routine exercise.',
+            formCues: item.notes ? [item.notes] : ['Control tempo and maintain spinal stability.']
+          };
+          return {
+            exercise,
+            targetSets: item.targetSets,
+            targetReps: item.targetReps,
+            sets: Array.from({ length: item.targetSets }, (_, i) => ({
+              setNumber: i + 1,
+              weightKg: item.targetWeightKg || 60,
+              reps: item.targetReps,
+              completed: false,
+              isWarmup: i === 0 && item.targetSets > 3
+            }))
+          };
+        })
+      }));
+    }
+    this.router.navigate(['/training/session/live']);
+  }
 
   inspectExerciseByName(exerciseName: string) {
     const found = this.workout.exerciseLibrary().find(e => e.name.toLowerCase() === exerciseName.toLowerCase());
@@ -3278,6 +5177,8 @@ export class TrainingHubComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       if (params['tab'] === 'library') {
         this.activeTab.set('library');
+      } else if (params['tab'] === 'routine') {
+        this.activeTab.set('routine');
       } else {
         this.activeTab.set('calendar');
       }

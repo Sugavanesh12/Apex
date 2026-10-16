@@ -3,6 +3,7 @@ import { Router, RouterLink } from '@angular/router';
 import { DecimalPipe } from '@angular/common';
 import { IconComponent } from '../../shared/ui/icon/icon.component';
 import { WorkoutService, CompletedSessionItem } from '../../core/services/workout.service';
+import { NotificationService } from '../../core/services/notification.service';
 import { ExerciseModalComponent } from '../../shared/ui/exercise-modal/exercise-modal.component';
 
 @Component({
@@ -1105,6 +1106,7 @@ import { ExerciseModalComponent } from '../../shared/ui/exercise-modal/exercise-
 })
 export class LiveSessionComponent implements OnInit, OnDestroy {
   workout = inject(WorkoutService);
+  private notif = inject(NotificationService);
   private router = inject(Router);
 
   showFormModal = signal<boolean>(false);
@@ -1247,6 +1249,13 @@ export class LiveSessionComponent implements OnInit, OnDestroy {
   confirmFinishWorkout() {
     this.showConqueredModal.set(false);
     const record = this.workout.finishSession();
+    this.notif.addNotification({
+      type: 'workout',
+      title: 'Workout Conquered! 🏆',
+      message: `Completed "${record.title}" with ${record.totalSets} sets and ${record.totalVolumeKg} kg tonnage.`,
+      icon: '🏆',
+      link: '/training'
+    });
     this.router.navigate(['/training'], { queryParams: { tab: 'calendar', recorded: record.id, justFinished: 'true' } });
   }
 }

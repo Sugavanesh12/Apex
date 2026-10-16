@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { IconComponent } from '../../shared/ui/icon/icon.component';
 import { NutritionService } from '../../core/services/nutrition.service';
 import { GeminiService } from '../../core/services/gemini.service';
+import { NotificationService } from '../../core/services/notification.service';
 
 interface FoodPreset {
   id: string;
@@ -1666,6 +1667,7 @@ export class NutritionScanComponent {
   nutrition = inject(NutritionService);
   gemini = inject(GeminiService);
   router = inject(Router);
+  private notif = inject(NotificationService);
 
   // Initialize signals from existing persistent draft state
   previewImage = signal<string>(this.nutrition.activeDraftMeal().image || '/img/food-chicken.jpg');
@@ -1882,6 +1884,13 @@ export class NutritionScanComponent {
 
   addToLog() {
     this.nutrition.saveDraftMeal();
+    this.notif.addNotification({
+      type: 'nutrition',
+      title: 'Meal Logged Successfully 🥗',
+      message: `Added "${this.activeDishName()}" (${this.draftTotals().kcal} kcal, ${this.draftTotals().protein}g P) to your daily fuel tracker.`,
+      icon: '🥑',
+      link: '/nutrition'
+    });
     alert(`Logged ${this.activeDishName()} (${this.draftTotals().kcal} kcal) to daily nutrition log!`);
     this.router.navigate(['/nutrition']);
   }

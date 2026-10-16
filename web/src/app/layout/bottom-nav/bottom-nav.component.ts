@@ -31,7 +31,7 @@ interface TabItem {
     :host {
       display: none;
     }
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
       :host {
         display: block;
         position: fixed;

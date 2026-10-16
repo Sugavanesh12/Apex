@@ -43,7 +43,22 @@ import { IconComponent } from '../icon/icon.component';
         @if (errorMessage()) {
           <div class="alert-box error-alert">
             <app-icon name="info" [size]="16" />
-            <span>{{ errorMessage() }}</span>
+            <div class="alert-text-group">
+              <span>{{ errorMessage() }}</span>
+              @if (isEmailUnconfirmed()) {
+                <div class="unconfirmed-guide">
+                  <p class="guide-note">
+                    <strong>Why did the link show 404?</strong> If you opened the email on your phone, <code>localhost:4205</code> points to your phone, not your computer!
+                  </p>
+                  <p class="guide-tip">
+                    👉 <strong>Quick Fix:</strong> Open the confirmation email on <em>this computer</em>, or in your <strong>Supabase Dashboard</strong> go to <strong>Authentication &gt; Providers &gt; Email</strong> and turn off <strong>"Confirm email"</strong> for instant logins.
+                  </p>
+                  <button type="button" class="btn-resend" (click)="resendEmail()" [disabled]="resending()">
+                    {{ resending() ? 'Resending...' : '📧 Resend Confirmation Email' }}
+                  </button>
+                </div>
+              }
+            </div>
           </div>
         }
         @if (successMessage()) {
@@ -326,6 +341,63 @@ import { IconComponent } from '../icon/icon.component';
     .guest-btn:hover {
       color: var(--text);
     }
+    .alert-text-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      width: 100%;
+    }
+    .unconfirmed-guide {
+      margin-top: 4px;
+      padding-top: 6px;
+      border-top: 1px dashed rgba(239, 68, 68, 0.35);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 0.72rem;
+      color: #fca5a5;
+    }
+    .guide-note, .guide-tip {
+      margin: 0;
+      line-height: 1.4;
+    }
+    .guide-note code {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 1px 4px;
+      border-radius: 4px;
+      color: #fff;
+    }
+    .btn-resend {
+      align-self: flex-start;
+      margin-top: 4px;
+      padding: 4px 10px;
+      border-radius: var(--r-pill);
+      background: rgba(239, 68, 68, 0.25);
+      border: 1px solid rgba(239, 68, 68, 0.6);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .btn-resend:hover:not(:disabled) {
+      background: rgba(239, 68, 68, 0.45);
+    }
+    .btn-resend:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    @media (max-width: 480px) {
+      .modal-dialog {
+        max-width: calc(100vw - 24px);
+        margin: 0 12px;
+      }
+      .modal-header, .auth-form, .cloud-footer {
+        padding-left: var(--s-3);
+        padding-right: var(--s-3);
+      }
+    }
   `]
 })
 export class AuthModalComponent {
@@ -338,22 +410,43 @@ export class AuthModalComponent {
   password = '';
   name = '';
   loading = signal<boolean>(false);
+  resending = signal<boolean>(false);
   errorMessage = signal<string | null>(null);
   successMessage = signal<string | null>(null);
+
+  isEmailUnconfirmed = signal<boolean>(false);
 
   setMode(newMode: 'signin' | 'signup') {
     this.mode.set(newMode);
     this.errorMessage.set(null);
     this.successMessage.set(null);
+    this.isEmailUnconfirmed.set(false);
   }
 
   close() {
     this.closed.emit();
   }
 
+  async resendEmail() {
+    if (!this.email) {
+      this.errorMessage.set('Please enter your email address to resend confirmation.');
+      return;
+    }
+    this.resending.set(true);
+    try {
+      await this.supabase.resendConfirmation(this.email);
+      this.successMessage.set(`Confirmation email re-sent to ${this.email}! Please open it on your PC browser.`);
+    } catch (err: any) {
+      this.errorMessage.set(err.message || 'Failed to resend confirmation email.');
+    } finally {
+      this.resending.set(false);
+    }
+  }
+
   async submit() {
     this.errorMessage.set(null);
     this.successMessage.set(null);
+    this.isEmailUnconfirmed.set(false);
     this.loading.set(true);
 
     try {
@@ -363,10 +456,14 @@ export class AuthModalComponent {
         setTimeout(() => this.close(), 900);
       } else {
         await this.supabase.signUp(this.email, this.password, this.name || 'Athlete');
-        this.successMessage.set('Account created! Please check your email for confirmation or proceed to sign in.');
+        this.successMessage.set('Account created! Please check your email on this PC to confirm, or proceed to sign in.');
       }
     } catch (err: any) {
-      this.errorMessage.set(err.message || 'Authentication failed. Please check credentials or network.');
+      const msg = err.message || 'Authentication failed. Please check credentials or network.';
+      this.errorMessage.set(msg);
+      if (msg.toLowerCase().includes('email not confirmed')) {
+        this.isEmailUnconfirmed.set(true);
+      }
     } finally {
       this.loading.set(false);
     }

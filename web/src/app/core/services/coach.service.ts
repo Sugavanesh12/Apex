@@ -10,11 +10,6 @@ export interface ChatMessage {
   sender: 'ai' | 'user';
   text: string;
   timestamp: string;
-  proposal?: {
-    actionText: string;
-    applied: boolean;
-    type?: 'training' | 'nutrition' | 'recovery';
-  };
 }
 
 const CHAT_STORAGE_KEY = 'apex_coach_chat_history_v2';
@@ -41,7 +36,11 @@ export class CoachService {
         try {
           const parsed = JSON.parse(saved);
           if (Array.isArray(parsed) && parsed.length > 0) {
-            return parsed;
+            // Strip any legacy proposals from chat history
+            return parsed.map((m: any) => {
+              const { proposal, ...clean } = m;
+              return clean as ChatMessage;
+            });
           }
         } catch (e) {
           console.warn('Failed to parse saved coach chat:', e);
@@ -135,12 +134,7 @@ export class CoachService {
         id: `ai-${Date.now()}`,
         sender: 'ai',
         text: response.text,
-        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-        proposal: response.proposal ? {
-          actionText: response.proposal.actionText,
-          applied: false,
-          type: response.proposal.type
-        } : undefined
+        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       };
 
       this.messages.update(msgs => {
@@ -151,25 +145,6 @@ export class CoachService {
     } finally {
       this.isThinking.set(false);
     }
-  }
-
-  confirmProposal(messageId: string) {
-    this.messages.update(msgs => {
-      const updated = msgs.map(m => {
-        if (m.id === messageId && m.proposal) {
-          if (m.proposal.type === 'nutrition') {
-            this.nutrition.logQuickFuel(m.proposal.actionText || 'Post-Workout Fuel', 150, 25, 5, 2);
-          }
-          return {
-            ...m,
-            proposal: { ...m.proposal, applied: true }
-          };
-        }
-        return m;
-      });
-      this.saveMessages(updated);
-      return updated;
-    });
   }
 }
 

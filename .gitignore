@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+web/node_modules/
+
+# Compiled output
+dist/
+web/dist/
+tmp/
+web/tmp/
+out-tsc/
+web/out-tsc/
+
+# Angular cache
+.angular/
+web/.angular/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# System
+.DS_Store
+Thumbs.db

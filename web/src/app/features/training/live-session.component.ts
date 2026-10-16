@@ -1,36 +1,54 @@
 import { Component, computed, inject, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { IconComponent } from '../../shared/ui/icon/icon.component';
-import { ProgressRingComponent } from '../../shared/ui/progress-ring/progress-ring.component';
-import { WorkoutService } from '../../core/services/workout.service';
+import { WorkoutService, CompletedSessionItem } from '../../core/services/workout.service';
 import { ExerciseModalComponent } from '../../shared/ui/exercise-modal/exercise-modal.component';
 
 @Component({
   selector: 'app-live-session',
   standalone: true,
-  imports: [RouterLink, IconComponent, ProgressRingComponent, ExerciseModalComponent],
+  imports: [RouterLink, IconComponent, ExerciseModalComponent],
   template: `
     <div class="live-session-page">
-      <!-- Session Top Bar -->
+      <!-- Session Top Bar (Zero Timers) -->
       <header class="session-topbar">
         <a routerLink="/training" class="back-link">
           <app-icon name="chevron-left" [size]="20" />
           <span class="topbar-title">Live Session</span>
         </a>
 
-        <div class="timer-badge">
-          <span class="rec-dot"></span>
-          <span class="timer-val num">{{ formattedTime() }}</span>
+        <div class="topbar-session-info">
+          <span class="live-dot"></span>
+          <span class="active-badge">{{ workout.liveSession().sessionTitle }}</span>
+          <span class="moves-badge">{{ workout.liveSession().exercises.length }} Exercises</span>
         </div>
 
-        <button class="btn btn-secondary finish-btn" (click)="finishWorkout()">
-          Finish Workout
+        <button class="btn btn-primary finish-btn" (click)="finishWorkout()">
+          <app-icon name="check" [size]="16" />
+          <span>Finish Workout</span>
         </button>
       </header>
 
+      <!-- 4-Exercise Stepper Tabs Bar -->
+      <div class="exercise-stepper-bar">
+        @for (item of workout.liveSession().exercises; track item.exercise.id; let idx = $index) {
+          <button
+            class="ex-step-tab"
+            [class.active]="workout.liveSession().currentExerciseIndex === idx"
+            (click)="workout.setExerciseIndex(idx)"
+          >
+            <span class="step-num">{{ idx + 1 }}</span>
+            <span class="step-name">{{ item.exercise.name }}</span>
+            @if (isExerciseAllCompleted(item)) {
+              <span class="step-done-badge">✓</span>
+            }
+          </button>
+        }
+      </div>
+
       <!-- Main Live Split: Visual on left, Logger on right -->
       <div class="live-grid">
-        <!-- Visual & Rep Counter (From Reference Mockup) -->
+        <!-- Visual & Form Stage -->
         <div class="hero-stage card">
           <div class="stage-media">
             @if (workout.currentExercise().exercise.videoUrl) {
@@ -43,14 +61,21 @@ import { ExerciseModalComponent } from '../../shared/ui/exercise-modal/exercise-
                 playsinline
                 class="stage-img stage-video"
               ></video>
-            } @else {
+            } @else if (workout.currentExercise().exercise.image) {
               <img [src]="workout.currentExercise().exercise.image" alt="Exercise Form" class="stage-img" />
+            } @else {
+              <div class="stage-schematic-bg">
+                <span class="schematic-target-badge">{{ workout.currentExercise().exercise.muscle }}</span>
+                <span class="schematic-exercise-name">{{ workout.currentExercise().exercise.name }}</span>
+              </div>
             }
             <div class="stage-overlay">
               <div class="stage-header">
                 <div>
                   <h2 class="exercise-name">{{ workout.currentExercise().exercise.name }}</h2>
-                  <p class="set-counter">Set 3 of {{ workout.currentExercise().targetSets }}</p>
+                  <p class="set-counter">
+                    Exercise {{ workout.liveSession().currentExerciseIndex + 1 }} of {{ workout.liveSession().exercises.length }} · {{ workout.currentExercise().targetSets }} Sets Target
+                  </p>
                 </div>
                 <button class="view-form-btn" (click)="showFormModal.set(true)" title="View 3D form demonstration">
                   <app-icon name="play" [size]="14" />
@@ -58,51 +83,47 @@ import { ExerciseModalComponent } from '../../shared/ui/exercise-modal/exercise-
                 </button>
               </div>
 
-              <!-- Big Reps Ring Dial from Reference -->
-              <div class="dial-container">
-                <app-progress-ring
-                  [value]="8"
-                  [max]="10"
-                  [size]="130"
-                  [strokeWidth]="10"
-                  strokeColor="var(--accent-2)"
-                  trackColor="rgba(255, 255, 255, 0.15)"
-                  label="Reps Logged"
-                >
-                  <span class="dial-reps num">8</span>
-                  <span class="dial-label">reps</span>
-                </app-progress-ring>
-
-                <div class="dial-meta">
-                  <div class="meta-item">
-                    <span class="m-lbl">Target</span>
-                    <span class="m-val num">8–10 reps</span>
-                  </div>
-                  <div class="meta-item">
-                    <span class="m-lbl">Rest</span>
-                    <span class="m-val rest-num num">00:{{ workout.liveSession().restSecondsLeft < 10 ? '0' : '' }}{{ workout.liveSession().restSecondsLeft }}</span>
-                  </div>
+              <!-- Exercise Targets (Replaces Timer Ring) -->
+              <div class="exercise-target-card">
+                <div class="target-item">
+                  <span class="t-lbl">Target Sets</span>
+                  <span class="t-val num">{{ workout.currentExercise().targetSets }}</span>
+                </div>
+                <div class="target-divider"></div>
+                <div class="target-item">
+                  <span class="t-lbl">Target Reps</span>
+                  <span class="t-val num">{{ workout.currentExercise().targetReps }}</span>
+                </div>
+                <div class="target-divider"></div>
+                <div class="target-item">
+                  <span class="t-lbl">Focus</span>
+                  <span class="t-val focus-txt">Controlled Tempo</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- AI Coaching Tip (From Reference Mockup) -->
+          <!-- AI Coaching Tip -->
           <div class="ai-tip-card">
             <div class="tip-icon">
               <app-icon name="robot" [size]="18" />
             </div>
             <div class="tip-text">
-              <div class="tip-title">AI Tip</div>
-              <div class="tip-content">Keep your chest up and drive through your heels. Maintain constant core tension.</div>
+              <div class="tip-title">AI Biomechanical Cue</div>
+              <div class="tip-content">
+                {{ workout.currentExercise().exercise.formCues?.[0] || 'Maintain rigid core bracing and drive through the full range of motion.' }}
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Interactive Set Logger Sheet (Part B of UI doc) -->
+        <!-- Interactive Set Logger Sheet -->
         <div class="logger-stage card">
           <div class="logger-header">
-            <h3>Set Logger</h3>
+            <div>
+              <h3>Set Logger</h3>
+              <span class="logger-sub">{{ workout.currentExercise().exercise.name }}</span>
+            </div>
             <span class="badge badge-primary">1-Tap Logging</span>
           </div>
 
@@ -165,21 +186,31 @@ import { ExerciseModalComponent } from '../../shared/ui/exercise-modal/exercise-
             }
           </div>
 
-          <!-- Rest Timer Floating Alert when running -->
-          @if (workout.liveSession().restTimerRunning) {
-            <div class="rest-banner">
-              <div class="rest-timer-display">
-                <app-icon name="timer" [size]="18" />
-                <span>Rest Interval: <strong>00:{{ workout.liveSession().restSecondsLeft < 10 ? '0' : '' }}{{ workout.liveSession().restSecondsLeft }}</strong></span>
-              </div>
-              <button class="btn btn-ghost skip-rest-btn" (click)="skipRest()">Skip Rest</button>
-            </div>
-          }
-
-          <!-- Quick Actions -->
+          <!-- Set Actions -->
           <div class="logger-actions">
             <button class="btn btn-secondary w-full" (click)="addGhostSet()">
               + Add Set (Same as Last)
+            </button>
+          </div>
+
+          <!-- Exercise Navigation (Switch between all 4 exercises) -->
+          <div class="ex-nav-row">
+            <button
+              class="btn btn-secondary nav-ex-btn"
+              [disabled]="workout.liveSession().currentExerciseIndex === 0"
+              (click)="prevExercise()"
+            >
+              ← Previous Move
+            </button>
+            <span class="ex-nav-indicator">
+              {{ workout.liveSession().currentExerciseIndex + 1 }} / {{ workout.liveSession().exercises.length }}
+            </span>
+            <button
+              class="btn btn-primary nav-ex-btn"
+              [disabled]="workout.liveSession().currentExerciseIndex === workout.liveSession().exercises.length - 1"
+              (click)="nextExercise()"
+            >
+              Next Move →
             </button>
           </div>
         </div>
@@ -199,7 +230,7 @@ import { ExerciseModalComponent } from '../../shared/ui/exercise-modal/exercise-
       margin: 0 auto;
       display: flex;
       flex-direction: column;
-      gap: var(--s-4);
+      gap: var(--s-3);
     }
 
     .session-topbar {
@@ -207,6 +238,7 @@ import { ExerciseModalComponent } from '../../shared/ui/exercise-modal/exercise-
       align-items: center;
       justify-content: space-between;
       padding: var(--s-2) 0;
+      gap: var(--s-2);
     }
     .back-link {
       display: inline-flex;
@@ -221,42 +253,107 @@ import { ExerciseModalComponent } from '../../shared/ui/exercise-modal/exercise-
       font-family: var(--font-display);
       font-size: var(--fs-lg);
     }
-    .timer-badge {
-      display: inline-flex;
+    .topbar-session-info {
+      display: flex;
       align-items: center;
-      gap: 8px;
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      padding: 6px 16px;
-      border-radius: var(--r-pill);
-      font-size: var(--fs-sm);
-      font-weight: 700;
+      gap: 10px;
     }
-    .rec-dot {
+    .live-dot {
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: var(--danger);
-      box-shadow: 0 0 8px var(--danger);
-      animation: pulse 1.5s infinite;
+      background: var(--primary);
+      box-shadow: 0 0 10px var(--primary);
     }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
+    .active-badge {
+      font-weight: 700;
+      font-size: var(--fs-sm);
+      color: var(--text);
+    }
+    .moves-badge {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      padding: 3px 10px;
+      border-radius: var(--r-pill);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-weight: 600;
     }
     .finish-btn {
-      font-size: var(--fs-xs);
-      padding: 6px 16px;
+      padding: 8px 18px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    /* Live Grid */
+    /* 4-Exercise Stepper Tabs Bar */
+    .exercise-stepper-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 4px 0 8px;
+      scrollbar-width: none;
+    }
+    .exercise-stepper-bar::-webkit-scrollbar {
+      display: none;
+    }
+    .ex-step-tab {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: var(--r-pill);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all var(--t-fast) var(--ease);
+    }
+    .ex-step-tab:hover {
+      background: var(--surface-2);
+      color: var(--text);
+    }
+    .ex-step-tab.active {
+      background: rgba(34, 197, 94, 0.15);
+      border-color: var(--primary);
+      color: var(--text);
+      font-weight: 700;
+    }
+    .step-num {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--surface-2);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 800;
+    }
+    .ex-step-tab.active .step-num {
+      background: var(--primary);
+      color: var(--on-primary);
+    }
+    .step-done-badge {
+      color: var(--primary);
+      font-weight: 900;
+      font-size: 0.85rem;
+    }
+
+    /* Main Live Split Grid */
     .live-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--s-5);
+      grid-template-columns: 1.15fr 1fr;
+      gap: var(--s-4);
+      align-items: start;
     }
 
-    /* Hero Stage */
+    /* Hero Visual Stage */
     .hero-stage {
       padding: 0;
       overflow: hidden;
@@ -266,7 +363,8 @@ import { ExerciseModalComponent } from '../../shared/ui/exercise-modal/exercise-
     .stage-media {
       position: relative;
       height: 380px;
-      background: var(--surface-2);
+      background: #000;
+      overflow: hidden;
     }
     .stage-img {
       width: 100%;
@@ -274,10 +372,32 @@ import { ExerciseModalComponent } from '../../shared/ui/exercise-modal/exercise-
       object-fit: cover;
       filter: contrast(1.1) brightness(0.85);
     }
+    .stage-schematic-bg {
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 75% 25%, rgba(34, 197, 94, 0.12) 0%, rgba(11, 16, 21, 0.98) 75%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
+    .schematic-target-badge {
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .schematic-exercise-name {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #fff;
+    }
     .stage-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(11, 16, 21, 0.4) 0%, rgba(11, 16, 21, 0.95) 100%);
+      background: linear-gradient(180deg, rgba(11, 16, 21, 0.75) 0%, transparent 40%, rgba(11, 16, 21, 0.95) 100%);
       padding: var(--s-4);
       display: flex;
       flex-direction: column;
@@ -293,24 +413,23 @@ import { ExerciseModalComponent } from '../../shared/ui/exercise-modal/exercise-
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 6px 12px;
-      background: rgba(11, 16, 21, 0.8);
-      backdrop-filter: blur(6px);
-      border: 1px solid var(--primary-line);
-      color: var(--primary);
+      background: rgba(11, 16, 21, 0.75);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 6px 14px;
       border-radius: var(--r-pill);
       font-size: var(--fs-xs);
       font-weight: 700;
       cursor: pointer;
+      backdrop-filter: blur(8px);
       transition: all var(--t-fast) var(--ease);
     }
     .view-form-btn:hover {
       background: var(--primary);
       color: var(--on-primary);
-      box-shadow: 0 0 10px var(--primary-soft);
     }
     .exercise-name {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       color: var(--text);
     }
     .set-counter {
@@ -318,69 +437,68 @@ import { ExerciseModalComponent } from '../../shared/ui/exercise-modal/exercise-
       color: var(--text-muted);
     }
 
-    .dial-container {
+    /* Target Box (No Timer) */
+    .exercise-target-card {
+      background: rgba(11, 16, 21, 0.85);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(8px);
+      padding: 12px 20px;
+      border-radius: var(--r-lg);
       display: flex;
       align-items: center;
-      gap: var(--s-5);
+      justify-content: space-around;
+      gap: 16px;
     }
-    .dial-reps {
-      font-family: var(--font-display);
-      font-size: 2.2rem;
-      font-weight: 800;
-      color: var(--text);
-      line-height: 1;
+    .target-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
     }
-    .dial-label {
-      font-size: 0.75rem;
-      color: var(--text-muted);
+    .t-lbl {
+      font-size: 0.65rem;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-    }
-    .dial-meta {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .meta-item {
-      display: flex;
-      flex-direction: column;
-    }
-    .m-lbl {
-      font-size: 0.65rem;
-      color: var(--text-faint);
-      text-transform: uppercase;
-    }
-    .m-val {
-      font-size: var(--fs-md);
+      color: var(--text-muted);
       font-weight: 700;
+    }
+    .t-val {
+      font-size: 1.1rem;
+      font-weight: 800;
       color: var(--text);
     }
-    .rest-num {
-      color: var(--accent-1);
+    .focus-txt {
+      font-size: 0.82rem;
+      color: var(--primary);
+    }
+    .target-divider {
+      width: 1px;
+      height: 28px;
+      background: var(--border);
     }
 
-    /* AI Tip Card */
+    /* AI Coaching Tip */
     .ai-tip-card {
       padding: var(--s-3) var(--s-4);
-      background: var(--surface-2);
-      border-top: 1px solid var(--border);
+      background: var(--surface);
       display: flex;
       align-items: flex-start;
       gap: 12px;
+      border-top: 1px solid var(--border);
     }
     .tip-icon {
       color: var(--primary);
       margin-top: 2px;
     }
     .tip-title {
-      font-size: var(--fs-xs);
-      font-weight: 700;
+      font-size: 0.72rem;
+      font-weight: 800;
       color: var(--primary);
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
     .tip-content {
-      font-size: var(--fs-xs);
+      font-size: 0.85rem;
       color: var(--text-muted);
       line-height: 1.4;
     }
@@ -396,6 +514,13 @@ import { ExerciseModalComponent } from '../../shared/ui/exercise-modal/exercise-
       align-items: center;
       justify-content: space-between;
     }
+    .logger-header h3 {
+      font-size: 1.15rem;
+    }
+    .logger-sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
 
     .sets-table {
       display: flex;
@@ -404,45 +529,49 @@ import { ExerciseModalComponent } from '../../shared/ui/exercise-modal/exercise-
     }
     .table-header {
       display: grid;
-      grid-template-columns: 48px 1fr 1fr 50px 50px;
-      gap: 8px;
-      font-size: var(--fs-xs);
-      font-weight: 700;
+      grid-template-columns: 48px 1fr 1fr 50px 48px;
+      gap: 10px;
+      font-size: 0.65rem;
+      font-weight: 800;
       color: var(--text-faint);
-      padding: 0 8px;
+      padding: 0 4px;
     }
     .set-row {
       display: grid;
-      grid-template-columns: 48px 1fr 1fr 50px 50px;
-      gap: 8px;
+      grid-template-columns: 48px 1fr 1fr 50px 48px;
+      gap: 10px;
       align-items: center;
-      padding: 8px;
       background: var(--surface-2);
       border: 1px solid var(--border);
-      border-radius: var(--r-input);
+      border-radius: var(--r-md);
+      padding: 8px 10px;
       transition: all var(--t-fast) var(--ease);
     }
     .set-row.completed {
-      border-color: var(--primary-line);
-      background: var(--surface-3);
+      background: rgba(34, 197, 94, 0.05);
+      border-color: rgba(34, 197, 94, 0.3);
     }
-    .set-row.warmup {
-      opacity: 0.85;
+    .col-set {
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-
     .set-num {
-      font-weight: 700;
+      font-weight: 800;
       font-size: var(--fs-sm);
     }
     .warmup-badge {
-      font-size: var(--fs-xs);
-      font-weight: 700;
-      color: var(--accent-2);
+      font-size: 0.65rem;
+      font-weight: 800;
+      background: var(--surface-3);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--text-muted);
     }
-
     .stepper {
       display: flex;
       align-items: center;
+      justify-content: space-between;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--r-pill);
@@ -452,42 +581,49 @@ import { ExerciseModalComponent } from '../../shared/ui/exercise-modal/exercise-
       width: 28px;
       height: 28px;
       border-radius: 50%;
+      border: none;
+      background: transparent;
       color: var(--text-muted);
-      font-size: var(--fs-sm);
-      font-weight: 700;
-    }
-    .step-btn:hover:not(:disabled) {
-      color: var(--text);
-      background: var(--surface-2);
-    }
-    .stepper-val {
-      flex: 1;
-      text-align: center;
-      font-size: var(--fs-xs);
-      font-weight: 700;
-      color: var(--text);
-    }
-
-    .rpe-badge {
-      font-size: var(--fs-xs);
-      color: var(--text-muted);
-      text-align: center;
-      display: block;
-    }
-
-    .check-btn {
-      width: 36px;
-      height: 36px;
-      border-radius: var(--r-pill);
-      border: 1.5px solid var(--border-strong);
-      background: var(--surface);
-      color: var(--text-muted);
-      font-size: var(--fs-sm);
       font-weight: 800;
+      font-size: 0.9rem;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: all var(--t-fast) var(--ease);
+    }
+    .step-btn:hover:not(:disabled) {
+      background: var(--surface-2);
+      color: var(--text);
+    }
+    .step-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+    .stepper-val {
+      font-weight: 700;
+      font-size: 0.88rem;
+    }
+    .col-rpe {
+      text-align: center;
+    }
+    .rpe-badge {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+    .check-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--r-md);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
       transition: all var(--t-fast) var(--ease);
     }
     .check-btn:hover {
@@ -500,57 +636,115 @@ import { ExerciseModalComponent } from '../../shared/ui/exercise-modal/exercise-
       color: var(--on-primary);
     }
 
-    .rest-banner {
-      background: var(--surface-3);
-      border: 1px solid var(--accent-1);
-      border-radius: var(--r-input);
-      padding: 10px 14px;
+    .logger-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    /* Move Navigation Controls */
+    .ex-nav-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      color: var(--accent-1);
-      font-size: var(--fs-xs);
+      gap: 12px;
+      padding-top: var(--s-3);
+      border-top: 1px solid var(--border);
     }
-    .rest-timer-display {
-      display: flex;
-      align-items: center;
-      gap: 8px;
+    .nav-ex-btn {
+      padding: 8px 16px;
+      font-size: 0.8rem;
+      font-weight: 700;
     }
-    .skip-rest-btn {
+    .ex-nav-indicator {
       font-size: var(--fs-xs);
-      padding: 4px 10px;
-      min-height: 28px;
+      font-weight: 700;
       color: var(--text-muted);
     }
 
-    .w-full {
-      width: 100%;
-    }
-
-    @media (max-width: 900px) {
+    @media (max-width: 768px) {
       .live-grid {
         grid-template-columns: 1fr;
+        gap: var(--s-3);
+      }
+      .stage-media {
+        height: 260px;
+      }
+      .table-header, .set-row {
+        grid-template-columns: 36px 1fr 1fr 38px 36px;
+        gap: 6px;
+        padding: 6px 8px;
+      }
+      .stepper-val {
+        font-size: 0.78rem;
+      }
+      .step-btn {
+        width: 22px;
+        height: 22px;
+      }
+      .check-btn {
+        width: 32px;
+        height: 32px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .session-topbar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+      }
+      .topbar-right {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        gap: 8px;
+      }
+      .finish-btn {
+        flex: 1;
+        justify-content: center;
+      }
+      .table-header, .set-row {
+        grid-template-columns: 30px 1fr 1fr 34px 34px;
+        gap: 4px;
+        padding: 6px 4px;
+      }
+      .stepper {
+        padding: 1px;
+      }
+      .stepper-val {
+        font-size: 0.72rem;
+      }
+      .step-btn {
+        width: 20px;
+        height: 20px;
+        font-size: 0.8rem;
       }
     }
   `]
 })
 export class LiveSessionComponent {
   workout = inject(WorkoutService);
+  private router = inject(Router);
+
   showFormModal = signal<boolean>(false);
 
-  formattedTime = computed(() => {
-    const s = this.workout.liveSession().elapsedSeconds;
-    const m = Math.floor(s / 60);
-    const sec = s % 60;
-    return `${m < 10 ? '0' : ''}${m}:${sec < 10 ? '0' : ''}${sec}`;
-  });
+  isExerciseAllCompleted(item: any): boolean {
+    return item.sets && item.sets.length > 0 && item.sets.every((s: any) => s.completed);
+  }
 
-  skipRest() {
-    this.workout.liveSession.update(s => ({
-      ...s,
-      restTimerRunning: false,
-      restSecondsLeft: 0
-    }));
+  nextExercise() {
+    const s = this.workout.liveSession();
+    if (s.currentExerciseIndex < s.exercises.length - 1) {
+      this.workout.setExerciseIndex(s.currentExerciseIndex + 1);
+    }
+  }
+
+  prevExercise() {
+    const s = this.workout.liveSession();
+    if (s.currentExerciseIndex > 0) {
+      this.workout.setExerciseIndex(s.currentExerciseIndex - 1);
+    }
   }
 
   addGhostSet() {
@@ -574,7 +768,8 @@ export class LiveSessionComponent {
   }
 
   finishWorkout() {
-    this.workout.finishSession();
-    alert('Session complete! Great job Alex. Volume: 3,420 kg · 4 sets logged · Readiness protected.');
+    const record = this.workout.finishSession();
+    // Navigate immediately to Workout Calendar & History view!
+    this.router.navigate(['/training'], { queryParams: { tab: 'calendar', recorded: record.id, justFinished: 'true' } });
   }
 }

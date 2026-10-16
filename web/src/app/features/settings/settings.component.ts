@@ -87,7 +87,7 @@ import { AuthModalComponent } from '../../shared/ui/auth-modal/auth-modal.compon
                 type="password"
                 [(ngModel)]="geminiKeyInput"
                 placeholder="AIzaSy..."
-                style="flex: 1; min-width: 260px; background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--r-input); padding: 10px 14px; color: var(--text); font-family: monospace; font-size: var(--fs-sm); outline: none;"
+                style="flex: 1; min-width: 180px; background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--r-input); padding: 10px 14px; color: var(--text); font-family: monospace; font-size: var(--fs-sm); outline: none;"
               />
               <button class="btn btn-primary" (click)="saveGeminiKey()">
                 Save AI Key
@@ -336,6 +336,9 @@ import { AuthModalComponent } from '../../shared/ui/auth-modal/auth-modal.compon
     @media (max-width: 600px) {
       .theme-options, .memory-grid {
         grid-template-columns: 1fr;
+      }
+      .settings-page {
+        padding-bottom: 32px;
       }
     }
   `]

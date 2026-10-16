@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { IconComponent } from '../../shared/ui/icon/icon.component';
 import { ProgressRingComponent } from '../../shared/ui/progress-ring/progress-ring.component';
@@ -16,7 +16,7 @@ import { UserService } from '../../core/services/user.service';
           <h2>Recovery & Readiness</h2>
           <p class="sub">Empirical recovery modeling across sleep, autonomic nervous system, and training fatigue.</p>
         </div>
-        <a routerLink="/recovery/checkin" class="btn btn-primary">
+        <a routerLink="/recovery/checkin" class="btn btn-primary checkin-btn">
           <app-icon name="plus" [size]="16" />
           <span>Daily Check-in</span>
         </a>
@@ -27,19 +27,19 @@ import { UserService } from '../../core/services/user.service';
         <div class="card readiness-card">
           <div class="card-head">
             <h3>Readiness Score</h3>
-            <span class="badge badge-primary">Optimal Recovery</span>
+            <span class="badge" [class]="badgeClass()">{{ badgeLabel() }}</span>
           </div>
 
           <div class="score-display-row">
             <app-progress-ring
-              [value]="user.profile().readiness"
+              [value]="readinessScore()"
               [size]="160"
               [strokeWidth]="12"
-              strokeColor="var(--primary)"
+              [strokeColor]="ringStrokeColor()"
               trackColor="var(--surface-3)"
               label="Overall Readiness"
             >
-              <span class="score-big num">{{ user.profile().readiness }}</span>
+              <span class="score-big num" [style.color]="ringStrokeColor()">{{ readinessScore() }}</span>
               <span class="score-sub">READINESS</span>
             </app-progress-ring>
 
@@ -53,7 +53,11 @@ import { UserService } from '../../core/services/user.service';
                     <span class="f-lbl">{{ factor.label }}</span>
                     <span class="f-note num">{{ factor.note }}</span>
                     <div class="progress-bar-bg f-bar">
-                      <div class="progress-bar-fill" [style.width.%]="factor.score" style="background: var(--primary);"></div>
+                      <div
+                        class="progress-bar-fill"
+                        [style.width.%]="factor.score"
+                        [style.background]="getFactorBarColor(factor.score)"
+                      ></div>
                     </div>
                   </div>
                 }
@@ -65,24 +69,34 @@ import { UserService } from '../../core/services/user.service';
         <!-- 14-day Trend Chart -->
         <div class="card trend-card">
           <div class="card-head">
-            <h3>14-Day Readiness Trend</h3>
-            <span class="badge badge-cyan">Avg 84</span>
+            <div class="trend-head-title">
+              <h3>14-Day Readiness Trend</h3>
+              <span class="today-indicator-pill">Today: {{ readinessScore() }}</span>
+            </div>
+            <span class="badge badge-cyan">Avg {{ recovery.trendAvg() }}</span>
           </div>
 
           <div class="trend-chart">
             <div class="chart-bars">
-              @for (day of [78, 82, 85, 79, 88, 90, 86, 84, 82, 89, 91, 85, 87, 86]; track $index) {
-                <div class="t-col">
-                  <div class="t-bar" [style.height.%]="day"></div>
-                  <span class="t-lbl num">{{ day }}</span>
+              @for (day of recovery.trendHistory(); track $index) {
+                <div class="t-col" [class.today-col]="$index === recovery.trendHistory().length - 1">
+                  <div
+                    class="t-bar"
+                    [class.today-bar]="$index === recovery.trendHistory().length - 1"
+                    [style.height.%]="day"
+                    [style.background]="getBarColor(day, $index === recovery.trendHistory().length - 1)"
+                  ></div>
+                  <span class="t-lbl num" [class.today-lbl]="$index === recovery.trendHistory().length - 1">
+                    {{ day }}
+                  </span>
                 </div>
               }
             </div>
           </div>
 
           <div class="trend-insights">
-            <app-icon name="info" [size]="14" color="var(--primary)" />
-            <span>Sleep consistency is your biggest recovery multiplier this week (+6 points).</span>
+            <app-icon name="info" [size]="14" [color]="ringStrokeColor()" />
+            <span>{{ recovery.recoveryInsight() }}</span>
           </div>
         </div>
       </div>
@@ -125,6 +139,22 @@ import { UserService } from '../../core/services/user.service';
       justify-content: space-between;
     }
 
+    .trend-head-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .today-indicator-pill {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--primary);
+      background: rgba(204, 255, 0, 0.1);
+      border: 1px solid rgba(204, 255, 0, 0.3);
+      padding: 2px 8px;
+      border-radius: 9999px;
+      letter-spacing: 0.02em;
+    }
+
     .score-display-row {
       display: flex;
       align-items: center;
@@ -137,6 +167,7 @@ import { UserService } from '../../core/services/user.service';
       font-weight: 800;
       color: var(--text);
       line-height: 1;
+      transition: color 0.2s ease;
     }
     .score-sub {
       font-size: 0.65rem;
@@ -211,14 +242,21 @@ import { UserService } from '../../core/services/user.service';
       width: 100%;
       background: var(--surface-3);
       border-radius: 3px 3px 0 0;
-      transition: height var(--t-fast) var(--ease);
+      transition: height var(--t-fast) var(--ease), background 0.2s ease;
     }
     .t-col:hover .t-bar {
-      background: var(--accent-1);
+      filter: brightness(1.2);
+    }
+    .t-bar.today-bar {
+      box-shadow: 0 0 10px rgba(204, 255, 0, 0.4);
     }
     .t-lbl {
       font-size: 0.6rem;
       color: var(--text-faint);
+    }
+    .t-lbl.today-lbl {
+      color: var(--primary);
+      font-weight: 800;
     }
 
     .trend-insights {
@@ -231,6 +269,7 @@ import { UserService } from '../../core/services/user.service';
       padding: 10px 14px;
       font-size: var(--fs-xs);
       color: var(--text-muted);
+      line-height: 1.4;
     }
 
     @media (max-width: 900px) {
@@ -242,9 +281,59 @@ import { UserService } from '../../core/services/user.service';
         align-items: center;
       }
     }
+
+    @media (max-width: 500px) {
+      .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .checkin-btn {
+        width: 100%;
+        justify-content: center;
+      }
+      .score-display-row {
+        gap: var(--s-3);
+      }
+      .why-score {
+        width: 100%;
+        text-align: left;
+      }
+      .factor-item {
+        grid-template-columns: 80px 48px 1fr;
+        font-size: 0.72rem;
+      }
+      .recovery-page {
+        padding-bottom: 24px;
+      }
+    }
   `]
 })
 export class RecoveryHomeComponent {
   user = inject(UserService);
   recovery = inject(RecoveryService);
+
+  readinessScore = computed(() => this.recovery.readinessScore());
+
+  badgeLabel = computed(() => this.recovery.readinessBadge().label);
+  badgeClass = computed(() => this.recovery.readinessBadge().class);
+
+  ringStrokeColor = computed(() => {
+    const s = this.readinessScore();
+    if (s >= 80) return 'var(--primary, #ccff00)';
+    if (s >= 65) return 'var(--accent-1, #38bdf8)';
+    return '#ef4444';
+  });
+
+  getFactorBarColor(score: number): string {
+    if (score >= 75) return 'var(--primary, #ccff00)';
+    if (score >= 50) return 'var(--accent-1, #38bdf8)';
+    return '#ef4444';
+  }
+
+  getBarColor(score: number, isToday: boolean): string {
+    if (isToday) {
+      return this.ringStrokeColor();
+    }
+    return 'var(--surface-3, rgba(255, 255, 255, 0.12))';
+  }
 }

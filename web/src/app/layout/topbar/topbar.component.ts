@@ -33,7 +33,7 @@ import { AuthModalComponent } from '../../shared/ui/auth-modal/auth-modal.compon
           </div>
         } @else {
           <button class="cloud-pill connect-btn" (click)="showAuthModal.set(true)" title="Sign in or sync to Supabase">
-            <span class="offline-dot"></span>
+            <app-icon name="cloud" [size]="14" />
             <span class="pill-label">Connect Cloud</span>
           </button>
         }
@@ -255,18 +255,53 @@ import { AuthModalComponent } from '../../shared/ui/auth-modal/auth-modal.compon
       background: var(--text-muted);
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
       .topbar {
-        padding: 0 var(--s-3);
+        padding: 0 10px;
+        gap: 8px;
+      }
+      .search-box {
+        width: auto;
+        flex: 1;
+        padding: 6px 10px;
+        min-width: 0;
+        gap: 6px;
+      }
+      .search-box input {
+        font-size: 0.8rem;
+        min-width: 0;
+      }
+      .actions {
+        gap: 6px;
+        flex-shrink: 0;
       }
       .user-info {
         display: none;
       }
-      .copilot-label {
+      .user-chip {
+        padding: 2px;
+        background: transparent;
+        border: none;
+      }
+      .user-chip app-icon {
+        display: none;
+      }
+      .copilot-btn {
         display: none;
       }
       .cloud-pill .pill-label {
         display: none;
+      }
+      .cloud-pill {
+        padding: 6px 8px;
+      }
+      .icon-btn {
+        width: 34px;
+        height: 34px;
+      }
+      .avatar {
+        width: 32px;
+        height: 32px;
       }
     }
   `]

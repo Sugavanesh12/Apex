@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnDestroy, Output, ViewChild, signal } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild, signal } from '@angular/core';
 import { ExerciseItem } from '../../../core/services/workout.service';
 import { IconComponent } from '../icon/icon.component';
 
@@ -19,15 +19,17 @@ import { IconComponent } from '../icon/icon.component';
               </span>
             </div>
             <div class="view-mode-tabs">
-              <button
-                class="mode-tab"
-                [class.active]="viewMode() === 'video'"
-                (click)="setViewMode('video')"
-                title="Watch HD Video demonstration"
-              >
-                <app-icon name="play" [size]="13" />
-                <span>Video Demonstration</span>
-              </button>
+              @if (exercise.videoUrl) {
+                <button
+                  class="mode-tab"
+                  [class.active]="viewMode() === 'video'"
+                  (click)="setViewMode('video')"
+                  title="Watch HD Video demonstration"
+                >
+                  <app-icon name="play" [size]="13" />
+                  <span>Video Demonstration</span>
+                </button>
+              }
               <button
                 class="mode-tab"
                 [class.active]="viewMode() === 'biomechanical'"
@@ -49,10 +51,10 @@ import { IconComponent } from '../icon/icon.component';
             <div class="media-container">
               <div class="video-frame">
                 <!-- Video Stream Mode -->
-                @if (viewMode() === 'video') {
+                @if (viewMode() === 'video' && exercise.videoUrl) {
                   <video
                     #videoPlayer
-                    [src]="exercise.videoUrl || '/video/demo-workout.webm'"
+                    [src]="exercise.videoUrl"
                     [poster]="exercise.image"
                     autoplay
                     loop
@@ -624,20 +626,40 @@ import { IconComponent } from '../icon/icon.component';
     }
 
     @media (max-width: 768px) {
+      .modal-backdrop {
+        padding: 8px;
+      }
+      .modal-dialog {
+        max-height: 94vh;
+      }
       .modal-body {
         grid-template-columns: 1fr;
+        padding: var(--s-3);
+        gap: var(--s-3);
       }
       .video-frame {
-        max-height: 320px;
+        max-height: 220px;
       }
       .modal-header {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: stretch;
+        gap: 8px;
+        padding: var(--s-3);
+      }
+      .header-left {
+        justify-content: space-between;
+      }
+      .view-mode-tabs {
+        width: 100%;
+      }
+      .mode-tab {
+        flex: 1;
+        justify-content: center;
       }
     }
   `]
 })
-export class ExerciseModalComponent implements AfterViewInit, OnDestroy {
+export class ExerciseModalComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() exercise: ExerciseItem | null = null;
   @Output() closed = new EventEmitter<void>();
   @Output() selected = new EventEmitter<ExerciseItem>();
@@ -661,6 +683,12 @@ export class ExerciseModalComponent implements AfterViewInit, OnDestroy {
     'Drive aggressively through the working muscles without momentum.',
     'Breathe in on the descent and exhale forcefully on the exertion.'
   ];
+
+  ngOnInit() {
+    if (!this.exercise?.videoUrl) {
+      this.viewMode.set('biomechanical');
+    }
+  }
 
   ngAfterViewInit() {
     this.startCanvasAnimationLoop();

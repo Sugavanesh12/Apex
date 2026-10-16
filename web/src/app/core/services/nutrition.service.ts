@@ -18,6 +18,7 @@ export interface FoodItemIngredient {
 export interface MealLogItem {
   id: string;
   name: string;
+  date?: string; // YYYY-MM-DD
   timestamp: string;
   kcal: number;
   protein: number;
@@ -39,6 +40,7 @@ export interface DraftMeal {
 
 const STORAGE_MEALS_KEY = 'apex_user_logged_meals_v1';
 const STORAGE_WATER_KEY = 'apex_user_water_glasses_v1';
+const STORAGE_WATER_MAP_KEY = 'apex_user_water_history_v2';
 const STORAGE_ACTIVE_SCAN_KEY = 'apex_active_scanned_meal_v2';
 
 @Injectable({
@@ -48,7 +50,7 @@ export class NutritionService {
   private supabase = inject(SupabaseService);
 
   readonly loggedMeals = signal<MealLogItem[]>(this.loadStoredMeals());
-  readonly waterGlasses = signal<number>(this.loadStoredWater());
+  readonly waterHistory = signal<Record<string, number>>(this.loadStoredWaterMap());
   readonly waterTargetGlasses = signal<number>(8);
 
   readonly caloriesTarget = signal<number>(2400);
@@ -56,21 +58,36 @@ export class NutritionService {
   readonly carbsTarget = signal<number>(300);
   readonly fatTarget = signal<number>(90);
 
-  // Real-time computed totals directly derived from user entered meals
+  getTodayDateStr(): string {
+    return new Date().toISOString().split('T')[0];
+  }
+
+  // Strictly meals logged for today (resets every single day while preserving historical data)
+  readonly todayMeals = computed(() => {
+    const today = this.getTodayDateStr();
+    return this.loggedMeals().filter(m => m.date === today);
+  });
+
+  // Dynamic live water glasses for today
+  readonly waterGlasses = computed(() => {
+    return this.getWaterForDate(this.getTodayDateStr());
+  });
+
+  // Real-time computed totals directly derived from today's user entered meals
   readonly caloriesConsumed = computed(() => {
-    return this.loggedMeals().reduce((acc, m) => acc + (m.kcal || 0), 0);
+    return this.todayMeals().reduce((acc, m) => acc + (m.kcal || 0), 0);
   });
 
   readonly proteinConsumed = computed(() => {
-    return Math.round(this.loggedMeals().reduce((acc, m) => acc + (m.protein || 0), 0));
+    return Math.round(this.todayMeals().reduce((acc, m) => acc + (m.protein || 0), 0));
   });
 
   readonly carbsConsumed = computed(() => {
-    return Math.round(this.loggedMeals().reduce((acc, m) => acc + (m.carbs || 0), 0));
+    return Math.round(this.todayMeals().reduce((acc, m) => acc + (m.carbs || 0), 0));
   });
 
   readonly fatConsumed = computed(() => {
-    return Math.round(this.loggedMeals().reduce((acc, m) => acc + (m.fat || 0), 0));
+    return Math.round(this.todayMeals().reduce((acc, m) => acc + (m.fat || 0), 0));
   });
 
   readonly stepsCount = signal(7842);
@@ -143,16 +160,93 @@ export class NutritionService {
   }
 
   private loadStoredMeals(): MealLogItem[] {
+    const getDateOffset = (daysAgo: number): { dateStr: string; label: string } => {
+      const d = new Date();
+      d.setDate(d.getDate() - daysAgo);
+      const dateStr = d.toISOString().split('T')[0];
+      const label = d.toLocaleDateString([], { month: 'short', day: 'numeric', year: 'numeric' });
+      return { dateStr, label };
+    };
+
+    const d1 = getDateOffset(1); // Yesterday
+    const d2 = getDateOffset(2); // 2 days ago
+
+    // Baseline historical meals preserved for yesterday and prior dates (today starts completely fresh and unlogged)
+    const baselineHistoryMeals: MealLogItem[] = [
+      {
+        id: 'hist-meal-y1',
+        name: 'Herb-Roasted Farm Chicken & Sweet Potato Bowl',
+        date: d1.dateStr,
+        timestamp: `${d1.label} · 01:15 PM · AI Verified`,
+        kcal: 680,
+        protein: 56,
+        carbs: 62,
+        fat: 18,
+        image: '/img/food-chicken.jpg'
+      },
+      {
+        id: 'hist-meal-y2',
+        name: 'Whey Isolate Protein Recovery Shake',
+        date: d1.dateStr,
+        timestamp: `${d1.label} · 04:30 PM · AI Verified`,
+        kcal: 340,
+        protein: 42,
+        carbs: 26,
+        fat: 5,
+        image: '/img/food-shake.jpg'
+      },
+      {
+        id: 'hist-meal-y3',
+        name: 'Avocado Toast & Scrambled Egg Whites',
+        date: d1.dateStr,
+        timestamp: `${d1.label} · 08:30 AM · AI Verified`,
+        kcal: 520,
+        protein: 34,
+        carbs: 45,
+        fat: 20,
+        image: '/img/food-banana.jpg'
+      },
+      {
+        id: 'hist-meal-d2-1',
+        name: 'Seared Wild Salmon & Quinoa Pilaf',
+        date: d2.dateStr,
+        timestamp: `${d2.label} · 07:45 PM · AI Verified`,
+        kcal: 740,
+        protein: 52,
+        carbs: 58,
+        fat: 28,
+        image: '/img/food-chicken.jpg'
+      },
+      {
+        id: 'hist-meal-d2-2',
+        name: 'Greek Yogurt, Blueberries & Honey Crunch',
+        date: d2.dateStr,
+        timestamp: `${d2.label} · 03:00 PM · AI Verified`,
+        kcal: 310,
+        protein: 24,
+        carbs: 38,
+        fat: 6,
+        image: '/img/food-banana.jpg'
+      }
+    ];
+
     try {
       const saved = localStorage.getItem(STORAGE_MEALS_KEY);
       if (saved) {
         const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed)) return parsed;
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          const today = this.getTodayDateStr();
+          const clean = parsed.map((m: any) => ({
+            ...m,
+            date: m.date || (m.timestamp && m.timestamp.includes('Today') ? today : d1.dateStr)
+          }));
+          return clean;
+        }
       }
     } catch (e) {
       console.warn('Error reading stored meals:', e);
     }
-    return [];
+    return baselineHistoryMeals;
   }
 
   private persistMeals() {
@@ -163,24 +257,75 @@ export class NutritionService {
     }
   }
 
-  private loadStoredWater(): number {
-    try {
-      const saved = localStorage.getItem(STORAGE_WATER_KEY);
-      if (saved !== null) {
-        const n = parseInt(saved, 10);
-        if (!isNaN(n)) return Math.max(0, n);
-      }
-    } catch (e) {
-      console.warn('Error reading stored water:', e);
-    }
-    return 0;
+  getMealsForDate(dateStr: string): MealLogItem[] {
+    return this.loggedMeals().filter(m => m.date === dateStr);
   }
 
-  private persistWater() {
+  getNutrientsForDate(dateStr: string): { kcal: number; protein: number; carbs: number; fat: number } {
+    const meals = this.getMealsForDate(dateStr);
+    return {
+      kcal: meals.reduce((acc, m) => acc + (m.kcal || 0), 0),
+      protein: Math.round(meals.reduce((acc, m) => acc + (m.protein || 0), 0)),
+      carbs: Math.round(meals.reduce((acc, m) => acc + (m.carbs || 0), 0)),
+      fat: Math.round(meals.reduce((acc, m) => acc + (m.fat || 0), 0))
+    };
+  }
+
+  getWaterForDate(dateStr: string): number {
+    return this.waterHistory()[dateStr] ?? 0;
+  }
+
+  private loadStoredWaterMap(): Record<string, number> {
+    const today = this.getTodayDateStr();
+    const getDateStr = (daysAgo: number) => {
+      const d = new Date();
+      d.setDate(d.getDate() - daysAgo);
+      return d.toISOString().split('T')[0];
+    };
+    const yesterday = getDateStr(1);
+    const d2 = getDateStr(2);
+    const d3 = getDateStr(3);
+
+    // Baseline historical hydration (yesterday: 7 glasses, 2 days ago: 8 glasses; today starts fresh at 0)
+    const defaultMap: Record<string, number> = {
+      [yesterday]: 7,
+      [d2]: 8,
+      [d3]: 6
+    };
+
     try {
-      localStorage.setItem(STORAGE_WATER_KEY, this.waterGlasses().toString());
+      const saved = localStorage.getItem(STORAGE_WATER_MAP_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (parsed && typeof parsed === 'object') {
+          return { ...defaultMap, ...parsed };
+        }
+      }
+      // Migrate from v1 if present
+      const oldV1 = localStorage.getItem(STORAGE_WATER_KEY);
+      if (oldV1) {
+        if (oldV1.startsWith('{')) {
+          const parsed = JSON.parse(oldV1);
+          if (parsed.date && typeof parsed.count === 'number') {
+            defaultMap[parsed.date] = parsed.count;
+          }
+        }
+      }
     } catch (e) {
-      console.warn('Error saving water to storage:', e);
+      console.warn('Error loading water map:', e);
+    }
+    return defaultMap;
+  }
+
+  private persistWaterMap() {
+    try {
+      localStorage.setItem(STORAGE_WATER_MAP_KEY, JSON.stringify(this.waterHistory()));
+      // Also sync today's single record for backward compatibility
+      const today = this.getTodayDateStr();
+      const record = { date: today, count: this.waterGlasses() };
+      localStorage.setItem(STORAGE_WATER_KEY, JSON.stringify(record));
+    } catch (e) {
+      console.warn('Error saving water map to storage:', e);
     }
   }
 
@@ -207,8 +352,9 @@ export class NutritionService {
       }
 
       if (waterGlasses > 0) {
-        this.waterGlasses.set(waterGlasses);
-        this.persistWater();
+        const today = this.getTodayDateStr();
+        this.waterHistory.update(map => ({ ...map, [today]: waterGlasses }));
+        this.persistWaterMap();
       }
     } catch {
       // Graceful offline fallback to localStorage
@@ -351,10 +497,12 @@ export class NutritionService {
 
     const now = new Date();
     const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const dateStr = now.toISOString().split('T')[0];
 
     const newMeal: MealLogItem = {
       id: `meal-${Date.now()}`,
       name: draft.name,
+      date: dateStr,
       timestamp: `${timeStr} · AI Verified`,
       kcal: totals.kcal,
       protein: Math.round(totals.protein * 10) / 10,
@@ -396,6 +544,7 @@ export class NutritionService {
     const quickMeal: MealLogItem = {
       id: `quick-${Date.now()}`,
       name,
+      date: this.getTodayDateStr(),
       timestamp: `${timeStr} · AI Verified`,
       kcal,
       protein,
@@ -413,13 +562,26 @@ export class NutritionService {
   }
 
   addWaterGlass() {
-    this.waterGlasses.update(w => Math.min(this.waterTargetGlasses(), w + 1));
-    this.persistWater();
+    const today = this.getTodayDateStr();
+    const current = this.getWaterForDate(today);
+    const updated = Math.min(this.waterTargetGlasses(), current + 1);
+    this.waterHistory.update(map => ({ ...map, [today]: updated }));
+    this.persistWaterMap();
     this.supabase.logWater(1, 250).catch(err => console.warn('Supabase water sync notice:', err));
   }
 
   removeWaterGlass() {
-    this.waterGlasses.update(w => Math.max(0, w - 1));
-    this.persistWater();
+    const today = this.getTodayDateStr();
+    const current = this.getWaterForDate(today);
+    const updated = Math.max(0, current - 1);
+    this.waterHistory.update(map => ({ ...map, [today]: updated }));
+    this.persistWaterMap();
+  }
+
+  logWaterForDate(dateStr: string, delta: number) {
+    const current = this.getWaterForDate(dateStr);
+    const updated = Math.max(0, Math.min(16, current + delta));
+    this.waterHistory.update(map => ({ ...map, [dateStr]: updated }));
+    this.persistWaterMap();
   }
 }

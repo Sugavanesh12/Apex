@@ -98,40 +98,61 @@ import { RecoveryService } from '../../core/services/recovery.service';
         <div class="card mission-card">
           <div class="card-top">
             <div class="card-icon-title">
-              <app-icon name="train" [size]="18" color="var(--accent-1)" />
+              <span class="category-icon-box">
+                <app-icon name="train" [size]="16" color="var(--primary)" />
+              </span>
               <span class="card-category">TODAY'S MISSION</span>
             </div>
+            @if (workout.isTodayCompleted()) {
+              <span class="badge badge-accent">COMPLETED ✓</span>
+            } @else {
+              <span class="badge badge-primary">ACTIVE PLAN</span>
+            }
           </div>
 
           <div class="mission-details">
-            <h3 class="mission-title">Lower Body Strength</h3>
-            <p class="mission-meta">Build strength · 45 min · Gym</p>
+            @if (workout.isTodayCompleted()) {
+              <h3 class="mission-title">Lower Body Strength Logged</h3>
+              <p class="mission-meta">{{ (workout.todaySessions()[0]?.totalVolumeKg || 0) | number }} kg total volume · {{ workout.todaySessions()[0]?.totalSets || 0 }} sets recorded</p>
+            } @else {
+              <h3 class="mission-title">{{ workout.liveSession().sessionTitle || 'Lower Body Strength' }}</h3>
+              <div class="mission-tags-row">
+                <span class="m-tag-pill">{{ workout.liveSession().exercises.length }} Exercises</span>
+                <span class="m-tag-pill">~{{ workout.liveSession().exercises.length * 12 }} Min</span>
+                <span class="m-tag-pill highlight">Hypertrophy</span>
+              </div>
+            }
           </div>
 
-          <ul class="mission-checklist">
-            <li>
-              <span class="check-circle done">✓</span>
-              <span>Dynamic warm-up</span>
-            </li>
-            <li>
-              <span class="check-circle"></span>
-              <span>Strength block</span>
-            </li>
-            <li>
-              <span class="check-circle"></span>
-              <span>Accessory work</span>
-            </li>
-            <li>
-              <span class="check-circle"></span>
-              <span>Cooldown</span>
-            </li>
-          </ul>
+          <div class="mission-exercises-deck">
+            @for (ex of workout.liveSession().exercises; track ex.exercise.name) {
+              <div class="mission-ex-tile" [class.completed]="workout.isTodayCompleted()">
+                <div class="ex-tile-left">
+                  <span class="ex-index-circle" [class.done]="workout.isTodayCompleted()">
+                    @if (workout.isTodayCompleted()) { ✓ } @else { {{ $index + 1 }} }
+                  </span>
+                  <div class="ex-tile-info">
+                    <span class="ex-tile-name">{{ ex.exercise.name }}</span>
+                    <span class="ex-tile-sub">{{ ex.exercise.muscle }}</span>
+                  </div>
+                </div>
+                <span class="ex-sets-badge">{{ ex.targetSets || ex.sets.length }} sets</span>
+              </div>
+            }
+          </div>
 
           <div class="card-cta">
-            <a routerLink="/training/session/live" class="btn btn-primary start-session-btn">
-              <app-icon name="play" [size]="14" />
-              <span>Start Session</span>
-            </a>
+            @if (workout.isTodayCompleted()) {
+              <a routerLink="/training" class="btn btn-secondary start-session-btn">
+                <app-icon name="check" [size]="14" />
+                <span>View in Calendar History</span>
+              </a>
+            } @else {
+              <a routerLink="/training/session/live" class="btn btn-primary start-session-btn">
+                <app-icon name="play" [size]="14" />
+                <span>Start Session</span>
+              </a>
+            }
           </div>
         </div>
 
@@ -257,13 +278,16 @@ import { RecoveryService } from '../../core/services/recovery.service';
 
           <div class="mini-chart">
             <div class="bars-container">
-              <div class="bar-col"><div class="bar-fill" style="height: 45%;"></div><span>M</span></div>
-              <div class="bar-col"><div class="bar-fill" style="height: 65%;"></div><span>T</span></div>
-              <div class="bar-col"><div class="bar-fill" style="height: 85%;"></div><span>W</span></div>
-              <div class="bar-col"><div class="bar-fill" style="height: 60%;"></div><span>T</span></div>
-              <div class="bar-col"><div class="bar-fill current" style="height: 95%;"></div><span>F</span></div>
-              <div class="bar-col"><div class="bar-fill" style="height: 30%;"></div><span>S</span></div>
-              <div class="bar-col"><div class="bar-fill" style="height: 50%;"></div><span>S</span></div>
+              @for (day of dailyHistory(); track day.date) {
+                <div class="bar-col" [title]="day.label + ': ' + (day.volumeKg | number) + ' kg'">
+                  <div
+                    class="bar-fill"
+                    [class.current]="day.date === workout.getTodayDateStr()"
+                    [style.height.%]="day.volumeKg > 0 ? Math.max(16, Math.min(100, Math.round((day.volumeKg / maxDailyVolume()) * 100))) : 8"
+                  ></div>
+                  <span>{{ day.label.slice(0, 1) }}</span>
+                </div>
+              }
             </div>
           </div>
 
@@ -504,43 +528,138 @@ import { RecoveryService } from '../../core/services/recovery.service';
     }
 
     /* Mission Card */
+    .mission-card {
+      background: linear-gradient(145deg, var(--surface) 0%, rgba(16, 185, 129, 0.03) 100%);
+      border: 1px solid var(--border);
+      transition: all var(--t-fast) var(--ease);
+    }
+    .mission-card:hover {
+      border-color: rgba(16, 185, 129, 0.3);
+    }
+    .category-icon-box {
+      width: 28px;
+      height: 28px;
+      border-radius: var(--r-md);
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .mission-details {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
     .mission-title {
-      font-size: 1.15rem;
-      margin-bottom: 2px;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.01em;
+      margin: 0;
     }
     .mission-meta {
       font-size: var(--fs-xs);
       color: var(--text-muted);
     }
-    .mission-checklist {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin: var(--s-2) 0;
-    }
-    .mission-checklist li {
+    .mission-tags-row {
       display: flex;
       align-items: center;
-      gap: 10px;
-      font-size: var(--fs-xs);
-      color: var(--text-muted);
+      gap: 6px;
+      flex-wrap: wrap;
     }
-    .check-circle {
-      width: 16px;
-      height: 16px;
+    .m-tag-pill {
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      padding: 2px 8px;
+      border-radius: var(--r-pill);
+    }
+    .m-tag-pill.highlight {
+      color: var(--primary);
+      border-color: rgba(16, 185, 129, 0.35);
+      background: rgba(16, 185, 129, 0.08);
+    }
+
+    .mission-exercises-deck {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin: 4px 0;
+    }
+    .mission-ex-tile {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 7px 10px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      transition: all var(--t-fast) var(--ease);
+    }
+    .mission-ex-tile:hover {
+      background: var(--surface-3);
+      border-color: var(--border-strong);
+    }
+    .mission-ex-tile.completed {
+      border-color: rgba(16, 185, 129, 0.3);
+      background: rgba(16, 185, 129, 0.04);
+    }
+    .ex-tile-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+    }
+    .ex-index-circle {
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
-      border: 1px solid var(--border-strong);
+      background: var(--surface-3);
+      border: 1px solid var(--border);
+      font-size: 0.65rem;
+      font-weight: 800;
+      color: var(--text-muted);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.65rem;
-      color: transparent;
+      flex-shrink: 0;
     }
-    .check-circle.done {
+    .ex-index-circle.done {
       background: var(--primary-soft);
       border-color: var(--primary);
       color: var(--primary);
+    }
+    .ex-tile-info {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+    .ex-tile-name {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .ex-tile-sub {
+      font-size: 0.65rem;
+      color: var(--text-faint);
+    }
+    .ex-sets-badge {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 2px 7px;
+      border-radius: var(--r-pill);
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .start-session-btn {
@@ -549,6 +668,10 @@ import { RecoveryService } from '../../core/services/recovery.service';
       align-items: center;
       justify-content: center;
       gap: 8px;
+      padding: 11px 18px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      box-shadow: 0 4px 14px var(--primary-soft);
     }
     .w-full {
       width: 100%;
@@ -646,6 +769,11 @@ import { RecoveryService } from '../../core/services/recovery.service';
       .metrics-grid {
         grid-template-columns: repeat(2, 1fr);
       }
+      .mission-exercises-deck {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
     }
     @media (max-width: 800px) {
       .hero-card {
@@ -658,8 +786,39 @@ import { RecoveryService } from '../../core/services/recovery.service';
       }
     }
     @media (max-width: 600px) {
+      .greeting-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      .greeting-meta {
+        text-align: left;
+        align-items: flex-start;
+      }
+      .hero-card {
+        padding: 14px 16px;
+        gap: 14px;
+      }
+      .hero-visual {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        width: 100%;
+      }
+      .readiness-block {
+        width: 100%;
+        gap: 14px;
+      }
+      .factor-legend {
+        width: 100%;
+      }
       .metrics-grid {
         grid-template-columns: 1fr;
+      }
+      .mission-exercises-deck {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
       }
       .athlete-art {
         display: none;
@@ -682,4 +841,11 @@ export class OverviewComponent {
 
   readinessScore = computed(() => this.recovery.readinessResult().score ?? 85);
   sleepPercentage = computed(() => Math.round(Math.min(100, (this.recovery.checkin().sleepHours / 8) * 100)));
+
+  protected Math = Math;
+  dailyHistory = computed(() => this.workout.getVolumeHistory('daily'));
+  maxDailyVolume = computed(() => {
+    const list = this.dailyHistory();
+    return Math.max(1, ...list.map(d => d.volumeKg));
+  });
 }

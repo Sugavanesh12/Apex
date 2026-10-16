@@ -202,9 +202,39 @@ interface FoodPreset {
             <!-- Completed Meal Review & Ingredient Adjustment Card -->
             <div class="review-card card completed-card">
               <div class="review-header">
-                <div>
-                  <h3 class="dish-title">{{ activeDishName() }}</h3>
-                  <p class="verified-note">{{ activeSummary() }}</p>
+                <div class="dish-title-group">
+                  @if (!isEditingDish()) {
+                    <div class="dish-title-row">
+                      <h3 class="dish-title">{{ activeDishName() }}</h3>
+                      <button class="btn btn-ghost btn-sm edit-dish-btn" (click)="startEditDish()" title="Correct or change food name">
+                        ✏️ Change Food
+                      </button>
+                    </div>
+                    <p class="verified-note">{{ activeSummary() }}</p>
+                  } @else {
+                    <div class="dish-edit-box">
+                      <div class="dish-edit-input-row">
+                        <input
+                          type="text"
+                          [(ngModel)]="editDishInput"
+                          (keyup.enter)="applyDishCorrection()"
+                          placeholder="e.g. Idli Sambar, Masala Dosa, Chicken Biryani, Steak, Oats..."
+                          class="dish-edit-input"
+                        />
+                        <button class="btn btn-primary btn-sm" (click)="applyDishCorrection()">
+                          Recalculate AI
+                        </button>
+                        <button class="btn btn-ghost btn-sm" (click)="cancelEditDish()">
+                          Cancel
+                        </button>
+                      </div>
+                      <div class="quick-dish-suggestions">
+                        @for (suggest of ['Idli Sambar', 'Masala Dosa', 'Chicken Biryani', 'Paneer Tikka', 'Roti Dal', 'Roast Chicken']; track suggest) {
+                          <button class="chip-sm" (click)="applySuggestedDish(suggest)">{{ suggest }}</button>
+                        }
+                      </div>
+                    </div>
+                  }
                 </div>
                 <span class="badge badge-primary">
                   {{ activeConfidence() }} Confidence
@@ -491,35 +521,35 @@ interface FoodPreset {
     /* Corner Bracket Guides */
     .viewfinder-bracket {
       position: absolute;
-      width: 34px;
-      height: 34px;
+      width: 32px;
+      height: 32px;
       border: 3px solid rgba(255, 255, 255, 0.9);
       pointer-events: none;
     }
     .top-left {
-      top: 32px;
-      left: 32px;
+      top: 16px;
+      left: 16px;
       border-right: none;
       border-bottom: none;
       border-top-left-radius: 8px;
     }
     .top-right {
-      top: 32px;
-      right: 32px;
+      top: 16px;
+      right: 16px;
       border-left: none;
       border-bottom: none;
       border-top-right-radius: 8px;
     }
     .bottom-left {
-      bottom: 120px;
-      left: 32px;
+      bottom: 64px;
+      left: 16px;
       border-right: none;
       border-top: none;
       border-bottom-left-radius: 8px;
     }
     .bottom-right {
-      bottom: 120px;
-      right: 32px;
+      bottom: 64px;
+      right: 16px;
       border-left: none;
       border-top: none;
       border-bottom-right-radius: 8px;
@@ -716,6 +746,73 @@ interface FoodPreset {
       color: var(--text-muted);
       margin-top: 4px;
       line-height: 1.4;
+    }
+    .review-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .dish-title-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex: 1;
+    }
+    .dish-title-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .edit-dish-btn {
+      padding: 3px 10px;
+      font-size: 0.72rem;
+      border: 1px solid var(--border);
+      border-radius: var(--r-pill);
+      color: var(--primary);
+    }
+    .dish-edit-box {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+    }
+    .dish-edit-input-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .dish-edit-input {
+      flex: 1;
+      min-width: 220px;
+      background: var(--surface-2);
+      border: 1px solid var(--primary);
+      color: var(--text);
+      padding: 6px 12px;
+      border-radius: var(--r-md);
+      font-size: 0.85rem;
+      outline: none;
+    }
+    .quick-dish-suggestions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .chip-sm {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 2px 8px;
+      border-radius: var(--r-pill);
+      font-size: 0.7rem;
+      cursor: pointer;
+      transition: all var(--t-fast) var(--ease);
+    }
+    .chip-sm:hover {
+      background: var(--surface-3);
+      color: var(--text);
     }
 
     .nutrition-summary-tile {
@@ -1279,12 +1376,150 @@ interface FoodPreset {
     @media (max-width: 860px) {
       .scan-layout {
         grid-template-columns: 1fr;
+        gap: var(--s-4);
       }
       .camera-frame {
-        height: 360px;
+        height: 320px;
       }
       .viewfinder-footer {
         flex-direction: column;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .header-main {
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .engine-badge-btn {
+        padding: 4px 10px;
+        font-size: 0.72rem;
+      }
+      .scan-header {
+        margin-bottom: var(--s-3);
+      }
+      .camera-frame {
+        height: 270px;
+      }
+      .viewfinder-bracket {
+        width: 22px;
+        height: 22px;
+        border-width: 2px;
+      }
+      .top-left { top: 12px; left: 12px; }
+      .top-right { top: 12px; right: 12px; }
+      .bottom-left { bottom: 62px; left: 12px; }
+      .bottom-right { bottom: 62px; right: 12px; }
+      
+      .analyzing-bar {
+        padding: 8px 12px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 6px;
+      }
+      .spinner-group {
+        width: 100%;
+        gap: 8px;
+      }
+      .analyzing-text {
+        font-size: 0.74rem;
+      }
+      .sub-progress-text {
+        font-size: 0.65rem;
+      }
+      /* Hide multi-step micro checklist from cramped camera overlay on mobile; full checklist is in HUD below */
+      .steps-checklist {
+        display: none;
+      }
+      
+      .presets-bar {
+        padding: 8px 10px;
+        gap: 6px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      .presets-chips {
+        display: flex;
+        gap: 6px;
+        flex-wrap: nowrap;
+      }
+      .preset-chip {
+        padding: 4px 8px;
+        font-size: 0.7rem;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+
+      .nutrition-summary-tile {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      .macros-pills {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+      }
+      .m-pill {
+        min-width: 0;
+        padding: 6px 4px;
+        text-align: center;
+      }
+      .m-tag {
+        font-size: 0.6rem;
+      }
+      .m-qty {
+        font-size: 0.75rem;
+      }
+
+      .dish-title-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+      }
+      .dish-title {
+        font-size: 1.15rem;
+        word-break: break-word;
+      }
+      .dish-edit-input {
+        min-width: 0;
+        width: 100%;
+      }
+      
+      .ing-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+      }
+      .ing-controls {
+        justify-content: space-between;
+        width: 100%;
+      }
+      .add-inputs-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+      }
+      .custom-food-input {
+        min-width: 0;
+        width: 100%;
+      }
+      .viewfinder-footer {
+        flex-direction: column;
+        gap: 8px;
+      }
+      .snap-btn, .demo-btn {
+        width: 100%;
+        justify-content: center;
+      }
+      .review-actions {
+        flex-direction: column;
+        gap: 8px;
+        padding-bottom: 28px;
+      }
+      .add-log-btn {
+        width: 100%;
       }
     }
   `]
@@ -1326,6 +1561,7 @@ export class NutritionScanComponent {
   }
 
   readonly presets: FoodPreset[] = [
+    { id: 'idli', name: 'Idli & Sambar', emoji: '🥞', image: '/img/food-idli.jpg' },
     { id: 'chicken', name: 'Roast Chicken', emoji: '🍗', image: '/img/food-chicken.jpg' },
     { id: 'steak', name: 'Sirloin Steak', emoji: '🥩', image: '/img/food-steak.jpg' },
     { id: 'eggs', name: 'Eggs & Sourdough', emoji: '🍳', image: '/img/food-eggs.jpg' },
@@ -1333,6 +1569,63 @@ export class NutritionScanComponent {
     { id: 'shake', name: 'Whey Protein Shake', emoji: '🥤', image: '/img/food-shake.jpg' },
     { id: 'banana', name: 'Fresh Banana', emoji: '🍌', image: '/img/food-banana.jpg' }
   ];
+
+  isEditingDish = signal<boolean>(false);
+  editDishInput = '';
+
+  startEditDish() {
+    this.editDishInput = this.activeDishName();
+    this.isEditingDish.set(true);
+  }
+
+  cancelEditDish() {
+    this.isEditingDish.set(false);
+  }
+
+  applyDishCorrection() {
+    if (!this.editDishInput.trim()) return;
+    const result = this.gemini.calculateCustomDish(this.editDishInput);
+    this.applyResultData(result);
+    this.isEditingDish.set(false);
+  }
+
+  applySuggestedDish(dishName: string) {
+    this.editDishInput = dishName;
+    this.applyDishCorrection();
+  }
+
+  private applyResultData(result: any) {
+    this.activeDishName.set(result.dishName || 'Custom Athletic Meal');
+    this.activeSummary.set(result.summary || 'Nutrient profile calculated with whole-food sports nutrition standards.');
+    this.activeConfidence.set(result.confidence ? `${result.confidence} (98%)` : 'High (98%)');
+
+    const ingredients = (result.ingredients || []).map((item: any, idx: number) => ({
+      id: `ing-${idx}-${Date.now()}`,
+      name: item.name,
+      grams: item.grams,
+      per100: item.per100,
+      confidence: item.confidence || 'High'
+    }));
+
+    const newDraft = {
+      name: result.dishName || 'Custom Athletic Meal',
+      image: this.previewImage(),
+      presetId: this.activePresetId(),
+      summary: result.summary || 'Nutrient profile calculated with whole-food sports nutrition standards.',
+      confidence: result.confidence ? `${result.confidence} (98%)` : 'High (98%)',
+      ingredients,
+      analyzing: false,
+      analysisProgress: 100
+    };
+
+    this.nutrition.activeDraftMeal.set(newDraft);
+    this.nutrition.persistActiveDraft(newDraft);
+
+    this.analysisStep.set(3);
+    this.scanProgressPercent.set(100);
+    this.hasCompletedScan.set(true);
+    this.isAnalyzing.set(false);
+  }
 
   draftTotals = computed(() => this.nutrition.computedDraftTotals());
 
@@ -1413,37 +1706,7 @@ export class NutritionScanComponent {
     const applyResult = (result: any) => {
       clearTimeout(step2Timer);
       clearTimeout(step3Timer);
-
-      this.activeDishName.set(result.dishName || 'Golden Herb-Roasted Farm Chicken');
-      this.activeSummary.set(result.summary || 'High-density complete protein rich in bioavailable essential amino acids, zinc, and B-complex vitamins.');
-      this.activeConfidence.set(result.confidence ? `${result.confidence} (98%)` : 'High (98%)');
-
-      const ingredients = (result.ingredients || []).map((item: any, idx: number) => ({
-        id: `ing-${idx}-${Date.now()}`,
-        name: item.name,
-        grams: item.grams,
-        per100: item.per100,
-        confidence: item.confidence || 'High'
-      }));
-
-      const newDraft = {
-        name: result.dishName || 'Golden Herb-Roasted Farm Chicken',
-        image: this.previewImage(),
-        presetId: this.activePresetId(),
-        summary: result.summary || 'High-density complete protein rich in bioavailable essential amino acids, zinc, and B-complex vitamins.',
-        confidence: result.confidence ? `${result.confidence} (98%)` : 'High (98%)',
-        ingredients,
-        analyzing: false,
-        analysisProgress: 100
-      };
-
-      this.nutrition.activeDraftMeal.set(newDraft);
-      this.nutrition.persistActiveDraft(newDraft);
-
-      this.analysisStep.set(3);
-      this.scanProgressPercent.set(100);
-      this.hasCompletedScan.set(true);
-      this.isAnalyzing.set(false);
+      this.applyResultData(result);
     };
 
     try {

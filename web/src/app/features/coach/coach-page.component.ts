@@ -64,27 +64,6 @@ interface QuestionItem {
                 <span class="sender-time">{{ msg.timestamp }}</span>
               </div>
               <p class="bubble-content">{{ msg.text }}</p>
-
-              @if (msg.proposal) {
-                <div class="action-card" [class.action-applied]="msg.proposal.applied">
-                  <div class="action-top">
-                    <span class="action-badge" [class.badge-nutrition]="msg.proposal.type === 'nutrition'" [class.badge-recovery]="msg.proposal.type === 'recovery'">
-                      {{ msg.proposal.type === 'nutrition' ? '🥗 NUTRITION ACTION' : (msg.proposal.type === 'recovery' ? '🧬 RECOVERY PROTOCOL' : '🏋️ TRAINING ADJUSTMENT') }}
-                    </span>
-                    @if (msg.proposal.applied) {
-                      <span class="status-confirmed">✓ Confirmed & Applied</span>
-                    }
-                  </div>
-                  <p class="action-desc">{{ msg.proposal.actionText }}</p>
-                  @if (!msg.proposal.applied) {
-                    <div class="action-btns">
-                      <button class="btn btn-primary btn-sm" (click)="coach.confirmProposal(msg.id)">
-                        Confirm & Apply to Today
-                      </button>
-                    </div>
-                  }
-                </div>
-              }
             </div>
           }
 
@@ -373,54 +352,6 @@ interface QuestionItem {
       white-space: pre-line;
     }
 
-    .action-card {
-      margin-top: var(--s-2);
-      padding: var(--s-3) var(--s-4);
-      background: var(--surface-3);
-      border-radius: var(--r-input);
-      border: 1px solid var(--border-strong);
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      border-left: 3px solid var(--primary);
-    }
-    .action-applied {
-      border-left-color: var(--accent-1);
-      background: rgba(34, 197, 94, 0.05);
-    }
-    .action-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .action-badge {
-      font-size: 0.65rem;
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      color: var(--primary);
-      text-transform: uppercase;
-    }
-    .badge-nutrition {
-      color: var(--accent-2);
-    }
-    .badge-recovery {
-      color: var(--accent-1);
-    }
-    .status-confirmed {
-      font-size: 0.7rem;
-      font-weight: 700;
-      color: var(--accent-1);
-    }
-    .action-desc {
-      font-size: var(--fs-xs);
-      color: var(--text);
-      line-height: 1.4;
-    }
-    .action-btns {
-      display: flex;
-      margin-top: 4px;
-    }
-
     .thinking-bubble {
       display: flex;
       flex-direction: row;
@@ -638,6 +569,58 @@ interface QuestionItem {
       display: flex;
       justify-content: flex-end;
       gap: var(--s-3);
+    }
+    @media (max-width: 768px) {
+      .coach-full-page {
+        height: calc(100dvh - var(--topbar-h) - var(--tabbar-h) - 16px);
+        max-height: calc(100dvh - var(--topbar-h) - var(--tabbar-h) - 16px);
+      }
+      .coach-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--s-2);
+      }
+      .header-actions {
+        width: 100%;
+        justify-content: space-between;
+      }
+      .safety-chip {
+        display: none;
+      }
+      .chat-container {
+        flex: 1;
+        min-height: 0;
+      }
+      .messages-area {
+        padding: 12px;
+        gap: 12px;
+      }
+      .chat-bubble {
+        max-width: 94%;
+        padding: 10px 12px;
+      }
+      .question-explorer {
+        padding: 6px 10px;
+      }
+      .category-tabs {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      .suggested-row {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      .chat-composer {
+        padding: 8px 10px;
+        gap: 8px;
+      }
+      .chat-composer input {
+        font-size: 14px;
+        padding: 8px 14px;
+      }
+      .send-action-btn {
+        padding: 0 12px;
+      }
     }
   `]
 })

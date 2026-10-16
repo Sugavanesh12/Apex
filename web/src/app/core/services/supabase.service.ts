@@ -32,10 +32,27 @@ export class SupabaseService {
   }
 
   async signUp(email: string, pass: string, name: string) {
+    const redirectUrl = typeof window !== 'undefined' ? `${window.location.origin}/overview` : undefined;
     const { data, error } = await this.supabase.auth.signUp({
       email,
       password: pass,
-      options: { data: { name } }
+      options: { 
+        data: { name },
+        emailRedirectTo: redirectUrl
+      }
+    });
+    if (error) throw error;
+    return data;
+  }
+
+  async resendConfirmation(email: string) {
+    const redirectUrl = typeof window !== 'undefined' ? `${window.location.origin}/overview` : undefined;
+    const { data, error } = await this.supabase.auth.resend({
+      type: 'signup',
+      email,
+      options: {
+        emailRedirectTo: redirectUrl
+      }
     });
     if (error) throw error;
     return data;

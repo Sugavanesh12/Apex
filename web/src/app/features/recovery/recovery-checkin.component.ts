@@ -827,6 +827,7 @@ import { UserService } from '../../core/services/user.service';
       }
       .mood-grid {
         grid-template-columns: repeat(5, 1fr);
+        gap: 4px;
       }
       .calculated-preview {
         flex-direction: column;
@@ -834,6 +835,20 @@ import { UserService } from '../../core/services/user.service';
       }
       .rec-badge-row {
         justify-content: center;
+      }
+    }
+    @media (max-width: 480px) {
+      .mood-btn {
+        padding: 6px 2px;
+      }
+      .mood-emoji {
+        font-size: 1.25rem;
+      }
+      .mood-lbl {
+        font-size: 0.62rem;
+      }
+      .checkin-page {
+        padding-bottom: 32px;
       }
     }
   `]
@@ -1002,8 +1017,8 @@ export class RecoveryCheckinComponent {
 
   saveCheckin() {
     const score = this.currentScore();
-    this.user.profile.update(p => ({ ...p, readiness: score }));
-    alert(`Check-in saved! Your new readiness score is ${score}/100.`);
-    this.router.navigate(['/overview']);
+    this.user.updateProfile({ readiness: score });
+    this.recovery.persistHistory();
+    this.router.navigate(['/recovery']);
   }
 }

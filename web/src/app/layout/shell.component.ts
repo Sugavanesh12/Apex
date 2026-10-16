@@ -65,12 +65,18 @@ import { BottomNavComponent } from './bottom-nav/bottom-nav.component';
       position: relative;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
       .layout-sidebar {
         display: none;
       }
       .page-content {
-        padding: var(--s-4) var(--s-3) calc(var(--tabbar-h) + var(--s-3));
+        padding: 12px 12px calc(var(--tabbar-h) + 48px);
+        -webkit-overflow-scrolling: touch;
+      }
+    }
+    @media (max-width: 480px) {
+      .page-content {
+        padding: 10px 8px calc(var(--tabbar-h) + 52px);
       }
     }
   `]

@@ -10,8 +10,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -36,7 +35,6 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
     ],
     "category": "Hypertrophy",
     "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -60,8 +58,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Strength",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -85,8 +82,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -110,8 +106,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-pullup.jpg",
-    "videoUrl": "/video/pullup.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -135,8 +130,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Strength",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -160,8 +154,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -185,8 +178,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -210,8 +202,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -235,8 +226,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -260,8 +250,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -285,8 +274,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-pullup.jpg",
-    "videoUrl": "/video/pullup.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -310,8 +298,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -335,8 +322,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -360,8 +346,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -385,8 +370,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -410,8 +394,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -435,8 +418,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -460,8 +442,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-pullup.jpg",
-    "videoUrl": "/video/pullup.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -485,8 +466,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -510,8 +490,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -535,8 +514,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -560,8 +538,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -585,8 +562,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -610,8 +586,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -635,8 +610,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -660,8 +634,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -685,8 +658,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -710,8 +682,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-pullup.jpg",
-    "videoUrl": "/video/pullup.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -735,8 +706,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -760,8 +730,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-pullup.jpg",
-    "videoUrl": "/video/pullup.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -785,8 +754,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -810,8 +778,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-pullup.jpg",
-    "videoUrl": "/video/pullup.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -835,8 +802,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -860,8 +826,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -885,8 +850,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -910,8 +874,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -935,8 +898,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -960,8 +922,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -985,8 +946,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -1010,8 +970,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -1035,8 +994,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -1060,8 +1018,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-pullup.jpg",
-    "videoUrl": "/video/pullup.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -1085,8 +1042,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-pullup.jpg",
-    "videoUrl": "/video/pullup.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -1110,8 +1066,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-pullup.jpg",
-    "videoUrl": "/video/pullup.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -1135,8 +1090,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-pullup.jpg",
-    "videoUrl": "/video/pullup.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -1160,8 +1114,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-kb-swing.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -1185,8 +1138,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-kb-swing.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -1210,8 +1162,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-pullup.jpg",
-    "videoUrl": "/video/pullup.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -1235,8 +1186,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -1260,8 +1210,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -1285,8 +1234,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -1310,8 +1258,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -1335,8 +1282,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -1360,8 +1306,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-kb-swing.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -1385,8 +1330,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -1410,8 +1354,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -1435,8 +1378,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-pullup.jpg",
-    "videoUrl": "/video/pullup.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -1460,8 +1402,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -1485,8 +1426,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -1510,8 +1450,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -1535,8 +1474,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-pullup.jpg",
-    "videoUrl": "/video/pullup.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -1560,8 +1498,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -1585,8 +1522,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -1610,8 +1546,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-pullup.jpg",
-    "videoUrl": "/video/pullup.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -1635,8 +1570,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -1660,8 +1594,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -1685,8 +1618,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -1710,8 +1642,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -1735,8 +1666,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -1760,8 +1690,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -1785,8 +1714,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -1810,8 +1738,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -1835,8 +1762,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-pullup.jpg",
-    "videoUrl": "/video/pullup.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -1860,8 +1786,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -1885,8 +1810,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -1910,8 +1834,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -1935,8 +1858,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-pullup.jpg",
-    "videoUrl": "/video/pullup.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -1960,8 +1882,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -1985,8 +1906,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -2010,8 +1930,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -2035,8 +1954,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-pullup.jpg",
-    "videoUrl": "/video/pullup.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -2060,8 +1978,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-pullup.jpg",
-    "videoUrl": "/video/pullup.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -2085,8 +2002,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -2110,8 +2026,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-pullup.jpg",
-    "videoUrl": "/video/pullup.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -2135,8 +2050,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-pullup.jpg",
-    "videoUrl": "/video/pullup.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -2160,8 +2074,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -2185,8 +2098,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -2210,8 +2122,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-pullup.jpg",
-    "videoUrl": "/video/pullup.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -2235,8 +2146,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "T-Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -2260,8 +2170,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "T-Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -2285,8 +2194,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "T-Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-pullup.jpg",
-    "videoUrl": "/video/pullup.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -2310,8 +2218,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "T-Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -2335,8 +2242,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "T-Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -2360,8 +2266,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "T-Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -2385,8 +2290,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "T-Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -2410,8 +2314,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "T-Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -2435,8 +2338,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "T-Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-pullup.jpg",
-    "videoUrl": "/video/pullup.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -2460,8 +2362,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "T-Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -2485,8 +2386,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "T-Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -2510,8 +2410,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "T-Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -2535,8 +2434,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "T-Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -2560,8 +2458,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "T-Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -2585,8 +2482,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "T-Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -2610,8 +2506,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "T-Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -2635,8 +2530,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Trap Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-pullup.jpg",
-    "videoUrl": "/video/pullup.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -2660,8 +2554,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Trap Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -2685,8 +2578,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Trap Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -2710,8 +2602,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Trap Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -2735,8 +2626,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Trap Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-pullup.jpg",
-    "videoUrl": "/video/pullup.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -2760,8 +2650,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Trap Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -2785,8 +2674,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Trap Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -2810,8 +2698,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Trap Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -2835,8 +2722,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Trap Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-pullup.jpg",
-    "videoUrl": "/video/pullup.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -2860,8 +2746,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Trap Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-pullup.jpg",
-    "videoUrl": "/video/pullup.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -2885,8 +2770,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -2910,8 +2794,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -2935,8 +2818,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -2960,8 +2842,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -2985,8 +2866,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -3010,8 +2890,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -3035,8 +2914,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -3060,8 +2938,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -3085,8 +2962,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -3110,8 +2986,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -3135,8 +3010,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -3160,8 +3034,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -3185,8 +3058,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -3210,8 +3082,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -3235,8 +3106,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -3260,8 +3130,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -3285,8 +3154,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -3310,8 +3178,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -3335,8 +3202,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -3360,8 +3226,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -3385,8 +3250,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -3410,8 +3274,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -3435,8 +3298,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -3460,8 +3322,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -3485,8 +3346,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -3510,8 +3370,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -3535,8 +3394,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -3560,8 +3418,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -3585,8 +3442,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -3610,8 +3466,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -3635,8 +3490,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -3660,8 +3514,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -3685,8 +3538,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -3710,8 +3562,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -3735,8 +3586,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -3760,8 +3610,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -3785,8 +3634,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -3810,8 +3658,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -3835,8 +3682,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -3860,8 +3706,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -3885,8 +3730,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -3910,8 +3754,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "EZ-Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -3935,8 +3778,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "EZ-Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -3960,8 +3802,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "EZ-Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -3985,8 +3826,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "EZ-Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -4010,8 +3850,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "EZ-Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -4035,8 +3874,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "EZ-Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -4060,8 +3898,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "EZ-Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -4085,8 +3922,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "EZ-Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -4110,8 +3946,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "EZ-Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -4135,8 +3970,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "EZ-Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -4160,8 +3994,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -4185,8 +4018,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -4210,8 +4042,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -4235,8 +4066,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -4260,8 +4090,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -4285,8 +4114,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -4310,8 +4138,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -4335,8 +4162,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -4360,8 +4186,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -4385,8 +4210,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -4410,8 +4234,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -4435,8 +4258,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -4460,8 +4282,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -4485,8 +4306,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -4510,8 +4330,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -4535,8 +4354,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -4560,8 +4378,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -4585,8 +4402,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -4610,8 +4426,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -4635,8 +4450,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -4660,8 +4474,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -4685,8 +4498,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -4710,8 +4522,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -4735,8 +4546,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -4760,8 +4570,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -4785,8 +4594,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -4810,8 +4618,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -4835,8 +4642,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -4860,8 +4666,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -4885,8 +4690,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -4910,8 +4714,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -4935,8 +4738,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -4960,8 +4762,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -4985,8 +4786,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -5010,8 +4810,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -5035,8 +4834,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -5060,8 +4858,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -5085,8 +4882,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -5110,8 +4906,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -5135,8 +4930,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -5160,8 +4954,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -5185,8 +4978,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -5210,8 +5002,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -5235,8 +5026,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -5260,8 +5050,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -5285,8 +5074,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -5310,8 +5098,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -5335,8 +5122,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -5360,8 +5146,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -5385,8 +5170,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -5410,8 +5194,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -5435,8 +5218,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -5460,8 +5242,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Strength",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -5485,8 +5266,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -5510,8 +5290,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -5535,8 +5314,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -5560,8 +5338,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Strength",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -5585,8 +5362,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Strength",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -5610,8 +5386,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -5635,8 +5410,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -5660,8 +5434,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -5685,8 +5458,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -5710,8 +5482,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -5735,8 +5506,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -5760,8 +5530,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -5785,8 +5554,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -5810,8 +5578,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -5835,8 +5602,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -5860,8 +5626,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -5885,8 +5650,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -5910,8 +5674,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -5935,8 +5698,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -5960,8 +5722,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -5985,8 +5746,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -6010,8 +5770,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -6035,8 +5794,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -6060,8 +5818,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -6085,8 +5842,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -6110,8 +5866,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -6135,8 +5890,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -6160,8 +5914,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -6185,8 +5938,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -6210,8 +5962,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -6235,8 +5986,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -6260,8 +6010,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -6285,8 +6034,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -6310,8 +6058,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -6335,8 +6082,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -6360,8 +6106,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -6385,8 +6130,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -6410,8 +6154,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -6435,8 +6178,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -6460,8 +6202,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -6485,8 +6226,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -6510,8 +6250,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -6535,8 +6274,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -6560,8 +6298,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -6585,8 +6322,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -6610,8 +6346,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -6635,8 +6370,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -6660,8 +6394,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -6685,8 +6418,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -6710,8 +6442,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -6735,8 +6466,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -6760,8 +6490,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -6785,8 +6514,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -6810,8 +6538,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -6835,8 +6562,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -6860,8 +6586,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -6885,8 +6610,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -6910,8 +6634,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -6935,8 +6658,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -6960,8 +6682,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -6985,8 +6706,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -7010,8 +6730,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -7035,8 +6754,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -7060,8 +6778,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -7085,8 +6802,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -7110,8 +6826,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -7135,8 +6850,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -7160,8 +6874,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -7185,8 +6898,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -7210,8 +6922,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -7235,8 +6946,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -7260,8 +6970,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -7285,8 +6994,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -7310,8 +7018,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -7335,8 +7042,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -7360,8 +7066,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -7385,8 +7090,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -7410,8 +7114,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -7435,8 +7138,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -7460,8 +7162,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -7485,8 +7186,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -7510,8 +7210,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -7535,8 +7234,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -7560,8 +7258,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -7585,8 +7282,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -7610,8 +7306,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -7635,8 +7330,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Ab Wheel"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -7660,8 +7354,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Ab Wheel"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -7685,8 +7378,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Ab Wheel"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -7710,8 +7402,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Ab Wheel"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -7735,8 +7426,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Ab Wheel"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -7760,8 +7450,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Ab Wheel"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -7785,8 +7474,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Ab Wheel"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -7810,8 +7498,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Ab Wheel"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -7835,8 +7522,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Ab Wheel"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -7860,8 +7546,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Ab Wheel"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -7885,8 +7570,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Ab Wheel"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -7910,8 +7594,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Ab Wheel"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -7935,8 +7618,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Ab Wheel"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -7960,8 +7642,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -7985,8 +7666,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -8010,8 +7690,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -8035,8 +7714,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -8060,8 +7738,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -8085,8 +7762,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -8110,8 +7786,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -8135,8 +7810,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -8160,8 +7834,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -8185,8 +7858,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -8210,8 +7882,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -8235,8 +7906,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -8260,8 +7930,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -8285,8 +7954,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -8310,8 +7978,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -8335,8 +8002,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -8360,8 +8026,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -8385,8 +8050,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -8410,8 +8074,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -8435,8 +8098,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -8460,8 +8122,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -8485,8 +8146,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -8510,8 +8170,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -8535,8 +8194,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -8560,8 +8218,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -8585,8 +8242,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -8610,8 +8266,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -8635,8 +8290,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -8660,8 +8314,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -8685,8 +8338,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -8710,8 +8362,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -8735,8 +8386,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -8760,8 +8410,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -8785,8 +8434,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -8810,8 +8458,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -8835,8 +8482,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Core",
-    "image": "/img/ex-kb-swing.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -8860,8 +8506,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Core",
-    "image": "/img/ex-kb-swing.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -8885,8 +8530,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Core",
-    "image": "/img/ex-kb-swing.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -8910,8 +8554,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Core",
-    "image": "/img/ex-kb-swing.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -8935,8 +8578,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Core",
-    "image": "/img/ex-kb-swing.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -8960,8 +8602,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Core",
-    "image": "/img/ex-kb-swing.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -8985,8 +8626,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Core",
-    "image": "/img/ex-kb-swing.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -9010,8 +8650,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Core",
-    "image": "/img/ex-kb-swing.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -9035,8 +8674,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Core",
-    "image": "/img/ex-kb-swing.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -9060,8 +8698,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Core",
-    "image": "/img/ex-kb-swing.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -9085,8 +8722,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Core",
-    "image": "/img/ex-kb-swing.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -9110,8 +8746,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Core",
-    "image": "/img/ex-kb-swing.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -9135,8 +8770,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Core",
-    "image": "/img/ex-kb-swing.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -9160,8 +8794,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Core",
-    "image": "/img/ex-kb-swing.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -9185,8 +8818,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Core",
-    "image": "/img/ex-kb-swing.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -9210,8 +8842,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Core",
-    "image": "/img/ex-kb-swing.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -9235,8 +8866,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -9260,8 +8890,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -9285,8 +8914,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -9310,8 +8938,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -9335,8 +8962,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -9360,8 +8986,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -9385,8 +9010,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -9410,8 +9034,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -9435,8 +9058,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -9460,8 +9082,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -9485,8 +9106,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -9510,8 +9130,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -9535,8 +9154,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Medicine Ball"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -9560,8 +9178,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Medicine Ball"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -9585,8 +9202,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Medicine Ball"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -9610,8 +9226,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Medicine Ball"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -9635,8 +9250,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Medicine Ball"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -9660,8 +9274,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Medicine Ball"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -9685,8 +9298,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Medicine Ball"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -9710,8 +9322,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Medicine Ball"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -9735,8 +9346,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Medicine Ball"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -9760,8 +9370,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Medicine Ball"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -9785,8 +9394,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Medicine Ball"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -9810,8 +9418,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Medicine Ball"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -9835,8 +9442,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Medicine Ball"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -9860,8 +9466,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -9885,8 +9490,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -9910,8 +9514,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -9935,8 +9538,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -9960,8 +9562,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -9985,8 +9586,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -10010,8 +9610,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -10035,8 +9634,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -10060,8 +9658,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -10085,8 +9682,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -10110,8 +9706,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -10135,8 +9730,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -10160,8 +9754,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Stability Ball"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -10185,8 +9778,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Stability Ball"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -10210,8 +9802,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Stability Ball"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -10235,8 +9826,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Stability Ball"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -10260,8 +9850,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Stability Ball"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -10285,8 +9874,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Stability Ball"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -10310,8 +9898,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Stability Ball"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -10335,8 +9922,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Stability Ball"
     ],
     "category": "Core",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -10360,8 +9946,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -10385,8 +9970,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -10410,8 +9994,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "HIIT",
-    "image": "/img/ex-kb-swing.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -10435,8 +10018,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -10460,8 +10042,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "HIIT",
-    "image": "/img/ex-kb-swing.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -10485,8 +10066,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -10510,8 +10090,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "HIIT",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -10535,8 +10114,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -10560,8 +10138,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "HIIT",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -10585,8 +10162,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -10610,8 +10186,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "HIIT",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -10635,8 +10210,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -10660,8 +10234,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -10685,8 +10258,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -10710,8 +10282,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -10735,8 +10306,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -10760,8 +10330,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -10785,8 +10354,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -10810,8 +10378,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -10835,8 +10402,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -10860,8 +10426,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -10885,8 +10450,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -10910,8 +10474,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -10935,8 +10498,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -10960,8 +10522,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -10985,8 +10546,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "HIIT",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -11010,8 +10570,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -11035,8 +10594,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -11060,8 +10618,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "HIIT",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -11085,8 +10642,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "HIIT",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -11110,8 +10666,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "HIIT",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -11135,8 +10690,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "HIIT",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -11160,8 +10714,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "HIIT",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -11185,8 +10738,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -11210,8 +10762,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "HIIT",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -11235,8 +10786,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -11260,8 +10810,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -11285,8 +10834,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "HIIT",
-    "image": "/img/ex-kb-swing.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -11310,8 +10858,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "HIIT",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -11335,8 +10882,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -11360,8 +10906,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -11385,8 +10930,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "HIIT",
-    "image": "/img/ex-kb-swing.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -11410,8 +10954,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "HIIT",
-    "image": "/img/ex-kb-swing.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -11435,8 +10978,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "HIIT",
-    "image": "/img/ex-kb-swing.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -11460,8 +11002,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -11485,8 +11026,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "HIIT",
-    "image": "/img/ex-kb-swing.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -11510,8 +11050,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "HIIT",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -11535,8 +11074,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "HIIT",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -11560,8 +11098,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "HIIT",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -11585,8 +11122,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "HIIT",
-    "image": "/img/ex-kb-swing.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -11610,8 +11146,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "HIIT",
-    "image": "/img/ex-kb-swing.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -11635,8 +11170,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "HIIT",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -11660,8 +11194,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "HIIT",
-    "image": "/img/ex-kb-swing.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -11685,8 +11218,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "HIIT",
-    "image": "/img/ex-kb-swing.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -11710,8 +11242,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "HIIT",
-    "image": "/img/ex-kb-swing.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -11735,8 +11266,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "HIIT",
-    "image": "/img/ex-kb-swing.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -11760,8 +11290,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "HIIT",
-    "image": "/img/ex-kb-swing.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -11785,8 +11314,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "HIIT",
-    "image": "/img/ex-kb-swing.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -11810,8 +11338,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -11835,8 +11362,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Medicine Ball"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -11860,8 +11386,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Medicine Ball"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -11885,8 +11410,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Medicine Ball"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -11910,8 +11434,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Medicine Ball"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -11935,8 +11458,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Medicine Ball"
     ],
     "category": "HIIT",
-    "image": "/img/ex-kb-swing.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -11960,8 +11482,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Medicine Ball"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -11985,8 +11506,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Medicine Ball"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -12010,8 +11530,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Medicine Ball"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -12035,8 +11554,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Medicine Ball"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -12060,8 +11578,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Medicine Ball"
     ],
     "category": "HIIT",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -12085,8 +11602,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Medicine Ball"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -12110,8 +11626,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Medicine Ball"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -12135,8 +11650,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Medicine Ball"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -12160,8 +11674,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Medicine Ball"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -12185,8 +11698,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Medicine Ball"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -12210,8 +11722,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Sandbag"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -12235,8 +11746,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Sandbag"
     ],
     "category": "HIIT",
-    "image": "/img/ex-kb-swing.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -12260,8 +11770,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Sandbag"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -12285,8 +11794,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Sandbag"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -12310,8 +11818,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Sandbag"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -12335,8 +11842,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Sandbag"
     ],
     "category": "HIIT",
-    "image": "/img/ex-kb-swing.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -12360,8 +11866,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Sandbag"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -12385,8 +11890,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Sandbag"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -12410,8 +11914,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Sandbag"
     ],
     "category": "HIIT",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -12435,8 +11938,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Sandbag"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -12460,8 +11962,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Sandbag"
     ],
     "category": "HIIT",
-    "image": "/img/ex-kb-swing.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -12485,8 +11986,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Sled"
     ],
     "category": "HIIT",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -12510,8 +12010,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Sled"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -12535,8 +12034,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Sled"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -12560,8 +12058,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Sled"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -12585,8 +12082,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Sled"
     ],
     "category": "HIIT",
-    "image": "/img/ex-kb-swing.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -12610,8 +12106,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Sled"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -12635,8 +12130,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Sled"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -12660,8 +12154,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Sled"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -12685,8 +12178,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Sled"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -12710,8 +12202,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Sled"
     ],
     "category": "HIIT",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -12735,8 +12226,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Sled"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -12760,8 +12250,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Sled"
     ],
     "category": "HIIT",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -12785,8 +12274,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Sled"
     ],
     "category": "HIIT",
-    "image": "/img/ex-kb-swing.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -12810,8 +12298,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Sled"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -12835,8 +12322,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Sled"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -12860,8 +12346,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Sled"
     ],
     "category": "HIIT",
-    "image": "/img/ex-kb-swing.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -12885,8 +12370,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Sled"
     ],
     "category": "HIIT",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -12910,8 +12394,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Sled"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -12935,8 +12418,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Sled"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -12960,8 +12442,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Sled"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -12985,8 +12466,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Trap Bar"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -13010,8 +12490,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Trap Bar"
     ],
     "category": "HIIT",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -13035,8 +12514,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Trap Bar"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -13060,8 +12538,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Trap Bar"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -13085,8 +12562,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Trap Bar"
     ],
     "category": "HIIT",
-    "image": "/img/ex-kb-swing.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -13110,8 +12586,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Trap Bar"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -13135,8 +12610,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Trap Bar"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -13160,8 +12634,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Trap Bar"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -13185,8 +12658,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Trap Bar"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -13210,8 +12682,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Trap Bar"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -13235,8 +12706,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Trap Bar"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -13260,8 +12730,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Trap Bar"
     ],
     "category": "HIIT",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -13285,8 +12754,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -13310,8 +12778,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -13335,8 +12802,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -13360,8 +12826,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Strength",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -13385,8 +12850,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -13410,8 +12874,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -13435,8 +12898,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Strength",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -13460,8 +12922,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -13485,8 +12946,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -13510,8 +12970,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Strength",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -13535,8 +12994,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -13560,8 +13018,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Strength",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -13585,8 +13042,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -13610,8 +13066,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Strength",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -13635,8 +13090,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Strength",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -13660,8 +13114,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -13685,8 +13138,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -13710,8 +13162,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -13735,8 +13186,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -13760,8 +13210,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -13785,8 +13234,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -13810,8 +13258,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -13835,8 +13282,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -13860,8 +13306,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -13885,8 +13330,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -13910,8 +13354,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -13935,8 +13378,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -13960,8 +13402,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -13985,8 +13426,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -14010,8 +13450,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -14035,8 +13474,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -14060,8 +13498,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -14085,8 +13522,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -14110,8 +13546,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -14135,8 +13570,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -14160,8 +13594,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -14185,8 +13618,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -14210,8 +13642,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -14235,8 +13666,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -14260,8 +13690,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -14285,8 +13714,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -14310,8 +13738,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Leg Press Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -14335,8 +13762,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Leg Press Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -14360,8 +13786,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Leg Press Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -14385,8 +13810,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Leg Press Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -14410,8 +13834,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Leg Press Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -14435,8 +13858,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Leg Press Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -14460,8 +13882,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Leg Press Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -14485,8 +13906,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Leg Press Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -14510,8 +13930,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Leg Press Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -14535,8 +13954,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Leg Press Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -14560,8 +13978,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Leg Press Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -14585,8 +14002,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Leg Press Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -14610,8 +14026,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Leg Press Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -14635,8 +14050,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Leg Press Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -14660,8 +14074,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -14685,8 +14098,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -14710,8 +14122,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -14735,8 +14146,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -14760,8 +14170,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -14785,8 +14194,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -14810,8 +14218,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -14835,8 +14242,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -14860,8 +14266,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -14885,8 +14290,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -14910,8 +14314,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -14935,8 +14338,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -14960,8 +14362,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -14985,8 +14386,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -15010,8 +14410,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -15035,8 +14434,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -15060,8 +14458,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -15085,8 +14482,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -15110,8 +14506,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -15135,8 +14530,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -15160,8 +14554,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -15185,8 +14578,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -15210,8 +14602,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -15235,8 +14626,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -15260,8 +14650,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -15285,8 +14674,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -15310,8 +14698,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -15335,8 +14722,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -15360,8 +14746,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -15385,8 +14770,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -15410,8 +14794,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -15435,8 +14818,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -15460,8 +14842,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -15485,8 +14866,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -15510,8 +14890,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -15535,8 +14914,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Strength",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -15560,8 +14938,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -15585,8 +14962,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -15610,8 +14986,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -15635,8 +15010,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -15660,8 +15034,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -15685,8 +15058,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -15710,8 +15082,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -15735,8 +15106,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -15760,8 +15130,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -15785,8 +15154,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -15810,8 +15178,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -15835,8 +15202,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -15860,8 +15226,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -15885,8 +15250,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -15910,8 +15274,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -15935,8 +15298,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -15960,8 +15322,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -15985,8 +15346,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -16010,8 +15370,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -16035,8 +15394,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "HIIT",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -16060,8 +15418,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -16085,8 +15442,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -16110,8 +15466,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "HIIT",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -16135,8 +15490,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -16160,8 +15514,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -16185,8 +15538,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -16210,8 +15562,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "HIIT",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -16235,8 +15586,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -16260,8 +15610,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -16285,8 +15634,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -16310,8 +15658,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -16335,8 +15682,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -16360,8 +15706,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -16385,8 +15730,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -16410,8 +15754,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -16435,8 +15778,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -16460,8 +15802,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -16485,8 +15826,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -16510,8 +15850,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -16535,8 +15874,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -16560,8 +15898,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -16585,8 +15922,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -16610,8 +15946,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "HIIT",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -16635,8 +15970,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -16660,8 +15994,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -16685,8 +16018,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -16710,8 +16042,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -16735,8 +16066,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -16760,8 +16090,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -16785,8 +16114,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -16810,8 +16138,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -16835,8 +16162,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -16860,8 +16186,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -16885,8 +16210,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -16910,8 +16234,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -16935,8 +16258,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -16960,8 +16282,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -16985,8 +16306,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -17010,8 +16330,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -17035,8 +16354,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -17060,8 +16378,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "HIIT",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -17085,8 +16402,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -17110,8 +16426,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -17135,8 +16450,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -17160,8 +16474,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -17185,8 +16498,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -17210,8 +16522,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -17235,8 +16546,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -17260,8 +16570,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -17285,8 +16594,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "HIIT",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -17310,8 +16618,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -17335,8 +16642,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -17360,8 +16666,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -17385,8 +16690,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -17410,8 +16714,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "HIIT",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -17435,8 +16738,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -17460,8 +16762,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -17485,8 +16786,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Trap Bar"
     ],
     "category": "HIIT",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -17510,8 +16810,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Trap Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -17535,8 +16834,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Trap Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -17560,8 +16858,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Trap Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -17585,8 +16882,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Trap Bar"
     ],
     "category": "HIIT",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -17610,8 +16906,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Trap Bar"
     ],
     "category": "HIIT",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -17635,8 +16930,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Trap Bar"
     ],
     "category": "HIIT",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -17660,8 +16954,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Trap Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -17685,8 +16978,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Trap Bar"
     ],
     "category": "HIIT",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -17710,8 +17002,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Trap Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -17735,8 +17026,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Trap Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-hip-thrust.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -17760,8 +17050,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Trap Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bicep-curl.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -17785,8 +17074,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -17810,8 +17098,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lunge.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -17835,8 +17122,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lunge.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -17860,8 +17146,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Strength",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -17885,8 +17170,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lunge.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -17910,8 +17194,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lunge.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -17935,8 +17218,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -17960,8 +17242,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lunge.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -17985,8 +17266,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lunge.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -18010,8 +17290,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lunge.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -18035,8 +17314,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -18060,8 +17338,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lunge.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -18085,8 +17362,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lunge.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -18110,8 +17386,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -18135,8 +17410,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lunge.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -18160,8 +17434,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -18185,8 +17458,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lunge.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -18210,8 +17482,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -18235,8 +17506,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -18260,8 +17530,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lunge.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -18285,8 +17554,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -18310,8 +17578,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lunge.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -18335,8 +17602,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lunge.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -18360,8 +17626,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -18385,8 +17650,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -18410,8 +17674,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lunge.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -18435,8 +17698,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -18460,8 +17722,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lunge.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -18485,8 +17746,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lunge.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -18510,8 +17770,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lunge.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -18535,8 +17794,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lunge.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -18560,8 +17818,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -18585,8 +17842,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -18610,8 +17866,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lunge.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -18635,8 +17890,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lunge.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -18660,8 +17914,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -18685,8 +17938,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lunge.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -18710,8 +17962,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lunge.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -18735,8 +17986,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lunge.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -18760,8 +18010,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lunge.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -18785,8 +18034,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -18810,8 +18058,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -18835,8 +18082,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lunge.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -18860,8 +18106,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -18885,8 +18130,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -18910,8 +18154,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -18935,8 +18178,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -18960,8 +18202,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -18985,8 +18226,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -19010,8 +18250,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -19035,8 +18274,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -19060,8 +18298,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -19085,8 +18322,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -19110,8 +18346,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lunge.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -19135,8 +18370,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lunge.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -19160,8 +18394,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -19185,8 +18418,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -19210,8 +18442,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lunge.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -19235,8 +18466,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -19260,8 +18490,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lunge.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -19285,8 +18514,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -19310,8 +18538,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -19335,8 +18562,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Safety Squat Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -19360,8 +18586,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Safety Squat Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lunge.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -19385,8 +18610,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Safety Squat Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lunge.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -19410,8 +18634,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Safety Squat Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -19435,8 +18658,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Safety Squat Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lunge.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -19460,8 +18682,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Safety Squat Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lunge.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -19485,8 +18706,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Safety Squat Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lunge.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -19510,8 +18730,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Safety Squat Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lunge.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -19535,8 +18754,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Safety Squat Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -19560,8 +18778,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -19585,8 +18802,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lunge.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -19610,8 +18826,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -19635,8 +18850,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lunge.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -19660,8 +18874,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -19685,8 +18898,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -19710,8 +18922,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lunge.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -19735,8 +18946,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-back-squat.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -19760,8 +18970,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lunge.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -19785,8 +18994,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lunge.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -19810,8 +19018,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lunge.jpg",
-    "videoUrl": "/video/squat.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -19835,8 +19042,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lateral-raise.jpg",
-    "videoUrl": "/video/lateral-raise.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -19860,8 +19066,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -19885,8 +19090,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -19910,8 +19114,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -19935,8 +19138,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -19960,8 +19162,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -19985,8 +19186,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -20010,8 +19210,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Strength",
-    "image": "/img/ex-overhead-press.jpg",
-    "videoUrl": "/video/overhead-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -20035,8 +19234,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -20060,8 +19258,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -20085,8 +19282,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -20110,8 +19306,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -20135,8 +19330,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-overhead-press.jpg",
-    "videoUrl": "/video/overhead-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -20160,8 +19354,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-overhead-press.jpg",
-    "videoUrl": "/video/overhead-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -20185,8 +19378,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-overhead-press.jpg",
-    "videoUrl": "/video/overhead-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -20210,8 +19402,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-overhead-press.jpg",
-    "videoUrl": "/video/overhead-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -20235,8 +19426,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-overhead-press.jpg",
-    "videoUrl": "/video/overhead-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -20260,8 +19450,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-overhead-press.jpg",
-    "videoUrl": "/video/overhead-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -20285,8 +19474,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -20310,8 +19498,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lateral-raise.jpg",
-    "videoUrl": "/video/lateral-raise.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -20335,8 +19522,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -20360,8 +19546,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lateral-raise.jpg",
-    "videoUrl": "/video/lateral-raise.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -20385,8 +19570,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -20410,8 +19594,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -20435,8 +19618,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lateral-raise.jpg",
-    "videoUrl": "/video/lateral-raise.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -20460,8 +19642,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lateral-raise.jpg",
-    "videoUrl": "/video/lateral-raise.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -20485,8 +19666,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lateral-raise.jpg",
-    "videoUrl": "/video/lateral-raise.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -20510,8 +19690,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lateral-raise.jpg",
-    "videoUrl": "/video/lateral-raise.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -20535,8 +19714,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -20560,8 +19738,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-overhead-press.jpg",
-    "videoUrl": "/video/overhead-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -20585,8 +19762,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -20610,8 +19786,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lateral-raise.jpg",
-    "videoUrl": "/video/lateral-raise.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -20635,8 +19810,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -20660,8 +19834,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -20685,8 +19858,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -20710,8 +19882,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-overhead-press.jpg",
-    "videoUrl": "/video/overhead-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -20735,8 +19906,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -20760,8 +19930,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lateral-raise.jpg",
-    "videoUrl": "/video/lateral-raise.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -20785,8 +19954,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-overhead-press.jpg",
-    "videoUrl": "/video/overhead-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -20810,8 +19978,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lateral-raise.jpg",
-    "videoUrl": "/video/lateral-raise.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -20835,8 +20002,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -20860,8 +20026,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -20885,8 +20050,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lateral-raise.jpg",
-    "videoUrl": "/video/lateral-raise.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -20910,8 +20074,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -20935,8 +20098,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -20960,8 +20122,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-overhead-press.jpg",
-    "videoUrl": "/video/overhead-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -20985,8 +20146,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -21010,8 +20170,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -21035,8 +20194,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -21060,8 +20218,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-overhead-press.jpg",
-    "videoUrl": "/video/overhead-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -21085,8 +20242,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-overhead-press.jpg",
-    "videoUrl": "/video/overhead-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -21110,8 +20266,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-overhead-press.jpg",
-    "videoUrl": "/video/overhead-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -21135,8 +20290,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-overhead-press.jpg",
-    "videoUrl": "/video/overhead-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -21160,8 +20314,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lateral-raise.jpg",
-    "videoUrl": "/video/lateral-raise.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -21185,8 +20338,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lateral-raise.jpg",
-    "videoUrl": "/video/lateral-raise.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -21210,8 +20362,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lateral-raise.jpg",
-    "videoUrl": "/video/lateral-raise.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -21235,8 +20386,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lateral-raise.jpg",
-    "videoUrl": "/video/lateral-raise.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -21260,8 +20410,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -21285,8 +20434,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lateral-raise.jpg",
-    "videoUrl": "/video/lateral-raise.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -21310,8 +20458,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -21335,8 +20482,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-overhead-press.jpg",
-    "videoUrl": "/video/overhead-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -21360,8 +20506,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -21385,8 +20530,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lateral-raise.jpg",
-    "videoUrl": "/video/lateral-raise.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -21410,8 +20554,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Kettlebell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-overhead-press.jpg",
-    "videoUrl": "/video/overhead-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -21435,8 +20578,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Landmine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -21460,8 +20602,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Landmine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -21485,8 +20626,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Landmine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lateral-raise.jpg",
-    "videoUrl": "/video/lateral-raise.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -21510,8 +20650,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Landmine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -21535,8 +20674,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Landmine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lateral-raise.jpg",
-    "videoUrl": "/video/lateral-raise.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -21560,8 +20698,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Landmine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-overhead-press.jpg",
-    "videoUrl": "/video/overhead-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -21585,8 +20722,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Landmine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-overhead-press.jpg",
-    "videoUrl": "/video/overhead-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -21610,8 +20746,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Landmine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-overhead-press.jpg",
-    "videoUrl": "/video/overhead-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -21635,8 +20770,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Landmine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-overhead-press.jpg",
-    "videoUrl": "/video/overhead-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -21660,8 +20794,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lateral-raise.jpg",
-    "videoUrl": "/video/lateral-raise.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -21685,8 +20818,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-overhead-press.jpg",
-    "videoUrl": "/video/overhead-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -21710,8 +20842,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lateral-raise.jpg",
-    "videoUrl": "/video/lateral-raise.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -21735,8 +20866,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -21760,8 +20890,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-overhead-press.jpg",
-    "videoUrl": "/video/overhead-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -21785,8 +20914,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lateral-raise.jpg",
-    "videoUrl": "/video/lateral-raise.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -21810,8 +20938,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lateral-raise.jpg",
-    "videoUrl": "/video/lateral-raise.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -21835,8 +20962,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -21860,8 +20986,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -21885,8 +21010,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -21910,8 +21034,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -21935,8 +21058,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -21960,8 +21082,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-overhead-press.jpg",
-    "videoUrl": "/video/overhead-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -21985,8 +21106,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -22010,8 +21130,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lateral-raise.jpg",
-    "videoUrl": "/video/lateral-raise.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -22035,8 +21154,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -22060,8 +21178,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -22085,8 +21202,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -22110,8 +21226,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -22135,8 +21250,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-overhead-press.jpg",
-    "videoUrl": "/video/overhead-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -22160,8 +21274,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -22185,8 +21298,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-overhead-press.jpg",
-    "videoUrl": "/video/overhead-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -22210,8 +21322,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lateral-raise.jpg",
-    "videoUrl": "/video/lateral-raise.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -22235,8 +21346,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -22260,8 +21370,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-overhead-press.jpg",
-    "videoUrl": "/video/overhead-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -22285,8 +21394,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -22310,8 +21418,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lateral-raise.jpg",
-    "videoUrl": "/video/lateral-raise.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -22335,8 +21442,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -22360,8 +21466,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-overhead-press.jpg",
-    "videoUrl": "/video/overhead-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -22385,8 +21490,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -22410,8 +21514,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-barbell-row.jpg",
-    "videoUrl": "/video/barbell-row.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -22435,8 +21538,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-lateral-raise.jpg",
-    "videoUrl": "/video/lateral-raise.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -22460,8 +21562,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-overhead-press.jpg",
-    "videoUrl": "/video/overhead-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -22485,8 +21586,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -22510,8 +21610,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -22535,8 +21634,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-deadlift.jpg",
-    "videoUrl": "/video/deadlift.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -22560,8 +21658,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -22585,8 +21682,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -22610,8 +21706,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -22635,8 +21730,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -22660,8 +21754,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -22685,8 +21778,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Strength",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -22710,8 +21802,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -22735,8 +21826,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Strength",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -22760,8 +21850,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Strength",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -22785,8 +21874,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -22810,8 +21898,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -22835,8 +21922,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Strength",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -22860,8 +21946,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Barbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -22885,8 +21970,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -22910,8 +21994,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -22935,8 +22018,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -22960,8 +22042,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -22985,8 +22066,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -23010,8 +22090,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -23035,8 +22114,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-overhead-press.jpg",
-    "videoUrl": "/video/overhead-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -23060,8 +22138,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -23085,8 +22162,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -23110,8 +22186,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -23135,8 +22210,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Bodyweight"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -23160,8 +22234,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -23185,8 +22258,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -23210,8 +22282,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -23235,8 +22306,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -23260,8 +22330,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -23285,8 +22354,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -23310,8 +22378,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-overhead-press.jpg",
-    "videoUrl": "/video/overhead-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -23335,8 +22402,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -23360,8 +22426,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -23385,8 +22450,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -23410,8 +22474,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -23435,8 +22498,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -23460,8 +22522,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -23485,8 +22546,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -23510,8 +22570,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -23535,8 +22594,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -23560,8 +22618,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -23585,8 +22642,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Cable"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -23610,8 +22666,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -23635,8 +22690,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -23660,8 +22714,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -23685,8 +22738,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -23710,8 +22762,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -23735,8 +22786,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Dumbbell"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -23760,8 +22810,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "EZ-Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -23785,8 +22834,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "EZ-Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -23810,8 +22858,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "EZ-Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -23835,8 +22882,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "EZ-Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -23860,8 +22906,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "EZ-Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -23885,8 +22930,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "EZ-Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -23910,8 +22954,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "EZ-Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -23935,8 +22978,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "EZ-Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -23960,8 +23002,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "EZ-Bar"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -23985,8 +23026,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -24010,8 +23050,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -24035,8 +23074,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -24060,8 +23098,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-overhead-press.jpg",
-    "videoUrl": "/video/overhead-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -24085,8 +23122,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -24110,8 +23146,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -24135,8 +23170,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -24160,8 +23194,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -24185,8 +23218,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -24210,8 +23242,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -24235,8 +23266,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -24260,8 +23290,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -24285,8 +23314,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -24310,8 +23338,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -24335,8 +23362,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -24360,8 +23386,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -24385,8 +23410,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -24410,8 +23434,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -24435,8 +23458,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -24460,8 +23482,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -24485,8 +23506,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -24510,8 +23530,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -24535,8 +23554,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -24560,8 +23578,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -24585,8 +23602,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -24610,8 +23626,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Resistance Band"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -24635,8 +23650,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -24660,8 +23674,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -24685,8 +23698,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -24710,8 +23722,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -24735,8 +23746,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -24760,8 +23770,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -24785,8 +23794,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -24810,8 +23818,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -24835,8 +23842,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -24860,8 +23866,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -24885,8 +23890,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -24910,8 +23914,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -24935,8 +23938,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -24960,8 +23962,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-tricep-pushdown.jpg",
-    "videoUrl": "/video/bicep-curl.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,
@@ -24985,8 +23986,7 @@ export const COMPREHENSIVE_EXERCISE_LIBRARY: ExerciseItem[] = [
       "Smith Machine"
     ],
     "category": "Hypertrophy",
-    "image": "/img/ex-bench-press.jpg",
-    "videoUrl": "/video/bench-press.mp4",
+    "image": "",
     "lastPerformance": "3 sets logged",
     "targetSetsReps": "3 x 10-12",
     "prKg": 0,

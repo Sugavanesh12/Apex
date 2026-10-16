@@ -38,24 +38,6 @@ import { CoachService } from '../../core/services/coach.service';
         @for (msg of coachService.messages(); track msg.id) {
           <div class="msg-bubble" [class.msg-user]="msg.sender === 'user'" [class.msg-ai]="msg.sender === 'ai'">
             <p>{{ msg.text }}</p>
-            @if (msg.proposal) {
-              <div class="proposal-card">
-                <p class="proposal-text">{{ msg.proposal.actionText }}</p>
-                @if (msg.proposal.applied) {
-                  <div class="applied-chip">
-                    <app-icon name="check" [size]="14" />
-                    <span>Adjustment Applied</span>
-                  </div>
-                } @else {
-                  <div class="proposal-actions">
-                    <button class="btn btn-ghost" (click)="coachService.confirmProposal(msg.id)">Dismiss</button>
-                    <button class="btn btn-primary" (click)="coachService.confirmProposal(msg.id)">
-                      Confirm & Apply
-                    </button>
-                  </div>
-                }
-              </div>
-            }
           </div>
         }
 
@@ -270,41 +252,6 @@ import { CoachService } from '../../core/services/coach.service';
       font-size: 0.7rem;
       color: var(--text-muted);
       font-style: italic;
-    }
-
-    .proposal-card {
-      margin-top: var(--s-3);
-      padding: var(--s-3);
-      background: var(--surface-3);
-      border: 1px solid var(--border-strong);
-      border-radius: var(--r-input);
-      display: flex;
-      flex-direction: column;
-      gap: var(--s-2);
-    }
-    .proposal-text {
-      font-size: var(--fs-xs);
-      color: var(--text);
-      line-height: 1.4;
-    }
-    .proposal-actions {
-      display: flex;
-      justify-content: flex-end;
-      gap: var(--s-2);
-      margin-top: 4px;
-    }
-    .proposal-actions button {
-      min-height: 32px;
-      font-size: 0.72rem;
-      padding: 4px 12px;
-    }
-    .applied-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: var(--fs-xs);
-      color: var(--primary);
-      font-weight: 600;
     }
 
     .prompt-section {

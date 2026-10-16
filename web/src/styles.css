@@ -82,6 +82,12 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   letter-spacing: -0.01em;
 }
 
+/* Responsive typography & word wrapping safety */
+h1, h2, h3, h4, h5, h6, p, span, button, a {
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
@@ -116,6 +122,12 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   border: 1px solid var(--border);
   border-radius: var(--r-card);
   padding: var(--s-5);
+}
+
+@media (max-width: 600px) {
+  .card {
+    padding: 14px;
+  }
 }
 
 /* Buttons */

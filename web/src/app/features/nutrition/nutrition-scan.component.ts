@@ -217,14 +217,20 @@ interface FoodPreset {
             <!-- Completed Meal Review & Ingredient Adjustment Card -->
             <div class="review-card card completed-card">
               <div class="review-header">
+                <div class="review-header-top-meta">
+                  <span class="badge badge-primary">
+                    {{ activeConfidence() }} Confidence
+                  </span>
+                  @if (!isEditingDish()) {
+                    <button class="btn btn-ghost btn-sm edit-dish-btn" (click)="startEditDish()" title="Correct or change food name">
+                      ✏️ Change Food
+                    </button>
+                  }
+                </div>
+
                 <div class="dish-title-group">
                   @if (!isEditingDish()) {
-                    <div class="dish-title-row">
-                      <h3 class="dish-title">{{ activeDishName() }}</h3>
-                      <button class="btn btn-ghost btn-sm edit-dish-btn" (click)="startEditDish()" title="Correct or change food name">
-                        ✏️ Change Food
-                      </button>
-                    </div>
+                    <h3 class="dish-title">{{ activeDishName() }}</h3>
                     <p class="verified-note">{{ activeSummary() }}</p>
                     <div class="quick-switch-pills">
                       <span class="qs-label">1-Tap Switch:</span>
@@ -257,9 +263,6 @@ interface FoodPreset {
                     </div>
                   }
                 </div>
-                <span class="badge badge-primary">
-                  {{ activeConfidence() }} Confidence
-                </span>
               </div>
 
               <!-- Total Macros Recalculated Dynamically via domain/macros.ts -->
@@ -820,41 +823,62 @@ interface FoodPreset {
     }
 
     .dish-title {
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       font-weight: 800;
       letter-spacing: -0.02em;
       color: var(--text);
+      word-break: normal;
+      overflow-wrap: break-word;
+      hyphens: none;
+      line-height: 1.25;
+      margin: 0;
+      width: 100%;
     }
     .verified-note {
       font-size: var(--fs-xs);
       color: var(--text-muted);
-      margin-top: 4px;
-      line-height: 1.4;
+      margin: 0;
+      line-height: 1.5;
+      word-break: normal;
+      overflow-wrap: break-word;
+      width: 100%;
     }
     .review-header {
       display: flex;
-      align-items: flex-start;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+    }
+    .review-header-top-meta {
+      display: flex;
+      align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 10px;
+      width: 100%;
     }
     .dish-title-group {
       display: flex;
       flex-direction: column;
-      gap: 4px;
-      flex: 1;
-    }
-    .dish-title-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
+      gap: 6px;
+      width: 100%;
+      min-width: 0;
     }
     .edit-dish-btn {
-      padding: 3px 10px;
-      font-size: 0.72rem;
+      padding: 4px 12px;
+      font-size: 0.75rem;
       border: 1px solid var(--border);
       border-radius: var(--r-pill);
       color: var(--primary);
+      white-space: nowrap;
+      min-height: 32px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--surface-2);
+    }
+    .edit-dish-btn:hover {
+      background: var(--surface-3);
+      border-color: var(--primary);
     }
     .dish-edit-box {
       display: flex;
@@ -1557,14 +1581,44 @@ interface FoodPreset {
         font-size: 0.75rem;
       }
 
-      .dish-title-row {
+      .review-header {
         flex-direction: column;
-        align-items: flex-start;
-        gap: 6px;
+        align-items: stretch;
+        gap: 8px;
+        width: 100%;
+      }
+      .review-header-top-meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        width: 100%;
+      }
+      .dish-title-group {
+        width: 100%;
+        min-width: 0;
       }
       .dish-title {
-        font-size: 1.15rem;
-        word-break: break-word;
+        font-size: 1.25rem;
+        word-break: normal;
+        overflow-wrap: break-word;
+        hyphens: none;
+        width: 100%;
+        line-height: 1.25;
+      }
+      .verified-note {
+        font-size: 0.78rem;
+        line-height: 1.45;
+        width: 100%;
+        word-break: normal;
+        overflow-wrap: break-word;
+      }
+      .quick-switch-pills {
+        width: 100%;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 6px;
       }
       .dish-edit-input {
         min-width: 0;

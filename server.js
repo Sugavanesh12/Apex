@@ -3,7 +3,9 @@ const fs = require('fs');
 const path = require('path');
 
 const PORT = process.env.PORT || 10000;
-const DIST_DIR = path.join(__dirname, 'web', 'dist', 'apex-web', 'browser');
+const candidate1 = path.join(__dirname, 'web', 'dist', 'apex-web', 'browser');
+const candidate2 = path.join(__dirname, 'dist', 'apex-web', 'browser');
+const DIST_DIR = fs.existsSync(candidate1) ? candidate1 : candidate2;
 
 const MIME_TYPES = {
   '.html': 'text/html; charset=UTF-8',

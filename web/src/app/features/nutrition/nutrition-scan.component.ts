@@ -28,15 +28,30 @@ interface FoodPreset {
           <button class="engine-badge-btn" (click)="showApiKeyModal.set(true)">
             @if (gemini.isConfigured()) {
               <span class="pulse-dot active"></span>
-              <span class="badge-text">✨ Gemini 2.5 Flash Connected</span>
+              <span class="badge-text">✨ Gemini 2.5 Flash Vision Active</span>
             } @else {
               <span class="pulse-dot neural"></span>
-              <span class="badge-text">⚡ Apex Neural Vision Active</span>
+              <span class="badge-text">⚡ Apex Neural Vision (Offline Mode)</span>
             }
             <app-icon name="settings" [size]="14" />
           </button>
         </div>
-        <p class="scan-subtitle">Snap or upload any meal photo. Live AI neural vision identifies ingredients, portion weights, and macronutrients.</p>
+        <p class="scan-subtitle">Snap or upload any meal photo. Live AI vision identifies ingredients, portion weights, and macronutrients.</p>
+
+        @if (!gemini.isConfigured()) {
+          <div class="api-notice-banner card">
+            <div class="banner-left">
+              <span class="banner-icon">⚡</span>
+              <div class="banner-text">
+                <strong>Offline Spectral Vision Mode Active:</strong>
+                <span> Connect a free Google Gemini API key to enable live multimodal cloud recognition for any custom food photo, or use 1-tap food correction below.</span>
+              </div>
+            </div>
+            <button class="btn btn-secondary btn-sm key-setup-btn" (click)="showApiKeyModal.set(true)">
+              Connect Gemini Key
+            </button>
+          </div>
+        }
       </header>
 
       <div class="scan-layout">
@@ -211,6 +226,12 @@ interface FoodPreset {
                       </button>
                     </div>
                     <p class="verified-note">{{ activeSummary() }}</p>
+                    <div class="quick-switch-pills">
+                      <span class="qs-label">1-Tap Switch:</span>
+                      @for (suggest of ['Chicken & Rice', 'Salmon & Veggies', 'Idli Sambar', 'Eggs & Toast', 'Sirloin Steak', 'Protein Oats', 'Paneer Tikka', 'Roast Chicken']; track suggest) {
+                        <button class="chip-xs" (click)="applySuggestedDish(suggest)">{{ suggest }}</button>
+                      }
+                    </div>
                   } @else {
                     <div class="dish-edit-box">
                       <div class="dish-edit-input-row">
@@ -218,7 +239,7 @@ interface FoodPreset {
                           type="text"
                           [(ngModel)]="editDishInput"
                           (keyup.enter)="applyDishCorrection()"
-                          placeholder="e.g. Idli Sambar, Masala Dosa, Chicken Biryani, Steak, Oats..."
+                          placeholder="e.g. Idli Sambar, Masala Dosa, Chicken Biryani, Salmon, Oats..."
                           class="dish-edit-input"
                         />
                         <button class="btn btn-primary btn-sm" (click)="applyDishCorrection()">
@@ -229,7 +250,7 @@ interface FoodPreset {
                         </button>
                       </div>
                       <div class="quick-dish-suggestions">
-                        @for (suggest of ['Idli Sambar', 'Masala Dosa', 'Chicken Biryani', 'Paneer Tikka', 'Roti Dal', 'Roast Chicken']; track suggest) {
+                        @for (suggest of ['Chicken & Rice', 'Idli Sambar', 'Masala Dosa', 'Chicken Biryani', 'Salmon & Asparagus', 'Sirloin Steak', 'Eggs & Toast', 'Protein Oats']; track suggest) {
                           <button class="chip-sm" (click)="applySuggestedDish(suggest)">{{ suggest }}</button>
                         }
                       </div>
@@ -471,6 +492,69 @@ interface FoodPreset {
       font-size: var(--fs-xs);
       color: var(--text-muted);
       max-width: 780px;
+    }
+
+    .api-notice-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--s-3);
+      padding: 10px 14px;
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: var(--r-card);
+      flex-wrap: wrap;
+    }
+    .banner-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .banner-icon {
+      font-size: 1.1rem;
+    }
+    .banner-text {
+      font-size: 0.76rem;
+      color: var(--text);
+      line-height: 1.4;
+    }
+    .banner-text strong {
+      color: #38bdf8;
+    }
+    .key-setup-btn {
+      white-space: nowrap;
+      font-size: 0.72rem;
+      padding: 4px 10px;
+    }
+
+    .quick-switch-pills {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+    .qs-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .chip-xs {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--r-pill);
+      padding: 3px 8px;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .chip-xs:hover {
+      background: var(--surface-3);
+      border-color: var(--primary);
+      color: var(--text);
     }
 
     .scan-layout {
@@ -1692,16 +1776,16 @@ export class NutritionScanComponent {
     this.analysisStep.set(1);
     this.scanProgressPercent.set(30);
 
-    // Fast progressive step simulation for responsive AI visual feedback
+    // Progressive step simulation for responsive visual feedback while AI inference executes
     const step2Timer = setTimeout(() => {
       this.analysisStep.set(2);
-      this.scanProgressPercent.set(70);
-    }, 180);
+      this.scanProgressPercent.set(65);
+    }, 600);
 
     const step3Timer = setTimeout(() => {
       this.analysisStep.set(3);
-      this.scanProgressPercent.set(90);
-    }, 360);
+      this.scanProgressPercent.set(88);
+    }, 1800);
 
     const applyResult = (result: any) => {
       clearTimeout(step2Timer);
@@ -1710,10 +1794,9 @@ export class NutritionScanComponent {
     };
 
     try {
-      // Analyze with quick cadence (min 450ms for smooth visual step transition)
       const [result] = await Promise.all([
         this.gemini.analyzeMealPhoto(base64OrPath, mimeType, filename),
-        new Promise(res => setTimeout(res, 450))
+        new Promise(res => setTimeout(res, 500))
       ]);
 
       if (result && result.dishName && result.ingredients && result.ingredients.length > 0) {

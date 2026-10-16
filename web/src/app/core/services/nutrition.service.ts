@@ -42,6 +42,7 @@ const STORAGE_MEALS_KEY = 'apex_user_logged_meals_v1';
 const STORAGE_WATER_KEY = 'apex_user_water_glasses_v1';
 const STORAGE_WATER_MAP_KEY = 'apex_user_water_history_v2';
 const STORAGE_ACTIVE_SCAN_KEY = 'apex_active_scanned_meal_v2';
+const STORAGE_STEPS_KEY = 'apex_user_steps_v1';
 
 @Injectable({
   providedIn: 'root'
@@ -90,8 +91,35 @@ export class NutritionService {
     return Math.round(this.todayMeals().reduce((acc, m) => acc + (m.fat || 0), 0));
   });
 
-  readonly stepsCount = signal(7842);
-  readonly stepsTarget = signal(10000);
+  readonly stepsCount = signal<number>(this.loadStoredSteps());
+  readonly stepsTarget = signal<number>(10000);
+
+  loadStoredSteps(): number {
+    try {
+      const saved = localStorage.getItem(STORAGE_STEPS_KEY);
+      if (saved !== null) {
+        const num = parseInt(saved, 10);
+        if (!isNaN(num)) return num;
+      }
+    } catch (e) {
+      console.warn('Error reading stored steps:', e);
+    }
+    return 8450; // Dynamic default baseline if not set yet
+  }
+
+  setSteps(count: number) {
+    const safe = Math.max(0, count);
+    this.stepsCount.set(safe);
+    try {
+      localStorage.setItem(STORAGE_STEPS_KEY, safe.toString());
+    } catch (e) {
+      console.warn('Error saving steps:', e);
+    }
+  }
+
+  addSteps(delta: number) {
+    this.setSteps(this.stepsCount() + delta);
+  }
 
   readonly activeDraftMeal = signal<DraftMeal>(this.loadStoredDraftMeal());
 

@@ -49,4 +49,47 @@ describe('Coach & Gemini Sports Science Service', () => {
       expect((res as any).proposal).toBeUndefined();
     }
   });
+
+  it('answers specialized sports science queries with high scientific fidelity', async () => {
+    // 1. Biomechanics test
+    const benchRes = await gemini.chatWithCoach('how do i fix bench press shoulder pain and elbow flaring', mockContext);
+    expect(benchRes.text.toLowerCase()).toMatch(/scapula|subacromial|elbow/i);
+
+    // 2. Nutrition leucine threshold test
+    const leucineRes = await gemini.chatWithCoach('what is the leucine threshold to trigger muscle protein synthesis', mockContext);
+    expect(leucineRes.text.toLowerCase()).toMatch(/mtorc1|mTOR|leucine/i);
+
+    // 3. Indian athletic nutrition test
+    const indianRes = await gemini.chatWithCoach('how to optimize an indian vegetarian diet with soya chunks and paneer', mockContext);
+    expect(indianRes.text.toLowerCase()).toMatch(/soya|paneer|protein/i);
+
+    // 4. Biometrics HRV test
+    const hrvRes = await gemini.chatWithCoach('what does low heart rate variability HRV tell me about my central nervous system', mockContext);
+    expect(hrvRes.text.toLowerCase()).toMatch(/sympathetic|parasympathetic|autonomic/i);
+  });
+
+  it('accurately calculates custom sports meals for expanded athletic foods', () => {
+    const tofuMeal = gemini.calculateCustomDish('sesame tofu edamame power bowl');
+    expect(tofuMeal.dishName).toContain('Tofu');
+    expect(tofuMeal.ingredients.length).toBeGreaterThanOrEqual(3);
+
+    const soyaMeal = gemini.calculateCustomDish('high protein soya chunks curry');
+    expect(soyaMeal.dishName).toContain('Soya');
+    expect(soyaMeal.ingredients.some(i => i.name.toLowerCase().includes('soya'))).toBe(true);
+
+    const yogurtMeal = gemini.calculateCustomDish('greek yogurt berry parfait');
+    expect(yogurtMeal.dishName).toContain('Greek Yogurt');
+    expect(yogurtMeal.ingredients.some(i => i.name.toLowerCase().includes('greek yogurt'))).toBe(true);
+  });
+
+  it('responds naturally and warmly to greetings without unsolicited technical lectures', async () => {
+    const hiRes = await gemini.chatWithCoach('Hi', mockContext);
+    expect(hiRes.text).not.toContain('Regarding "Hi"');
+    expect(hiRes.text.toLowerCase()).toMatch(/hey|ready|welcome|dial in/i);
+    expect(hiRes.text).toContain(mockContext.workoutTitle);
+
+    const thanksRes = await gemini.chatWithCoach('Thanks coach!', mockContext);
+    expect(thanksRes.text).not.toContain('Regarding');
+    expect(thanksRes.text.toLowerCase()).toMatch(/you've got this|recovery|consistent/i);
+  });
 });

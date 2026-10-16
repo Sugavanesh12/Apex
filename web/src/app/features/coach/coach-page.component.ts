@@ -820,6 +820,11 @@ export class CoachPageComponent {
     { category: 'workouts', text: 'What is the difference between RPE 8 and training to failure?' },
     { category: 'workouts', text: 'How do I build a wider V-taper lat spread with pull-ups?' },
     { category: 'workouts', text: 'How should I position my feet on Bulgarian split squats to target glutes?' },
+    { category: 'workouts', text: 'How do I row to target lats vs rhomboids and upper back?' },
+    { category: 'workouts', text: 'How do I set up hip thrusts for maximal glute shortening?' },
+    { category: 'workouts', text: 'How do I fix knee valgus collapse during heavy squats?' },
+    { category: 'workouts', text: 'What is the best way to target the biceps brachialis for arm thickness?' },
+    { category: 'workouts', text: 'How do I pause on calf raises to eliminate Achilles tendon stretch recoil?' },
 
     // Nutrition
     { category: 'nutrition', text: 'What is the optimal protein intake per kg for hypertrophy?' },
@@ -832,6 +837,11 @@ export class CoachPageComponent {
     { category: 'nutrition', text: 'What are the benefits of whey isolate vs whole food protein?' },
     { category: 'nutrition', text: 'How much water and sodium should I consume on heavy lifting days?' },
     { category: 'nutrition', text: 'How much of a calorie surplus should I maintain for a lean bulk?' },
+    { category: 'nutrition', text: 'What is the leucine threshold required to trigger mTORC1?' },
+    { category: 'nutrition', text: 'How do I optimize an Indian vegetarian diet with soya chunks and paneer?' },
+    { category: 'nutrition', text: 'How should I dose caffeine to improve lifting power without disrupting sleep?' },
+    { category: 'nutrition', text: 'How do citrulline malate and beta-alanine enhance muscular endurance?' },
+    { category: 'nutrition', text: 'What should I eat post-workout to optimize glycogen replenishment?' },
 
     // Physiology & Body
     { category: 'physiology', text: 'Does severe muscle soreness (DOMS) mean more muscle growth?' },
@@ -842,13 +852,18 @@ export class CoachPageComponent {
     { category: 'physiology', text: 'What is the molecular interference effect between cardio and lifting?' },
     { category: 'physiology', text: 'Why does stress and high cortisol cause water retention?' },
     { category: 'physiology', text: 'How do I fix clicking and impingement in my anterior shoulder?' },
+    { category: 'physiology', text: 'What is the difference between tendonitis and chronic tendinopathy?' },
+    { category: 'physiology', text: 'How do I manage high cortisol to prevent muscle catabolism?' },
+    { category: 'physiology', text: 'How do I perform Heavy Slow Resistance (HSR) for tendon health?' },
 
     // Adjustments
     { category: 'adjustments', text: 'My readiness is low today, how should I adjust my workout volume?' },
     { category: 'adjustments', text: 'When should I take a proactive deload week?' },
     { category: 'adjustments', text: 'Should I do Zone 2 cardio on my rest days or post-workout?' },
     { category: 'adjustments', text: 'How do I break through a bench press plateau?' },
-    { category: 'adjustments', text: 'How should I taper my training if I feel chronically fatigued?' }
+    { category: 'adjustments', text: 'How should I taper my training if I feel chronically fatigued?' },
+    { category: 'adjustments', text: 'How do I perform body recomposition if I am skinny fat?' },
+    { category: 'adjustments', text: 'How does carb cycling work between leg days and rest days?' }
   ];
 
   visibleQuestions = computed(() => {

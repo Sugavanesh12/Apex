@@ -113,6 +113,7 @@ export class CoachService {
 
     const profile = this.user.profile();
     const readiness = this.recovery.readinessResult();
+    const checkin = this.recovery.checkin();
 
     const context: AthleticContext = {
       userName: profile.name,
@@ -124,7 +125,16 @@ export class CoachService {
       caloriesTarget: this.nutrition.caloriesTarget(),
       proteinConsumed: this.nutrition.proteinConsumed(),
       proteinTarget: this.nutrition.proteinTarget(),
-      workoutTitle: this.workout.liveSession().sessionTitle
+      workoutTitle: this.workout.liveSession().sessionTitle,
+      sleepHours: checkin.sleepHours,
+      sleepQuality: checkin.sleepQuality,
+      hrv: this.recovery.hrv(),
+      restingHr: this.recovery.restingHr(),
+      sorenessLevel: checkin.sorenessLevel,
+      energyLevel: checkin.energyLevel,
+      stressLevel: checkin.stressLevel,
+      mood: checkin.mood,
+      weightKg: profile.weightKg
     };
 
     try {

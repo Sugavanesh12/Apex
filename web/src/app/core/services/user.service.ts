@@ -7,6 +7,7 @@ export interface UserProfile {
   title: string;
   experience: 'Beginner' | 'Intermediate' | 'Advanced';
   goal: string;
+  weightKg?: number;
   theme: 'dark' | 'light';
   readiness: number;
   readinessFactors: {
@@ -53,6 +54,7 @@ export class UserService {
       title: 'Athlete',
       experience: 'Intermediate',
       goal: 'Build Muscle',
+      weightKg: 75,
       theme: 'dark',
       readiness: 86,
       readinessFactors: {

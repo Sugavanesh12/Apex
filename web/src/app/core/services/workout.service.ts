@@ -76,6 +76,8 @@ export interface CompletedSessionItem {
   exercisesCount: number;
   exercises?: LoggedExerciseItem[];
   notes?: string;
+  isCompleted?: boolean;
+  status?: 'completed' | 'planned';
 }
 
 const STORAGE_SESSIONS_KEY = 'apex_user_workout_history_v2';
@@ -98,7 +100,7 @@ export class WorkoutService {
   });
 
   readonly isTodayCompleted = computed(() => {
-    return this.todaySessions().length > 0;
+    return this.todaySessions().some(s => s.isCompleted !== false);
   });
 
   readonly liveSession = signal<LiveWorkoutState>({
@@ -637,7 +639,9 @@ export class WorkoutService {
       totalVolumeKg: totalVolume || 3420,
       totalSets: totalCompletedSets || 4,
       exercisesCount: loggedExercises.length,
-      exercises: loggedExercises
+      exercises: loggedExercises,
+      isCompleted: true,
+      status: 'completed'
     };
 
     this.completedSessions.update(list => [record, ...list]);
@@ -669,7 +673,9 @@ export class WorkoutService {
     date: string; // YYYY-MM-DD
     exercises: LoggedExerciseItem[];
     notes?: string;
+    isCompleted?: boolean;
   }): CompletedSessionItem {
+    const isCompleted = session.isCompleted !== false;
     let totalSets = 0;
     let totalVolume = 0;
 
@@ -683,18 +689,101 @@ export class WorkoutService {
       id: `sess-manual-${Date.now()}-${Math.floor(Math.random() * 1000)}`,
       title: session.title,
       date: session.date,
-      completedAt: d.toLocaleDateString([], { month: 'short', day: 'numeric', year: 'numeric' }) + ' · Logged',
+      completedAt: isCompleted
+        ? d.toLocaleDateString([], { month: 'short', day: 'numeric', year: 'numeric' }) + ' · Logged'
+        : 'Planned · Ready to Start',
       durationMinutes: 45,
-      totalVolumeKg: totalVolume,
-      totalSets,
+      totalVolumeKg: isCompleted ? totalVolume : 0,
+      totalSets: isCompleted ? totalSets : 0,
       exercisesCount: session.exercises.length,
-      exercises: session.exercises,
-      notes: session.notes
+      exercises: session.exercises.map(ex => ({
+        ...ex,
+        sets: ex.sets.map(s => ({
+          ...s,
+          completed: isCompleted
+        }))
+      })),
+      notes: session.notes,
+      isCompleted,
+      status: isCompleted ? 'completed' : 'planned'
     };
 
     this.completedSessions.update(list => [record, ...list]);
     this.persistSessions();
     return record;
+  }
+
+  toggleSessionStatus(sessionId: string) {
+    this.completedSessions.update(list => list.map(s => {
+      if (s.id !== sessionId) return s;
+      const nextCompleted = s.isCompleted === false; // toggle: if planned -> completed, if completed -> planned
+      let totalVolume = 0;
+      let totalSets = 0;
+      (s.exercises || []).forEach(e => {
+        totalSets += e.sets.length;
+        totalVolume += e.sets.reduce((sum, set) => sum + (set.weightKg * set.reps), 0);
+      });
+
+      const d = new Date(s.date + 'T12:00:00');
+      return {
+        ...s,
+        isCompleted: nextCompleted,
+        status: nextCompleted ? 'completed' : 'planned',
+        completedAt: nextCompleted
+          ? d.toLocaleDateString([], { month: 'short', day: 'numeric', year: 'numeric' }) + ' · Logged'
+          : 'Planned · Ready to Start',
+        totalVolumeKg: nextCompleted ? totalVolume : 0,
+        totalSets: nextCompleted ? totalSets : 0,
+        exercises: (s.exercises || []).map(ex => ({
+          ...ex,
+          sets: ex.sets.map(set => ({
+            ...set,
+            completed: nextCompleted
+          }))
+        }))
+      };
+    }));
+    this.persistSessions();
+  }
+
+  loadSessionIntoLive(session: CompletedSessionItem) {
+    const mappedExercises = (session.exercises || []).map(ex => {
+      const libEx = this.exerciseLibrary().find(e => e.id === ex.exerciseId) || {
+        id: ex.exerciseId,
+        name: ex.exerciseName,
+        muscle: ex.muscle,
+        category: (ex.category || 'Strength') as any,
+        image: ex.image || '/img/ex-bench-press.jpg',
+        lastPerformance: 'Target set',
+        targetSetsReps: `${ex.sets.length} sets`,
+        prKg: 0,
+        equipment: 'Barbell & Rack',
+        description: ex.exerciseName
+      };
+      return {
+        exercise: libEx,
+        targetSets: ex.sets.length,
+        targetReps: ex.sets[0]?.reps || 8,
+        sets: ex.sets.map(s => ({
+          setNumber: s.setNumber,
+          weightKg: s.weightKg,
+          reps: s.reps,
+          rpe: s.rpe || 8,
+          completed: false,
+          isWarmup: s.isWarmup || false
+        }))
+      };
+    });
+
+    this.liveSession.set({
+      isActive: true,
+      sessionTitle: session.title,
+      elapsedSeconds: 0,
+      currentExerciseIndex: 0,
+      exercises: mappedExercises.length > 0 ? mappedExercises : this.liveSession().exercises,
+      restTimerRunning: false,
+      restSecondsLeft: 90
+    });
   }
 
   deleteSession(sessionId: string) {

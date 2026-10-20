@@ -16,6 +16,8 @@ interface CalendarDay {
   isToday: boolean;
   hasWorkouts: boolean;
   workoutCount: number;
+  hasPlanned?: boolean;
+  plannedCount?: number;
   totalVolumeKg: number;
   hasMeals: boolean;
   mealCount: number;
@@ -254,8 +256,8 @@ export interface RoutineItem {
                 <div class="banner-badge-row">
                   <span
                     class="badge"
-                    [class.badge-accent]="isSelectedDayCompleted()"
-                    [class.badge-primary]="isSelectedDateToday() && !isSelectedDayCompleted()"
+                    [class.badge-accent]="primarySession() ? primarySession()!.isCompleted !== false : isSelectedDayCompleted()"
+                    [class.badge-primary]="primarySession() ? primarySession()!.isCompleted === false : (isSelectedDateToday() && !isSelectedDayCompleted())"
                     [class.badge-scheduled]="isSelectedDateFuture() && !isSelectedDayCompleted()"
                     [class.badge-muted]="isSelectedDatePast() && !isSelectedDayCompleted()"
                   >
@@ -271,36 +273,53 @@ export interface RoutineItem {
                 <p>{{ bannerSubtitle() }}</p>
               </div>
               <div class="banner-right">
-                @if (isSelectedDateToday()) {
-                  @if (isTodayCompleted()) {
-                    <button class="btn btn-outline" (click)="selectDate(todayStr)">
-                      View Today's Log Below ↓
+                @if (primarySession(); as sess) {
+                  @if (sess.isCompleted === false) {
+                    <!-- Session is Planned / Ready to start -->
+                    <button class="btn btn-primary start-btn" (click)="startSessionLive(sess)">
+                      <app-icon name="play" [size]="16" />
+                      <span>Start Live Workout →</span>
                     </button>
-                    <button class="btn btn-secondary" (click)="openAddModal(todayStr)">
+                    <button class="btn btn-outline" (click)="toggleSessionCompletion(sess.id)" title="Quickly mark this session as completed">
+                      ✓ Mark Completed
+                    </button>
+                    <button class="btn btn-secondary" (click)="openAddModal(selectedDateStr())">
+                      + Add Another Session
+                    </button>
+                    <button class="btn-delete-ghost" (click)="deleteSession(sess.id)" title="Delete this session">
+                      ✕ Delete
+                    </button>
+                  } @else {
+                    <!-- Session is Completed -->
+                    <button class="btn btn-outline" (click)="inspectorTab.set('workouts')">
+                      View Log Below ↓
+                    </button>
+                    <button class="btn btn-secondary" (click)="openAddModal(selectedDateStr())">
                       + Log Another Session
                     </button>
-                    <a routerLink="/training/session/live" class="ghost-restart-link" title="Restart if you want to perform another live workout">
-                      <span>Restart Live ↺</span>
-                    </a>
-                  } @else {
+                    <button class="btn-reopen" (click)="toggleSessionCompletion(sess.id)" title="Reopen session and set status to Ready to Start">
+                      ↩ Mark as Incomplete (Ready to Start)
+                    </button>
+                    <button class="btn-delete-ghost" (click)="deleteSession(sess.id)" title="Delete this session">
+                      ✕ Delete
+                    </button>
+                  }
+                } @else {
+                  <!-- No sessions recorded for this day yet -->
+                  @if (isSelectedDateToday()) {
                     <button class="btn btn-secondary" (click)="openAddModal(todayStr)">
-                      + Quick Log Session
+                      + Plan / Log Session
                     </button>
                     <a routerLink="/training/session/live" class="btn btn-primary start-btn">
                       <app-icon name="play" [size]="16" />
                       <span>Start Live Workout →</span>
                     </a>
-                  }
-                } @else {
-                  <button class="btn btn-outline" (click)="jumpToToday()">
-                    Jump to Today ↩
-                  </button>
-                  <button class="btn btn-secondary" (click)="openAddModal(selectedDateStr())">
-                    + Log Workout for {{ isTomorrow() ? 'Tomorrow' : (isSelectedDateFuture() ? 'Upcoming Day' : 'This Day') }}
-                  </button>
-                  @if (isSelectedDayCompleted()) {
-                    <button class="btn btn-primary" (click)="inspectorTab.set('workouts')">
-                      View Selected Log ↓
+                  } @else {
+                    <button class="btn btn-outline" (click)="jumpToToday()">
+                      Jump to Today ↩
+                    </button>
+                    <button class="btn btn-secondary" (click)="openAddModal(selectedDateStr())">
+                      + Plan / Log Session for {{ isTomorrow() ? 'Tomorrow' : (isSelectedDateFuture() ? 'Upcoming Day' : 'This Day') }}
                     </button>
                   }
                 }
@@ -384,6 +403,7 @@ export interface RoutineItem {
                     [class.is-today]="day.isToday"
                     [class.is-selected]="selectedDateStr() === day.dateStr"
                     [class.has-workout]="day.hasWorkouts"
+                    [class.has-planned]="day.hasPlanned"
                     (click)="selectDate(day.dateStr)"
                   >
                     <span class="day-num">{{ day.dayNumber }}</span>
@@ -392,6 +412,11 @@ export interface RoutineItem {
                         <span class="day-workout-pill" title="Workout Logged">
                           <span class="workout-dot"></span>
                           <span class="workout-vol-txt">{{ (day.totalVolumeKg / 1000) | number:'1.1-1' }}t</span>
+                        </span>
+                      } @else if (day.hasPlanned) {
+                        <span class="day-planned-pill" title="Workout Scheduled">
+                          <span class="planned-dot">⚡</span>
+                          <span class="workout-vol-txt">Plan</span>
                         </span>
                       }
                       <div class="day-dots-group">
@@ -551,30 +576,62 @@ export interface RoutineItem {
                             <div class="sess-card-top">
                               <div class="sess-info-left">
                                 <div class="sess-title-wrap">
-                                  <span class="sess-icon">⚡</span>
+                                  <span class="sess-icon">{{ sess.isCompleted === false ? '⚡' : '✓' }}</span>
                                   <h4 class="sess-title">{{ sess.title }}</h4>
+                                  <span class="badge" [class.badge-accent]="sess.isCompleted !== false" [class.badge-primary]="sess.isCompleted === false">
+                                    {{ sess.isCompleted === false ? 'Scheduled · Ready' : 'Completed' }}
+                                  </span>
                                 </div>
                                 <span class="sess-time">{{ sess.completedAt }}</span>
                               </div>
-                              <button class="delete-sess-btn" (click)="deleteSession(sess.id)" title="Delete session log">
-                                <app-icon name="close" [size]="14" />
-                              </button>
+                              <div class="sess-card-actions">
+                                @if (sess.isCompleted === false) {
+                                  <button class="btn btn-primary btn-sm" (click)="startSessionLive(sess)">
+                                    ⚡ Start Live
+                                  </button>
+                                  <button class="btn btn-outline btn-sm" (click)="toggleSessionCompletion(sess.id)">
+                                    ✓ Complete
+                                  </button>
+                                } @else {
+                                  <button class="btn-reopen-sm" (click)="toggleSessionCompletion(sess.id)" title="Switch status to uncompleted/ready to train">
+                                    ↩ Mark Incomplete
+                                  </button>
+                                }
+                                <button class="delete-sess-btn" (click)="deleteSession(sess.id)" title="Delete session log">
+                                  <app-icon name="close" [size]="14" />
+                                </button>
+                              </div>
                             </div>
 
                             <!-- Prominent 3-Stat Ribbon -->
                             <div class="sess-metrics-row">
-                              <div class="metric-pill">
-                                <span class="m-lbl">TONNAGE LIFTED</span>
-                                <span class="m-val num text-accent">{{ sess.totalVolumeKg | number }} kg</span>
-                              </div>
-                              <div class="metric-pill">
-                                <span class="m-lbl">TOTAL SETS</span>
-                                <span class="m-val num text-primary">{{ sess.totalSets }} sets</span>
-                              </div>
-                              <div class="metric-pill">
-                                <span class="m-lbl">DURATION</span>
-                                <span class="m-val num">{{ sess.durationMinutes }}m</span>
-                              </div>
+                              @if (sess.isCompleted === false) {
+                                <div class="metric-pill">
+                                  <span class="m-lbl">STATUS</span>
+                                  <span class="m-val num text-primary">Ready to Start ⚡</span>
+                                </div>
+                                <div class="metric-pill">
+                                  <span class="m-lbl">PLANNED MOVEMENTS</span>
+                                  <span class="m-val num text-accent">{{ sess.exercisesCount || sess.exercises?.length || 4 }} exercises</span>
+                                </div>
+                                <div class="metric-pill">
+                                  <span class="m-lbl">EST. DURATION</span>
+                                  <span class="m-val num">{{ sess.durationMinutes }}m</span>
+                                </div>
+                              } @else {
+                                <div class="metric-pill">
+                                  <span class="m-lbl">TONNAGE LIFTED</span>
+                                  <span class="m-val num text-accent">{{ sess.totalVolumeKg | number }} kg</span>
+                                </div>
+                                <div class="metric-pill">
+                                  <span class="m-lbl">TOTAL SETS</span>
+                                  <span class="m-val num text-primary">{{ sess.totalSets }} sets</span>
+                                </div>
+                                <div class="metric-pill">
+                                  <span class="m-lbl">DURATION</span>
+                                  <span class="m-val num">{{ sess.durationMinutes }}m</span>
+                                </div>
+                              }
                             </div>
 
                             <!-- Exercises and Sets Detailed Breakdown -->
@@ -1176,11 +1233,41 @@ export interface RoutineItem {
           <div class="modal-card card" (click)="$event.stopPropagation()">
             <div class="modal-header">
               <div>
-                <span class="badge badge-primary">RECORD WORKOUT</span>
-                <h3>Add Workout Session</h3>
+                <span class="badge" [class.badge-primary]="newSessionMode === 'planned'" [class.badge-accent]="newSessionMode === 'completed'">
+                  {{ newSessionMode === 'planned' ? '⚡ PLAN WORKOUT' : '✓ RECORD PAST WORKOUT' }}
+                </span>
+                <h3>{{ newSessionMode === 'planned' ? 'Schedule Workout Session' : 'Log Completed Workout' }}</h3>
               </div>
               <button class="close-modal-btn" (click)="showAddModal.set(false)">
                 <app-icon name="close" [size]="18" />
+              </button>
+            </div>
+
+            <!-- Mode Selector: Plan vs Past Log -->
+            <div class="session-mode-switch">
+              <button
+                type="button"
+                class="mode-pill"
+                [class.active]="newSessionMode === 'planned'"
+                (click)="newSessionMode = 'planned'"
+              >
+                <span class="mode-icon">⚡</span>
+                <div class="mode-info">
+                  <span class="mode-title">Plan / Ready to Start</span>
+                  <span class="mode-sub">Add to schedule to train live · Stays uncompleted</span>
+                </div>
+              </button>
+              <button
+                type="button"
+                class="mode-pill"
+                [class.active]="newSessionMode === 'completed'"
+                (click)="newSessionMode = 'completed'"
+              >
+                <span class="mode-icon">✓</span>
+                <div class="mode-info">
+                  <span class="mode-title">Record Past Completed</span>
+                  <span class="mode-sub">Save directly to history with completed sets</span>
+                </div>
               </button>
             </div>
 
@@ -1203,7 +1290,7 @@ export interface RoutineItem {
               <!-- Exercise Builder -->
               <div class="builder-section">
                 <div class="builder-header">
-                  <label>Logged Movements ({{ newSessionExercises.length }})</label>
+                  <label>{{ newSessionMode === 'planned' ? 'Planned Movements' : 'Logged Movements' }} ({{ newSessionExercises.length }})</label>
                   <button class="btn btn-secondary btn-sm" (click)="addExerciseToNewSession()">+ Add Exercise</button>
                 </div>
 
@@ -1239,7 +1326,9 @@ export interface RoutineItem {
 
             <div class="modal-footer">
               <button class="btn btn-secondary" (click)="showAddModal.set(false)">Cancel</button>
-              <button class="btn btn-primary" (click)="saveNewSession()">Save & Log to History</button>
+              <button class="btn btn-primary" (click)="saveNewSession()">
+                {{ newSessionMode === 'planned' ? 'Schedule Session & Prepare Live ⚡' : 'Save & Log to History ✓' }}
+              </button>
             </div>
           </div>
         </div>
@@ -2056,6 +2145,124 @@ export interface RoutineItem {
       color: var(--text);
       border-color: rgba(255, 255, 255, 0.3);
       background: rgba(255, 255, 255, 0.04);
+    }
+    .btn-reopen {
+      background: rgba(245, 158, 11, 0.12);
+      color: #f59e0b;
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      font-size: var(--fs-sm);
+      font-weight: 700;
+      padding: 10px 18px;
+      border-radius: var(--r-pill);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all var(--t-fast) var(--ease);
+    }
+    .btn-reopen:hover {
+      background: rgba(245, 158, 11, 0.22);
+      border-color: #f59e0b;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 10px rgba(245, 158, 11, 0.2);
+    }
+    .btn-reopen-sm {
+      background: rgba(245, 158, 11, 0.12);
+      color: #f59e0b;
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: var(--r-pill);
+      cursor: pointer;
+      transition: all var(--t-fast) var(--ease);
+    }
+    .btn-reopen-sm:hover {
+      background: rgba(245, 158, 11, 0.25);
+      border-color: #f59e0b;
+    }
+    .btn-delete-ghost {
+      background: transparent;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: rgba(239, 68, 68, 0.85);
+      font-size: var(--fs-xs);
+      font-weight: 700;
+      padding: 8px 14px;
+      border-radius: var(--r-pill);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all var(--t-fast) var(--ease);
+    }
+    .btn-delete-ghost:hover {
+      background: rgba(239, 68, 68, 0.15);
+      border-color: #ef4444;
+      color: #ef4444;
+    }
+    .sess-card-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .day-planned-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: var(--r-pill);
+      padding: 1px 6px;
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--accent-1);
+    }
+    .session-mode-switch {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: var(--s-1);
+    }
+    .mode-pill {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      padding: 10px 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      cursor: pointer;
+      text-align: left;
+      transition: all var(--t-fast) var(--ease);
+    }
+    .mode-pill:hover {
+      background: var(--surface-3);
+      border-color: var(--border-strong);
+    }
+    .mode-pill.active {
+      background: rgba(34, 197, 94, 0.08);
+      border-color: var(--primary);
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.15);
+    }
+    .mode-icon {
+      font-size: 1.15rem;
+      line-height: 1;
+      padding-top: 2px;
+    }
+    .mode-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .mode-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .mode-sub {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      line-height: 1.25;
     }
     .banner-exercises-grid {
       display: grid;
@@ -5171,6 +5378,7 @@ export class TrainingHubComponent implements OnInit {
   showAddModal = signal<boolean>(false);
   newSessionDate = this.todayStr;
   newSessionTitle = 'Lower Body Strength';
+  newSessionMode: 'planned' | 'completed' = 'planned';
   newSessionExercises: LoggedExerciseItem[] = [];
 
   ngOnInit() {
@@ -5425,8 +5633,17 @@ export class TrainingHubComponent implements OnInit {
     return this.selectedDateStr() < this.todayStr;
   });
 
+  primarySession = computed(() => {
+    const sessions = this.selectedDaySessions();
+    return sessions.length > 0 ? sessions[0] : null;
+  });
+
   isSelectedDayCompleted = computed(() => {
-    return this.selectedDaySessions().length > 0;
+    return this.selectedDaySessions().some(s => s.isCompleted !== false);
+  });
+
+  hasSelectedDayPlanned = computed(() => {
+    return this.selectedDaySessions().some(s => s.isCompleted === false);
   });
 
   selectedDayStatusLabel = computed(() => {
@@ -5437,23 +5654,40 @@ export class TrainingHubComponent implements OnInit {
   });
 
   bannerBadge = computed(() => {
+    const primary = this.primarySession();
+    if (primary) {
+      if (primary.isCompleted === false) {
+        if (this.isSelectedDateToday()) return "TODAY'S WORKOUT · READY TO START ⚡";
+        if (this.isTomorrow()) return "TOMORROW'S WORKOUT SCHEDULED ⚡";
+        if (this.isSelectedDateFuture()) return "FUTURE WORKOUT SCHEDULED ⚡";
+        return "SCHEDULED WORKOUT (UNCOMPLETED)";
+      } else {
+        if (this.isSelectedDateToday()) return "TODAY'S WORKOUT COMPLETED ✓";
+        if (this.isTomorrow()) return "TOMORROW'S WORKOUT LOGGED ✓";
+        if (this.isSelectedDateFuture()) return "FUTURE WORKOUT LOGGED ✓";
+        return "WORKOUT COMPLETED ✓";
+      }
+    }
+
     if (this.isSelectedDateToday()) {
       return this.isTodayCompleted() ? "TODAY'S WORKOUT COMPLETED ✓" : "TODAY'S PLAN";
     }
     if (this.isTomorrow()) {
-      return this.isSelectedDayCompleted() ? "TOMORROW'S WORKOUT LOGGED ✓" : "TOMORROW'S UPCOMING PLAN";
+      return "TOMORROW'S UPCOMING PLAN";
     }
     if (this.isSelectedDateFuture()) {
-      return this.isSelectedDayCompleted() ? "FUTURE WORKOUT LOGGED ✓" : "UPCOMING SCHEDULE";
+      return "UPCOMING SCHEDULE";
     }
     // Past date
-    return this.isSelectedDayCompleted() ? "WORKOUT COMPLETED ✓" : "REST & RECOVERY DAY";
+    return "REST & RECOVERY DAY";
   });
 
   bannerTitle = computed(() => {
-    const sessions = this.selectedDaySessions();
-    if (sessions.length > 0) {
-      return sessions[0].title + ' Logged';
+    const primary = this.primarySession();
+    if (primary) {
+      return primary.isCompleted === false
+        ? `${primary.title} (Scheduled)`
+        : `${primary.title} Logged`;
     }
     if (this.isSelectedDateToday()) {
       return 'Lower Body Strength';
@@ -5468,12 +5702,17 @@ export class TrainingHubComponent implements OnInit {
   });
 
   bannerSubtitle = computed(() => {
-    const sessions = this.selectedDaySessions();
-    if (sessions.length > 0) {
-      const vol = this.selectedDayVolume();
-      const sets = this.selectedDaySets();
-      const count = sessions[0].exercisesCount || sessions[0].exercises?.length || 4;
-      return `${count} exercises recorded into daily history · Total Volume: ${vol.toLocaleString()} kg (${sets} sets)`;
+    const primary = this.primarySession();
+    if (primary) {
+      const isCompleted = primary.isCompleted !== false;
+      const count = primary.exercisesCount || primary.exercises?.length || 4;
+      if (isCompleted) {
+        const vol = this.selectedDayVolume();
+        const sets = this.selectedDaySets();
+        return `${count} exercises recorded into daily history · Total Volume: ${vol.toLocaleString()} kg (${sets} sets)`;
+      } else {
+        return `${count} exercises scheduled · Ready for live workout tracking or quick completion`;
+      }
     }
     if (this.isSelectedDateToday()) {
       return '4 exercises prescribed · ~45 min target duration · Barbell & Dumbbells';
@@ -5488,26 +5727,31 @@ export class TrainingHubComponent implements OnInit {
   });
 
   activeExercisesDeck = computed(() => {
-    const sessions = this.selectedDaySessions();
-    if (sessions.length > 0) {
-      if (sessions[0].exercises && sessions[0].exercises.length > 0) {
-        return sessions[0].exercises.map((e, idx) => ({
+    const primary = this.primarySession();
+    if (primary) {
+      const isCompleted = primary.isCompleted !== false;
+      if (primary.exercises && primary.exercises.length > 0) {
+        return primary.exercises.map((e, idx) => ({
           num: `MOVE 0${idx + 1}`,
           name: e.exerciseName,
           muscle: e.muscle || 'Compound',
-          meta: `${e.sets?.length || 3} sets recorded · ${e.sets?.[0]?.weightKg || 80} kg`,
-          isCompleted: true,
-          statusText: '✓ Completed'
+          meta: isCompleted
+            ? `${e.sets?.length || 3} sets recorded · ${e.sets?.[0]?.weightKg || 80} kg`
+            : `${e.sets?.length || 3} sets planned · Target ${e.sets?.[0]?.weightKg || 80} kg`,
+          isCompleted: isCompleted,
+          statusText: isCompleted ? '✓ Completed' : 'Ready to Start'
         }));
       }
       return [
         {
           num: 'MOVE 01',
-          name: sessions[0].title,
+          name: primary.title,
           muscle: 'Compound',
-          meta: `${sessions[0].totalSets} sets · ${sessions[0].totalVolumeKg.toLocaleString()} kg`,
-          isCompleted: true,
-          statusText: '✓ Completed'
+          meta: isCompleted
+            ? `${primary.totalSets} sets · ${primary.totalVolumeKg.toLocaleString()} kg`
+            : `${primary.exercisesCount || 1} exercises scheduled`,
+          isCompleted: isCompleted,
+          statusText: isCompleted ? '✓ Completed' : 'Ready to Start'
         }
       ];
     }
@@ -5570,6 +5814,8 @@ export class TrainingHubComponent implements OnInit {
       const d = new Date(year, month - 1, prevMonthLastDay - i);
       const dateStr = d.toISOString().split('T')[0];
       const matching = sessions.filter(s => s.date === dateStr);
+      const matchingCompleted = matching.filter(s => s.isCompleted !== false);
+      const matchingPlanned = matching.filter(s => s.isCompleted === false);
       const meals = this.nutrition.getMealsForDate(dateStr);
       const water = this.nutrition.getWaterForDate(dateStr);
       days.push({
@@ -5578,9 +5824,11 @@ export class TrainingHubComponent implements OnInit {
         dayNumber: prevMonthLastDay - i,
         isCurrentMonth: false,
         isToday: dateStr === this.todayStr,
-        hasWorkouts: matching.length > 0,
-        workoutCount: matching.length,
-        totalVolumeKg: matching.reduce((sum, s) => sum + s.totalVolumeKg, 0),
+        hasWorkouts: matchingCompleted.length > 0,
+        workoutCount: matchingCompleted.length,
+        hasPlanned: matchingPlanned.length > 0,
+        plannedCount: matchingPlanned.length,
+        totalVolumeKg: matchingCompleted.reduce((sum, s) => sum + s.totalVolumeKg, 0),
         hasMeals: meals.length > 0,
         mealCount: meals.length,
         totalKcal: meals.reduce((sum, m) => sum + (m.kcal || 0), 0),
@@ -5593,6 +5841,8 @@ export class TrainingHubComponent implements OnInit {
       const d = new Date(year, month, i);
       const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
       const matching = sessions.filter(s => s.date === dateStr);
+      const matchingCompleted = matching.filter(s => s.isCompleted !== false);
+      const matchingPlanned = matching.filter(s => s.isCompleted === false);
       const meals = this.nutrition.getMealsForDate(dateStr);
       const water = this.nutrition.getWaterForDate(dateStr);
       days.push({
@@ -5601,9 +5851,11 @@ export class TrainingHubComponent implements OnInit {
         dayNumber: i,
         isCurrentMonth: true,
         isToday: dateStr === this.todayStr,
-        hasWorkouts: matching.length > 0,
-        workoutCount: matching.length,
-        totalVolumeKg: matching.reduce((sum, s) => sum + s.totalVolumeKg, 0),
+        hasWorkouts: matchingCompleted.length > 0,
+        workoutCount: matchingCompleted.length,
+        hasPlanned: matchingPlanned.length > 0,
+        plannedCount: matchingPlanned.length,
+        totalVolumeKg: matchingCompleted.reduce((sum, s) => sum + s.totalVolumeKg, 0),
         hasMeals: meals.length > 0,
         mealCount: meals.length,
         totalKcal: meals.reduce((sum, m) => sum + (m.kcal || 0), 0),
@@ -5617,6 +5869,8 @@ export class TrainingHubComponent implements OnInit {
       const d = new Date(year, month + 1, i);
       const dateStr = d.toISOString().split('T')[0];
       const matching = sessions.filter(s => s.date === dateStr);
+      const matchingCompleted = matching.filter(s => s.isCompleted !== false);
+      const matchingPlanned = matching.filter(s => s.isCompleted === false);
       const meals = this.nutrition.getMealsForDate(dateStr);
       const water = this.nutrition.getWaterForDate(dateStr);
       days.push({
@@ -5625,9 +5879,11 @@ export class TrainingHubComponent implements OnInit {
         dayNumber: i,
         isCurrentMonth: false,
         isToday: dateStr === this.todayStr,
-        hasWorkouts: matching.length > 0,
-        workoutCount: matching.length,
-        totalVolumeKg: matching.reduce((sum, s) => sum + s.totalVolumeKg, 0),
+        hasWorkouts: matchingCompleted.length > 0,
+        workoutCount: matchingCompleted.length,
+        hasPlanned: matchingPlanned.length > 0,
+        plannedCount: matchingPlanned.length,
+        totalVolumeKg: matchingCompleted.reduce((sum, s) => sum + s.totalVolumeKg, 0),
         hasMeals: meals.length > 0,
         mealCount: meals.length,
         totalKcal: meals.reduce((sum, m) => sum + (m.kcal || 0), 0),
@@ -5880,6 +6136,7 @@ export class TrainingHubComponent implements OnInit {
 
   openAddModal(dateStr: string) {
     this.newSessionDate = dateStr;
+    this.newSessionMode = 'planned'; // Default to planned session so it doesn't auto-complete!
     this.selectRoutinePreset('Lower Body Strength');
     this.showAddModal.set(true);
   }
@@ -5933,13 +6190,24 @@ export class TrainingHubComponent implements OnInit {
 
   saveNewSession() {
     if (!this.newSessionTitle.trim()) return;
+    const isCompleted = this.newSessionMode === 'completed';
     this.workout.logManualSession({
       title: this.newSessionTitle,
       date: this.newSessionDate,
-      exercises: this.newSessionExercises
+      exercises: this.newSessionExercises,
+      isCompleted
     });
     this.selectedDateStr.set(this.newSessionDate);
     this.showAddModal.set(false);
+  }
+
+  startSessionLive(sess: CompletedSessionItem) {
+    this.workout.loadSessionIntoLive(sess);
+    this.router.navigate(['/training/session/live']);
+  }
+
+  toggleSessionCompletion(sessionId: string) {
+    this.workout.toggleSessionStatus(sessionId);
   }
 
   askCoachAboutTrend() {
